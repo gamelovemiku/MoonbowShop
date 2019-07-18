@@ -1,4 +1,4 @@
-<h4>MoonbowShop - A simple minecraft item shop!</h4>
+<h1>MoonbowShop - A simple minecraft item shop!</h1>
 <p>
     This project are exclusive made for <b>Moonbow Minecraft Server</b> only! 
     When the presentation of this subject is over, This project will gonna be change to opensource.
