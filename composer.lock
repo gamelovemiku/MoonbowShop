@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5dd346ea4d2ee48054a1cf61eef0e4c5",
+    "content-hash": "de60478968fd9f5011efa1da7654da5b",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -376,6 +376,44 @@
                 "trusted proxy"
             ],
             "time": "2019-01-10T14:06:47+00:00"
+        },
+        {
+            "name": "funnyitselmo/minecraftserverstatus",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FunnyItsElmo/PHP-Minecraft-Server-Status-Query.git",
+                "reference": "71ba574c1a6587340f4ba141fa92ff8595751226"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FunnyItsElmo/PHP-Minecraft-Server-Status-Query/zipball/71ba574c1a6587340f4ba141fa92ff8595751226",
+                "reference": "71ba574c1a6587340f4ba141fa92ff8595751226",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MinecraftServerStatus\\": "src/",
+                    "MinecraftServerStatus\\Packets\\": "src/Packets/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Julian Spravil",
+                    "email": "julian.spr@t-online.de"
+                }
+            ],
+            "keywords": [
+                "minecraft",
+                "server",
+                "status"
+            ],
+            "time": "2016-03-25T20:45:58+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",

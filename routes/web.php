@@ -15,9 +15,11 @@ Route::get('/auth', function () {
     return view('Authentication');
 });
 
-Route::get('/store', function () {
-    return view('store');
-});
+Route::get('/store', 'ServerStatusController@getStatus');
+
+/*Route::get('/store', function () {
+    return ('store');
+});*/
 
 Route::get('/redeem', function () {
     return view('redeem');
@@ -31,4 +33,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/testrcon', 'SendCommandController@index');
+Route::get('/testrcon/{cmd}', 'SendCommandController@sendCommand');

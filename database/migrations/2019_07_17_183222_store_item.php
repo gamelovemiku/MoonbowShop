@@ -13,7 +13,7 @@ class StoreItem extends Migration
      */
     public function up()
     {
-        Schema::create('store_item', function (Blueprint $table) {
+        Schema::create('itemshop', function (Blueprint $table) {
             $table->string('item_id')->primary();
             $table->string('item_name', '16');
             $table->string('item_desc', '30');
@@ -32,6 +32,6 @@ class StoreItem extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('store_item');
+        Schema::dropIfExists('itemshop');
     }
 }
