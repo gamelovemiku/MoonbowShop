@@ -1,5 +1,8 @@
 <h1>MoonbowShop - A simple minecraft item shop!</h1>
-<p>This project are exclusive made for <b>Moonbow Minecraft Server</b> only!
+<p>
+    This project are exclusive made for <b>Moonbow Minecraft Server</b> only! After presentation.
+    
+    
 
 <p>
 Written in PHP using Laravel Framework.
