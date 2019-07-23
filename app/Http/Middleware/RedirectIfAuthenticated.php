@@ -17,8 +17,8 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+        if (Auth::guard($guard)->check()) { //ถ้า Login แล้ว Redirect มาหน้านี้
+            return redirect('/store');
         }
 
         return $next($request);

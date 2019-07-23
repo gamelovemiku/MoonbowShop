@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use MinecraftServerStatus\MinecraftServerStatus;
 
-class HomeController extends Controller
+class StoreController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $response = MinecraftServerStatus::query('mc.hypixel.net', 25565);
+        
+        return view('store', ['server' => $response]);
+        
     }
 }

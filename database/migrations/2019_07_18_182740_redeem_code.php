@@ -13,7 +13,7 @@ class RedeemCode extends Migration
             $table->string('redeem_id')->primary();
             $table->string('redeem_name');
             $table->string('player_id');
-            $table->boolval('is_claim');
+            $table->boolean('is_claim');
             $table->string('reward_command');
             $table->timestamps();
         });

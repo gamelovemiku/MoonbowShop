@@ -11,6 +11,6 @@ class ServerStatusController extends Controller
     {
         $response = MinecraftServerStatus::query('mc.hypixel.net', 25565);
 
-        return view('store', ['server' => $response]);
+        return view('components.serverstatus', ['server' => $response]);
     }
 }
