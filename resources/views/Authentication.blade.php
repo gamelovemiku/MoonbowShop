@@ -15,6 +15,7 @@
     }
 </style>
 <body>
+    @include('components.navbar')
     <section class="section">
         <div class="container is-uppercase">
             <div class="box" style="width: 100%">

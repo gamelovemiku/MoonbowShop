@@ -15,7 +15,7 @@ Plan / Todo
     <li>Use a couple Reactjs on view pages.</li>
     <li>Redeem Code System.</li>
     <li>View Statistics Support.</li>
-    <li>Support RCON to send commands to the server.</li>
+    <li>Support RCON to send commands to the server. ✓</li>
     <li>Support topup via TMTOPAY API</li>
     <li>Support Paypal payment (optional will try)</li>
 </ul>

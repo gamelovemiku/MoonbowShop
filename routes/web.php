@@ -11,16 +11,6 @@
 |
 */
 
-Route::get('/auth', function () {
-    return view('Authentication');
-});
-
-// Route::get('/store', 'ServerStatusController@getStatus');
-
-/*Route::get('/store', function () {
-    return ('store');
-});*/
-
 Route::get('/redeem', function () {
     return view('redeem');
 });
@@ -41,6 +31,8 @@ Auth::routes();
 
 Route::get('/testrcon/{cmd}', 'SendCommandController@sendCommand');
 
-Auth::routes();
-
 Route::get('/store', 'StoreController@index')->name('store');
+
+Route::get('/checkout', 'CheckoutController@index');
+Route::get('/checkout/{id}', 'CheckoutController@buy')->name('buy');
+Route::get('/checkout/{id}/{playername}', 'CheckoutController@confirmbuy')->name('comfirmed_buy');

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Authentication</title>
+    <title>Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" integrity="sha256-vK3UTo/8wHbaUn+dTQD0X6dzidqc5l7gczvH+Bnowwk=" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css?family=Pridi&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" integrity="sha256-PF6MatZtiJ8/c9O9HQ8uSUXr++R9KBYu4gbNG5511WE=" crossorigin="anonymous" />
@@ -69,6 +69,9 @@
         font-size: 12px;
         font-weight: 600;
     }
+    .section {
+        margin-top: 64px;
+    }
 
 </style>
 
@@ -86,59 +89,7 @@
 </script>
 
 <body>
-    <nav class="navbar is-black" role="navigation" aria-label="main navigation">
-        <div class="container is-uppercase">
-            <div class="navbar-brand">
-                <a class="navbar-item">
-                    <div><small style="font-size: 12px;">MOONBOWMC</small><br/><b>CONTROL PANEL</b></div>
-                </a>
-            
-                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                </a>
-            </div>
-            
-            <div id="navbarBasicExample" class="navbar-menu">
-                <div class="navbar-start">
-                    <a class="navbar-item">
-                        <i class="fas fa-shopping-bag" style="margin-right: 8px;"></i> STORE
-                    </a>
-                
-                    <a class="navbar-item">
-                        <i class="fas fa-boxes" style="margin-right: 8px;"></i>  REDEEM
-                    </a>
-
-                    <a class="navbar-item">
-                        <i class="fas fa-diagnoses" style="margin-right: 8px;"></i> STATISTICS
-                    </a>
-
-                    <a class="navbar-item">
-                        <i class="fab fa-discord" style="margin-right: 8px;"></i> FORUM
-                    </a>
-                </div>
-            </div>
-                <div class="navbar-end">
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">
-                            {{ Auth::user()->name }} <i class="fas fa-user" style="margin-left: 8px;"></i>
-                        </a>
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            Free daily item
-                        </a>
-                        <a class="navbar-item">
-                            Topup
-                        </a>
-                        <a class="navbar-item" href="{{ route('logout') }}">
-                            Logout
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+    @include('components.navbar')
     <section class="section">
         <div class="container is-uppercase">
             <h1 class="title is-size-1 force-bold">Store</h1>
@@ -146,78 +97,24 @@
             <div class="columns">
                 <div class="column is-8">
                     <div class="box" style="width: 100%">
-                        <div class="title-category">ORES
+                        <div class="title-category">On sale now for limited time!
                             <p class="text-category">Make your new equipment for supporters!</p>
                         </div>
                         <div class="columns is-multiline">
-                            @for ($i = 0; $i < 1; $i++)
+                            @foreach ($items as $item)
                                 <div class="column is-3">
                                     <div class="box box-fullheight">
-                                        <div class="title-product">Diamond
-                                            <p class="subtitle-product">It's a powerful ores!</p>
-                                            <img width="100%"src="./assets/image/diamond.png" alt="product">
-                                            <p class="pricetag-product">1.99 USD | 64 Units</p>
+                                        <div class="title-product">{{ $item->item_name }}
+                                            <p class="subtitle-product">{{ $item->item_desc }}</p>
+                                            <img width="100%" src="{{ "./assets/image/store/" . $item->item_image_path }}" alt="product">
+                                            <p class="pricetag-product">{{ $item->item_price }} Points / 64 Pcs</p>
                                             <div class="buttons is-centered button-product">
-                                                <button class="button" disabled="disabled">Buy</button>
-                                                <button class="button" disabled="disabled">Redeem</button>
+                                                <a href="/checkout/{{ $item->item_id }}" class="button is-link is-outlined">Buy</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            @endfor
-                                
-                            <div class="column is-3">
-                                <div class="box box-fullheight">
-                                    <div class="title-product">Gold Ingot
-                                        <p class="subtitle-product">Potion is God!</p>
-                                        <img width="100%"src="./assets/image/gold.png" alt="product">
-                                        <p class="pricetag-product">1.99 USD | 64 Units</p>
-                                        <div class="buttons is-centered button-product">
-                                            <button class="button" disabled="disabled">Buy</button>
-                                            <button class="button" disabled="disabled">Redeem</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="column is-3">
-                                <div class="box box-fullheight">
-                                    <div class="title-product">Iron Ingot
-                                        <p class="subtitle-product">Cheap but powerful!</p>
-                                        <img width="100%"src="./assets/image/iron.png" alt="product">
-                                        <p class="pricetag-product">1.99 USD | 64 Units</p>
-                                        <div class="buttons is-centered button-product">
-                                            <button class="button" disabled="disabled">Buy</button>
-                                            <button class="button" disabled="disabled">Redeem</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="column is-3">
-                                <div class="box box-fullheight">
-                                    <div class="title-product">Redstone
-                                        <p class="subtitle-product">Make a Logic!</p>
-                                        <img width="100%"src="./assets/image/redstone.png" alt="product">
-                                        <p class="pricetag-product">1.99 USD | 64 Units</p>
-                                        <div class="buttons is-centered button-product">
-                                            <button class="button" disabled="disabled">Buy</button>
-                                            <button class="button" disabled="disabled">Redeem</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="column is-3">
-                                <div class="box box-fullheight">
-                                    <div class="title-product">Charcoal
-                                        <p class="subtitle-product">Burn any things!</p>
-                                        <img width="100%"src="./assets/image/charcoal.png" alt="product">
-                                        <p class="pricetag-product">1.99 USD | 64 Units</p>
-                                        <div class="buttons is-centered button-product">
-                                            <button class="button" disabled="disabled">Buy</button>
-                                            <button class="button" disabled="disabled">Redeem</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -235,10 +132,26 @@
                             </div>
                         </div>
                     </div>
-                    @include('components.serverstatus')   
+                    <div class="box" style="width: 100%">
+                        <div class="title-category">Redeem
+                            <p class="text-category">Have any redeem code? REDEEM IT and GET PRIZE!</p>
+                        </div>
+                        <form>
+                            <div class="field">
+                                <input class="input" type="text">
+                            </div>
+                            <div class="buttons">
+                                
+                                <div class="button" type="submit">Redeem</div>
+                                <div class="button is-text" type="submit">Redeem Terms</div>
+                            </div>                            
+                        </form>
+                    </div>
+                    @include('components.serverstatus') 
                 </div>
             </div>
         </div>
     </section>
+    @include('components.footer') 
 </body>
 </html>
