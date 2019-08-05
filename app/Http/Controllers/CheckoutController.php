@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use MinecraftServerStatus\MinecraftServerStatus;
-use App\StoreItems;
+use App\Itemshop;
+use App\User;
 use DB;
 use Auth;
 use Route;
@@ -19,7 +19,7 @@ class CheckoutController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('checkIfBuy');
+        $this->middleware('balanceEnough');
     }
 
     public function index()
@@ -27,36 +27,33 @@ class CheckoutController extends Controller
         return view('checkout');
     }
 
-    public function getItemDetail($itemid)
-    { 
-        $details = StoreItems::all()->get();
-
-        if($details != null){
-            return view('checkout', $details);
-        }else{
-            $msg = "Transaction Failed.";
-        }
-
-        return view('checkout');
-    }
-
     public function buy($itemid)
     { 
-        $player = Auth::user()->name;
-
         return view('checkout', ['items' => $this->getItem($itemid)]);
     }
 
-    public function confirmbuy($itemid)
+    public function verifiedbuy(Request $request)
     { 
-        $player = Auth::user()->name;
-        $result = $this->getItem($itemid);
+        $result = $this->getItem($request->input('id'));
 
-        if($result != null){
-            $this->sendCommand(str_replace('%player', $player , $result->item_command));
-            return redirect('store');
-        }else{
-            return redirect('store');
+        if($result != null){ //ถ้าไม่มี item รหัสนี้ใน store
+            if($this->sendCommand($result->item_command) != false){ //ถ้าเซิร์ฟยังเชื่อมต่อได้
+                $this->takeMoney($this->getItem($request->input('id'))->item_price);
+                session()->flash('store_alert', 'Successfully! Your item is deliveried.');
+            }else{ //ถ้าไม่ได้
+                session()->flash('error_alert');
+                return redirect('store');
+            }
         }
+
+        return redirect('store');
+    }
+
+    public function takeMoney($amount)
+    { 
+        $currentmoney = $this->getBalance();
+        User::where('name', Auth::user()->name)->update(['points_balance' => $currentmoney-$amount]);
+
+        return true;
     }
 }

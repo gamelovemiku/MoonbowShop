@@ -4,24 +4,19 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class StoreItem extends Migration
+class Itemshop extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('itemshop', function (Blueprint $table) {
-            $table->string('item_id')->primary();
+            $table->bigIncrements('item_id');
             $table->string('item_name', '16');
             $table->string('item_desc', '30');
             $table->string('item_image_path');
             $table->mediumInteger('item_price');
             $table->string('item_category');
             $table->string('item_command');
-            $table->timestamps();
+            $table->mediumInteger('item_sold');
         });
     }
 

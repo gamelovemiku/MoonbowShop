@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,12 +12,13 @@
 |
 */
 
-Route::get('/redeem', function () {
-    return view('redeem');
+Route::get('/', function () {
+    return redirect('/login');
 });
 
 Route::get('/statistics', 'StatisticsController@index');
 
+Route::get('/home', 'HomeController@index');
 
 Route::get('/checkout', 'CheckoutController@index');
 
@@ -29,10 +31,17 @@ Route::get('/logout', function () {
 
 Auth::routes();
 
-Route::get('/testrcon/{cmd}', 'SendCommandController@sendCommand');
+Route::get('/testrcon/{cmd}', 'Controller@sendCommand');
 
 Route::get('/store', 'StoreController@index')->name('store');
 
 Route::get('/checkout', 'CheckoutController@index');
 Route::get('/checkout/{id}', 'CheckoutController@buy')->name('buy');
-Route::get('/checkout/{id}/{playername}', 'CheckoutController@confirmbuy')->name('comfirmed_buy');
+
+Route::post('/checkout', 'CheckoutController@verifiedbuy')->name('verifiedbuy');
+
+Route::post('/redeem', 'RedeemController@redeem')->name('redeem');
+
+Route::get('/topup', 'TopupController@index')->name('topup');
+
+Route::get('/test', 'CheckoutController@takeMoney');
