@@ -28,10 +28,6 @@
                     <i class="fas fa-donate" style="margin-right: 8px;"></i> TOPUP
                 </a>
 
-                <a class="navbar-item" href="/about">
-                    <i class="fas fa-share-alt" style="margin-right: 8px;"></i> About
-                </a>
-
                 <a class="navbar-item" href="/forum">
                     <i class="fab fa-discord" style="margin-right: 8px;"></i> FORUM
                 </a>
