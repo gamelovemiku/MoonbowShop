@@ -19,12 +19,12 @@ class CheckoutController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('balanceEnough');
+        $this->middleware('balanceEnough', ['except' => 'index']);
     }
 
     public function index()
     { 
-        return view('checkout');
+        return redirect('store');
     }
 
     public function buy($itemid)
@@ -39,9 +39,9 @@ class CheckoutController extends Controller
         if($result != null){ //ถ้าไม่มี item รหัสนี้ใน store
             if($this->sendCommand($result->item_command) != false){ //ถ้าเซิร์ฟยังเชื่อมต่อได้
                 $this->takeMoney($this->getItem($request->input('id'))->item_price);
-                session()->flash('store_alert', 'Successfully! Your item is deliveried.');
+                session()->flash('buyComplete', 'Successfully! Your item is deliveried.');
             }else{ //ถ้าไม่ได้
-                session()->flash('error_alert');
+                session()->flash('somethingError');
                 return redirect('store');
             }
         }

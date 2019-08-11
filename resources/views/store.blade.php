@@ -90,42 +90,7 @@
             <div class="columns">
                 <div class="column is-8">
                     <div class="box" style="width: 100%">
-                        @if (session()->has('moneyNotEnough'))
-                            <script>
-                                swal("ผิดพลาด: มีเงินไม่พอ", "คุณไม่สามารถซื้อสินค้านี้ได้ เนื่องจากมี Points ไม่เพียงพอ!", "warning");
-                                bulmaToast.toast({ 
-                                    message: "คุณมีจำนวน Point ไม่เพียงพอในการซื้อสินค้านี้",
-                                    type: "is-warning has-text-left",
-                                    dismissible: true,
-                                    duration: 5000,
-                                    animate: { in: "fadeInUp", out: "fadeOutRight" }
-                                });
-                            </script>
-                        @endif
-                        @if (session()->has('store_alert'))
-                            <script>
-                                swal("สั่งซื้อสำเร็จ!", "ระบบทำการจัดส่งสินค้าให้คุณแล้ว!", "success");
-                                bulmaToast.toast({ 
-                                    message: "สั่งซื้อสำเร็จ! ระบบทำการจัดส่งสินค้าให้คุณแล้ว",
-                                    type: "is-success has-text-left",
-                                    dismissible: true,
-                                    duration: 5000,
-                                    animate: { in: "fadeInUp", out: "fadeOutRight" }
-                                    });
-                            </script>
-                        @endif
-                        @if (session()->has('error_alert'))
-                            <script>
-                                swal("มีบางอย่างไม่ถูกต้อง!", "ดูเหมือนว่าจะมีการกระทำบางอย่างทำให้การสั่งซื้อไม่สำเร็จ!", "warning");
-                                bulmaToast.toast({ 
-                                    message: "มีบางอย่างไม่ถูกต้อง! ดูเหมือนว่าจะมีการกระทำบางอย่างทำให้การสั่งซื้อไม่สำเร็จ",
-                                    type: "is-warning has-text-left",
-                                    dismissible: true,
-                                    duration: 5000,
-                                    animate: { in: "fadeInUp", out: "fadeOutRight" }
-                                    });
-                            </script>
-                        @endif
+                        @include('components.alert') 
                         <div class="title-category">On sale now for limited time!
                             <p class="text-category">Make your new equipment for supporters!</p>
                         </div>
@@ -138,7 +103,7 @@
                                                 <img width="100%" src="{{ "./assets/image/store/" . $item->item_image_path }}" alt="product">
                                                 <p class="pricetag-product">{{ $item->item_price }} Points / 1 Pcs</p>
                                                 <div class="buttons is-centered button-product">
-                                                    <a href="/checkout/{{ $item->item_id }}" class="button is-black is-outlined">Buy</a>
+                                                    <a href="/store/checkout/{{ $item->item_id }}" class="button is-black is-outlined">Buy</a>
                                                 </div>
                                             </div>
                                         </div>

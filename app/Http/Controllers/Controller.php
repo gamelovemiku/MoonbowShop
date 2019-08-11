@@ -54,4 +54,11 @@ class Controller extends BaseController
         $player = User::where('name',  Auth::user()->name)->get()->first();
         return $player->points_balance;
     }
+
+    public function showFlashAlert($style, $title, $info)
+    {
+        session()->flash('style', $style);
+        session()->flash('title', $title);
+        session()->flash('info', $info);
+    }
 }

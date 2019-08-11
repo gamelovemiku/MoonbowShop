@@ -5,11 +5,7 @@
                 <div><small style="font-size: 12px;">MOONBOWMC</small><br/><b>CONTROL PANEL</b></div>
             </a>
         </div>
-        <div class="navbar-burger burger" data-target="navMenubd-example">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+
         <div class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item" href="/home">
@@ -54,7 +50,7 @@
 
                     <hr class="navbar-divider">
 
-                    <a class="navbar-item">
+                    <a href="/manage" class="navbar-item">
                         Manage Profile
                     </a>
 

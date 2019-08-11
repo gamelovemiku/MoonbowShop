@@ -35,13 +35,26 @@ Route::get('/testrcon/{cmd}', 'Controller@sendCommand');
 
 Route::get('/store', 'StoreController@index')->name('store');
 
-Route::get('/checkout', 'CheckoutController@index');
-Route::get('/checkout/{id}', 'CheckoutController@buy')->name('buy');
+Route::get('/store/checkout', 'CheckoutController@index');
+Route::post('/store/checkout', 'CheckoutController@verifiedbuy')->name('verifiedbuy');
 
-Route::post('/checkout', 'CheckoutController@verifiedbuy')->name('verifiedbuy');
+Route::get('/store/checkout/{id}', 'CheckoutController@buy')->name('buy');
 
 Route::post('/redeem', 'RedeemController@redeem')->name('redeem');
 
 Route::get('/topup', 'TopupController@index')->name('topup');
 
+Route::get('/manage/changepassword', function () {
+    return view('manage.changepassword');
+});
+
+Route::get('/manage/profile', function () {
+    return view('manage.profile');
+});
+
+Route::resource('/manage/itemshop/item', 'Management\ManageItemController');
+
+Route::get('/manage/itemshop/category', 'Management\ManageCategoryController@index');
+
 Route::get('/test', 'CheckoutController@takeMoney');
+

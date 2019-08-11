@@ -30,12 +30,12 @@
 
 <!-- Mobile Footer -->
 <footer class="footer is-dark is-hidden-desktop" style="padding-bottom: 0.5rem; padding-top: 0.5rem;">
-        <div class="container">
-            <div class="content has-text-centered">
-                <p class="subtitle is-size-7">
-                    <strong><i class="fas fa-shopping-basket"></i> MoonbowShop</strong> is a powerful minecraft webshop.<br/>
-                    This application exclusive made for <strong>Moonbow Minecraft</strong>.
-                </p>
-            </div>
+    <div class="container">
+        <div class="content has-text-centered">
+            <p class="subtitle is-size-7">
+                <strong><i class="fas fa-shopping-basket"></i> MoonbowShop</strong> is a powerful minecraft webshop.<br/>
+                This application exclusive made for <strong>Moonbow Minecraft</strong>.
+            </p>
         </div>
-    </footer>
+    </div>
+</footer>
