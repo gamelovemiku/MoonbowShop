@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" integrity="sha256-PF6MatZtiJ8/c9O9HQ8uSUXr++R9KBYu4gbNG5511WE=" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css?family=Poppins|Pridi&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css" integrity="sha256-a2tobsqlbgLsWs7ZVUGgP5IvWZsx8bTNQpzsqCSm5mk=" crossorigin="anonymous" />
-    <script src="js/bulma-toast.min.js"></script>
+    <script src="/js/bulma-toast.min.js"></script>
+    <script src="/js/bulma.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
-
 <style>
     html, body, .button {
         font-family: 'Segoe UI' ,'Pridi', serif;
@@ -93,15 +93,15 @@
         text-transform: uppercase;
     }
 </style>
-
     @include('components.navbar')
-    <section class="section is-uppercase">
+    <section class="section is-uppercase" style="margin-bottom: 4em;">
         <div class="container">
             <h1 class="title is-size-1 force-bold">Management Center</h1>
             <p class="subtitle">Edit or Manage your profile<b class="force-bold"></b></p>
             <div class="columns">
                 <div class="column is-3">
                     <div class="box">
+                        @include('components.alert')
                         <aside class="menu">
                             <p class="menu-label">
                                 User Profile

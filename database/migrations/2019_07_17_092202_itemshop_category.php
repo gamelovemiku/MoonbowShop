@@ -16,6 +16,7 @@ class ItemshopCategory extends Migration
         Schema::create('itemshop_category', function (Blueprint $table) {
             $table->bigIncrements('category_id');
             $table->string('category_name');
+            $table->timestamps();
         });
     }
 

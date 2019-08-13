@@ -12,65 +12,61 @@
 </nav>
 <div class="tabs is-small">
     <ul>
-        <li><a>Overview</a></li>
-        <li><a href="/manage/itemshop/additem">Manage Item</a></li>
+        <li><a href="/manage/itemshop/item">Manage Item</a></li>
         <li class="is-active" href="/manage/itemshop/category"><a>Manage Category</a></li>
     </ul>
 </div>
 <h4 class="title is-size-4 force-bold">Category</h4>
 <p class="subtitle is-size-6">Group up your item<b class="force-bold"></b></p>
-<form method="POST" action="{{ route('login') }}"> <!--<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
-    @csrf
-    <div class="field">
-        <div class="columns">
-            <div class="column is-12" style="height: 100%">
+<div class="field">
+    <div class="columns">
+        <div class="column is-12" style="height: 100%">
 
-                <label for="itemname" class="label">Item name</label>
+            <form action="{{ route('category.store')}}" method="post">
+                @method('post')
+                @csrf
                 <div class="field has-addons">
                     <div class="control">
-                        <input class="input" type="text" placeholder="New category">
+                        <input class="input" type="text" name="category_name" placeholder="New category">
                     </div>
                     <div class="control">
-                        <a class="button is-info">
+                        <button type="submit" class="button is-black">
                             Add
-                        </a>
+                        </button>
                     </div>
-                </div>
+                </div>                    
+            </form>
 
-                <table class="table is-hoverable" style="width: 100%">
-                    <thead>
+
+            <table class="table is-hoverable" style="width: 100%; margin-top: 1em;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Category Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($categorys as $category)
                         <tr>
-                            <th>ID</th>
-                            <th>Category Name</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>0</th>
-                            <th>Ores</th>
+                            <th>{{ $category->category_id }}</th>
+                            <th>{{ $category->category_name }}</th>
                             <th>
                                 <div class="buttons">
-                                    <a class="button is-light">Edit Name</a>
-                                    <a class="button is-danger">Remove</a>
+                                    <a class="button is-light">Edit</a>
+                                    <form action="{{ route('category.destroy', [$category->category_id])}}" method="post">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit" class="button is-danger" value="Delete">Delete</button>
+                                    </form>
                                 </div>
                             </th>
                         </tr>
-                        <tr>
-                            <th>1</th>
-                            <th>Rank</th>
-                            <th>
-                                <div class="buttons">
-                                    <a class="button is-light">Edit Name</a>
-                                    <a class="button is-danger">Remove</a>
-                                </div>
-                            </th>
-                        </tr>
-                    </tbody>
-                </table>
+                    @endforeach
+                </tbody>
+            </table>
 
-            </div>
         </div>
     </div>
-</form>
+</div>
 @endsection

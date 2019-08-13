@@ -54,7 +54,7 @@ Route::get('/manage/profile', function () {
 
 Route::resource('/manage/itemshop/item', 'Management\ManageItemController');
 
-Route::get('/manage/itemshop/category', 'Management\ManageCategoryController@index');
+Route::resource('/manage/itemshop/category', 'Management\ManageCategoryController');
 
 Route::get('/test', 'CheckoutController@takeMoney');
 

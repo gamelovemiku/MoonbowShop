@@ -16,7 +16,7 @@ class ManageItemController extends ManageController
 
     public function create()
     {
-
+        return view('manage.admin.additem');
     }
 
     public function store(Request $request)
@@ -32,26 +32,48 @@ class ManageItemController extends ManageController
         $item->item_sold        = 0;
         $item->save();
 
-        return redirect('item.index');
+        session()->flash('manageItemAdded');
+        return redirect()->route('item.index');
     }
 
     public function show($id)
     {
-        //
+        return 'Show';
     }
 
     public function edit($id)
     {
-        //
+        $itemdata = Itemshop::where('item_id', $id)->get()->first();
+
+        return view('manage.admin.edititem', ['item' => $itemdata]);
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $item = Itemshop::find($id)->update([
+
+            'item_name' => $request->item_name,
+            'item_desc' => $request->item_desc,
+            'item_image_path' => 'diamond.png',
+            'item_price' => $request->item_price,
+            'category_id' => $request->category,
+            'item_command' => $request->item_command,
+            
+        ]);
+
+        session()->flash('manageItemEdited');
+        return redirect()->route('item.index');
     }
 
     public function destroy($id)
     {
-        //
+        if($id != null) {
+            Itemshop::find($id)->delete();
+            session()->flash('manageItemRemoved');
+        }else {
+            session()->flash('somethingError');
+        }
+
+        return redirect('manage/itemshop/item');
     }
 }

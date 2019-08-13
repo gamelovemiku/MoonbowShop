@@ -26,13 +26,74 @@
 
 @if (session()->has('somethingError'))
 <script>
-    swal("มีบางอย่างไม่ถูกต้อง!", "ดูเหมือนว่าจะมีการกระทำบางอย่างทำให้การสั่งซื้อไม่สำเร็จ!", "warning");
+    swal("มีบางอย่างไม่ถูกต้อง!", "ดูเหมือนว่าจะมีการกระทำบางอย่างที่ผิดปกติ", "warning");
     bulmaToast.toast({ 
-        message: "มีบางอย่างไม่ถูกต้อง! ดูเหมือนว่าจะมีการกระทำบางอย่างทำให้การสั่งซื้อไม่สำเร็จ",
+        message: "มีบางอย่างไม่ถูกต้อง! ดูเหมือนว่าจะมีการกระทำบางอย่างที่ผิดปกติ",
         type: "is-warning has-text-left",
         dismissible: true,
         duration: 5000,
         animate: { in: "fadeInUp", out: "fadeOutRight" }
         });
 </script>
+@endif
+
+@if (session()->has('manageItemAdded'))
+    <script>
+        bulmaToast.toast({ 
+            message: "เพิ่มไอเท็มใหม่เรียบร้อย!",
+            type: "is-succcess has-text-left",
+            dismissible: true,
+            duration: 5000,
+            animate: { in: "fadeInUp", out: "fadeOutRight" }
+        });
+    </script>
+@endif
+
+
+@if (session()->has('manageItemRemoved'))
+    <script>
+        bulmaToast.toast({ 
+            message: "ลบไอเท็มออกจากร้านค้าแล้ว!",
+            type: "is-danger has-text-left",
+            dismissible: true,
+            duration: 5000,
+            animate: { in: "fadeInUp", out: "fadeOutRight" }
+        });
+    </script>
+@endif
+
+@if (session()->has('manageCategoryAdded'))
+    <script>
+        bulmaToast.toast({ 
+            message: "เพิ่มหมวดหมูไอเท็มใหม่แล้ว!",
+            type: "is-success has-text-left",
+            dismissible: true,
+            duration: 5000,
+            animate: { in: "fadeInUp", out: "fadeOutRight" }
+        });
+    </script>
+@endif
+
+@if (session()->has('manageCategoryRemoved'))
+    <script>
+        bulmaToast.toast({ 
+            message: "ลบหมวดหมู่ไอเท็มสำเร็จ!",
+            type: "is-success has-text-left",
+            dismissible: true,
+            duration: 5000,
+            animate: { in: "fadeInUp", out: "fadeOutRight" }
+        });
+    </script>
+@endif
+
+@if (session()->has('manageItemEdited'))
+    <script>
+        bulmaToast.toast({ 
+            message: "แก้ไขข้อมูลไอเท็มสำเร็จ!",
+            type: "is-success has-text-left",
+            dismissible: true,
+            duration: 5000,
+            animate: { in: "fadeInUp", out: "fadeOutRight" }
+        });
+    </script>
 @endif

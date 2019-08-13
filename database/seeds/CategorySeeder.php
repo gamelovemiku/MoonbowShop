@@ -13,10 +13,13 @@ class CategorySeeder extends Seeder
     {
         DB::table('itemshop_category')->insert([
             [
-            'category_name' => 'ores',
+                'category_name' => 'Default',
             ],
             [
-            'category_name' => 'rank',
+                'category_name' => 'ores',
+            ],
+            [
+                'category_name' => 'rank',
             ]
         ]);
     }
