@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Itemshop;
+use Storage;
 
 class ManageItemController extends ManageController
 {
@@ -19,14 +20,20 @@ class ManageItemController extends ManageController
         return view('manage.admin.additem');
     }
 
+    public function getBasename($path, $file) {
+        $save = Storage::disk('local')->put($path, $file);
+        return basename($save);
+    }
+
     public function store(Request $request)
     {
+
         $item = new Itemshop;
 
         $item->item_name        = $request->item_name;
         $item->item_desc        = $request->item_desc;
-        $item->item_image_path  = 'diamond.png';
         $item->item_price       = $request->item_price;
+        $item->item_image_path  = $this->saveAndGetFile('public/itemshop/cover', $request->file('cover'));
         $item->category_id      = $request->category;
         $item->item_command     = $request->item_command;
         $item->item_sold        = 0;
@@ -34,6 +41,11 @@ class ManageItemController extends ManageController
 
         session()->flash('manageItemAdded');
         return redirect()->route('item.index');
+    }
+
+    public function upload(Request $request)
+    {
+        return $request->file('image')->getClientOriginalName();
     }
 
     public function show($id)
@@ -50,11 +62,17 @@ class ManageItemController extends ManageController
 
     public function update(Request $request, $id)
     {
-        $item = Itemshop::find($id)->update([
+
+        $item = Itemshop::where('item_id', $id);
+        $oldfilename = $item->get()->first()->item_image_path;
+
+        Storage::disk('local')->delete('public/itemshop/cover/' . $oldfilename);
+
+        $item->update([
 
             'item_name' => $request->item_name,
             'item_desc' => $request->item_desc,
-            'item_image_path' => 'diamond.png',
+            'item_image_path' => $this->saveAndGetFile('public/itemshop/cover', $request->file('cover')),
             'item_price' => $request->item_price,
             'category_id' => $request->category,
             'item_command' => $request->item_command,
@@ -68,7 +86,12 @@ class ManageItemController extends ManageController
     public function destroy($id)
     {
         if($id != null) {
-            Itemshop::find($id)->delete();
+            $item = Itemshop::where('item_id', $id)->get()->first();
+
+            Storage::disk('local')->delete('public/itemshop/cover/' . $item->item_image_path);
+
+            $item->delete();
+
             session()->flash('manageItemRemoved');
         }else {
             session()->flash('somethingError');

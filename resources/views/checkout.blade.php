@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Checkout - {{ $items->item_name }}</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" integrity="sha256-vK3UTo/8wHbaUn+dTQD0X6dzidqc5l7gczvH+Bnowwk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/bulma/bulma.min.css"/>
+    <link rel="stylesheet" href="/css/self-custom.css"/>
+    <script src="/js/bulma.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Pridi&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" integrity="sha256-PF6MatZtiJ8/c9O9HQ8uSUXr++R9KBYu4gbNG5511WE=" crossorigin="anonymous" />
-    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 </head>
 
@@ -97,7 +97,7 @@
                                         <tbody>
                                             <tr>
                                                 <th>PICTURE</th>
-                                                <th><img src="{{ "/assets/image/store/" . $items->item_image_path }}" alt="Order Picture"/></th>
+                                                <th><img src="{{ "/storage/itemshop/cover/" . $items->item_image_path }}" alt="Order Picture"/></th>
                                             </tr>
                                             <tr>
                                                 <th>BUYER</th>

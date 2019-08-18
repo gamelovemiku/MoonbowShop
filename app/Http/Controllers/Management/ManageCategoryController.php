@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Management;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\ItemshopCategory;
+use App\Itemshop;
 
 class ManageCategoryController extends ManageController
 {
@@ -47,6 +48,17 @@ class ManageCategoryController extends ManageController
     public function destroy($id)
     {
         if($id != null) {
+
+            $items = $this->getAllItem();
+
+            foreach ($items as $item) {
+                if($item->category_id == $id){
+                    $item->update([
+                        'category_id' => 1,
+                    ]);
+                }
+            }
+
             ItemshopCategory::find($id)->delete();
             session()->flash('manageCategoryRemoved');
         }else {

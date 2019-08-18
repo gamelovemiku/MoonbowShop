@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('points_balance');
+            $table->integer('points_balance'); //เก็บค่าเงินสมาชิก
             $table->rememberToken();
             $table->timestamps();
         });

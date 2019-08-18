@@ -19,19 +19,23 @@ class Controller extends BaseController
 
     public function getStatus()
     {
-        $response = MinecraftServerStatus::query('10.10.1.76', 25565);
+        $response = MinecraftServerStatus::query('34.87.7.234', 25565);
         
         return $response; 
     }
 
     public function sendCommand($cmd)
     {
-        $rcon = new Rcon('10.10.1.76', 25575, '123456789', 3);
+        $rcon = new Rcon('34.87.7.234', 25575, '123456789', 3);
         $player = Auth::user()->name;
+
+        $multiple = explode(';', $cmd);
 
         if ($rcon->connect())
         {
-            $rcon->sendCommand(str_replace('%player', $player , $cmd));
+            foreach ($multiple as $command) {
+                $rcon->sendCommand(str_replace('%player', $player , $command));
+            }
             return true;
         }
         return false;

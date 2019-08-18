@@ -1,0 +1,83 @@
+html, body, .button {
+    font-family: 'Segoe UI', 'Poppins','Pridi', serif;
+    font-weight: 600;
+}
+textarea {
+    font-family: 'Segoe UI', 'Poppins','Pridi', serif;
+    font-weight: 400;
+}
+.button {
+    font-family: 'Segoe UI', 'Poppins','Pridi', serif;
+    text-transform: uppercase;
+}
+.force-bold{
+    font-weight: 800;
+}
+.title-product{
+    font-size: 18px;
+    font-weight: 800;
+}
+.subtitle-product{
+    color: lightgrey;
+    font-size: 12px;
+    font-weight: 400;
+}
+.pricetag-product{
+    color: gray;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+.button-product{
+    margin-top: 8px;
+}
+.small-title{
+    font-size: 10px;
+    margin: 12px;
+}
+.title-category {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+.text-category {
+    color: lightgray;
+    font-size: 14px;
+    font-weight: 600;
+}
+.box-fullheight {
+    height: 100%;
+}
+.title-news {
+    font-size: 16px;
+    font-weight: 600;
+}
+.text-news {
+    color: gray;
+    font-size: 12px;
+    font-weight: 400;
+}
+.text-stats {
+    color: lightgray;
+    font-size: 12px;
+    font-weight: 600;
+}
+.section {
+    margin-top: 48px;
+    margin-bottom: 64px;
+}
+.swal-button {
+    padding: 7px 19px;
+    background-color: #0A0A0A;
+    font-size: 14px;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+}
+.button, .input {
+    font-family: 'Segoe UI' ,'Pridi', serif;
+    text-transform: uppercase;
+}
+.text-price{
+    color: darkgoldenrod;
+    font-size: 18px;
+    font-weight: 600;
+}

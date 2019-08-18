@@ -7,19 +7,19 @@
         <li><a href="/manage">{{ Auth::user()->name }}</a></li>
         <li><a href="/manage/profile">Admin</a></li>
         <li><a href="/manage/item">Itemshop</a></li>
-        <li class="is-active"><a href="/manage/changepassword" aria-current="page">Manage Item</a></li>
+        <li class="is-active"><a href="/manage/changepassword" aria-current="page">Item</a></li>
     </ul>
 </nav>
 <div class="tabs is-small">
     <ul>
-        <li class="is-active"><a href="/manage/itemshop/item">Manage Item</a></li>
-        <li><a href="/manage/itemshop/category">Manage Category</a></li>
+        <li class="is-active"><a href="/manage/itemshop/item">Item</a></li>
+        <li><a href="/manage/itemshop/category">Category</a></li>
     </ul>
 </div>
 <h4 class="title is-size-4 force-bold">Add new Item</h4>
 <p class="subtitle is-size-6">Add more item to your itemshop<b class="force-bold"></b></p>
 <div class="field">
-        <form method="POST" action="{{ route('item.store') }}">
+        <form action="{{ route('item.store') }}" method="POST" enctype="multipart/form-data">
             @method('post')
             @csrf
 
@@ -29,7 +29,7 @@
                         <label for="item_name" class="label">Item name</label>
     
                         <div class="control">
-                            <input id="item_name" type="text" class="input @error('itemname') is-danger @enderror" name="item_name">
+                            <input id="item_name" type="text" class="input @error('itemname') is-danger @enderror" name="item_name" maxlength="30">
     
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -47,7 +47,24 @@
                         </div>
                     </div>
 
-                    <input type="file" name="file-image">
+                    <div class="field">
+                        <div class="file is-black is-small has-name">
+                            <label class="file-label">
+                            <input class="file-input" type="file" name="cover">
+                            <span class="file-cta">
+                                <span class="file-icon">
+                                    <i class="fas fa-upload"></i>
+                                </span>
+                                <span class="file-label">
+                                    <p id="upload-header">Upload</p>
+                                </span>
+                            </span>
+                            <span class="file-name">
+                                <p id="upload-filename">No Select file</p>
+                            </span>
+                            </label>
+                        </div>
+                    </div>
 
                 </div>
 

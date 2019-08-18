@@ -10,7 +10,7 @@ class Itemshop extends Migration
     {
         Schema::create('itemshop', function (Blueprint $table) {
             $table->bigIncrements('item_id');
-            $table->string('item_name', '16');
+            $table->string('item_name', '30');
             $table->string('item_desc', '30');
             $table->string('item_image_path');
             $table->mediumInteger('item_price');

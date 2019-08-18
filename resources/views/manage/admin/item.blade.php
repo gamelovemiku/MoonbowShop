@@ -7,25 +7,22 @@
         <li><a href="/manage">{{ Auth::user()->name }}</a></li>
         <li><a href="/manage/profile">Admin</a></li>
         <li><a href="/manage/profile">Itemshop</a></li>
-        <li class="is-active"><a href="/manage/changepassword" aria-current="page">Manage Item</a></li>
+        <li class="is-active"><a href="/manage/changepassword" aria-current="page">Item</a></li>
     </ul>
 </nav>
 
-<div class="tabs is-small">
-    <ul>
-        <li class="is-active"><a href="/manage/itemshop/item">Manage Item</a></li>
-        <li><a href="/manage/itemshop/category">Manage Category</a></li>
-    </ul>
-</div>
 <div class="columns">
     <div class="column is-6">
         <h4 class="title is-size-4 force-bold">Manage Item</h4>
-        <p class="subtitle is-size-6">Manage item in itemshop<b class="force-bold"></b></p>                
+        <p class="subtitle is-size-7">Manage item in itemshop<b class="force-bold"></b></p>                
     </div>
     <div class="column is-6 has-text-right">
-    <a href="{{ route('item.create')}}" class="button is-small is-light">
-            <i class="fas fa-plus fa-xs" style="margin-right: 4px;"></i>Add new items
-        </a>                
+        <a href="{{ route('item.create')}}" class="button is-small is-light">
+            <i class="fas fa-plus fa-xs" style="margin-right: 4px;"></i>New item
+        </a>
+        <a href="{{ route('category.index')}}" class="button is-small is-light">
+            <i class="fas fa-layer-group" style="margin-right: 4px;"></i>Manage Category
+        </a> 
     </div>
 </div>
 <div class="field">
@@ -45,18 +42,20 @@
                     <th>{{ $item->item_id }}</th>
                     <th>{{ $item->item_name }} <small>[{{ $item->category_id }}]</small></th>
                     <th>{{ $item->item_price }}</th>
-                    <th>{{ $item->item_command }}</th>
+                    <th>
+                        {{$item->item_command}}
+                    </th>
                     <th>
                         <div class="buttons">
                             <form action="{{ route('item.edit', [$item->item_id])}}" method="post">
                                 @method('get')
                                 @csrf
-                                <button type="submit" style="margin-right: 8px;" class="button is-link">Edit</button>
+                                <button type="submit" style="margin-right: 8px;" class="button is-link is-small">Edit</button>
                             </form>
                             <form action="{{ route('item.destroy', [$item->item_id])}}" method="post">
                                 @method('delete')
                                 @csrf
-                                <button type="submit" class="button is-danger">Delete</button>
+                                <button type="submit" class="button is-danger is-small">Delete</button>
                             </form>
                         </div>
                     </th>

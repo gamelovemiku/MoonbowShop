@@ -58,3 +58,4 @@ Route::resource('/manage/itemshop/category', 'Management\ManageCategoryControlle
 
 Route::get('/test', 'CheckoutController@takeMoney');
 
+Route::post('/upload', 'Management\ManageItemController@upload')->name('item.upload');;
