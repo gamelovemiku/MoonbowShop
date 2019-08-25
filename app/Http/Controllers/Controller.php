@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use MinecraftServerStatus\MinecraftServerStatus;
 use Thedudeguy\Rcon;
 use App\Itemshop;
+use App\Itemshop_Category;
 use App\User;
 use Auth;
 use Mockery\Exception;
@@ -19,14 +20,14 @@ class Controller extends BaseController
 
     public function getStatus()
     {
-        $response = MinecraftServerStatus::query('34.87.7.234', 25565);
-        
-        return $response; 
+        $response = MinecraftServerStatus::query('10.10.1.76', 25565);
+
+        return $response;
     }
 
     public function sendCommand($cmd)
     {
-        $rcon = new Rcon('34.87.7.234', 25575, '123456789', 3);
+        $rcon = new Rcon('10.10.1.76', 25575, '123456789', 3);
         $player = Auth::user()->name;
 
         $multiple = explode(';', $cmd);
@@ -47,6 +48,12 @@ class Controller extends BaseController
         return $items;
     }
 
+    public function getAllCategory()
+    {
+        $category = Itemshop_Category::all();
+        return $category;
+    }
+
     public function getItem($itemid)
     {
         $items = Itemshop::where('item_id', $itemid)->get();
@@ -57,6 +64,12 @@ class Controller extends BaseController
     {
         $player = User::where('name',  Auth::user()->name)->get()->first();
         return $player->points_balance;
+    }
+
+    public function getUser()
+    {
+        $player = User::where('name',  Auth::user()->name)->get()->first();
+        return $player;
     }
 
     public function showFlashAlert($style, $title, $info)

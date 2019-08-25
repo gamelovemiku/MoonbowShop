@@ -11,6 +11,6 @@ class ItemshopCategory extends Model
 
     public function items()
     {
-        return $this->belongsTo('App\Itemshop');
+        return $this->belongsTo('App\Itemshop', 'category_id');
     }
 }

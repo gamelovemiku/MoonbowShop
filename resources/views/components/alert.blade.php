@@ -1,7 +1,7 @@
 @if (session()->has('moneyNotEnough'))
 <script>
     swal("ผิดพลาด: มีคุณมีเงินไม่เพียงพอ", "คุณไม่สามารถซื้อสินค้านี้ได้ เนื่องจากมี Points ไม่เพียงพอ!", "warning");
-    bulmaToast.toast({ 
+    bulmaToast.toast({
         message: "คุณมีจำนวน Point ไม่เพียงพอในการซื้อสินค้านี้",
         type: "is-warning has-text-left",
         dismissible: true,
@@ -14,7 +14,7 @@
 @if (session()->has('buyComplete'))
 <script>
     swal("สั่งซื้อสำเร็จ!", "ระบบทำการจัดส่งสินค้าให้คุณแล้ว!", "success");
-    bulmaToast.toast({ 
+    bulmaToast.toast({
         message: "สั่งซื้อสำเร็จ! ระบบทำการจัดส่งสินค้าให้คุณแล้ว",
         type: "is-success has-text-left",
         dismissible: true,
@@ -27,7 +27,7 @@
 @if (session()->has('somethingError'))
 <script>
     swal("มีบางอย่างไม่ถูกต้อง!", "ดูเหมือนว่าจะมีการกระทำบางอย่างที่ผิดปกติ", "warning");
-    bulmaToast.toast({ 
+    bulmaToast.toast({
         message: "มีบางอย่างไม่ถูกต้อง! ดูเหมือนว่าจะมีการกระทำบางอย่างที่ผิดปกติ",
         type: "is-warning has-text-left",
         dismissible: true,
@@ -39,7 +39,7 @@
 
 @if (session()->has('manageItemAdded'))
     <script>
-        bulmaToast.toast({ 
+        bulmaToast.toast({
             message: "เพิ่มไอเท็มใหม่เรียบร้อย!",
             type: "is-succcess has-text-left",
             dismissible: true,
@@ -52,7 +52,7 @@
 
 @if (session()->has('manageItemRemoved'))
     <script>
-        bulmaToast.toast({ 
+        bulmaToast.toast({
             message: "ลบไอเท็มออกจากร้านค้าแล้ว!",
             type: "is-danger has-text-left",
             dismissible: true,
@@ -64,7 +64,7 @@
 
 @if (session()->has('manageCategoryAdded'))
     <script>
-        bulmaToast.toast({ 
+        bulmaToast.toast({
             message: "เพิ่มหมวดหมูไอเท็มใหม่แล้ว!",
             type: "is-success has-text-left",
             dismissible: true,
@@ -76,7 +76,7 @@
 
 @if (session()->has('manageCategoryRemoved'))
     <script>
-        bulmaToast.toast({ 
+        bulmaToast.toast({
             message: "ลบหมวดหมู่ไอเท็มสำเร็จ!",
             type: "is-success has-text-left",
             dismissible: true,
@@ -88,8 +88,20 @@
 
 @if (session()->has('manageItemEdited'))
     <script>
-        bulmaToast.toast({ 
+        bulmaToast.toast({
             message: "แก้ไขข้อมูลไอเท็มสำเร็จ!",
+            type: "is-success has-text-left",
+            dismissible: true,
+            duration: 5000,
+            animate: { in: "fadeInUp", out: "fadeOutRight" }
+        });
+    </script>
+@endif
+
+@if (session()->has('manageCommandsenderSuccess'))
+    <script>
+        bulmaToast.toast({
+            message: "ส่งคำสั่งไปยังเซิร์ฟเวอร์สำเร็จแล้ว!",
             type: "is-success has-text-left",
             dismissible: true,
             duration: 5000,

@@ -27,10 +27,10 @@
                 <div class="column is-6">
                     <div class="field">
                         <label for="item_name" class="label">Item name</label>
-    
+
                         <div class="control">
                             <input id="item_name" type="text" class="input @error('itemname') is-danger @enderror" name="item_name" maxlength="30">
-    
+
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -41,7 +41,7 @@
 
                     <div class="field">
                         <label for="item_desc" class="label">Item Description</label>
-    
+
                         <div class="control">
                             <textarea rows="4" id="item_desc" type="text" class="textarea @error('itemdesc') is-danger @enderror" name="item_desc"></textarea>
                         </div>
@@ -74,9 +74,9 @@
                         <div class="control has-icons-left">
                             <div class="select">
                                 <select id="category" name="category" width="100%">
-                                    <option value="1">Default</option>
-                                    <option value="2">Ores</option>
-                                    <option value="3">Rank</option>
+                                    @foreach ($categorys as $category)
+                                        <option value="{{ $category->category_id }}">{{ ucwords($category->category_name) }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="icon is-small is-left">
@@ -95,7 +95,7 @@
 
                     <div class="field">
                         <label for="command" class="label">Game Command</label>
-    
+
                         <div class="control">
                             <textarea id="command" type="text" class="input @error('itemdesc') is-danger @enderror" name="item_command"></textarea>
                         </div>

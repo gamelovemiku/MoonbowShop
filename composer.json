@@ -13,6 +13,7 @@
         "funnyitselmo/minecraftserverstatus": "^1.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
+        "paypal/rest-api-sdk-php": "*",
         "srmklive/paypal": "~1.0",
         "thedudeguy/rcon": "^1.0"
     },

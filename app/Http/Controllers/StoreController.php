@@ -19,7 +19,7 @@ class StoreController extends Controller
                 'items' => $this->getAllItem(),
                 'balance' => $this->getBalance(),
             ]
-        ); 
+        );
     }
 
 }

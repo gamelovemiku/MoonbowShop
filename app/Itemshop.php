@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Itemshop extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'itemshop'; // ชื่อตาราง
     protected $primaryKey = 'item_id'; // ชื่อ Primary Key
 
@@ -13,7 +16,7 @@ class Itemshop extends Model
 
     public function category()
 	{
-		return $this->hasOne('App\Itemshop_Category');
+		return $this->hasOne('App\ItemshopCategory', 'category_id');
 	}
 
 }

@@ -17,7 +17,12 @@ class ManageItemController extends ManageController
 
     public function create()
     {
-        return view('manage.admin.additem');
+
+        $category = $this->getAllCategory();
+
+        return view('manage.admin.additem', [
+            'categorys' => $category,
+        ]);
     }
 
     public function getBasename($path, $file) {
@@ -43,11 +48,6 @@ class ManageItemController extends ManageController
         return redirect()->route('item.index');
     }
 
-    public function upload(Request $request)
-    {
-        return $request->file('image')->getClientOriginalName();
-    }
-
     public function show($id)
     {
         return 'Show';
@@ -56,8 +56,12 @@ class ManageItemController extends ManageController
     public function edit($id)
     {
         $itemdata = Itemshop::where('item_id', $id)->get()->first();
+        $category = $this->getAllCategory();
 
-        return view('manage.admin.edititem', ['item' => $itemdata]);
+        return view('manage.admin.edititem', [
+            'item' => $itemdata,
+            'categorys' => $category,
+        ]);
     }
 
     public function update(Request $request, $id)
@@ -66,18 +70,24 @@ class ManageItemController extends ManageController
         $item = Itemshop::where('item_id', $id);
         $oldfilename = $item->get()->first()->item_image_path;
 
-        Storage::disk('local')->delete('public/itemshop/cover/' . $oldfilename);
-
         $item->update([
 
             'item_name' => $request->item_name,
             'item_desc' => $request->item_desc,
-            'item_image_path' => $this->saveAndGetFile('public/itemshop/cover', $request->file('cover')),
             'item_price' => $request->item_price,
             'category_id' => $request->category,
             'item_command' => $request->item_command,
-            
+
         ]);
+
+        if($request->file('cover') != null){
+
+            Storage::disk('local')->delete('public/itemshop/cover/' . $oldfilename);
+
+            $item->update([
+                'item_image_path' => $this->saveAndGetFile('public/itemshop/cover', $request->file('cover')),
+            ]);
+        }
 
         session()->flash('manageItemEdited');
         return redirect()->route('item.index');
@@ -85,12 +95,9 @@ class ManageItemController extends ManageController
 
     public function destroy($id)
     {
+
         if($id != null) {
-            $item = Itemshop::where('item_id', $id)->get()->first();
-
-            Storage::disk('local')->delete('public/itemshop/cover/' . $item->item_image_path);
-
-            $item->delete();
+            Itemshop::find($id)->delete();
 
             session()->flash('manageItemRemoved');
         }else {

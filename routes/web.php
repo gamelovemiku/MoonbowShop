@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Itemshop;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +24,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/checkout', 'CheckoutController@index');
 
-Route::get('/testrcon/{cmd}', 'SendCommandController@sendCommand');
+Route::get('/testrcon/{cmd}', 'Controller@sendCommand'); //<-------------------------------------- DELETE THIS WHEN RELEASE
 
 Route::get('/logout', function () {
     Auth::logout();
@@ -30,8 +32,6 @@ Route::get('/logout', function () {
 });
 
 Auth::routes();
-
-Route::get('/testrcon/{cmd}', 'Controller@sendCommand');
 
 Route::get('/store', 'StoreController@index')->name('store');
 
@@ -48,14 +48,41 @@ Route::get('/manage/changepassword', function () {
     return view('manage.changepassword');
 });
 
-Route::get('/manage/profile', function () {
-    return view('manage.profile');
+Route::get('/manage', function () {
+    return redirect(route('profile.index'));
 });
+
+Route::get('/manage/profile', 'Management\ManageProfileController@index')->name('profile.index');
 
 Route::resource('/manage/itemshop/item', 'Management\ManageItemController');
 
 Route::resource('/manage/itemshop/category', 'Management\ManageCategoryController');
 
-Route::get('/test', 'CheckoutController@takeMoney');
+Route::post('/upload', 'Management\ManageItemController@upload')->name('item.upload');
 
-Route::post('/upload', 'Management\ManageItemController@upload')->name('item.upload');;
+Route::get('/paypal', function () {
+    return view('paypal');
+});
+
+Route::get('/manage/commandsender', 'Management\ManageCommandSenderController@index')->name('commandsender');
+Route::post('/manage/commandsender', 'Management\ManageCommandSenderController@store')->name('commandsender.query');
+
+Route::resource('/manage/usereditor', 'Management\ManageUserController');
+
+Route::post('/manage/usereditor/{id}/ban', 'Management\ManageUserController@ban')->name('usereditor.ban');
+
+Route::get('/manage/recyclebin', 'Management\ManageRecycleBinController@index')->name('recyclebin.index');
+Route::post('/manage/recyclebin/user/{id}/rollback', 'Management\ManageRecycleBinController@rollbackUser')->name('recyclebin.rollbackUser');
+Route::post('/manage/recyclebin/user/{id}/forcedelete', 'Management\ManageRecycleBinController@forcedeleteUser')->name('recyclebin.forcedeleteUser');
+
+Route::post('/manage/recyclebin/itemshop/{id}/rollback', 'Management\ManageRecycleBinController@rollbackItemshop')->name('recyclebin.rollbackItemshop');
+Route::post('/manage/recyclebin/itemshop/{id}/forcedelete', 'Management\ManageRecycleBinController@forcedeleteItemshop')->name('recyclebin.forcedeleteItemshop');
+
+//Route::post('/manage/commandsender', 'Management\ManageCommandSenderController')->name('manage.commandsender.send');
+
+Route::get('/test', function () {
+
+    $item = Itemshop::find(2)->category;
+
+    return $item;
+});

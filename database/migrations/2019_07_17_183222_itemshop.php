@@ -20,6 +20,7 @@ class Itemshop extends Migration
             $table->string('item_command');
             $table->mediumInteger('item_sold');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

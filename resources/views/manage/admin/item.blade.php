@@ -14,7 +14,7 @@
 <div class="columns">
     <div class="column is-6">
         <h4 class="title is-size-4 force-bold">Manage Item</h4>
-        <p class="subtitle is-size-7">Manage item in itemshop<b class="force-bold"></b></p>                
+        <p class="subtitle is-size-7">Manage item in itemshop<b class="force-bold"></b></p>
     </div>
     <div class="column is-6 has-text-right">
         <a href="{{ route('item.create')}}" class="button is-small is-light">
@@ -22,7 +22,7 @@
         </a>
         <a href="{{ route('category.index')}}" class="button is-small is-light">
             <i class="fas fa-layer-group" style="margin-right: 4px;"></i>Manage Category
-        </a> 
+        </a>
     </div>
 </div>
 <div class="field">
@@ -55,11 +55,11 @@
                             <form action="{{ route('item.destroy', [$item->item_id])}}" method="post">
                                 @method('delete')
                                 @csrf
-                                <button type="submit" class="button is-danger is-small">Delete</button>
+                                <button type="submit" class="button is-danger is-small">Move to Bin</button>
                             </form>
                         </div>
                     </th>
-                </tr>  
+                </tr>
             @endforeach
         </tbody>
     </table>

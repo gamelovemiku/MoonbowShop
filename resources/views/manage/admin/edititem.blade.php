@@ -46,7 +46,7 @@
                         <textarea rows="4" id="item_desc" type="text" class="textarea @error('itemdesc') is-danger @enderror" name="item_desc">{{ $item->item_desc }}</textarea>
                     </div>
                 </div>
-                
+
                     <img class="image" src="/storage/itemshop/cover/{{ $item->item_image_path}}" width="64px">
                     <div class="field">
                             <div class="file is-black is-small has-name">
@@ -74,9 +74,9 @@
                     <div class="control has-icons-left">
                         <div class="select">
                             <select id="category" name="category" width="100%">
-                                <option value="1">Default</option>
-                                <option value="2">Ores</option>
-                                <option value="3">Rank</option>
+                                @foreach ($categorys as $category)
+                                    <option value="{{ $category->category_id }}">{{ ucwords($category->category_name) }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="icon is-small is-left">

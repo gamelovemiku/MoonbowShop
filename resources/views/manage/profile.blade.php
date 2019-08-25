@@ -16,44 +16,63 @@
     <div class="field">
         <div class="columns">
             <div class="column is-6" style="height: 100%">
-                <div class="field">
-                    <label for="password" class="label">New Password</label>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Username</th>
+                            <th class="has-text-grey has-text-weight-light">{{$user->name}}</th>
+                        </tr>
+                        <tr>
+                            <th>Registered Email</th>
+                            <th class="has-text-grey has-text-weight-light">{{$user->email}}</th>
+                        </tr>
+                        <tr>
+                            <th>Joined Date</th>
+                            <th class="has-text-grey has-text-weight-light">{{$user->created_at}}</th>
+                        </tr>
+                        <tr>
+                            <th>Points</th>
+                            <th class="has-text-grey has-text-weight-light">{{$user->points_balance}}</th>
+                        </tr>
+                    </tbody>
+                </table>
 
-                    <div class="control">
-                        <input id="password" type="password" class="input @error('password') is-danger @enderror" name="password" required autocomplete="current-password">
-
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="field">
-                    <label for="password" class="label">Confirm New Password</label>
-
-                    <div class="control">
-                        <input id="password" type="password" class="input @error('password') is-danger @enderror" name="password" required autocomplete="current-password">
-
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
+                <label class="label">Management</label>
                 <div class="buttons">
-                    <button type="submit" class="button is-black">
-                        Change Password
-                    </button>
+                    <a href="#" class="button is-info is-outlined">Change Password</a>
+                    <a href="#" class="button is-danger is-outlined">Delete Account</a>
                 </div>
+
+                <label class="label">Avatar</label>
+                <form>
+                    <div class="field">
+                        <div class="file is-small has-name is-fullwidth">
+                            <label class="file-label">
+                                <input class="file-input" type="file" name="resume">
+
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">
+                                        <p id="upload-header">Upload</p>
+                                    </span>
+                                </span>
+                                <span class="file-name">
+                                    <p id="upload-filename">No Select file</p>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="button is-primary is-outlined">Upload Avatar</button>
+                </form>
+
             </div>
             <div class="column is-6">
-                <div class="notification">
-                    <button class="delete"></button>
-                    Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit lorem ipsum dolor. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Sit amet,
-                    consectetur adipiscing elit
+                <div class="">
+                    <figure class="image is-squared" style="width: 50%">
+                        <img class="is-rounded" src="https://pbs.twimg.com/profile_images/1109911712201736192/O65BBJT-_400x400.png">
+                    </figure>
                 </div>
             </div>
         </div>
