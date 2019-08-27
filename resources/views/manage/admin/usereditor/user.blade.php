@@ -42,7 +42,7 @@
             @foreach ($users as $user)
                 <tr>
                     <th>{{ $user->id }}</th>
-                    <th>{{ $user->name }}</th>
+                    <th>{{ $user->name }} @if( $user->role_id == "1") <span class="tag is-danger" style="font-size: 8px;">Administrator</span> @elseif( $user->role_id == "2") <span class="tag is-primary" style="font-size: 8px;">Player</span>   @endif</th>
                     <th>{{ $user->email }}</th>
                     <th>{{$user->points_balance}}</th>
                     <th>
