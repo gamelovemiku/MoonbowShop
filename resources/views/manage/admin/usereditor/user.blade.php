@@ -12,7 +12,7 @@
 
 <div class="columns">
     <div class="column is-6">
-        <h4 class="title is-size-4 force-bold">User Editor</h4>
+        <h4 class="title is-size-4 has-text-weight-bold">User Editor</h4>
         <p class="subtitle is-size-7">Edit and control member profile<b class="force-bold"></b></p>
     </div>
     <div class="column is-6 has-text-right">
@@ -21,14 +21,10 @@
             <i class="fas fa-plus fa-xs" style="margin-right: 4px;"></i>New User
         </a>
 
-        <a href="{{ route('usereditor.index')}}" class="button is-small is-light">
-            <i class="fas fa-layer-group" style="margin-right: 4px;"></i>Role & Permission
-        </a>
-
     </div>
 </div>
 <div class="field">
-    <table class="table is-hoverable is-fullwidth">
+    <table class="table is-fullwidth is-narrow">
         <thead>
             <tr>
                 <th>ID</th>
@@ -42,9 +38,9 @@
             @foreach ($users as $user)
                 <tr>
                     <th>{{ $user->id }}</th>
-                    <th>{{ $user->name }} @if( $user->role_id == "1") <span class="tag is-danger" style="font-size: 8px;">Administrator</span> @elseif( $user->role_id == "2") <span class="tag is-primary" style="font-size: 8px;">Player</span>   @endif</th>
-                    <th>{{ $user->email }}</th>
-                    <th>{{$user->points_balance}}</th>
+                    <th class="has-text-weight-medium">{{ $user->name }} @if( $user->role_id == "1") <span class="tag is-danger" style="font-size: 8px;">Administrator</span> @elseif( $user->role_id == "2") <span class="tag is-primary" style="font-size: 8px;">Player</span>   @endif</th>
+                    <th class="has-text-weight-medium is-lowercase">{{ $user->email }}</th>
+                    <th class="has-text-weight-medium">{{$user->points_balance}}</th>
                     <th>
                         @if (Auth::user()->name != $user->name)
                             <div class="buttons">

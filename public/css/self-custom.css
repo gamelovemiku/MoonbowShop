@@ -72,9 +72,8 @@ textarea {
     font-size: 14px;
     text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
 }
-.button, .input {
+.input {
     font-family: 'Segoe UI' ,'Pridi', serif;
-    text-transform: uppercase;
 }
 .text-price{
     color: darkgoldenrod;

@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Management;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\User;
 use App\Itemshop;
 use Storage;
 
-class ManageRecycleBinController extends Controller
+class ManageRecycleBinController extends ManageController
 {
     public function index()
     {

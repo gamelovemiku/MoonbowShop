@@ -52,37 +52,39 @@ Route::get('/manage', function () {
     return redirect(route('profile.index'));
 });
 
-Route::get('/manage/profile', 'Management\ManageProfileController@index')->name('profile.index');
-
-Route::resource('/manage/itemshop/item', 'Management\ManageItemController');
-
-Route::resource('/manage/itemshop/category', 'Management\ManageCategoryController');
-
 Route::post('/upload', 'Management\ManageItemController@upload')->name('item.upload');
 
 Route::get('/paypal', function () {
     return view('paypal');
 });
 
-Route::get('/manage/commandsender', 'Management\ManageCommandSenderController@index')->name('commandsender');
-Route::post('/manage/commandsender', 'Management\ManageCommandSenderController@store')->name('commandsender.query');
-
-Route::resource('/manage/usereditor', 'Management\ManageUserController');
-
-Route::post('/manage/usereditor/{id}/ban', 'Management\ManageUserController@ban')->name('usereditor.ban');
-
-Route::get('/manage/recyclebin', 'Management\ManageRecycleBinController@index')->name('recyclebin.index');
-Route::post('/manage/recyclebin/user/{id}/rollback', 'Management\ManageRecycleBinController@rollbackUser')->name('recyclebin.rollbackUser');
-Route::post('/manage/recyclebin/user/{id}/forcedelete', 'Management\ManageRecycleBinController@forcedeleteUser')->name('recyclebin.forcedeleteUser');
-
-Route::post('/manage/recyclebin/itemshop/{id}/rollback', 'Management\ManageRecycleBinController@rollbackItemshop')->name('recyclebin.rollbackItemshop');
-Route::post('/manage/recyclebin/itemshop/{id}/forcedelete', 'Management\ManageRecycleBinController@forcedeleteItemshop')->name('recyclebin.forcedeleteItemshop');
-
-//Route::post('/manage/commandsender', 'Management\ManageCommandSenderController')->name('manage.commandsender.send');
-
 Route::get('/test', function () {
 
     $item = Itemshop::find(2)->category;
 
     return $item;
+});
+
+Route::prefix('manage')->group(function () {
+
+    Route::get('profile', 'Management\ManageProfileController@index')->name('profile.index');
+
+    Route::resource('itemshop/item', 'Management\ManageItemController');
+    Route::resource('itemshop/category', 'Management\ManageCategoryController');
+
+    Route::resource('settings', 'Management\ManageGeneralSettingsController');
+
+    Route::get('commandsender', 'Management\ManageCommandSenderController@index')->name('commandsender');
+    Route::post('commandsender', 'Management\ManageCommandSenderController@store')->name('commandsender.query');
+
+    Route::resource('usereditor', 'Management\ManageUserController');
+    Route::post('usereditor/{id}/ban', 'Management\ManageUserController@ban')->name('usereditor.ban');
+
+    Route::get('recyclebin', 'Management\ManageRecycleBinController@index')->name('recyclebin.index');
+    Route::post('recyclebin/user/{id}/rollback', 'Management\ManageRecycleBinController@rollbackUser')->name('recyclebin.rollbackUser');
+    Route::post('recyclebin/user/{id}/forcedelete', 'Management\ManageRecycleBinController@forcedeleteUser')->name('recyclebin.forcedeleteUser');
+
+    Route::post('recyclebin/itemshop/{id}/rollback', 'Management\ManageRecycleBinController@rollbackItemshop')->name('recyclebin.rollbackItemshop');
+    Route::post('recyclebin/itemshop/{id}/forcedelete', 'Management\ManageRecycleBinController@forcedeleteItemshop')->name('recyclebin.forcedeleteItemshop');
+
 });

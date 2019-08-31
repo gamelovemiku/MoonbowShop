@@ -13,7 +13,7 @@
 
 <div class="columns">
     <div class="column is-6">
-        <h4 class="title is-size-4 force-bold">Add User</h4>
+        <h4 class="title is-size-4 has-text-weight-bold">Add User</h4>
         <p class="subtitle is-size-7">Register new player and assign settings<b class="force-bold"></b></p>
     </div>
 </div>
@@ -58,6 +58,21 @@
                         <p class="control">
                             <input class="input" type="number" name="points">
                         </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Role</label>
+                </div>
+                <div class="field-body">
+                    <div class="select">
+                        <select name="role">
+                            @foreach ($roles as $role)
+                                <option @if($role->role_id == 1) selected @endif value={{ $role->role_id }}>{{ $role->role_name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </div>

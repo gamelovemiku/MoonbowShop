@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Management;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class ManageCommandSenderController extends ManageController
 {
+
     public function index() {
         return view('manage.admin.commandsender');
     }

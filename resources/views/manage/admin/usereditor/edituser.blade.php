@@ -23,18 +23,6 @@
     @csrf
     <div class="columns">
         <div class="column is-12">
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Name</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <p class="control">
-                            <input class="input is-static" type="email" value="{{ $user->name }}" readonly>
-                        </p>
-                    </div>
-                </div>
-            </div>
 
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
@@ -51,6 +39,19 @@
 
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
+                    <label class="label">Name</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control">
+                            <input class="input" type="email" value="{{ $user->name }}" readonly>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
                     <label class="label">Points</label>
                 </div>
                 <div class="field-body">
@@ -58,6 +59,21 @@
                         <p class="control">
                             <input class="input" type="number" name="points" value="{{ $user->points_balance }}">
                         </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Role</label>
+                </div>
+                <div class="field-body">
+                    <div class="select">
+                        <select name="role" @if($user->name = "Admin") disabled @endif>
+                            @foreach ($roles as $role)
+                                <option @if($user->role_id == $role->role_id) selected @endif value={{ $role->role_id }}>{{ $role->role_name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </div>

@@ -11,11 +11,6 @@ use Route;
 
 class CheckoutController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -23,17 +18,17 @@ class CheckoutController extends Controller
     }
 
     public function index()
-    { 
+    {
         return redirect('store');
     }
 
     public function buy($itemid)
-    { 
+    {
         return view('checkout', ['items' => $this->getItem($itemid)]);
     }
 
     public function verifiedbuy(Request $request)
-    { 
+    {
         $result = $this->getItem($request->input('id'));
 
         if($result != null){ //ถ้าไม่มี item รหัสนี้ใน store
@@ -50,7 +45,7 @@ class CheckoutController extends Controller
     }
 
     public function takeMoney($amount)
-    { 
+    {
         $currentmoney = $this->getBalance();
         User::where('name', Auth::user()->name)->update(['points_balance' => $currentmoney-$amount]);
 

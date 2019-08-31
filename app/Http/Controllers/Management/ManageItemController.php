@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Management;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\User;
 use App\Itemshop;
 use Storage;
 
@@ -12,7 +10,9 @@ class ManageItemController extends ManageController
 {
     public function index()
     {
-        return view('manage.admin.item', ['items' => $this->getAllItem()]);
+        return view('manage.admin.item', [
+            'items' => $this->getAllItem(),
+        ]);
     }
 
     public function create()

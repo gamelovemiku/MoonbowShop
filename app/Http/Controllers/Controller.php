@@ -12,6 +12,7 @@ use App\Itemshop;
 use App\Itemshop_Category;
 use App\User;
 use Auth;
+use App\Role;
 use Mockery\Exception;
 
 class Controller extends BaseController
@@ -27,7 +28,7 @@ class Controller extends BaseController
 
     public function sendCommand($cmd)
     {
-        $rcon = new Rcon('10.10.1.76', 25575, '123456789', 3);
+        $rcon = new Rcon('10.10.1.76', 25575, '123456789', 1);
         $player = Auth::user()->name;
 
         $multiple = explode(';', $cmd);
@@ -66,10 +67,22 @@ class Controller extends BaseController
         return $player->points_balance;
     }
 
-    public function getUser()
+    public function getUser($id)
     {
-        $player = User::where('name',  Auth::user()->name)->get()->first();
+        $player = User::where('id', $id)->get()->first();
         return $player;
+    }
+
+    public function getUserByName($username)
+    {
+        $player = User::where('name', $username)->get()->first();
+        return $player;
+    }
+
+    public function getAllRoles()
+    {
+        $roles = Role::all();
+        return $roles;
     }
 
     public function showFlashAlert($style, $title, $info)

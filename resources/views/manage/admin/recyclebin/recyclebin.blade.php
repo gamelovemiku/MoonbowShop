@@ -60,7 +60,7 @@
                                             <form action="{{ route('recyclebin.rollbackUser', [$usertrash->id])}}" method="post">
                                                 @method('post')
                                                 @csrf
-                                                <button type="submit" style="margin-right: 8px;" class="button is-link is-small">Rollback</button>
+                                                <button type="submit" style="margin-right: 8px;" class="button is-link is-small">Restore</button>
                                             </form>
 
                                             <form action="{{ route('recyclebin.forcedeleteUser', [$usertrash->id])}}" method="post">

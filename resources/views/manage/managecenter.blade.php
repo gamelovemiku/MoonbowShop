@@ -14,6 +14,7 @@
     <script src="/js/bulma.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
 
     <script type="text/javascript">
 
@@ -29,11 +30,12 @@
     </script>
 
 </head>
+
     @include('components.navbar')
-    <section class="section is-uppercase" style="margin-bottom: 4em;">
+    <section class="section is-uppercase" style="margin-bottom: 3em;">
         <div class="container">
-            <h1 class="title is-size-2 force-bold">Control Panal</h1>
-            <p class="subtitle is-size-6">You are Administration<b class="force-bold"></b></p>
+            <h1 class="title is-size-2 has-text-weight-bold">Control Panal</h1>
+            <p class="subtitle has-text-justified">Manage & Control anything on system<b class="force-bold"></b></p>
             <div class="columns">
                 <div class="column is-3">
                     <div class="box">
@@ -64,7 +66,7 @@
                                     <span class="menu-icon icon">
                                         <i class="fas fa-shopping-cart"></i>
                                     </span>
-                                    Itemshop Management
+                                    Itemshop
                                 </a>
                                 <a class="menu-block" href="/manage/itemshop/item">
                                     <span class="menu-icon icon">
@@ -77,7 +79,7 @@
                                 Administration
                             </p>
                             <ul class="menu-list">
-                                <a class="menu-block" href="#">
+                                <a class="menu-block" href="{{ route("settings.index") }}">
                                     <span class="menu-icon icon">
                                         <i class="fas fa-info-circle"></i>
                                     </span>
@@ -89,17 +91,11 @@
                                     </span>
                                     User Editor
                                 </a>
-                            <a class="menu-block" href="{{ route("commandsender") }}">
+                                <a class="menu-block" href="{{ route("commandsender") }}">
                                     <span class="menu-icon icon">
                                         <i class="fas fa-terminal"></i>
                                     </span>
-                                    Commands Sender
-                                </a>
-                                <a class="menu-block" href="#">
-                                    <span class="menu-icon icon">
-                                        <i class="fas fa-pencil-ruler"></i>
-                                    </span>
-                                    Roles
+                                    Command Sender
                                 </a>
                                 <a class="menu-block" href="#">
                                     <span class="menu-icon icon">

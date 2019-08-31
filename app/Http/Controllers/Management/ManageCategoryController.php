@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Management;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\ItemshopCategory;
-use App\Itemshop;
 
 class ManageCategoryController extends ManageController
 {
+
     public function index()
     {
         return view('manage.admin.category', ['categorys' => $this->getAllCategory()]);

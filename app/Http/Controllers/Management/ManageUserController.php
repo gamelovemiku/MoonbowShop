@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Management;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
 use App\User;
 
 class ManageUserController extends ManageController
 {
+
     public function index()
     {
         return view('manage.admin.usereditor.user', [
@@ -20,7 +18,9 @@ class ManageUserController extends ManageController
 
     public function create()
     {
-        return view('manage.admin.usereditor.adduser');
+        return view('manage.admin.usereditor.adduser', [
+            'roles' => $this->getAllRoles(),
+        ]);
     }
 
     public function store(Request $request)
@@ -30,7 +30,7 @@ class ManageUserController extends ManageController
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'points_balance' => $request->points,
-            'role_id' => 1,
+            'role_id' => $request->role,
         ]);
 
         return redirect()->route('usereditor.index');
@@ -41,7 +41,8 @@ class ManageUserController extends ManageController
     {
         return view('manage.admin.usereditor.edituser', [
             'id' => $id,
-            'user' => $this->getUser(),
+            'user' => $this->getUser($id),
+            'roles' => $this->getAllRoles(),
         ]);
     }
 
@@ -52,7 +53,7 @@ class ManageUserController extends ManageController
         $user->update([
             'email' => $request->email,
             'points_balance' => $request->points,
-
+            'role_id' => $request->role,
         ]);
 
         if($request->password != null) {

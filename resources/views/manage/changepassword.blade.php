@@ -10,8 +10,8 @@
     </ul>
 </nav>
 
-<h4 class="title is-size-4 force-bold">Change Password</h4>
-<p class="subtitle is-size-6">Reset your password<b class="force-bold"></b></p>
+<h4 class="title is-size-4 has-text-weight-bold">Change Password</h4>
+<p class="subtitle is-size-7">Reset your password<b class="force-bold"></b></p>
 <form method="POST" action="{{ route('login') }}">
     @csrf
     <div class="field">

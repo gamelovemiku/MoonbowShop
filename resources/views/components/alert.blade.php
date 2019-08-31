@@ -109,3 +109,30 @@
         });
     </script>
 @endif
+
+
+@if (session()->has('noPermission'))
+    <script>
+        swal("ไม่มีสิทธิ์!", "คุณไม่ได้รับอนุญาตให้ใช้งานส่วนนี้", "error");
+        bulmaToast.toast({
+            message: "คุณไม่มีสิทธิ์เข้าถึงส่วนนี้!",
+            type: "is-danger has-text-left",
+            dismissible: true,
+            duration: 5000,
+            animate: { in: "fadeInUp", out: "fadeOutRight" }
+        });
+    </script>
+@endif
+
+@if (session()->has('successfullyUpdateData'))
+    <script>
+        swal("อัพเดทข้อมูลเรียบร้อย!", "ข้อมูลถูกอัพเดทให้เป็นปัจจุบันแล้ว", "success");
+        bulmaToast.toast({
+            message: "อัพเดทข้อมูลเรียบร้อย!",
+            type: "is-success has-text-left",
+            dismissible: true,
+            duration: 5000,
+            animate: { in: "fadeInUp", out: "fadeOutRight" }
+        });
+    </script>
+@endif

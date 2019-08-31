@@ -13,7 +13,7 @@
 
 <div class="columns">
     <div class="column is-6">
-        <h4 class="title is-size-4 force-bold">Manage Item</h4>
+        <h4 class="title is-size-4 has-text-weight-bold">Itemshop</h4>
         <p class="subtitle is-size-7">Manage item in itemshop<b class="force-bold"></b></p>
     </div>
     <div class="column is-6 has-text-right">

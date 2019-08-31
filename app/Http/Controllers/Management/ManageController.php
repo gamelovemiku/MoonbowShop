@@ -10,6 +10,12 @@ use Storage;
 
 class ManageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('adminonly');
+    }
+    
     public function getAllCategory()
     {
         $category = ItemshopCategory::all();
