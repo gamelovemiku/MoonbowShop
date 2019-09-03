@@ -44,6 +44,10 @@ class ManageItemController extends ManageController
         $item->item_sold        = 0;
         $item->save();
 
+        $this->addLog(
+            $this->getLoggedinUser()->id,
+            "admin:additem", "Itemshop ADDED: " . $request->item_name . " / " . $request->item_price . " Points");
+
         session()->flash('manageItemAdded');
         return redirect()->route('item.index');
     }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Store</title>
-    <link rel="stylesheet" href="/css/bulma/bulma.min.css"/>
+    <link rel="stylesheet" href="/css/bulma/bulma.css"/>
     <link rel="stylesheet" href="/css/self-custom.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css"/>
     <link href="https://fonts.googleapis.com/css?family=Poppins|Pridi&display=swap" rel="stylesheet">
@@ -17,33 +17,194 @@
 
 <body>
     @include('components.navbar')
+    <section class="hero is-info space-for-navbar" style="background-image: url('https://i.imgur.com/EORC8LJ.png'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+        <div class="hero-body">
+            <div class="container is-uppercase">
+                <h1 class="title is-1 force-bold">
+                    Store <sup class="is-lowercase">v3</sup>
+                </h1>
+                <h2 class="subtitle">
+                    Buy your item, to make your gameplay better.
+                </h2>
+            </div>
+        </div>
+    </section>
     <section class="section">
+        @include('components.alert')
         <div class="container is-uppercase">
-            <h1 class="title is-size-1 force-bold">Store</h1>
-            <p class="subtitle">Buy your item, to make your gameplay better.</p>
             <div class="columns">
                 <div class="column is-8">
                     <div class="box">
-                        @include('components.alert') 
-                        <div class="title-category">On sale now for limited time!
-                            <p class="text-category">Make your new equipment for supporters!</p>
+                        <div class="tabs-wrapper">
+                            <div class="tabs is-toggle is-fullwidth ">
+                                <ul>
+                                    <li class="is-active" id="lastest">
+                                        <a>Lastest Items</a>
+                                    </li>
+                                    <li id="bestseller">
+                                        <a>Best Seller</a>
+                                    </li>
+                                    <li id="onsale">
+                                        <a>Discount Now</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="tabs-content">
+                                <ul>
+                                    <li class="is-active">
+                                        <div class="columns is-multiline">
+                                            @forelse ($lastest as $key => $item)
+                                                <div class="column is-3">
+                                                    <div class="card box-fullheight">
+                                                        <div class="card-content">
+                                                            <div class="field">
+                                                                <div class="tags are-normal force-bold">
+                                                                    @if($key == 0) <span class="tag is-warning">Lastest</span> @endif
+                                                                    <span class="tag is-danger">New</span>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="title-product @if($key == 0) has-text-info @endif">{{ $item->item_name }}
+                                                                <p class="subtitle-product">{{ $item->item_desc }}</p>
+
+                                                                <div class="field" style="margin-top: 0.75rem;">
+                                                                    <figure class="image container is-96x96">
+                                                                        <img src="/storage/itemshop/cover/{{ $item->item_image_path}}" alt="product">
+                                                                    </figure>
+                                                                </div>
+
+                                                                <p class="is-size-6 has-text-weight-medium has-text-centered">
+                                                                    {{ $item->item_price }} Points
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-footer">
+                                                            <div class="card-footer-item">
+                                                                <a href="/store/checkout/{{ $item->item_id }}" class="button @if($key == 0) is-primary @else is-black @endif  is-outlined">@if($key == 0) Get it now! @else Buy @endif</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @empty
+                                                <div class="column is-12">
+                                                    <p class="is-size-6 has-text-centered has-text-danger" style="margin: 25%">There are no items available for sale.</p>
+                                                </div>
+                                            @endforelse
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="columns is-multiline">
+                                            @forelse ($bestseller as $key => $item)
+                                                <div class="column is-3">
+                                                    <div class="card box-fullheight">
+                                                        <div class="card-content">
+                                                            <div class="field">
+                                                                <div class="tags are-normal force-bold">
+                                                                    @if($key == 0) <span class="tag is-info">Hit</span> @endif
+                                                                    <span class="tag is-light">{{ $item->item_sold . " SOLD"}}</span>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="title-product @if($key == 0) has-text-info @endif">{{ $item->item_name }}
+                                                                <p class="subtitle-product">{{ $item->item_desc }}</p>
+
+                                                                <div class="field" style="margin-top: 0.75rem;">
+                                                                    <figure class="image container is-96x96">
+                                                                        <img src="/storage/itemshop/cover/{{ $item->item_image_path}}" alt="product">
+                                                                    </figure>
+                                                                </div>
+
+                                                                <p class="is-size-6 has-text-weight-medium has-text-centered">
+                                                                    {{ $item->item_price }} Points
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-footer">
+                                                            <div class="card-footer-item">
+                                                                <a href="/store/checkout/{{ $item->item_id }}" class="button @if($key == 0) is-primary @else is-black @endif  is-outlined">@if($key == 0) Get it now! @else Buy @endif</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @empty
+                                                <div class="column is-12">
+                                                    <p class="is-size-6 has-text-centered has-text-danger" style="margin: 25%">There are no items available for sale.</p>
+                                                </div>
+                                            @endforelse
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h1>Videos</h1>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="columns is-multiline">
-                            @forelse ($items as $item)
-                                <div class="column is-3">
-                                    <div class="box box-fullheight">
-                                        <div class="title-product">{{ $item->item_name }}
-                                            <p class="subtitle-product">{{ $item->item_desc }}</p>
-                                            <figure class="image container is-96x96">
-                                                <img src="/storage/itemshop/cover/{{ $item->item_image_path}}" alt="product">
-                                            </figure>
-                                            <p class="pricetag-product">{{ $item->item_price }} Points / 1 Pcs</p>
-                                            <div class="buttons is-centered button-product">
-                                                <a href="/store/checkout/{{ $item->item_id }}" class="button is-black is-outlined">Buy</a>
-                                            </div>
+                    </div>
+                    <div class="box" id="allitems">
+                        <div class="level">
+                            <div class="level-left">
+                                <div class="title-category">All Items
+                                    <p class="text-category">See all things sort by category</p>
+                                </div>
+                            </div>
+                            <div class="level-right">
+                                <div class="dropdown is-right">
+                                    <div class="dropdown-trigger">
+                                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                                        <span>Category</span>
+                                        <span class="icon is-small">
+                                            <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                        </span>
+                                        </button>
+                                    </div>
+                                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+
+                                        <div class="dropdown-content">
+                                        @foreach($categorys as $key => $category)
+                                            @if ($key != 0)
+                                                <a href="#" class="dropdown-item">
+                                                    {{ $category->category_name }}
+                                                </a>
+                                            @endif
+                                        @endforeach
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="columns is-multiline">
+                            @forelse ($items as $item)
+                            <div class="column is-3">
+                                <div class="card box-fullheight">
+                                    <div class="card-content">
+                                        <div class="field">
+                                            <div class="tags are-normal force-bold">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="title-product @if($key == 0) has-text-info @endif">{{ $item->item_name }}
+                                            <p class="subtitle-product">{{ $item->item_desc }}</p>
+
+                                            <div class="field" style="margin-top: 0.75rem;">
+                                                <figure class="image container is-96x96">
+                                                    <img src="/storage/itemshop/cover/{{ $item->item_image_path}}" alt="product">
+                                                </figure>
+                                            </div>
+
+                                            <p class="is-size-6 has-text-weight-medium has-text-centered">
+                                                {{ $item->item_price }} Points
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="card-footer-item">
+                                            <a href="/store/checkout/{{ $item->item_id }}" class="button @if($key == 0) is-primary @else is-black @endif  is-outlined">@if($key == 0) Get it now! @else Buy @endif</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             @empty
                                 <div class="column is-12">
                                     <p class="is-size-6 has-text-centered has-text-danger" style="margin: 25%">There are no items available for sale.</p>
@@ -64,6 +225,46 @@
                         </div>
                     </div>
                     <div class="box" style="width: 100%">
+                        <div class="title-category">Notice
+                            <p class="text-category">Store message from admin.</p>
+                        </div>
+                        <table class="table is-fullwidth">
+                            <thead>
+                                <tr>
+                                    <th width="15%">TYPE</th>
+                                    <th width="85%">Message</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th width="15%">
+                                        <div class="tags">
+                                            <span class="tag is-danger">Promotion</span>
+                                            <span class="tag is-light">Lastest</span>
+                                        </div>
+                                    </th>
+                                    <th width="85%">Get 10% off when checkout! This is lasttime in this year sale!</th>
+                                </tr>
+                                <tr>
+                                    <th width="15%">
+                                        <div class="tags">
+                                            <span class="tag is-danger">Sale</span>
+                                        </div>
+                                    </th>
+                                    <th width="85%">Get 10% off when checkout! This is lasttime in this year sale!</th>
+                                </tr>
+                                <tr>
+                                    <th width="15%">
+                                        <div class="tags">
+                                            <span class="tag is-warning">Maintenance</span>
+                                        </div>
+                                    </th>
+                                    <th width="85%">03/09/2019 - 04/09/2019 for server upgrading.</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="box" style="width: 100%">
                         <div class="title-category">Redeem
                             <p class="text-category">Have any redeem code? REDEEM IT and GET PRIZE!</p>
                         </div>
@@ -74,14 +275,14 @@
                             </div>
                             <div class="buttons">
                                 <button class="button" type="submit">Redeem</button>
-                            </div>                            
+                            </div>
                         </form>
                     </div>
-                    @include('components.serverstatus') 
+                    @include('components.serverstatus')
                 </div>
             </div>
         </div>
     </section>
-    @include('components.footer') 
+    @include('components.footer')
 </body>
 </html>

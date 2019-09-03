@@ -30,7 +30,7 @@
 
 <body>
     @include('components.navbar')
-    <section class="section">
+    <section class="section" style="margin-bottom: 3em; margin-top: 4em;">
         <div class="container is-uppercase">
             <h1 class="title is-size-1 force-bold">Topup</h1>
             <p class="subtitle">Get more points and donate to the server.</p>
@@ -139,16 +139,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="box" style="width: 100%; height: 100%">
+                    <div class="box">
                         <div class="title-category"><i class="fab fa-discord"></i> Official Discord
                             <p class="text-category">Support offline chat / Community</p>
                         </div>
-                        <iframe src="https://discordapp.com/widget?id=606226758932496473&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0"></iframe>
+                        <iframe src="https://discordapp.com/widget?id=606226758932496473&theme=dark" width="100%" height="500" frameborder="0"></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    @include('components.footer') 
+    @include('components.footer')
 </body>
 </html>

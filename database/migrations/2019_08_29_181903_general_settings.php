@@ -21,7 +21,6 @@ class GeneralSettings extends Migration
             $table->string('rcon_password')->nullable();
             $table->string('website_name');
             $table->string('website_desc')->nullable();
-            $table->string('website_footer')->nullable();
             $table->timestamps();
         });
     }

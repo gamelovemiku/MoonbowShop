@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Itemshop;
 use App\User;
-use DB;
 use Auth;
-use Route;
 
 class CheckoutController extends Controller
 {
@@ -34,7 +31,12 @@ class CheckoutController extends Controller
         if($result != null){ //ถ้าไม่มี item รหัสนี้ใน store
             if($this->sendCommand($result->item_command) != false){ //ถ้าเซิร์ฟยังเชื่อมต่อได้
                 $this->takeMoney($this->getItem($request->input('id'))->item_price);
+
+                $this->addAndGetSold($this->getItem($request->input('id'))->item_id);
+                $this->addLog(Auth::user()->id, "itemshop:buy", "Itemshop SOLD: " . $result->item_name . "| @REF [" . $result->item_id . "]");
+
                 session()->flash('buyComplete', 'Successfully! Your item is deliveried.');
+
             }else{ //ถ้าไม่ได้
                 session()->flash('somethingError');
                 return redirect('store');

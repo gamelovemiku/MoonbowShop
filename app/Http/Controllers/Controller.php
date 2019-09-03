@@ -8,27 +8,42 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use MinecraftServerStatus\MinecraftServerStatus;
 use Thedudeguy\Rcon;
+
 use App\Itemshop;
-use App\Itemshop_Category;
+use App\ItemshopCategory;
 use App\User;
-use Auth;
 use App\Role;
-use Mockery\Exception;
+use App\GeneralSettings;
+use App\Logs;
+use App\Notice;
+use Auth;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public function getLoggedinUser()
+    {
+        return Auth::user();
+    }
+
+    public function getSettings()
+    {
+        $settings = GeneralSettings::find(1)->first();
+
+        return $settings;
+    }
+
     public function getStatus()
     {
-        $response = MinecraftServerStatus::query('10.10.1.76', 25565);
+        $response = MinecraftServerStatus::query($this->getSettings()->hostname, $this->getSettings()->hostname_port);
 
         return $response;
     }
 
     public function sendCommand($cmd)
     {
-        $rcon = new Rcon('10.10.1.76', 25575, '123456789', 1);
+        $rcon = new Rcon($this->getSettings()->hostname, $this->getSettings()->rcon_port, $this->getSettings()->rcon_password, 1);
         $player = Auth::user()->name;
 
         $multiple = explode(';', $cmd);
@@ -49,9 +64,21 @@ class Controller extends BaseController
         return $items;
     }
 
+    public function getLastestAddItem()
+    {
+        $items = Itemshop::orderBy('created_at', 'desc')->take(4)->get();
+        return $items;
+    }
+
+    public function getBestSellerItem()
+    {
+        $items = Itemshop::orderBy('item_sold', 'desc')->take(4)->get();
+        return $items;
+    }
+
     public function getAllCategory()
     {
-        $category = Itemshop_Category::all();
+        $category = ItemshopCategory::all();
         return $category;
     }
 
@@ -90,5 +117,33 @@ class Controller extends BaseController
         session()->flash('style', $style);
         session()->flash('title', $title);
         session()->flash('info', $info);
+    }
+
+    public function addLog($buyer, $type, $msg) {
+
+        $log = new Logs;
+
+        $log->user_id       = $buyer;
+        $log->action_detail = $msg;
+        $log->type          = $type;
+
+        $log->save();
+    }
+
+    public function addAndGetSold($itemid)
+    {
+        $item = Itemshop::find($itemid);
+
+
+        $item->update([
+            'item_sold' => $item->item_sold+1,
+        ]);
+        return $item;
+    }
+
+    public function getAllNotices()
+    {
+        $notice = Notice::all();
+        return $notice;
     }
 }

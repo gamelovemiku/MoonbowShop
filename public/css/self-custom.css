@@ -1,13 +1,13 @@
 html, body, .button {
-    font-family: 'Segoe UI', 'Poppins','Pridi', serif;
+    font-family: 'Segoe UI', Helvetica, 'Poppins','Pridi', serif;
     font-weight: 600;
 }
 textarea {
-    font-family: 'Segoe UI', 'Poppins','Pridi', serif;
+    font-family: 'Segoe UI', Helvetica, 'Poppins','Pridi', serif;
     font-weight: 400;
 }
 .button {
-    font-family: 'Segoe UI', 'Poppins','Pridi', serif;
+    font-family: 'Segoe UI', Helvetica, 'Poppins','Pridi', serif;
     text-transform: uppercase;
 }
 .force-bold{
@@ -62,9 +62,11 @@ textarea {
     font-size: 12px;
     font-weight: 600;
 }
-.section {
+.space-for-navbar {
     margin-top: 48px;
-    margin-bottom: 64px;
+}
+.section {
+    padding: 2rem 1.5rem;
 }
 .swal-button {
     padding: 7px 19px;
@@ -73,7 +75,7 @@ textarea {
     text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
 }
 .input {
-    font-family: 'Segoe UI' ,'Pridi', serif;
+    font-family: 'Segoe UI', Helvetica,'Pridi', serif;
 }
 .text-price{
     color: darkgoldenrod;

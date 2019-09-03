@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
-    <link rel="stylesheet" href="/css/bulma/bulma.min.css"/>
+    <link rel="stylesheet" href="/css/bulma/bulma.css"/>
     <link rel="stylesheet" href="/css/self-custom.css"/>
     <script src="/js/bulma.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Pridi&display=swap" rel="stylesheet">
@@ -14,18 +14,45 @@
 
 <body>
     @include('components.navbar')
+    <section class="hero is-info space-for-navbar" style="background-image: url('https://i.imgur.com/EORC8LJ.png'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+        <div class="hero-body">
+            <div class="container is-uppercase">
+                <h1 class="title is-1 force-bold">
+                    Home
+                </h1>
+                <h2 class="subtitle">
+                    Overview about your gameplay.
+                </h2>
+            </div>
+        </div>
+    </section>
     <section class="section">
         <div class="container is-uppercase">
-            <h1 class="title is-size-1 force-bold">Home</h1>
-            <p class="subtitle">Overview about your gameplay.</p>
             <div class="columns">
                 <div class="column is-8">
                     <div class="box" style="width: 100%">
-                        <div class="title-category">On sale now for limited time!
-                            <p class="text-category">Make your new equipment for supporters!</p>
+                        <div class="title-category">Notice
+                            <p class="text-category">News, Information to let you stay updated!</p>
                         </div>
-                        <div class="columns is-multiline">
-                        </div>
+                        <table class="table is-fullwidth is-hoverable">
+                            <thead>
+                                <tr>
+                                    <th width="20%">Notice Type</th>
+                                    <th width="80%">Title</th>
+                                </tr>
+                            </thead>
+                            @forelse ($notices as $notice)
+                                <tr>
+                                <th width="20%"><div class="tag is-info">{{ $notice->notice_tag }}</div></th>
+                                    <th width="80%">{{ $notice->notice_title }}</th>
+                                </tr>
+                            @empty
+
+                            @endforelse
+                            <tbody>
+
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="column is-4">
@@ -44,6 +71,6 @@
             </div>
         </div>
     </section>
-    @include('components.footer') 
+    @include('components.footer')
 </body>
 </html>

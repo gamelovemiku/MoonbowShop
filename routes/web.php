@@ -24,8 +24,6 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/checkout', 'CheckoutController@index');
 
-Route::get('/testrcon/{cmd}', 'Controller@sendCommand'); //<-------------------------------------- DELETE THIS WHEN RELEASE
-
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('/login');
@@ -44,30 +42,20 @@ Route::post('/redeem', 'RedeemController@redeem')->name('redeem');
 
 Route::get('/topup', 'TopupController@index')->name('topup');
 
-Route::get('/manage/changepassword', function () {
-    return view('manage.changepassword');
-});
-
 Route::get('/manage', function () {
     return redirect(route('profile.index'));
 });
-
-Route::post('/upload', 'Management\ManageItemController@upload')->name('item.upload');
 
 Route::get('/paypal', function () {
     return view('paypal');
 });
 
-Route::get('/test', function () {
-
-    $item = Itemshop::find(2)->category;
-
-    return $item;
-});
-
 Route::prefix('manage')->group(function () {
 
-    Route::get('profile', 'Management\ManageProfileController@index')->name('profile.index');
+    Route::resource('profile', 'Management\ManageProfileController');
+    Route::get('changepassword', 'Management\ManageProfileController@changepassword')->name('profile.changepassword');
+    Route::get('editprofile', 'Management\ManageProfileController@editprofile')->name('profile.editprofile');
+    Route::post('updateprofile', 'Management\ManageProfileController@updateprofile')->name('profile.updateprofile');
 
     Route::resource('itemshop/item', 'Management\ManageItemController');
     Route::resource('itemshop/category', 'Management\ManageCategoryController');

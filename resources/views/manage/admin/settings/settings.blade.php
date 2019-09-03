@@ -79,28 +79,7 @@
                         <div class="field">
                             <label class="label">Website Description</label>
                             <p class="control has-icons-left">
-                                <input class="input" type="text" name="website_desc" value="{{ $settings->website_desc }}">
-                                <span class="icon is-left">
-                                    <i class="fas fa-network-wired"></i>
-                                </span>
-                            </p>
-                        </div>
-                        <div class="field">
-                            <label class="label">Website Footer (Left Side)</label>
-                            <p class="control has-icons-left">
-                                <input class="input" type="text" name="website_footer" value="{{ $settings->website_footer }}">
-                                <span class="icon is-left">
-                                    <i class="fas fa-network-wired"></i>
-                                </span>
-                            </p>
-                        </div>
-                        <div class="field">
-                            <label class="label">Website Footer (Left Side)</label>
-                            <p class="control has-icons-left">
-                                <input class="input" type="text" name="website_footer" value="{{ $settings->website_footer }}">
-                                <span class="icon is-left">
-                                    <i class="fas fa-network-wired"></i>
-                                </span>
+                                <textarea class="textarea" rows="7"type="text" name="website_desc">{{ $settings->website_desc }}</textarea>
                             </p>
                         </div>
                     </div>
@@ -110,7 +89,7 @@
     </div>
     <div class="field">
         <p class="control has-icons-left">
-            <input class="button is-fullwidth is-link is-outlined" type="submit" value="Save Settings">
+            <button id="submit_button" class="button is-fullwidth is-link is-outlined clickaction" type="submit">Save Settings</button>
         </p>
     </div>
 </form>

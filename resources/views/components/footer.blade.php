@@ -1,10 +1,9 @@
 <!-- PC Footer -->
 <style>
-    .footer {
+    .footer-no {
         position: fixed;
         bottom: 0px;
         width: 100%;
-        opacity: 1;
     }
 </style>
 <footer class="footer is-dark is-hidden-touch fixed-bottom" style="padding-bottom: 1rem; padding-top: 1rem;">

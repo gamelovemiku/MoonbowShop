@@ -25,6 +25,7 @@ class HomeController extends Controller
     {
         return view('home', [
             'balance' => $this->getBalance(),
+            'notices' => $this->getAllNotices(),
         ]);
     }
 }

@@ -17,7 +17,7 @@
     </div>
 </div>
 
-    <p style="margin-bottom: 24px">Your server is <b class="has-text-success">playmc.gamelovemiku.com:25565</b></p>
+    <p style="margin-bottom: 24px">Your server is <b class="has-text-success">{{ $settings->hostname }}</b> with rcon port <b class="has-text-success">{{ $settings->rcon_port }}</b></p>
     <div class="columns">
         <div class="column is-6">
             <form action="{{ route("commandsender") }}" method="post">
@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="control">
-                        <button type="submit" class="button is-black">
+                        <button type="submit" id="submit_button" class="button is-black clickaction">
                             Send
                         </button>
                     </div>
@@ -38,15 +38,14 @@
         </div>
         <div class="column is-6">
             <div class="notification is-light">
+                <div class="is-size-6 has-text-weight-bold">Placeholder</div>
+                <p class="content is-small">
+                    <b>%player</b> Replace to your username.<br/>
+                    <b>;</b> For send more command at one time.
+                </p>
+                <div class="is-size-6 has-text-weight-bold">Sample</div>
                 <p class="content">
-                    <b>Placeholder</b>
-                    <ul>
-                        <li><b>%player</b> - Replace to your username.</li>
-                        <li><b>;</b> - For send more command at one time.<br></li>
-                    </ul>
-                    <p>
-                        Sample: <code>say Hello World; give %player 264 1</code>
-                    </p>
+                    <code>say Hello World; give %player 264 1</code>
                 </p>
             </div>
         </div>

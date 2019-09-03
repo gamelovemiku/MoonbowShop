@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#167DF0">
+
     <title>Manage Profile</title>
-    <link rel="stylesheet" href="/css/bulma/bulma.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css">
     <link rel="stylesheet" href="/css/self-custom.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" integrity="sha256-PF6MatZtiJ8/c9O9HQ8uSUXr++R9KBYu4gbNG5511WE=" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css?family=Poppins|Pridi&display=swap" rel="stylesheet">
@@ -28,11 +30,10 @@
         });
 
     </script>
-
 </head>
 
     @include('components.navbar')
-    <section class="section is-uppercase" style="margin-bottom: 3em;">
+    <section class="section is-uppercase" style="margin-bottom: 3em; margin-top: 4em;">
         <div class="container">
             <h1 class="title is-size-2 has-text-weight-bold">Control Panal</h1>
             <p class="subtitle has-text-justified">Manage & Control anything on system<b class="force-bold"></b></p>
@@ -126,7 +127,8 @@
                                     </span>
                                     Player Actions
                                 </a>
-                            </ul>
+                            </ul><hr/>
+                        <a class="button is-danger is-fullwidth" href="{{ route('logout') }}">Sign Out</a>
                         </aside>
                     </div>
                 </div>
@@ -140,4 +142,11 @@
     </section>
 @include('components.footer')
 </body>
+<script>
+    $('.clickaction').click(function(){
+        document.getElementById("submit_button").classList.add('is-loading');
+        $("#verifyform").submit();
+    });
+
+</script>
 </html>

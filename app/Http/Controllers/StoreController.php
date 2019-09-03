@@ -17,7 +17,11 @@ class StoreController extends Controller
             [
                 'server' => $this->getStatus(),
                 'items' => $this->getAllItem(),
+                'categorys' => $this->getAllCategory(),
+                'lastest' => $this->getLastestAddItem(),
+                'bestseller' => $this->getBestSellerItem(),
                 'balance' => $this->getBalance(),
+                'settings' => $this->getSettings(),
             ]
         );
     }

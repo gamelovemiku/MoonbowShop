@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Management;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Auth;
+use App\Http\Requests\ChangePasswordRequest;
 use App\User;
+use Auth;
+
 
 class ManageProfileController extends ManageController
 {
@@ -16,44 +18,44 @@ class ManageProfileController extends ManageController
 
     public function index()
     {
-        return view('manage.profile', [
+        return view('manage.profile.profile', [
             'user' => $this->getUserByName(Auth::user()->name),
         ]);
     }
 
-    public function create()
+    public function store(ChangePasswordRequest $request)
     {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        $user = User::find(1);
-
+        $user = User::find((Auth::user()->id));
         $user->update([
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('usereditor.index');
+        session()->flash('successfullyUpdateData');
+        return redirect()->route('profile.index');
     }
 
-    public function show($id)
+    public function changepassword()
     {
-        //
+        return view('manage.profile.changepassword');
     }
 
-    public function edit($id)
+    public function editprofile()
     {
-        //
+        return view('manage.profile.editprofile', [
+            'user' => $this->getUserByName(Auth::user()->name),
+        ]);
     }
 
-    public function update(Request $request, $id)
+    public function updateprofile(Request $request)
     {
-        //
-    }
+        $user = User::where("email", $request->email);
 
-    public function destroy($id)
-    {
-        //
+        $user->update([
+            'email' => $request->email,
+            'name' => $request->name,
+        ]);
+
+        session()->flash('successfullyUpdateData');
+        return redirect()->back();
     }
 }

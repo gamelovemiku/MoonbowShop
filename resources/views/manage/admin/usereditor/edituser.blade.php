@@ -44,7 +44,7 @@
                 <div class="field-body">
                     <div class="field">
                         <p class="control">
-                            <input class="input" type="email" value="{{ $user->name }}" readonly>
+                            <input class="input" type="text" value="{{ $user->name }}">
                         </p>
                     </div>
                 </div>
@@ -69,9 +69,9 @@
                 </div>
                 <div class="field-body">
                     <div class="select">
-                        <select name="role" @if($user->name = "Admin") disabled @endif>
+                        <select name="role">
                             @foreach ($roles as $role)
-                                <option @if($user->role_id == $role->role_id) selected @endif value={{ $role->role_id }}>{{ $role->role_name }}</option>
+                                <option @if($user->role_id == $role->role_id) selected @endif value="{{ $role->role_id }}">{{ $role->role_name }}</option>
                             @endforeach
                         </select>
                     </div>

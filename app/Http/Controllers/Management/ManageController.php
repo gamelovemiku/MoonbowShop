@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\ItemshopCategory;
 use App\User;
+use App\Notice;
 use Storage;
 
 class ManageController extends Controller
@@ -15,7 +16,7 @@ class ManageController extends Controller
         $this->middleware('auth');
         $this->middleware('adminonly');
     }
-    
+
     public function getAllCategory()
     {
         $category = ItemshopCategory::all();
@@ -32,4 +33,5 @@ class ManageController extends Controller
         $users = User::all();
         return $users;
     }
+
 }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Statistics</title>
-    <link rel="stylesheet" href="/css/bulma/bulma.min.css"/>
+    <link rel="stylesheet" href="/css/bulma/bulma.css"/>
     <link rel="stylesheet" href="/css/self-custom.css"/>
     <script src="/js/bulma.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Pridi&display=swap" rel="stylesheet">
@@ -14,10 +14,20 @@
 
 <body>
     @include('components.navbar')
+    <section class="hero is-info space-for-navbar" style="background-image: url('https://i.imgur.com/EORC8LJ.png'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+        <div class="hero-body">
+            <div class="container is-uppercase">
+                <h1 class="title is-1 force-bold">
+                    Statistics
+                </h1>
+                <h2 class="subtitle">
+                    View your statistics, Analytics yourself!
+                </h2>
+            </div>
+        </div>
+    </section>
     <section class="section">
         <div class="container is-uppercase">
-            <h1 class="title is-size-1 force-bold">Statistics</h1>
-            <p class="subtitle">View your statistics, Analytics yourself!</p>
             <div class="columns">
                 <div class="column is-6">
                     <div class="box" style="width: 100%">
@@ -25,7 +35,7 @@
                             <p class="text-category">Breaking, Placing, Player Kills, Mob Kills and etc.</p>
                         </div>
                         <div class="columns is-multiline">
-                    </div>      
+                    </div>
                 </div>
             </div>
             <div class="column is-6">
@@ -34,7 +44,7 @@
                             <p class="text-category">Breaking, Placing, Player Kills, Mob Kills and etc.</p>
                         </div>
                         <div class="columns is-multiline">
-                    </div>      
+                    </div>
                 </div>
             </div>
         </div>

@@ -39,34 +39,9 @@
 
                 <label class="label">Management</label>
                 <div class="buttons">
-                    <a href="#" class="button is-info is-outlined">Change Password</a>
-                    <a href="#" class="button is-danger is-outlined">Delete Account</a>
+                    <a href="{{ route('profile.changepassword') }}" class="button is-info is-small is-outlined">Change Password</a>
+                    <a href="{{ route('profile.editprofile') }}" class="button is-primary is-small is-outlined">Edit Profile</a></a>
                 </div>
-
-                <label class="label">Avatar</label>
-                <form>
-                    <div class="field">
-                        <div class="file is-small has-name is-fullwidth">
-                            <label class="file-label">
-                                <input class="file-input" type="file" name="resume">
-
-                                <span class="file-cta">
-                                    <span class="file-icon">
-                                        <i class="fas fa-upload"></i>
-                                    </span>
-                                    <span class="file-label">
-                                        <p id="upload-header">Upload</p>
-                                    </span>
-                                </span>
-                                <span class="file-name">
-                                    <p id="upload-filename">No Select file</p>
-                                </span>
-                            </label>
-                        </div>
-                    </div>
-                    <button type="submit" class="button is-primary is-outlined">Upload Avatar</button>
-                </form>
-
             </div>
             <div class="column is-6">
                 <div class="">

@@ -16,7 +16,7 @@ class Itemshop extends Model
 
     public function category()
 	{
-		return $this->hasOne('App\ItemshopCategory', 'category_id');
+		return $this->belongsTo('App\ItemshopCategory', 'category_id');
 	}
 
 }

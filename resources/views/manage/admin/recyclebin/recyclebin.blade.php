@@ -17,7 +17,7 @@
     </div>
 </div>
 <div class="tabs-wrapper">
-    <div class="tabs">
+    <div class="tabs is-boxed">
         <ul>
             <li class="is-active">
                 <a>

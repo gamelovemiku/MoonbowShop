@@ -12,7 +12,7 @@
 
 <h4 class="title is-size-4 has-text-weight-bold">Change Password</h4>
 <p class="subtitle is-size-7">Reset your password<b class="force-bold"></b></p>
-<form method="POST" action="{{ route('login') }}">
+<form method="POST" action="{{ route('profile.store') }}">
     @csrf
     <div class="field">
         <div class="columns">
@@ -21,25 +21,23 @@
                     <label for="password" class="label">New Password</label>
 
                     <div class="control">
-                        <input id="password" type="password" class="input @error('password') is-danger @enderror" name="password" required autocomplete="current-password">
-
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input id="password" type="password" class="input @error('password') is-danger @enderror" name="password">
                     </div>
                 </div>
                 <div class="field">
                     <label for="password" class="label">Confirm New Password</label>
 
                     <div class="control">
-                        <input id="password" type="password" class="input @error('password') is-danger @enderror" name="password" required autocomplete="current-password">
+                        <input id="password" type="password" class="input @error('password') is-danger @enderror" name="password_confirmation">
 
                         @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                        <div class="field">
+                            <div class="control">
+                                <span class="invalid-feedback" role="alert">
+                                    <strong class="has-text-danger">{{ $message }}</strong>
+                                </span>
+                            </div>
+                        </div>
                         @enderror
                     </div>
                 </div>

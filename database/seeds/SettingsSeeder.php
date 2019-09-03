@@ -20,7 +20,6 @@ class SettingsSeeder extends Seeder
                 'rcon_password' => '123456789',
                 'website_name' => 'MoonbowShop',
                 'website_desc' => 'A free minecraft shop',
-                'website_footer' => 'MoonbowShop is a powerful minecraft webshop.',
             ],
         ]);
     }

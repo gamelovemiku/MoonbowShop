@@ -26,8 +26,7 @@ class ManageGeneralSettingsController extends ManageController
             'rcon_password' => $request->rcon_password,
             'website_name'  => $request->website_name,
             'website_desc'  => $request->website_desc,
-            'website_footer'=> $request->website_footer,
-
+            
         ]);
 
         session()->flash('successfullyUpdateData');
