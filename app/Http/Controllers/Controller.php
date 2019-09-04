@@ -146,4 +146,11 @@ class Controller extends BaseController
         $notice = Notice::all();
         return $notice;
     }
+
+    public function getNotice($id)
+    {
+        $notice = Notice::find($id)->get()->first();
+        return $notice;
+    }
+
 }
