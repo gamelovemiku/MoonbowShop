@@ -12,6 +12,9 @@
     <b>Support PHP 7.3.0+</b>
 </p>
 
+<img src="https://gamelovemiku.com/imagestockcdn/shopv3.PNG">
+<code>New Update! Interface & Adminstration v3.0</code>
+
 <img src="https://gamelovemiku.com/imagestockcdn/itemshop.PNG">
 <code>Mega Update! Interface & Adminstration v2.0</code>
 
