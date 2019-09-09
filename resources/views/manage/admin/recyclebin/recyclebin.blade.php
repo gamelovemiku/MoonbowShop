@@ -74,7 +74,7 @@
                                 @empty
                                 <tr>
                                     <td class="has-text-centered has-text-danger" colspan="5">
-                                        Nothing to force delete here!
+                                        Nothing in recycle for this category.
                                     </td>
                                 </tr>
                             @endforelse
@@ -106,7 +106,7 @@
                                             <form action="{{ route('recyclebin.rollbackItemshop', [$itemtrash->item_id])}}" method="post">
                                                 @method('post')
                                                 @csrf
-                                                <button type="submit" style="margin-right: 8px;" class="button is-link is-small">Rollback</button>
+                                                <button type="submit" style="margin-right: 8px;" class="button is-link is-small">Restore</button>
                                             </form>
 
                                             <form action="{{ route('recyclebin.forcedeleteItemshop', [$itemtrash->item_id])}}" method="post">
@@ -120,7 +120,7 @@
                             @empty
                                 <tr>
                                     <td class="has-text-centered has-text-danger" colspan="5">
-                                        Nothing to force delete here!
+                                        Nothing in recycle for this category.
                                     </td>
                                 </tr>
                             @endforelse

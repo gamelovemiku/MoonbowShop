@@ -31,7 +31,7 @@
             <div class="columns">
                 <div class="column is-8">
                     <div class="box" style="width: 100%">
-                        <div class="title-category">Notice
+                        <div class="title-category has-text-info">Notice
                             <p class="text-category">News, Information to let you stay updated!</p>
                         </div>
                         <table class="table is-fullwidth is-hoverable">
@@ -43,8 +43,13 @@
                             </thead>
                             @forelse ($notices as $notice)
                                 <tr>
-                                <th width="20%"><div class="tag is-info">{{ $notice->notice_tag }}</div></th>
-                                    <th width="80%">{{ $notice->notice_title }}</th>
+                                    <th width="25%">
+                                        <div class="tags">
+                                            @if($notice->notice_show_on_store == 1) <div class="tag is-warning">Store</div> @endif
+                                            <div class="tag is-info">{{ $notice->notice_tag }}</div>
+                                        </div>
+                                    </th>
+                                    <th width="75%">{{ $notice->notice_title }}</th>
                                 </tr>
                             @empty
 
@@ -54,9 +59,15 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="box" style="width: 100%">
+                        <div class="title-category has-text-info">Pinned Information
+                            <p class="text-category">About server information, how to play, getting started and etc.</p>
+                        </div>
+                    <p>{{ $settings->website_desc }}</p>
+                    </div>
                 </div>
                 <div class="column is-4">
-                    <div class="box" style="width: 100%">
+                    <div class="box">
                         <div class="columns">
                             <div class="column">
                                 <div class="title-category">Accounts
@@ -66,7 +77,28 @@
                             </div>
                         </div>
                     </div>
-                    <iframe src="https://discordapp.com/widget?id=606226758932496473&theme=light" height="100" frameborder="0"></iframe>
+                    <div class="box">
+                        <div class="columns">
+                            <div class="column">
+                                <div class="title-category">Social Media
+                                    <p class="text-category">Take a closer by follow us on social.</p>
+                                </div>
+                                <span class="icon is-large">
+                                    <i class="fab fa-facebook fa-2x"></i>
+                                </span>
+                                <span class="icon is-large">
+                                    <i class="fab fa-twitter fa-2x"></i>
+                                </span>
+                                <span class="icon is-large">
+                                    <i class="fab fa-instagram fa-2x"></i>
+                                </span>
+                                <span class="icon is-large">
+                                    <i class="fab fa-discord fa-2x"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <iframe style="height: 340px; margin: 0px" src="https://discordapp.com/widget?id=606226758932496473&theme=dark" width="100%"></iframe>
                 </div>
             </div>
         </div>

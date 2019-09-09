@@ -14,7 +14,7 @@ class SettingsSeeder extends Seeder
     {
         DB::table('general_settings')->insert([
             [
-                'hostname' => '10.10.1.107',
+                'hostname' => '10.10.1.76',
                 'hostname_port' => 25565,
                 'rcon_port' => 25575,
                 'rcon_password' => '123456789',

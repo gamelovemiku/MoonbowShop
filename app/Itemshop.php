@@ -12,7 +12,7 @@ class Itemshop extends Model
     protected $table = 'itemshop'; // ชื่อตาราง
     protected $primaryKey = 'item_id'; // ชื่อ Primary Key
 
-    protected $fillable = ['item_name', 'item_desc', 'item_image_path', 'item_price', 'category_id', 'item_command', 'item_sold'];
+    protected $fillable = ['item_name', 'item_desc', 'item_image_path', 'item_price', 'category_id', 'item_command', 'item_sold', 'item_discount_price'];
 
     public function category()
 	{

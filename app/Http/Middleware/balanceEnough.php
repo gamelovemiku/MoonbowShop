@@ -12,15 +12,30 @@ class balanceEnough
     public function handle($request, Closure $next)
     {
         $player = User::where('name',  Auth::user()->name)->first();
-        $items = Itemshop::where('item_id', $request->id)->get();
+        $items = Itemshop::where('item_id', $request->id)->get()->first();
 
-        if ($player->points_balance >= $items->first()->item_price) {
-            return $next($request);
+        if(!empty($items->item_discount_price)) {
+            //Use discount Price
+            if ($player->points_balance >= $items->item_discount_price) {
+                return $next($request);
 
-        }else {
-            session()->flash('moneyNotEnough');
-            return redirect('store');
+            }else {
+
+                session()->flash('moneyNotEnough');
+                return redirect('store');
+            }
+        }else{
+
+            if ($player->points_balance >= $items->item_price) {
+                return $next($request);
+
+            }else {
+
+                session()->flash('moneyNotEnough');
+                return redirect('store');
+            }
         }
+
     }
 }
 

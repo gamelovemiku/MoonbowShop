@@ -43,7 +43,7 @@
                         <label for="item_desc" class="label">Item Description</label>
 
                         <div class="control">
-                            <textarea rows="4" id="item_desc" type="text" class="textarea @error('itemdesc') is-danger @enderror" name="item_desc"></textarea>
+                            <textarea rows="6" id="item_desc" type="text" class="textarea @error('itemdesc') is-danger @enderror" name="item_desc"></textarea>
                         </div>
                     </div>
 
@@ -90,6 +90,13 @@
                         <label for="item_price" class="label">Price <small class="has-text-grey-light">(Points)</small></label>
                         <div class="control">
                             <input id="item_price" class="input" name="item_price">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="item_price" class="label">Discount Price <small class="has-text-grey-light">(Optional)</small></label>
+                        <div class="control">
+                            <input id="item_price" class="input" name="item_discount_price">
                         </div>
                     </div>
 

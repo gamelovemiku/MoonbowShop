@@ -14,7 +14,7 @@ class Users extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('points_balance'); //เก็บค่าเงินสมาชิก
+            $table->double('points_balance', 8, 2); //เก็บค่าเงินสมาชิก
 
             $table->unsignedBigInteger('role_id');
             $table->foreign('role_id')->references('role_id')->on('users_roles')->onDelete('cascade');

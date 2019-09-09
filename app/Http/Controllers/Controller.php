@@ -112,13 +112,6 @@ class Controller extends BaseController
         return $roles;
     }
 
-    public function showFlashAlert($style, $title, $info)
-    {
-        session()->flash('style', $style);
-        session()->flash('title', $title);
-        session()->flash('info', $info);
-    }
-
     public function addLog($buyer, $type, $msg) {
 
         $log = new Logs;
@@ -147,9 +140,15 @@ class Controller extends BaseController
         return $notice;
     }
 
+    public function getOnlyStoreNotices()
+    {
+        $notice = Notice::orderBy('created_at', 'desc')->where('notice_show_on_store', 1)->take(3)->get();
+        return $notice;
+    }
+
     public function getNotice($id)
     {
-        $notice = Notice::find($id)->get()->first();
+        $notice = Notice::find($id);
         return $notice;
     }
 

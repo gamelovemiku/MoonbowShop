@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="section">
+<section class="section" style="margin-bottom: 3em; margin-top: 4em;">
     <div class="container">
         <div class="columns">
             <div class="column is-half is-offset-one-quarter">

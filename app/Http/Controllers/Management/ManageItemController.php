@@ -32,7 +32,6 @@ class ManageItemController extends ManageController
 
     public function store(Request $request)
     {
-
         $item = new Itemshop;
 
         $item->item_name        = $request->item_name;
@@ -42,11 +41,18 @@ class ManageItemController extends ManageController
         $item->category_id      = $request->category;
         $item->item_command     = $request->item_command;
         $item->item_sold        = 0;
+
+        if(!empty($request->item_discount_price)){
+            $item->item_discount_price = $request->item_discount_price;
+        }
+
         $item->save();
 
         $this->addLog(
             $this->getLoggedinUser()->id,
-            "admin:additem", "Itemshop ADDED: " . $request->item_name . " / " . $request->item_price . " Points");
+            "admin:additem",
+            "Itemshop ADDED: " . $request->item_name . " / " . $request->item_price . " Points"
+        );
 
         session()->flash('manageItemAdded');
         return redirect()->route('item.index');

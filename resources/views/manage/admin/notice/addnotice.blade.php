@@ -61,6 +61,23 @@
                     </div>
                 </div>
             </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label"></label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control">
+                        <label class="checkbox">
+                            <input class="checkbox" type="checkbox" name="seeinstore">
+                            Show in Store page
+                        </label>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <div class="buttons is-right">
                 <button type="submit" class="button is-black">
                     Add Notice

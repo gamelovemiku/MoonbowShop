@@ -236,31 +236,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th width="15%">
-                                        <div class="tags">
-                                            <span class="tag is-danger">Promotion</span>
-                                            <span class="tag is-light">Lastest</span>
-                                        </div>
-                                    </th>
-                                    <th width="85%">Get 10% off when checkout! This is lasttime in this year sale!</th>
-                                </tr>
-                                <tr>
-                                    <th width="15%">
-                                        <div class="tags">
-                                            <span class="tag is-danger">Sale</span>
-                                        </div>
-                                    </th>
-                                    <th width="85%">Get 10% off when checkout! This is lasttime in this year sale!</th>
-                                </tr>
-                                <tr>
-                                    <th width="15%">
-                                        <div class="tags">
-                                            <span class="tag is-warning">Maintenance</span>
-                                        </div>
-                                    </th>
-                                    <th width="85%">03/09/2019 - 04/09/2019 for server upgrading.</th>
-                                </tr>
+                                @forelse ($notices as $key => $notice)
+                                    <tr>
+                                        <th width="15%">
+                                            <div class="tags">
+                                                <span class="tag is-danger">{{ $notice->notice_tag }}</span>
+                                                @if($key == 0) <span class="tag is-light">Lastest</span> @endif
+                                            </div>
+                                        </th>
+                                        <th width="85%">{{ $notice->notice_title }}</th>
+                                    </tr>
+                                @empty
+
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

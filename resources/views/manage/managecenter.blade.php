@@ -10,13 +10,16 @@
     <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css">
     <link rel="stylesheet" href="/css/self-custom.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" integrity="sha256-PF6MatZtiJ8/c9O9HQ8uSUXr++R9KBYu4gbNG5511WE=" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css?family=Poppins|Pridi&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins|Pridi:400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css" integrity="sha256-a2tobsqlbgLsWs7ZVUGgP5IvWZsx8bTNQpzsqCSm5mk=" crossorigin="anonymous" />
+    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
     <script src="/js/bulma-toast.min.js"></script>
     <script src="/js/bulma.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+    <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
 
     <script type="text/javascript">
 
@@ -35,7 +38,7 @@
     @include('components.navbar')
     <section class="section is-uppercase" style="margin-bottom: 3em; margin-top: 4em;">
         <div class="container">
-            <h1 class="title is-size-2 has-text-weight-bold">Control Panal</h1>
+            <h1 class="title is-size-2 has-text-weight-bold">Control Panel</h1>
             <p class="subtitle has-text-justified">Manage & Control anything on system<b class="force-bold"></b></p>
             <div class="columns">
                 <div class="column is-3">
@@ -46,13 +49,13 @@
                                 User Profile
                             </p>
                             <ul class="menu-list">
-                                <a class="menu-block" href="/manage/profile">
+                                <a class="menu-block" href="{{ route("profile.index") }}">
                                     <span class="menu-icon icon">
                                         <i class="fas fa-id-card"></i>
                                     </span>
                                     Profile
                                 </a>
-                                <a class="menu-block" href="/manage/changepassword">
+                                <a class="menu-block" href="{{ route("profile.changepassword") }}">
                                     <span class="menu-icon icon">
                                         <i class="fas fa-key"></i>
                                     </span>
@@ -63,13 +66,13 @@
                                 Economic
                             </p>
                             <ul class="menu-list">
-                                <a class="menu-block" href="/manage/itemshop/item">
+                                <a class="menu-block" href="{{ route("item.index") }}">
                                     <span class="menu-icon icon">
                                         <i class="fas fa-shopping-cart"></i>
                                     </span>
                                     Itemshop
                                 </a>
-                                <a class="menu-block" href="/manage/itemshop/item">
+                                <a class="menu-block" href="{{ route("item.index") }}">
                                     <span class="menu-icon icon">
                                         <i class="fas fa-gifts"></i>
                                     </span>
@@ -80,11 +83,11 @@
                                 Administration
                             </p>
                             <ul class="menu-list">
-                                <a class="menu-block" href="{{ route("settings.index") }}">
+                                <a class="menu-block" href="{{ route("notice.index") }}">
                                     <span class="menu-icon icon">
-                                        <i class="fas fa-info-circle"></i>
+                                        <i class="fas fa-file-invoice"></i>
                                     </span>
-                                    General Settings
+                                    Dashboard
                                 </a>
                                 <a class="menu-block" href="{{ route("usereditor.index") }}">
                                     <span class="menu-icon icon">
@@ -92,17 +95,17 @@
                                     </span>
                                     User Editor
                                 </a>
+                                <a class="menu-block" href="{{ route("notice.index") }}">
+                                    <span class="menu-icon icon">
+                                        <i class="fas fa-bullhorn"></i>
+                                    </span>
+                                    Notice
+                                </a>
                                 <a class="menu-block" href="{{ route("commandsender") }}">
                                     <span class="menu-icon icon">
                                         <i class="fas fa-terminal"></i>
                                     </span>
                                     Command Sender
-                                </a>
-                                <a class="menu-block" href="#">
-                                    <span class="menu-icon icon">
-                                        <i class="fas fa-history"></i>
-                                    </span>
-                                    Logs
                                 </a>
                                 <a class="menu-block" href="{{ route("recyclebin.index") }}">
                                     <span class="menu-icon icon">
@@ -110,18 +113,39 @@
                                     </span>
                                     Recycle Bin
                                 </a>
+                                <p class="menu-label">
+                                    Systems
+                                </p>
+                                <a class="menu-block" href="{{ route("settings.index") }}">
+                                    <span class="menu-icon icon">
+                                        <i class="fas fa-info-circle"></i>
+                                    </span>
+                                    General Settings
+                                </a>
+                                <a class="menu-block" href="#">
+                                    <span class="menu-icon icon">
+                                        <i class="far fa-credit-card"></i>
+                                    </span>
+                                    Payments
+                                </a>
+                                <a class="menu-block" href="#">
+                                    <span class="menu-icon icon">
+                                        <i class="fas fa-history"></i>
+                                    </span>
+                                    Logs
+                                </a>
                             </ul>
                             <p class="menu-label">
                                 Analytics
                             </p>
                             <ul class="menu-list">
-                                <a class="menu-block" href="/manage/itemshop/item">
+                                <a class="menu-block" href="#">
                                     <span class="menu-icon icon">
                                         <i class="fas fa-chart-line"></i>
                                     </span>
                                     Global
                                 </a>
-                                <a class="menu-block" href="/manage/itemshop/item">
+                                <a class="menu-block" href="#">
                                     <span class="menu-icon icon">
                                             <i class="fas fa-flag-checkered"></i>
                                     </span>
@@ -133,7 +157,7 @@
                     </div>
                 </div>
                 <div class="column is-9">
-                    <div class="box">
+                    <div class="box" style="height: auto">
                         @yield('content')
                     </div>
                 </div>

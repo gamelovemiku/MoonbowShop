@@ -50,7 +50,11 @@ Route::get('/paypal', function () {
     return view('paypal');
 });
 
+Route::post('/omise', 'Payment\PaymentOmiseController@checkout');
+
 Route::prefix('manage')->group(function () {
+
+    Route::resource('notice', 'Management\ManageNoticeController');
 
     Route::resource('profile', 'Management\ManageProfileController');
     Route::get('changepassword', 'Management\ManageProfileController@changepassword')->name('profile.changepassword');
@@ -74,5 +78,17 @@ Route::prefix('manage')->group(function () {
 
     Route::post('recyclebin/itemshop/{id}/rollback', 'Management\ManageRecycleBinController@rollbackItemshop')->name('recyclebin.rollbackItemshop');
     Route::post('recyclebin/itemshop/{id}/forcedelete', 'Management\ManageRecycleBinController@forcedeleteItemshop')->name('recyclebin.forcedeleteItemshop');
+
+});
+
+Route::get('/paypal', function () {
+    return view('paypal');
+});
+
+Route::get('/forum', 'Forum\ForumController@index');
+
+Route::prefix('forum')->group(function () {
+
+    Route::resource('notice', 'Management\ManageNoticeController');
 
 });

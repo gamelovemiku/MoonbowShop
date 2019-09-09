@@ -26,11 +26,19 @@ class ManageNoticeController extends ManageController
 
     public function store(Request $request)
     {
+
+        if($request->seeinstore == 'on') {
+            $isonstore = true;
+        }else {
+            $isonstore = false;
+        }
+
         $notice = new Notice;
 
         $notice->notice_tag = $request->tag;
         $notice->notice_title = $request->title;
         $notice->notice_content = $request->content;
+        $notice->notice_show_on_store = $isonstore;
         $notice->save();
 
         return redirect()->route('notice.index');
@@ -43,7 +51,6 @@ class ManageNoticeController extends ManageController
 
     public function edit($id)
     {
-
         return view('manage.admin.notice.editnotice', [
             'notice' => $this->getNotice($id),
         ]);
@@ -51,11 +58,20 @@ class ManageNoticeController extends ManageController
 
     public function update(Request $request, $id)
     {
+
+        if($request->seeinstore == 'on') {
+            $isonstore = true;
+        }else {
+            $isonstore = false;
+        }
+
         $notice = Notice::find($id);
+
         $notice->update([
             'notice_tag' => $request->tag,
             'notice_title' => $request->title,
             'notice_content' => $request->content,
+            'notice_show_on_store' => $isonstore,
         ]);
 
         return redirect()->route('notice.index');

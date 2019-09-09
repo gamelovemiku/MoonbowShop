@@ -23,7 +23,7 @@
 </div>
 
 <div class="tabs-wrapper">
-    <div class="tabs is-boxed">
+    <div class="tabs">
         <ul>
             <li class="is-active">
                 <a>
@@ -54,7 +54,7 @@
                             <tr>
                                 <th>{{ $notice->notice_id }}</th>
                                 <th>{{ $notice->notice_tag }}</th>
-                                <th>{{ $notice->notice_title}}</th>
+                                <th class="has-text-weight-medium">{{ $notice->notice_title}} @if( $notice->notice_show_on_store == 1) <span class="tag is-info" style="font-size: 8px;">#store</span> @endif</th>
                                 <th>{{ $notice->notice_content}}</th>
                                 <th>
                                     <div class="buttons">
@@ -76,7 +76,7 @@
                             @empty
                             <tr>
                                 <td class="has-text-centered has-text-danger" colspan="5">
-                                    Nothing to force delete here!
+                                    You doesn't have any notice!
                                 </td>
                             </tr>
                         @endforelse
