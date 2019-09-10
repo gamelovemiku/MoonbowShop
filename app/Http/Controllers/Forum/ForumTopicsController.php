@@ -3,83 +3,59 @@
 namespace App\Http\Controllers\Forum;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\ForumTopic;
+use App\ForumComment;
 
-class ForumTopicsController extends Controller
+class ForumTopicsController extends ForumController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('forum.newpost');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        return view('forum.read', [
+            'topic' => $this->getTopic($id),
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
     }
+
+    public function addcomment(Request $request)
+    {
+        $comment = new ForumComment;
+
+        $comment->topic_id = $request->topic_id;
+        $comment->comment_author_id = $this->getLoggedinUser()->id;
+        $comment->comment_content = $request->content;
+
+        $comment->save();
+
+        return redirect()->back();
+    }
+
 }

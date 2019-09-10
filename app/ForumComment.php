@@ -6,10 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class ForumComment extends Model
 {
-    protected $table = 'general_settings'; // ชื่อตาราง
-    protected $primaryKey = 'setting_id'; // ชื่อ Primary Key
+    protected $table = 'forum_comments'; // ชื่อตาราง
+    protected $primaryKey = 'comment_id'; // ชื่อ Primary Key
 
     protected $fillable = [
-        'hostname', 'hostname_port', 'rcon_port', 'rcon_password', 'website_name', 'website_desc', 'website_footer',
+        'comment_author_id', 'comment_title', 'comment_content',
     ];
+
+    public function topic()
+    {
+        return $this->belongsTo('App\ForumTopic', 'topic_id');
+    }
+
+    public function user()
+    {
+        return $this->hasOne('App\User', 'id', 'comment_author_id');
+    }
+
 }

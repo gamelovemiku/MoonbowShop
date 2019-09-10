@@ -85,10 +85,15 @@ Route::get('/paypal', function () {
     return view('paypal');
 });
 
+Route::post('/testpost', function (Request $request) {
+    return $request;
+});
+
 Route::get('/forum', 'Forum\ForumController@index');
 
 Route::prefix('forum')->group(function () {
 
-    Route::resource('notice', 'Management\ManageNoticeController');
+    Route::resource('topic', 'Forum\ForumTopicsController');
+    Route::post('topic/addcomment', 'Forum\ForumTopicsController@addcomment')->name('topic.addcomment');
 
 });

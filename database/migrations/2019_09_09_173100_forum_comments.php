@@ -22,9 +22,7 @@ class ForumComments extends Migration
             $table->unsignedBigInteger('comment_author_id');
             $table->foreign('comment_author_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->string('comment_title');
-            $table->string('comment_content');
-
+            $table->longText('comment_content');
 
             $table->timestamps();
         });

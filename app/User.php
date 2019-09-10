@@ -42,7 +42,17 @@ class User extends Authenticatable
     public function role()
 	{
 		return $this->hasOne('App\Role', 'role_id', 'users_roles');
-	}
+    }
+
+    public function topic()
+    {
+        return $this->belongsTo('App\ForumTopic', 'topic_id');
+    }
+
+    public function comment()
+    {
+        return $this->belongsTo('App\ForumComment', 'comment_id');
+    }
 
 
 }

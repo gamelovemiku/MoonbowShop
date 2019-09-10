@@ -90,3 +90,7 @@ textarea {
 .tabs-content li.is-active {
     display: block;
 }
+
+#editor {
+    height: 180px;
+}

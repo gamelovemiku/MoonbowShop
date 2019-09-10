@@ -33,11 +33,12 @@
         <div class="container is-uppercase">
             <div class="level">
                 <div class="level-left">
-
+                    เรื่องทั้งหมดที่ถูกโพสต์ใน Forum มีจำนวนทั้งหมด {{ count($topics) }} เรื่อง
                 </div>
                 <div class="level-right">
                     <div class="buttons">
-                        <a class="button is-info is-outlined" href="#">เพิ่มเรื่องใหม่</a>
+                        <a class="button is-light" href="#">เพิ่มเรื่องใหม่</a>
+                        <a class="button is-light" href="#">โพสต์ทั้งหมดของฉัน</a>
                     </div>
                 </div>
             </div>
@@ -46,17 +47,16 @@
                     <div class="box">
                         <h6 class="title is-6 has-text-weight-bold">Lastest topics</h6>
                         <p class="subtitle is-7 has-text-weight-bold">Moonbow Minecraft Forums</p>
-                        <table class="table is-striped is-narrow is-fullwidth">
+                        <table class="table is-narrow is-fullwidth">
                             <tbody>
-                                @for($i = 0; $i < 5; $i++)
+                                @foreach($topics as $topic)
                                     <tr>
-                                        <th>#</th>
-                                        <th><a href="#">ทำไมเกมมันดูแปลกๆ ครับ ใครรู้ช่วยทีครับ แบบนี้มันผิดปกติไหมครับๆๆๆๆๆๆๆ</a></th>
-                                        <th>gamelovemiku</th>
-                                        <th>9/9/2562 23:11</th>
-                                        <th>67 Views</th>
-                                    </tr>
-                                @endfor
+                                        <th width="60%"><a href="/forum/topic/{{ $topic->topic_id }}">{{ $topic->topic_title }}</a></th>
+                                        <th width="13%">by {{ $topic->user->name }}</th>
+                                        <th width="13%">{{ $topic->created_at }}</th>
+                                        <th width="13%">{{ $topic->topic_views }} <small>Views</small></th>
+                                    </tr
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -69,7 +69,7 @@
                             <tbody>
                                 @for($i = 0; $i < 5; $i++)
                                     <tr>
-                                        <th><a href="#">ทำไมเกมมันดูแปลกๆ ครับ ใครรู้ช่วยทีครับ แบบนี้มันผิดปกติไหมครับๆๆๆๆๆๆๆ</a></th>
+                                        <th><a href="#">แบบนี้มันผิดปกติไหมครับๆๆๆๆๆๆๆ</a></th>
                                         <th>gamelovemiku</th>
                                     </tr>
                                 @endfor

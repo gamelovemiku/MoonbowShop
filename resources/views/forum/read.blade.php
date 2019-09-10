@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Forum</title>
+    <link rel="stylesheet" href="/css/bulma/bulma.css"/>
+    <link rel="stylesheet" href="/css/self-custom.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Poppins|Pridi:300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css" integrity="sha256-a2tobsqlbgLsWs7ZVUGgP5IvWZsx8bTNQpzsqCSm5mk=" crossorigin="anonymous" />
+
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="js/bulma-toast.min.js"></script>
+    <script src="/js/bulma.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    @include('components.navbar')
+    <section class="hero is-info is-small space-for-navbar" style="background-image: url('https://i.imgur.com/piFsBod.png'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+        <div class="hero-body">
+            <div class="container is-uppercase">
+                <h4 class="title is-4 force-bold">
+                    Forums
+                </h1>
+                <h6 class="subtitle is-6">
+                    Moonbow Community
+                </h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="section hero is-white">
+        <div class="container">
+            <div class="columns is-multiline">
+                <div class="column is-three-fifths is-offset-one-fifth">
+                    <div class="post">
+                        <div class="tags">
+                            <span class="tag is-link">#Room</span>
+                            <span class="tag is-danger">#Game Ploblem</span>
+                            <span class="tag is-info">#Mystery</span>
+                        </div>
+
+                        <h4 class="title is-4 has-text-weight-bold is-uppercase">{{ $topic->topic_title }}</h4>
+                        <h6 class="subtitle is-6"><small>เขียนขึ้นโดย</small> <b class="has-text-info">{{ $topic->user->name }}</b> <small>โพสต์เมื่อ</small> <b class="has-text-info">{{ $topic->created_at }}</b></h6>
+                        <p class="content has-text-weight-medium">{{ $topic->topic_content }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-three-fifths is-offset-one-fifth">
+                <h5 class="subtitle is-5">ความคิดเห็น ({{count($topic->comment)}})</h5>
+            </div>
+            <div class="column is-three-fifths is-offset-one-fifth">
+                @forelse ($topic->comment as $key => $comment)
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="level">
+                                <div class="level-left">
+                                <p class="subtitle is-7 has-text-weight-bold">ความคิดเห็นที่ {{ $key+1 }}</p>
+                                </div>
+                                <div class="level-right">
+                                    <p class="subtitle is-7 has-text-weight-bold">โดย {{$comment->user->name}} ({{ $comment->created_at }})</p>
+                                </div>
+                            </div>
+                            <h4 class="content">{{ $comment->comment_content }}</h4>
+                        </div>
+                    </div>
+                @empty
+
+                @endforelse
+            </div>
+            <div class="column is-three-fifths is-offset-one-fifth">
+                <div class="box">
+                    <div class="level">
+                        <div class="level-left">
+                            <div class="level-item">
+                                <h5 class="title is-5">แสดงความคิดเห็น</h5>
+                            </div>
+                        </div>
+                    </div>
+                <form method="post" action="{{ route('topic.addcomment') }}" id="formwitheditor">
+                        @csrf
+
+                        <!--div-- class="field">
+                            <div id="editor"></div>
+                        </!--div-->
+
+                        <textarea name="content" class="textarea" style="daisplay:none" id="content"></textarea>
+
+                        <input type="hidden" value="{{ $topic->topic_id }}" name="topic_id">
+
+                        <div class="buttons is-right">
+                            <button type="submit" class="button is-black">แสดงความคิดเห็น</button>
+                        </div>
+                    </form>
+                </div-->
+            </div>
+        </div>
+    </section>
+    <script>
+
+        var toolbarOptions = [
+            ['bold', 'italic', 'underline', 'strike'],
+
+            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+            [{ 'color': [] }],
+            ['blockquote', 'code-block'],
+
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            [{ 'indent': '-1'}, { 'indent': '+1' }],
+
+        ];
+
+        var options = {
+            debug: 'info',
+            modules: {
+                toolbar: toolbarOptions
+            },
+            placeholder: 'ความคิดเห็น',
+            readOnly: false,
+            theme: 'snow'
+        };
+
+        var editor = new Quill('#editor', options);
+
+        $("#formwitheditor").on("submit",function(){
+            $("#content").val($("#editor").html());
+        })
+
+    </script>
+</body>
+</html>
