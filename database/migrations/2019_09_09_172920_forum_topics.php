@@ -19,9 +19,13 @@ class ForumTopics extends Migration
             $table->unsignedBigInteger('topic_author_id');
             $table->foreign('topic_author_id')->references('id')->on('users')->onDelete('cascade');
 
+            $table->unsignedBigInteger('topic_category_id');
+            $table->foreign('topic_category_id')->references('forum_category_id')->on('forum_categories')->onDelete('cascade');
+
             $table->longText('topic_title');
             $table->longText('topic_content');
             $table->integer('topic_views');
+            $table->boolean('topic_is_published');
             $table->timestamps();
         });
     }

@@ -1,6 +1,6 @@
 <!-- PC Footer -->
 <style>
-    .footer-no {
+    .footer {
         position: fixed;
         bottom: 0px;
         width: 100%;

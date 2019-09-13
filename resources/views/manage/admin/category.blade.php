@@ -1,4 +1,4 @@
-@extends('manage.managecenter')
+@extends('manage.admin.controlpanel')
 
 @section('content')
 
@@ -29,7 +29,7 @@
                             Add
                         </button>
                     </div>
-                </div>                    
+                </div>
             </form>
 
 
@@ -70,7 +70,7 @@
                                     </form>
                                 </div>
                             </th>
-                        </tr>                        
+                        </tr>
                     @endif
                     @endforeach
                 </tbody>

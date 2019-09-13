@@ -15,19 +15,7 @@
 
 <body>
     @include('components.navbar')
-    <section class="hero is-info space-for-navbar" style="background-image: url('https://i.imgur.com/EORC8LJ.png'); background-position: center; background-repeat: no-repeat; background-size: cover;">
-        <div class="hero-body">
-            <div class="container is-uppercase">
-                <h1 class="title is-1">
-                    Store <sup class="is-lowercase">v3</sup>
-                </h1>
-                <h2 class="subtitle">
-                    Buy your item, to make your gameplay better.
-                </h2>
-            </div>
-        </div>
-    </section>
-    <section class="section">
+    <section class="section" style="margin-bottom: 3em; margin-top: 6em;">
         <div class="container is-uppercase">
             <h1 class="title is-size-1 force-bold has-text-centered">Purchase Confirmation</h1>
             <p class="subtitle has-text-centered">Reviews your order information.</b></p>

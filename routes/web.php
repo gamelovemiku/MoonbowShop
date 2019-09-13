@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Itemshop;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +39,7 @@ Route::get('/store/checkout/{id}', 'CheckoutController@buy')->name('buy');
 
 Route::post('/redeem', 'RedeemController@redeem')->name('redeem');
 
-Route::get('/topup', 'TopupController@index')->name('topup');
+Route::resource('topup', 'TopupController');
 
 Route::get('/manage', function () {
     return redirect(route('profile.index'));
@@ -50,19 +49,33 @@ Route::get('/paypal', function () {
     return view('paypal');
 });
 
-Route::post('/omise', 'Payment\PaymentOmiseController@checkout');
+Route::any('/omise', function () {
+    abort(403);
+});
 
-Route::prefix('manage')->group(function () {
+Route::post('/omise', 'Payment\PaymentOmiseController@checkout')->name('paymentgateway.omise');
 
-    Route::resource('notice', 'Management\ManageNoticeController');
+Route::prefix('/player')->group(function () {
 
+    Route::get('/', 'Management\ManageProfileController@index')->name('profile.index');
     Route::resource('profile', 'Management\ManageProfileController');
+    Route::resource('topicmanager', 'Management\ManageTopicsController');
     Route::get('changepassword', 'Management\ManageProfileController@changepassword')->name('profile.changepassword');
     Route::get('editprofile', 'Management\ManageProfileController@editprofile')->name('profile.editprofile');
     Route::post('updateprofile', 'Management\ManageProfileController@updateprofile')->name('profile.updateprofile');
 
+});
+
+Route::get('admin/controlpanel', 'Management\ManageItemController@index')->name('admin.controlpanel');
+
+Route::prefix('admin/controlpanel')->group(function () {
+
+    Route::resource('notice', 'Management\ManageNoticeController');
+
     Route::resource('itemshop/item', 'Management\ManageItemController');
     Route::resource('itemshop/category', 'Management\ManageCategoryController');
+
+    Route::resource('dashboard', 'Management\ManageDashboardController');
 
     Route::resource('settings', 'Management\ManageGeneralSettingsController');
 

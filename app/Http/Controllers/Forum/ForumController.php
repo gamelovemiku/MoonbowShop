@@ -14,6 +14,7 @@ class ForumController extends Controller
 
         return view('forum.forum', [
             'topics' => $topic,
+            'mostviews' => $this->getTopicTopFiveMostView(),
         ]);
     }
 
@@ -35,5 +36,10 @@ class ForumController extends Controller
         return $topic;
     }
 
+    public function getTopicTopFiveMostView()
+    {
+        $topic = ForumTopic::orderBy('topic_views', 'desc')->take(5)->get();
+        return $topic;
+    }
 
 }

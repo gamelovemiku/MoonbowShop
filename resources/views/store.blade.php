@@ -21,7 +21,7 @@
         <div class="hero-body">
             <div class="container is-uppercase">
                 <h1 class="title is-1 force-bold">
-                    Store <sup class="is-lowercase">v3</sup>
+                    Store
                 </h1>
                 <h2 class="subtitle">
                     Buy your item, to make your gameplay better.
@@ -101,7 +101,7 @@
                                                         <div class="card-content">
                                                             <div class="field">
                                                                 <div class="tags are-normal force-bold">
-                                                                    @if($key == 0) <span class="tag is-info">Hit</span> @endif
+                                                                    @if($key == 0) <span class="tag is-info">Popular</span> @endif
                                                                     <span class="tag is-light">{{ $item->item_sold . " SOLD"}}</span>
                                                                 </div>
                                                             </div>
@@ -224,6 +224,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="box" style="width: 100%">
                         <div class="title-category">Notice
                             <p class="text-category">Store message from admin.</p>
@@ -252,6 +253,7 @@
                             </tbody>
                         </table>
                     </div>
+
                     <div class="box" style="width: 100%">
                         <div class="title-category">Redeem
                             <p class="text-category">Have any redeem code? REDEEM IT and GET PRIZE!</p>

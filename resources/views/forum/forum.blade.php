@@ -37,7 +37,7 @@
                 </div>
                 <div class="level-right">
                     <div class="buttons">
-                        <a class="button is-light" href="#">เพิ่มเรื่องใหม่</a>
+                        <a class="button is-light" href="{{ route('topic.create')}}">เพิ่มเรื่องใหม่</a>
                         <a class="button is-light" href="#">โพสต์ทั้งหมดของฉัน</a>
                     </div>
                 </div>
@@ -63,16 +63,16 @@
                 </div>
                 <div class="column is-4">
                     <div class="box">
-                        <h6 class="title is-6 has-text-weight-bold">Features</h6>
-                        <p class="subtitle is-7 has-text-weight-bold">Recommanded from staff</p>
+                        <h6 class="title is-6 has-text-weight-bold">Most Views</h6>
+                        <p class="subtitle is-7 has-text-weight-bold">Topic on trends all the times</p>
                         <table class="table is-striped is-narrow is-fullwidth">
                             <tbody>
-                                @for($i = 0; $i < 5; $i++)
+                                @foreach($mostviews as $topic)
                                     <tr>
-                                        <th><a href="#">แบบนี้มันผิดปกติไหมครับๆๆๆๆๆๆๆ</a></th>
-                                        <th>gamelovemiku</th>
-                                    </tr>
-                                @endfor
+                                        <th width="75%"><a href="/forum/topic/{{ $topic->topic_id }}">{{ $topic->topic_title }}</a></th>
+                                        <th width="25%">{{ $topic->topic_views }} <small>Views</small></th>
+                                    </tr
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

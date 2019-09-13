@@ -1,15 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Forum;
+namespace App\Http\Controllers\Management;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ForumCategoriesController extends Controller
+class ManageDashboardController extends Controller
 {
+
     public function index()
     {
-        //
+
+        return view('manage.admin.dashboard.dashboard', [
+            'users' => $this->getAllUsers(),
+            'items' => $this->getAllItem(),
+            'notices' => $this->getAllNotices(),
+            'all_sold_items' => $this->getAllItem()->sum('item_sold'),
+            'all_payment_amount' => $this->getAllPaymentTransactions()->sum('payment_amount'),
+        ]);
+        
     }
 
     public function create()

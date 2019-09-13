@@ -33,7 +33,7 @@
     OmiseCard.configure({
       publicKey: 'pkey_test_5h47rit3tz99ojp7mbj',
       image: 'https://cdn.omise.co/assets/dashboard/images/omise-logo.png',
-      amount: 99500
+      amount: 50000
     });
     // Configuring your own custom button
     OmiseCard.configureButton('#checkout-button-1', {

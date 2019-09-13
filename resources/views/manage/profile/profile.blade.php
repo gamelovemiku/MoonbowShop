@@ -1,4 +1,4 @@
-@extends('manage.managecenter')
+@extends('manage.profilecenter')
 
 @section('content')
 

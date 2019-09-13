@@ -136,3 +136,17 @@
         });
     </script>
 @endif
+
+@if (session()->has('successfullyTopup'))
+    <script>
+        swal("ขอบคุณสำหรับการสนับสนุน!", "ระบบได้เพิ่ม {{ number_format(session()->get('successfullyTopup')) }} Point เข้าบัญชีของคุณแล้ว", "success");
+        bulmaToast.toast({
+            message: "<p><b>[TOPUP]</b> <br> ได้รับ {{ number_format(session()->get('successfullyTopup')) }} Points จากการเติมเงิน</p>",
+            type: "is-info has-text-left",
+            dismissible: true,
+            duration: 5000,
+            animate: { in: "fadeInUp", out: "fadeOutRight" }
+        });
+    </script>
+@endif
+

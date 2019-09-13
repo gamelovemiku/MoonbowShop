@@ -46,24 +46,7 @@
                         @include('components.alert')
                         <aside class="menu">
                             <p class="menu-label">
-                                User Profile
-                            </p>
-                            <ul class="menu-list">
-                                <a class="menu-block" href="{{ route("profile.index") }}">
-                                    <span class="menu-icon icon">
-                                        <i class="fas fa-id-card"></i>
-                                    </span>
-                                    Profile
-                                </a>
-                                <a class="menu-block" href="{{ route("profile.changepassword") }}">
-                                    <span class="menu-icon icon">
-                                        <i class="fas fa-key"></i>
-                                    </span>
-                                    Change Password
-                                </a>
-                            </ul>
-                            <p class="menu-label">
-                                Economic
+                                Store
                             </p>
                             <ul class="menu-list">
                                 <a class="menu-block" href="{{ route("item.index") }}">
@@ -83,7 +66,7 @@
                                 Administration
                             </p>
                             <ul class="menu-list">
-                                <a class="menu-block" href="{{ route("notice.index") }}">
+                                <a class="menu-block" href="{{ route("dashboard.index") }}">
                                     <span class="menu-icon icon">
                                         <i class="fas fa-file-invoice"></i>
                                     </span>

@@ -59,9 +59,14 @@
 
                             <hr class="navbar-divider">
 
-                            <a href="/manage" class="navbar-item">
-                                Manage Profile
+                            <a href="{{ route('profile.index') }}" class="navbar-item">
+                                Profile
                             </a>
+
+                            <a href="{{ route('admin.controlpanel') }}" class="navbar-item">
+                                <div class="has-text-danger">Administration</div>
+                            </a>
+
 
                             <a class="navbar-item" href="{{ route('logout') }}">
                                 Logout

@@ -63,13 +63,13 @@ class ManageUserController extends ManageController
             ]);
         }
 
-        return redirect('manage/usereditor');
+        return redirect()->route('usereditor.index');
     }
 
     public function destroy($id)
     {
         User::find($id)->delete();
 
-        return redirect('manage/usereditor');
+        return redirect()->route('usereditor.index');
     }
 }

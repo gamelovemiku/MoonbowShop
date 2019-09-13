@@ -16,6 +16,8 @@ use App\Role;
 use App\GeneralSettings;
 use App\Logs;
 use App\Notice;
+use App\PaymentTransaction;
+
 use Auth;
 
 class Controller extends BaseController
@@ -64,6 +66,12 @@ class Controller extends BaseController
         return $items;
     }
 
+    public function getAllUsers()
+    {
+        $users = User::all();
+        return $users;
+    }
+
     public function getLastestAddItem()
     {
         $items = Itemshop::orderBy('created_at', 'desc')->take(4)->get();
@@ -80,6 +88,12 @@ class Controller extends BaseController
     {
         $category = ItemshopCategory::all();
         return $category;
+    }
+
+    public function getAllPaymentTransactions()
+    {
+        $payment = PaymentTransaction::all();
+        return $payment;
     }
 
     public function getItem($itemid)

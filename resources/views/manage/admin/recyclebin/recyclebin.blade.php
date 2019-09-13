@@ -1,4 +1,4 @@
-@extends('manage.managecenter')
+@extends('manage.admin.controlpanel')
 
 @section('content')
 
