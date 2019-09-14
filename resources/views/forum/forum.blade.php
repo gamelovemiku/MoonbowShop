@@ -71,7 +71,7 @@
                                     <tr>
                                         <th width="75%"><a href="/forum/topic/{{ $topic->topic_id }}">{{ $topic->topic_title }}</a></th>
                                         <th width="25%">{{ $topic->topic_views }} <small>Views</small></th>
-                                    </tr
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -80,5 +80,6 @@
             </div>
         </div>
     </section>
+    @include('components.footer')
 </body>
 </html>

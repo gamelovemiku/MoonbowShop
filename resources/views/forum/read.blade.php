@@ -43,8 +43,9 @@
                                 <span class="tag is-success">Published</span>
                             @endif
                             <span class="tag is-link">{{ $topic->topic_views }} Views</span>
-                            <span class="tag is-info">#Mystery</span>
+                            <span class="tag is-info">{{ $topic->category->forum_category_name }}</span>
                         </div>
+
 
                         <h4 class="title is-4 has-text-weight-bold is-uppercase">{{ $topic->topic_title }}</h4>
                         <h6 class="subtitle is-6"><small>เขียนโดย</small> <b class="has-text-info">{{ $topic->user->name }}</b> <small>โพสต์เมื่อ</small> <b class="has-text-info">{{ $topic->created_at }}</b></h6>
@@ -61,7 +62,7 @@
                         <div class="card-content">
                             <div class="level">
                                 <div class="level-left">
-                                <p class="subtitle is-7 has-text-weight-bold">ความคิดเห็นที่ {{ $key+1 }}</p>
+                                <p class="subtitle is-7 has-text-weight-bold">ความคิดเห็นที่ {{ $key+1 }} @if($topic->user->name == $comment->user->name) <small>(เจ้าของโพสต์)</small> @endif</p>
                                 </div>
                                 <div class="level-right">
                                     <p class="subtitle is-7 has-text-weight-bold">โดย {{$comment->user->name}} ({{ $comment->created_at }})</p>
@@ -74,34 +75,39 @@
                     <p class="content has-text-medium has-text-centered">-- ดูเหมือนไม่มีใครมาให้คำตอบไว้เลย --</p>
                 @endforelse
             </div>
-            <div class="column is-three-fifths is-offset-one-fifth">
-                <div class="box">
-                    <div class="level">
-                        <div class="level-left">
-                            <div class="level-item">
-                                <h5 class="title is-5">แสดงความคิดเห็น</h5>
+            @auth
+                <div class="column is-three-fifths is-offset-one-fifth">
+                    <div class="box">
+                        <div class="level">
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <h5 class="title is-5">แสดงความคิดเห็น</h5>
+                                </div>
                             </div>
                         </div>
+                    <form method="post" action="{{ route('topic.addcomment') }}" id="formwitheditor">
+                            @csrf
+
+                            <div class="field">
+                                <textarea name="content" class="textarea" style="daisplay:none"></textarea>
+                            </div>
+
+                            <div class="field">
+                                <input type="hidden" value="{{ $topic->topic_id }}" name="topic_id">
+                            </div>
+
+                            <div class="buttons is-right">
+                                <button type="submit" class="button is-black">แสดงความคิดเห็น</button>
+                            </div>
+
+                        </form>
                     </div>
-                <form method="post" action="{{ route('topic.addcomment') }}" id="formwitheditor">
-                        @csrf
-
-                        <div class="field">
-                            <textarea name="content" class="textarea" style="daisplay:none"></textarea>
-                        </div>
-
-                        <div class="field">
-                            <input type="hidden" value="{{ $topic->topic_id }}" name="topic_id">
-                        </div>
-
-                        <div class="buttons is-right">
-                            <button type="submit" class="button is-black">แสดงความคิดเห็น</button>
-                        </div>
-
-                    </form>
                 </div>
-            </div>
+            @else
+            <p style="margin-top: 3rem; margin-bottom: 6rem" class="content has-text-medium has-text-centered"><a href="{{ route('login') }}">เข้าสู่ระบบ</a> เพื่อแสดงความคิดเห็น</p>
+            @endauth
         </div>
     </section>
+    @include('components.footer')
 </body>
 </html>

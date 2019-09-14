@@ -4,16 +4,16 @@
 
 <nav class="breadcrumb is-small" aria-label="breadcrumbs">
     <ul>
-        <li><a href="/manage">{{ Auth::user()->name }}</a></li>
-        <li><a href="/manage/profile">Admin</a></li>
-        <li><a href="/manage/item">Itemshop</a></li>
-        <li class="is-active"><a href="/manage/changepassword" aria-current="page">Item</a></li>
+        <li><a href="{{ route('profile.index') }}">{{ Auth::user()->name }}</a></li>
+        <li><a href="{{ route('admin.controlpanel') }}">Admin</a></li>
+        <li><a href="{{ route('item.index') }}">Itemshop</a></li>
+        <li class="is-active"><a aria-current="page">Edit Item</a></li>
     </ul>
 </nav>
 <div class="tabs is-small">
     <ul>
-        <li class="is-active"><a href="/manage/itemshop/item">Item</a></li>
-        <li><a href="/manage/itemshop/category">Category</a></li>
+        <li class="is-active"><a href="{{ route('item.index') }}">Item</a></li>
+        <li><a href="{{ route('category.index') }}">Category</a></li>
     </ul>
 </div>
 <h4 class="title is-size-4 force-bold">Edit Item <small>(#{{ $item->item_id }})</small></h4>
@@ -47,25 +47,25 @@
                     </div>
                 </div>
 
-                    <img class="image" src="/storage/itemshop/cover/{{ $item->item_image_path}}" width="64px">
-                    <div class="field">
-                            <div class="file is-black is-small has-name">
-                                <label class="file-label">
-                                <input class="file-input" type="file" name="cover">
-                                <span class="file-cta">
-                                    <span class="file-icon">
-                                        <i class="fas fa-upload"></i>
-                                    </span>
-                                    <span class="file-label">
-                                        <p id="upload-header">Upload</p>
-                                    </span>
+                <img class="image" src="/storage/itemshop/cover/{{ $item->item_image_path}}" width="64px">
+                <div class="field">
+                        <div class="file is-black is-small has-name">
+                            <label class="file-label">
+                            <input class="file-input" type="file" name="cover">
+                            <span class="file-cta">
+                                <span class="file-icon">
+                                    <i class="fas fa-upload"></i>
                                 </span>
-                                <span class="file-name">
-                                    <p id="upload-filename">No Select file</p>
+                                <span class="file-label">
+                                    <p id="upload-header">Upload</p>
                                 </span>
-                                </label>
-                            </div>
+                            </span>
+                            <span class="file-name">
+                                <p id="upload-filename">No Select file</p>
+                            </span>
+                            </label>
                         </div>
+                    </div>
             </div>
 
             <div class="column is-6">
@@ -90,6 +90,13 @@
                     <label for="item_price" class="label">Price <small class="has-text-grey-light">(Points)</small></label>
                     <div class="control">
                         <input id="item_price" class="input" name="item_price" value="{{ $item->item_price }}">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="item_price" class="label">Discount Price <small class="has-text-grey-light">(Optional)</small></label>
+                    <div class="control">
+                        <input id="item_price" class="input" name="item_discount_price" value="{{ $item->item_discount_price }}">
                     </div>
                 </div>
 

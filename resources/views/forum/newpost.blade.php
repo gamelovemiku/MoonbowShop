@@ -80,6 +80,7 @@
             </div>
         </div>
     </section>
+    @include('components.footer')
     <script>
         $('#summernote').summernote({
             placeholder: 'เนื้อหา..',

@@ -3,17 +3,22 @@
 namespace App\Http\Controllers\Management;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 use App\ForumTopic;
 
 class ManageTopicsController extends ManageController
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
 
         $user = $this->getLoggedinUser();
-        
+
         return view('manage.topic.topic', [
             'topics' => $this->getTopicsPostedByUser($user->id),
         ]);

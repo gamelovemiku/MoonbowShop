@@ -18,7 +18,7 @@ class ManageCommandSenderController extends ManageController
         $this->sendCommand($request->command);
 
         session()->flash('manageCommandsenderSuccess');
-        return redirect('manage/commandsender');
+        return redirect()->route('commandsender');
     }
 
 }

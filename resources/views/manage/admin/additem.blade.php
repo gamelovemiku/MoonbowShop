@@ -4,16 +4,16 @@
 
 <nav class="breadcrumb is-small" aria-label="breadcrumbs">
     <ul>
-        <li><a href="/manage">{{ Auth::user()->name }}</a></li>
-        <li><a href="/manage/profile">Admin</a></li>
-        <li><a href="/manage/item">Itemshop</a></li>
-        <li class="is-active"><a href="/manage/changepassword" aria-current="page">Item</a></li>
+        <li><a href="{{ route('profile.index') }}">{{ Auth::user()->name }}</a></li>
+        <li><a href="{{ route('admin.controlpanel') }}">Admin</a></li>
+        <li><a href="{{ route('item.index') }}">Itemshop</a></li>
+        <li class="is-active"><a href="{{ route('item.index') }}" aria-current="page">Item</a></li>
     </ul>
 </nav>
 <div class="tabs is-small">
     <ul>
-        <li class="is-active"><a href="/manage/itemshop/item">Item</a></li>
-        <li><a href="/manage/itemshop/category">Category</a></li>
+        <li class="is-active"><a href="{{ route('item.index') }}">Item</a></li>
+        <li><a href="{{ route('category.index') }}">Category</a></li>
     </ul>
 </div>
 <h4 class="title is-size-4 force-bold">Add new Item</h4>

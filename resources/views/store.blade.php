@@ -75,7 +75,7 @@
                                                                 </div>
 
                                                                 <p class="is-size-6 has-text-weight-medium has-text-centered">
-                                                                    {{ $item->item_price }} Points
+                                                                    @if($item->item_discount_price == null) {{ $item->item_price }} Points @else <small class="has-text-dark"><del>{{ $item->item_price }}</small> > </small> <a class="has-text-danger">{{ $item->item_discount_price }} Points</a>   @endif
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -116,7 +116,7 @@
                                                                 </div>
 
                                                                 <p class="is-size-6 has-text-weight-medium has-text-centered">
-                                                                    {{ $item->item_price }} Points
+                                                                    @if($item->item_discount_price == null) {{ $item->item_price }} Points @else <small class="has-text-dark"><del>{{ $item->item_price }}</small> > </small> <a class="has-text-danger">{{ $item->item_discount_price }} Points</a>   @endif
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -135,7 +135,44 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <h1>Videos</h1>
+                                        <div class="columns is-multiline">
+                                            @forelse ($discount as $key => $item)
+                                                <div class="column is-3">
+                                                    <div class="card box-fullheight">
+                                                        <div class="card-content">
+                                                            <div class="field">
+                                                                <div class="tags are-normal force-bold">
+                                                                    <span class="tag is-primary">Discount</span>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="title-product @if($key == 0) has-text-info @endif">{{ $item->item_name }}
+                                                                <p class="subtitle-product">{{ $item->item_desc }}</p>
+
+                                                                <div class="field" style="margin-top: 0.75rem;">
+                                                                    <figure class="image container is-96x96">
+                                                                        <img src="/storage/itemshop/cover/{{ $item->item_image_path}}" alt="product">
+                                                                    </figure>
+                                                                </div>
+
+                                                                <p class="is-size-6 has-text-weight-medium has-text-centered">
+                                                                        @if($item->item_discount_price == null) {{ $item->item_price }} Points @else <small class="has-text-dark"><del>{{ $item->item_price }}</small> > </small> <a class="has-text-danger">{{ $item->item_discount_price }} Points</a>   @endif
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-footer">
+                                                            <div class="card-footer-item">
+                                                                <a href="/store/checkout/{{ $item->item_id }}" class="button @if($key == 0) is-primary @else is-black @endif  is-outlined">@if($key == 0) Get it now! @else Buy @endif</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @empty
+                                                <div class="column is-12">
+                                                    <p class="is-size-6 has-text-centered has-text-danger" style="margin: 25%">There are no items available for sale.</p>
+                                                </div>
+                                            @endforelse
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
@@ -194,7 +231,7 @@
                                             </div>
 
                                             <p class="is-size-6 has-text-weight-medium has-text-centered">
-                                                {{ $item->item_price }} Points
+                                                @if($item->item_discount_price == null) {{ $item->item_price }} Points @else <small class="has-text-dark"><del>{{ $item->item_price }}</small> > </small> <a class="has-text-danger">{{ $item->item_discount_price }} Points</a>   @endif
                                             </p>
                                         </div>
                                     </div>

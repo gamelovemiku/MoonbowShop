@@ -18,7 +18,7 @@ class ManageDashboardController extends Controller
             'all_sold_items' => $this->getAllItem()->sum('item_sold'),
             'all_payment_amount' => $this->getAllPaymentTransactions()->sum('payment_amount'),
         ]);
-        
+
     }
 
     public function create()

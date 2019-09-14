@@ -42,7 +42,14 @@
                                             </tr>
                                              <tr>
                                                 <th>PRICE</th>
-                                                <th>{{ $items->item_price }}</th>
+                                                <th>
+                                                    @if ($items->item_discount_price != null)
+                                                        <del>{{ $items->item_price }} Points</del> >
+                                                        <a class="has-text-danger">{{ $items->item_discount_price }} Points</a>
+                                                    @else
+                                                        {{ $items->item_price }} Points
+                                                    @endif
+                                                </th>
                                             </tr>
                                             <tr>
                                                 <th>CATEGORY</th>
@@ -56,7 +63,7 @@
                             @csrf
                             <input type="hidden" name="id" value="{{ $items->item_id}}">
                             <div class="buttons is-right">
-                                <button type="submit" id="submit_button" class="button is-black is-fullwidth clickaction">Checkout for {{ $items->item_price }} Points</button>
+                                <button type="submit" id="submit_button" class="button is-black is-fullwidth clickaction">Checkout for {{ $items->item_discount_price ?? $items->item_price }} Points</button>
                                 <a href="/store" class="button is-info is-fullwidth">Back to store</a>
                             </div>
                         </form>

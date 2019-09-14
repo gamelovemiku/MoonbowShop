@@ -25,6 +25,8 @@ class ForumTopicsController extends ForumController
         $topic->topic_title = $request->topic;
         $topic->topic_content = $request->content;
 
+        $topic->topic_category_id = 1;
+
         $topic->topic_author_id = $this->getLoggedinUser()->id;
         $topic->topic_views = 0;
 

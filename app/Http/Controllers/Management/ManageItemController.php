@@ -90,6 +90,16 @@ class ManageItemController extends ManageController
 
         ]);
 
+        if(empty($request->item_discount_price)){
+            $item->update([
+                'item_discount_price' => null,
+            ]);
+        }else{
+            $item->update([
+                'item_discount_price' => $request->item_discount_price,
+            ]);
+        }
+
         if($request->file('cover') != null){
 
             Storage::disk('local')->delete('public/itemshop/cover/' . $oldfilename);

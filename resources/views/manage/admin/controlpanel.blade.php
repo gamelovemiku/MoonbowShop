@@ -84,6 +84,12 @@
                                     </span>
                                     Notice
                                 </a>
+                                <a class="menu-block" href="{{ route("notice.index") }}">
+                                    <span class="menu-icon icon">
+                                        <i class="fas fa-comments"></i>
+                                    </span>
+                                    Forum
+                                </a>
                                 <a class="menu-block" href="{{ route("commandsender") }}">
                                     <span class="menu-icon icon">
                                         <i class="fas fa-terminal"></i>
@@ -109,30 +115,13 @@
                                     <span class="menu-icon icon">
                                         <i class="far fa-credit-card"></i>
                                     </span>
-                                    Payments
+                                    Payment Plans
                                 </a>
                                 <a class="menu-block" href="#">
                                     <span class="menu-icon icon">
                                         <i class="fas fa-history"></i>
                                     </span>
                                     Logs
-                                </a>
-                            </ul>
-                            <p class="menu-label">
-                                Analytics
-                            </p>
-                            <ul class="menu-list">
-                                <a class="menu-block" href="#">
-                                    <span class="menu-icon icon">
-                                        <i class="fas fa-chart-line"></i>
-                                    </span>
-                                    Global
-                                </a>
-                                <a class="menu-block" href="#">
-                                    <span class="menu-icon icon">
-                                            <i class="fas fa-flag-checkered"></i>
-                                    </span>
-                                    Player Actions
                                 </a>
                             </ul><hr/>
                         <a class="button is-danger is-fullwidth" href="{{ route('logout') }}">Sign Out</a>

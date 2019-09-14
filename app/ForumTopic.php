@@ -10,7 +10,7 @@ class ForumTopic extends Model
     protected $primaryKey = 'topic_id'; // ชื่อ Primary Key
 
     protected $fillable = [
-        'topic_author_id', 'topic_title', 'topic_content', 'topic_views',
+        'topic_author_id', 'topic_title', 'topic_category_id', 'topic_content', 'topic_views',
     ];
 
     public function comment()
@@ -21,6 +21,11 @@ class ForumTopic extends Model
     public function user()
     {
         return $this->hasOne('App\User', 'id', 'topic_author_id');
+    }
+
+    public function category()
+    {
+        return $this->hasOne('App\ForumCategory', 'forum_category_id', 'topic_category_id');
     }
 
 }

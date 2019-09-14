@@ -17,14 +17,21 @@
 
         <div class="navbar-menu">
             @guest
-                <li class="navbar-end">
-                    <a class="navbar-item" href="{{ route('login') }}">
-                        <i class="fas fa-sign-in-alt" style="margin-right: 8px;"></i> {{ __('Login') }}
-                    </a>
-                    <a class="navbar-item" href="{{ route('register') }}">
-                        <i class="fas fa-user-plus" style="margin-right: 8px;"></i> {{ __('Register') }}
-                    </a>
-                </li>
+
+            <div class="navbar-start">
+                <a class="navbar-item" href="/forum">
+                    <i class="fab fa-discord" style="margin-right: 8px;"></i> FORUM
+                </a>
+            </div>
+
+            <li class="navbar-end">
+                <a class="navbar-item" href="{{ route('login') }}">
+                    <i class="fas fa-sign-in-alt" style="margin-right: 8px;"></i> {{ __('Login') }}
+                </a>
+                <a class="navbar-item" href="{{ route('register') }}">
+                    <i class="fas fa-user-plus" style="margin-right: 8px;"></i> {{ __('Register') }}
+                </a>
+            </li>
             @else
                 <div class="navbar-start">
 
@@ -63,10 +70,12 @@
                                 Profile
                             </a>
 
+                            @if(Auth::user()->role->role_id == 1)
+
                             <a href="{{ route('admin.controlpanel') }}" class="navbar-item">
                                 <div class="has-text-danger">Administration</div>
                             </a>
-
+                            @endif
 
                             <a class="navbar-item" href="{{ route('logout') }}">
                                 Logout
@@ -75,6 +84,6 @@
                     </div>
             @endguest
         </div>
-        </div>
     </div>
+
 </nav>

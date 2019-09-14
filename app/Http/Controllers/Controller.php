@@ -66,6 +66,12 @@ class Controller extends BaseController
         return $items;
     }
 
+    public function getDiscountItem()
+    {
+        $items = Itemshop::whereNotNull('item_discount_price')->get();
+        return $items;
+    }
+
     public function getAllUsers()
     {
         $users = User::all();

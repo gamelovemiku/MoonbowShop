@@ -23,6 +23,7 @@ class StoreController extends Controller
                 'balance'   => $this->getBalance(),
                 'settings'  => $this->getSettings(),
                 'notices'   => $this->getOnlyStoreNotices(),
+                'discount'  => $this->getDiscountItem(),
             ]
         );
     }

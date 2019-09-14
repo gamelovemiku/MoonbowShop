@@ -64,6 +64,6 @@ class ManageCategoryController extends ManageController
             session()->flash('somethingError');
         }
 
-        return redirect('manage/itemshop/category');
+        return redirect()->route('category.index');
     }
 }

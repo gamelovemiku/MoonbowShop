@@ -25,7 +25,7 @@ Route::get('/checkout', 'CheckoutController@index');
 
 Route::get('/logout', function () {
     Auth::logout();
-    return redirect('/login');
+    return redirect()->back();
 });
 
 Auth::routes();
@@ -66,7 +66,7 @@ Route::prefix('/player')->group(function () {
 
 });
 
-Route::get('admin/controlpanel', 'Management\ManageItemController@index')->name('admin.controlpanel');
+Route::get('admin/controlpanel', 'Management\ManageDashboardController@index')->name('admin.controlpanel');
 
 Route::prefix('admin/controlpanel')->group(function () {
 

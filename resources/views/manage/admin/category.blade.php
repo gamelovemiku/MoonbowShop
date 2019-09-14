@@ -4,9 +4,9 @@
 
 <nav class="breadcrumb is-small" aria-label="breadcrumbs">
     <ul>
-        <li><a href="/manage">{{ Auth::user()->name }}</a></li>
-        <li><a href="/manage/profile">Admin</a></li>
-        <li><a href="/manage/profile">Itemshop</a></li>
+        <li><a href="{{ route('profile.index') }}">{{ Auth::user()->name }}</a></li>
+        <li><a href="{{ route('admin.controlpanel') }}">Admin</a></li>
+        <li><a href="{{ route('item.index') }}">Itemshop</a></li>
         <li class="is-active"><a href="/manage/changepassword" aria-current="page">Category</a></li>
     </ul>
 </nav>
