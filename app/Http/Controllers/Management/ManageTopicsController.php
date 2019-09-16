@@ -51,7 +51,10 @@ class ManageTopicsController extends ManageController
 
     public function destroy($id)
     {
-        //
+        $topic = ForumTopic::find($id);
+        $topic->delete();
+
+        return redirect()->route('topicmanager.index');
     }
 
     public function getCommentOnTopic($id) {

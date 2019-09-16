@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Management;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ManageDashboardController extends Controller
+class ManageDashboardController extends ManageController
 {
 
     public function index()

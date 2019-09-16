@@ -77,6 +77,8 @@ Route::prefix('admin/controlpanel')->group(function () {
 
     Route::resource('dashboard', 'Management\ManageDashboardController');
 
+    Route::resource('paymentplan', 'Management\ManagePaymentPlanController');
+
     Route::resource('settings', 'Management\ManageGeneralSettingsController');
 
     Route::get('commandsender', 'Management\ManageCommandSenderController@index')->name('commandsender');

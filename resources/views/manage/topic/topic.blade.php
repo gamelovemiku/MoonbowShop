@@ -37,7 +37,7 @@
                                             <form action="{{ route('topicmanager.destroy', [$topic->id])}}" method="post">
                                                 @method('delete')
                                                 @csrf
-                                                <button type="submit" class="button is-danger is-small">Move to Bin</button>
+                                                <button type="submit" class="button is-danger is-small">Delete</button>
                                             </form>
                                         </div>
                                     </th>

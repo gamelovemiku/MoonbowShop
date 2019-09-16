@@ -111,7 +111,7 @@
                                     </span>
                                     General Settings
                                 </a>
-                                <a class="menu-block" href="#">
+                                <a class="menu-block" href="{{ route('paymentplan.index') }}">
                                     <span class="menu-icon icon">
                                         <i class="far fa-credit-card"></i>
                                     </span>

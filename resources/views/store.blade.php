@@ -70,7 +70,7 @@
 
                                                                 <div class="field" style="margin-top: 0.75rem;">
                                                                     <figure class="image container is-96x96">
-                                                                        <img src="/storage/itemshop/cover/{{ $item->item_image_path}}" alt="product">
+                                                                        <img loading="lazy" src="/storage/itemshop/cover/{{ $item->item_image_path}}" alt="product">
                                                                     </figure>
                                                                 </div>
 
@@ -111,7 +111,7 @@
 
                                                                 <div class="field" style="margin-top: 0.75rem;">
                                                                     <figure class="image container is-96x96">
-                                                                        <img src="/storage/itemshop/cover/{{ $item->item_image_path}}" alt="product">
+                                                                        <img loading="lazy" src="/storage/itemshop/cover/{{ $item->item_image_path}}" alt="product">
                                                                     </figure>
                                                                 </div>
 
@@ -151,7 +151,7 @@
 
                                                                 <div class="field" style="margin-top: 0.75rem;">
                                                                     <figure class="image container is-96x96">
-                                                                        <img src="/storage/itemshop/cover/{{ $item->item_image_path}}" alt="product">
+                                                                        <img loading="lazy" src="/storage/itemshop/cover/{{ $item->item_image_path}}" alt="product">
                                                                     </figure>
                                                                 </div>
 
@@ -226,7 +226,7 @@
 
                                             <div class="field" style="margin-top: 0.75rem;">
                                                 <figure class="image container is-96x96">
-                                                    <img src="/storage/itemshop/cover/{{ $item->item_image_path}}" alt="product">
+                                                    <img loading="lazy" src="/storage/itemshop/cover/{{ $item->item_image_path}}" alt="product">
                                                 </figure>
                                             </div>
 

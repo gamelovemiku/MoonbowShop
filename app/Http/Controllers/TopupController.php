@@ -10,7 +10,7 @@ class TopupController extends Controller
 
     public function index() {
 
-        $plan = PaymentPlan::all();
+        $plan = PaymentPlan::orderBy('plan_price', 'asc')->get();
 
         return view('payment.topup', [
             'plans' => $plan,

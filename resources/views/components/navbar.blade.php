@@ -56,6 +56,13 @@
                     </a>
                 </div>
                 <div class="navbar-end">
+                        @if(Auth::user()->role->role_id == 1)
+
+                        <a class="navbar-item" href="{{ route('admin.controlpanel') }}">
+                            <i class="fas fa-cogs" style="margin-right: 8px;"></i> CONTROL PANEL
+                        </a>
+
+                        @endif
                         <div class="navbar-item has-dropdown is-hoverable">
                             <a class="navbar-link"><i class="fas fa-user" style="margin-right: 8px;"></i>{{ Auth::user()->name }}</a>
                         <div class="navbar-dropdown is-boxed">
@@ -69,13 +76,6 @@
                             <a href="{{ route('profile.index') }}" class="navbar-item">
                                 Profile
                             </a>
-
-                            @if(Auth::user()->role->role_id == 1)
-
-                            <a href="{{ route('admin.controlpanel') }}" class="navbar-item">
-                                <div class="has-text-danger">Administration</div>
-                            </a>
-                            @endif
 
                             <a class="navbar-item" href="{{ route('logout') }}">
                                 Logout

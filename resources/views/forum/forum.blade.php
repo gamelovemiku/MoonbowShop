@@ -38,12 +38,13 @@
                 <div class="level-right">
                     <div class="buttons">
                         <a class="button is-light" href="{{ route('topic.create')}}">เพิ่มเรื่องใหม่</a>
-                        <a class="button is-light" href="#">โพสต์ทั้งหมดของฉัน</a>
+                    <a class="button is-light" href=" {{ route('topicmanager.index') }}">โพสต์ทั้งหมดของฉัน</a>
                     </div>
                 </div>
             </div>
             <div class="columns is-multiline">
                 <div class="column is-8">
+                    <h4 class="title is-4">กำลังได้รับความนิยม</h4>
                     <div class="box">
                         <h6 class="title is-6 has-text-weight-bold">Lastest topics</h6>
                         <p class="subtitle is-7 has-text-weight-bold">Moonbow Minecraft Forums</p>
@@ -62,6 +63,41 @@
                     </div>
                 </div>
                 <div class="column is-4">
+                    <h4 class="title is-4">เลือกตามหมวดหมู่</h4>
+                    <div class="box">
+                        <h6 class="title is-6 has-text-weight-bold">Most Views</h6>
+                        <p class="subtitle is-7 has-text-weight-bold">Topic on trends all the times</p>
+                        <table class="table is-striped is-narrow is-fullwidth">
+                            <tbody>
+                                @foreach($mostviews as $topic)
+                                    <tr>
+                                        <th width="75%"><a href="/forum/topic/{{ $topic->topic_id }}">{{ $topic->topic_title }}</a></th>
+                                        <th width="25%">{{ $topic->topic_views }} <small>Views</small></th>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <h4 class="title is-4">เข้าชมมากที่สุด</h4>
+                    <div class="box">
+                        <h6 class="title is-6 has-text-weight-bold">Most Views</h6>
+                        <p class="subtitle is-7 has-text-weight-bold">Topic on trends all the times</p>
+                        <table class="table is-striped is-narrow is-fullwidth">
+                            <tbody>
+                                @foreach($mostviews as $topic)
+                                    <tr>
+                                        <th width="75%"><a href="/forum/topic/{{ $topic->topic_id }}">{{ $topic->topic_title }}</a></th>
+                                        <th width="25%">{{ $topic->topic_views }} <small>Views</small></th>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="column is-8">
+                    <h4 class="title is-4">มาใหม่ล่าสุด</h4>
                     <div class="box">
                         <h6 class="title is-6 has-text-weight-bold">Most Views</h6>
                         <p class="subtitle is-7 has-text-weight-bold">Topic on trends all the times</p>
