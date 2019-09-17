@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Forum</title>
-    <link rel="stylesheet" href="/css/bulma/bulma.css"/>
+    <link rel="stylesheet" href="/css/bulma/bulma-forum.css"/>
     <link rel="stylesheet" href="/css/self-custom.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css"/>
     <link href="https://fonts.googleapis.com/css?family=Poppins|Pridi:300&display=swap" rel="stylesheet">

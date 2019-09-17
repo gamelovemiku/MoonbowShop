@@ -30,6 +30,7 @@ class ManagePaymentPlanController extends Controller
         $plan = new PaymentPlan;
 
         $plan->plan_provider      = $request->provider;
+        $plan->plan_title         = $request->title;
         $plan->plan_price         = $request->price;
         $plan->plan_points_amount = $request->points_amount;
 
@@ -65,6 +66,7 @@ class ManagePaymentPlanController extends Controller
         $item->update([
 
             'plan_provider' => $request->provider,
+            'plan_title' => $request->title,
             'plan_price' => $request->price,
             'plan_points_amount' => $request->points_amount,
 

@@ -16,6 +16,7 @@ class PaymentPlans extends Migration
         Schema::create('payment_plans', function (Blueprint $table) {
             $table->bigIncrements('plan_id');
 
+            $table->string('plan_title');
             $table->string('plan_provider');
 
             $table->double('plan_price');

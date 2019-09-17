@@ -64,6 +64,8 @@ Route::prefix('/player')->group(function () {
     Route::get('editprofile', 'Management\ManageProfileController@editprofile')->name('profile.editprofile');
     Route::post('updateprofile', 'Management\ManageProfileController@updateprofile')->name('profile.updateprofile');
 
+    Route::resource('history', 'Management\ManageHistoryController');
+
 });
 
 Route::get('admin/controlpanel', 'Management\ManageDashboardController@index')->name('admin.controlpanel');

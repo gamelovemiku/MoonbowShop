@@ -63,6 +63,17 @@
                                 </a>
                             </ul>
                             <p class="menu-label">
+                                History
+                            </p>
+                            <ul class="menu-list">
+                                <a class="menu-block" href="{{ route("history.index") }}">
+                                    <span class="menu-icon icon">
+                                        <i class="fas fa-receipt"></i>
+                                    </span>
+                                    Purchase history
+                                </a>
+                            </ul>
+                            <p class="menu-label">
                                 Forums
                             </p>
                             <ul class="menu-list">

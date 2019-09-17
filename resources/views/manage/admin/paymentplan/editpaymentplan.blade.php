@@ -24,13 +24,15 @@
                         <label class="label">Payment provider</label>
 
                         <div class="control">
-                            <input type="text" class="input @error('provider') is-danger @enderror" name="provider" maxlength="30" value="{{ $plan->plan_provider }}">
+                            <input type="text" class="input @error('provider') is-danger @enderror" name="provider" value="{{ $plan->plan_provider }}">
+                        </div>
+                    </div>
 
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                    <div class="field">
+                        <label class="label">Title</label>
+
+                        <div class="control">
+                            <input type="text" class="input @error('provider') is-danger @enderror" name="title" maxlength="30" value="{{ $plan->plan_title }}">
                         </div>
                     </div>
 

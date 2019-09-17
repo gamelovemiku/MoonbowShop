@@ -51,6 +51,7 @@ class PaymentOmiseController extends Controller
         $payment = new PaymentTransaction;
 
         $payment->payment_provider = "omise";
+        $payment->payment_payer_id = $this->getLoggedinUser()->id;
         $payment->payment_method = $data['card']['object'];
         $payment->payment_payer = $data['card']['name'];
         $payment->payment_amount = $this->toBaht($data['amount']);

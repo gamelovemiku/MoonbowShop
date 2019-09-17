@@ -13,7 +13,6 @@
 <div class="columns">
     <div class="column is-6">
         <h4 class="title is-size-4 force-bold">Dashboard</h4>
-        <p class="subtitle is-size-7">Send game commands directly to the server<b class="force-bold"></b></p>
     </div>
 </div>
 

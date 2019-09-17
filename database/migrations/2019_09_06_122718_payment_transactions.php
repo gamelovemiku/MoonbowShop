@@ -17,9 +17,11 @@ class PaymentTransactions extends Migration
 
             $table->bigIncrements('payment_id');
 
+            $table->unsignedBigInteger('payment_payer_id');
+            $table->foreign('payment_payer_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->string('payment_provider');
             $table->string('payment_method');
-
             $table->string('payment_payer');
             $table->double('payment_amount', 10, 2);
             $table->string('payment_status');

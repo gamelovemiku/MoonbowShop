@@ -35,6 +35,14 @@
                     </div>
 
                     <div class="field">
+                        <label class="label">Title</label>
+
+                        <div class="control">
+                            <input type="text" class="input @error('provider') is-danger @enderror" name="title" maxlength="30">
+                        </div>
+                    </div>
+
+                    <div class="field">
                         <label class="label">Pricing</label>
                         <div class="control">
                             <input class="input" name="price">
