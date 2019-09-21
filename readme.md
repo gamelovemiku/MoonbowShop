@@ -13,10 +13,7 @@
 </p>
 
 <img src="https://gamelovemiku.com/imagestockcdn/shopv3.PNG">
-<code>New Update! Interface & Adminstration v3.0</code>
-
-<img src="https://gamelovemiku.com/imagestockcdn/itemshop.PNG">
-<code>Mega Update! Interface & Adminstration v2.0</code>
+<code>New Update! Interface & Adminstration v0.2.8</code>
 
 <h4>Features</h4>
 <p>
