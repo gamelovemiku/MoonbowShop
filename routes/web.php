@@ -74,6 +74,8 @@ Route::prefix('admin/controlpanel')->group(function () {
 
     Route::resource('notice', 'Management\ManageNoticeController');
 
+    Route::resource('forumcontrol', 'Management\ManageForumCategoriesController');
+
     Route::resource('itemshop/item', 'Management\ManageItemController');
     Route::resource('itemshop/category', 'Management\ManageCategoryController');
 
@@ -106,7 +108,7 @@ Route::post('/testpost', function (Request $request) {
     return $request;
 });
 
-Route::get('/forum', 'Forum\ForumController@index');
+Route::get('/forum', 'Forum\ForumController@index')->name('forum.main');
 
 Route::prefix('forum')->group(function () {
 

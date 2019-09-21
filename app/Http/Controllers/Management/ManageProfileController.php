@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ChangePasswordRequest;
 use App\User;
 use Auth;
+use Storage;
 
 
 class ManageProfileController extends ManageController
@@ -48,12 +49,22 @@ class ManageProfileController extends ManageController
 
     public function updateprofile(Request $request)
     {
-        $user = User::where("email", $request->email);
+        $user = User::where("email", $request->email)->get()->first();
+        $oldfilename = $user->profile_image_path;
 
         $user->update([
             'email' => $request->email,
             'name' => $request->name,
         ]);
+
+        if($request->has('avatar')){
+
+            Storage::disk('local')->delete('public/avatar/' . $oldfilename);
+
+            $user->update([
+                'profile_image_path' => $this->saveAndGetFile('public/avatar', $request->file('avatar')),
+            ]);
+        }
 
         session()->flash('successfullyUpdateData');
         return redirect()->back();

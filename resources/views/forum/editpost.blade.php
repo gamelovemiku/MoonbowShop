@@ -47,7 +47,7 @@
 
                         </div>
 
-                        <h4 class="title is-4 has-text-weight-bold is-uppercase">เพิ่มเรื่องใหม่</h4>
+                        <h4 class="title is-4 has-text-weight-bold is-uppercase">แก้ไขเรื่อง</h4>
                         <h4 class="subtitle is-6 is-uppercase">โพสต์เรื่องใหม่ไปยังเว็บบอร์ดพูดคุยในนาม {{ Auth::user()->name }}</h4>
 
                         <form action="{{ route('topic.store') }}" method="post">
@@ -59,7 +59,7 @@
                                         <select name="category">
                                             <option>หมวดหมู่ของโพสต์</option>
                                             @forelse ($categories as $category)
-                                                <option value="{{ $category->forum_category_id }}">{{$category->forum_category_name}}</option>
+                                                <option value="{{ $category->forum_category_id }}" @if($topic->topic_category_id == $category->forum_category_id) selected @endif>{{$category->forum_category_name}}</option>
                                             @empty
 
                                             @endforelse
@@ -69,23 +69,16 @@
                             </div>
 
                             <div class="field">
-                                <input class="input" type="text" name="topic" placeholder="ชื่อเรื่อง...">
+                                <input class="input" type="text" name="topic" placeholder="ชื่อเรื่อง..." value="{{ $topic->topic_title }}">
                             </div>
 
                             <div class="field has-text-weight-medium content">
-                                <textarea class="textarea" id="summernote" name="content"></textarea>
-                            </div>
-
-                            <div class="field">
-                                <label class="checkbox">
-                                    <input class="checkbox" type="checkbox" name="is_published">
-                                    บันทึกเป็นแบบร่าง
-                                </label>
+                            <textarea class="textarea" id="summernote" name="content">{{ $topic->topic_content }}</textarea>
                             </div>
 
                             <div class="field">
                                 <div class="buttons">
-                                    <button type="submit" class="button is-info has-text-weight-light">ตั้งเรื่องใหม่</button>
+                                    <button type="submit" class="button is-info has-text-weight-light">แก้ไข</button>
                                 </div>
                             </div>
 

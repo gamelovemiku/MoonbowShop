@@ -63,7 +63,7 @@
                         <div class="title-category has-text-info">Pinned Information
                             <p class="text-category">About server information, how to play, getting started and etc.</p>
                         </div>
-                    <p>{{ $settings->website_desc }}</p>
+                    <p class="has-text-weight-light">{{ $settings->website_desc }}</p>
                     </div>
                 </div>
                 <div class="column is-4">

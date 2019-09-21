@@ -62,6 +62,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'balanceEnough' => \App\Http\Middleware\balanceEnough::class,
         'adminonly' => \App\Http\Middleware\AdminOnly::class,
+        'PostOwnerOnly' => \App\Http\Middleware\PostOwnerOnly::class,
     ];
 
     /**

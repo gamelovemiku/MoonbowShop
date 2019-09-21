@@ -19,6 +19,8 @@ class Users extends Migration
             $table->unsignedBigInteger('role_id');
             $table->foreign('role_id')->references('role_id')->on('users_roles')->onDelete('cascade');
 
+            $table->string('profile_image_path')->nullable();
+
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

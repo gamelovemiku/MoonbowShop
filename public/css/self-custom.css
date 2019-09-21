@@ -74,7 +74,7 @@ textarea {
     font-size: 14px;
     text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
 }
-.input {
+.input, select {
     font-family: 'Segoe UI', Helvetica,'Pridi', serif;
 }
 .text-price{
@@ -93,4 +93,8 @@ textarea {
 
 #editor {
     height: 180px;
+}
+
+.has-text-pink {
+    color: rgb(255, 54, 131);
 }

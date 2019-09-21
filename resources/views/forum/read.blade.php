@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $topic->topic_title }} - MoonbowMC Forum</title>
-    <link rel="stylesheet" href="/css/bulma/bulma-forum.css"/>
+    <link rel="stylesheet" href="/css/bulma/bulma.css"/>
     <link rel="stylesheet" href="/css/self-custom.css"/>
     <link rel="stylesheet" href="/css/summernote-lite.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css"/>
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css" integrity="sha256-a2tobsqlbgLsWs7ZVUGgP5IvWZsx8bTNQpzsqCSm5mk=" crossorigin="anonymous" />
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="js/bulma-toast.min.js"></script>
+    <script src="/js/bulma-toast.min.js"></script>
     <script src="/js/bulma.js"></script>
     <script src="/js/summernote-lite.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -35,6 +35,7 @@
 
     <section class="section">
         <div class="container">
+            @include('components.alert')
             <div class="columns is-multiline">
                 <div class="column is-three-fifths is-offset-one-fifth">
                     <div class="post">
@@ -46,10 +47,29 @@
                             <span class="tag is-info">{{ $topic->category->forum_category_name }}</span>
                         </div>
 
-
                         <h4 class="title is-4 has-text-weight-bold is-uppercase">{{ $topic->topic_title }}</h4>
-                        <h6 class="subtitle is-6"><small>เขียนโดย</small> <b class="has-text-info">{{ $topic->user->name }}</b> <small>โพสต์เมื่อ</small> <b class="has-text-info">{{ $topic->created_at }}</b></h6>
-                        <p class="content has-text-weight-medium">{!! $topic->topic_content !!}</p>
+                        <div class="level subtitle">
+                            <div class="level-left">
+                                <h6 class="subtitle is-6"><small>เขียนโดย</small> <b class="has-text-info">{{ $topic->user->name }}</b> <small>โพสต์เมื่อ</small> <b class="has-text-info">{{ $topic->created_at }}</b></h6>
+                            </div>
+                            <div class="level-right">
+                                <h6 class="subtitle is-6">
+                                    @if(Auth::user()->id == $topic->topic_author_id )
+                                        <form id="delete-post" method="POST" action="{{route('topic.destroy', [$topic->topic_id]) }}">
+                                            @csrf
+                                            @method('delete')
+                                        </form>
+
+                                        <small style="margin-right: 8px;"><a href="{{ route('topic.edit', [$topic->topic_id]) }}" class="has-text-pink"><i class="far fa-edit"></i> แก้ไขเรื่อง</a></small>
+                                        <small><a onclick="document.getElementById('delete-post').submit()" class="has-text-pink"><i class="far fa-trash-alt"></i> ย้ายไปถังขยะ</a></small>
+                                    @endif
+                                </h6>
+                            </div>
+                        </div>
+
+                        <div class="content has-text-weight-medium">
+                            {!! $topic->topic_content !!}
+                        </div>
                     </div>
                 </div>
             </div>

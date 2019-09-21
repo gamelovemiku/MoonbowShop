@@ -16,8 +16,8 @@ class Notices extends Migration
         Schema::create('notices', function (Blueprint $table) {
             $table->bigIncrements('notice_id');
             $table->string('notice_tag');
-            $table->string('notice_title', 48);
-            $table->string('notice_content');
+            $table->longText('notice_title');
+            $table->longText('notice_content');
             $table->boolean('notice_show_on_store');
             $table->timestamps();
         });

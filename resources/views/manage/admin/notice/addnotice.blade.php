@@ -70,8 +70,8 @@
                     <div class="field">
                         <p class="control">
                         <label class="checkbox">
-                            <input class="checkbox" type="checkbox" name="seeinstore">
-                            Show in Store page
+                            <input id="text-instore" class="is-checkradio is-block is-danger" type="checkbox" name="seeinstore">
+                            <label for="text-instore">Show in Store page</label>
                         </label>
                         </p>
                     </div>

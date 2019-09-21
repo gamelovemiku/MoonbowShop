@@ -62,6 +62,22 @@
                 </div>
             </div>
 
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label"></label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control">
+                        <label class="checkbox">
+                            <input id="text-instore" class="is-checkradio is-block is-danger" type="checkbox" name="seeinstore" @if($notice->notice_show_on_store == 1) checked @endif>
+                            <label for="text-instore">Show in Store page</label>
+                        </label>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <div class="buttons is-right">
                 <button type="submit" class="button is-black">
                     Edit Notice

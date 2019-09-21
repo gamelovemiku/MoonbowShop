@@ -5,16 +5,19 @@ namespace App\Http\Controllers\Forum;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\ForumTopic;
+use App\ForumCategory;
 
 class ForumController extends Controller
 {
     public function index() {
 
-        $topic = ForumTopic::all();
+        $category = ForumCategory::all();
 
         return view('forum.forum', [
-            'topics' => $topic,
+            'topics' => $this->getAllTopics(),
             'mostviews' => $this->getTopicTopFiveMostView(),
+            'categories' => $category,
+            'lastest' => $this->getLastestTopic()
         ]);
     }
 
@@ -36,10 +39,22 @@ class ForumController extends Controller
         return $topic;
     }
 
-    public function getTopicTopFiveMostView()
-    {
-        $topic = ForumTopic::orderBy('topic_views', 'desc')->take(5)->get();
+    public function getAllTopics() {
+
+        $topic = ForumTopic::all();
+
         return $topic;
     }
 
+    public function getTopicTopFiveMostView()
+    {
+        $topic = ForumTopic::orderBy('topic_views', 'desc')->take(3)->get();
+        return $topic;
+    }
+
+    public function getLastestTopic()
+    {
+        $topic = ForumTopic::orderBy('created_at', 'desc')->take(5)->get();
+        return $topic;
+    }
 }

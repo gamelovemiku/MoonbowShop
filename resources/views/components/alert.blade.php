@@ -150,3 +150,14 @@
     </script>
 @endif
 
+@if (session()->has('forumOwnerOnly'))
+    <script>
+        bulmaToast.toast({
+            message: "<p>เฉพาะเจ้าโพสต์เท่านั้นที่มีสิทธิ์เข้าถึงส่วนนี้</p>",
+            type: "is-danger has-text-left",
+            dismissible: true,
+            duration: 5000,
+            animate: { in: "fadeInUp", out: "fadeOutRight" }
+        });
+    </script>
+@endif

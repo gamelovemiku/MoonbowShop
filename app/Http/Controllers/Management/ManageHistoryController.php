@@ -8,6 +8,11 @@ use App\PaymentTransaction;
 class ManageHistoryController extends ManageController
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $history = PaymentTransaction::where('payment_payer_id', $this->getLoggedinUser()->id)->get();

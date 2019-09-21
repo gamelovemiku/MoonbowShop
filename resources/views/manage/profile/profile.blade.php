@@ -15,8 +15,8 @@
     @csrf
     <div class="field">
         <div class="columns">
-            <div class="column is-6" style="height: 100%">
-                <table class="table">
+            <div class="column is-8">
+                <table class="table is-fullwidth">
                     <tbody>
                         <tr>
                             <th>Username</th>
@@ -28,7 +28,7 @@
                         </tr>
                         <tr>
                             <th>Joined Date</th>
-                            <th class="has-text-grey has-text-weight-light">{{$user->created_at}}</th>
+                            <th class="has-text-grey has-text-weight-light">@if($user->created_at == null) Unknown @else {{$user->created_at}} @endif</th>
                         </tr>
                         <tr>
                             <th>Points</th>
@@ -43,10 +43,10 @@
                     <a href="{{ route('profile.editprofile') }}" class="button is-primary is-small is-outlined">Edit Profile</a></a>
                 </div>
             </div>
-            <div class="column is-6">
+            <div class="column is-4">
                 <div class="">
                     <figure class="image is-squared" style="width: 50%">
-                        <img class="is-rounded" src="https://pbs.twimg.com/profile_images/1109911712201736192/O65BBJT-_400x400.png">
+                        <img loading="lazy" src="/storage/avatar/{{ $user->profile_image_path}}" alt="product">
                     </figure>
                 </div>
             </div>

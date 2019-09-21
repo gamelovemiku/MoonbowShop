@@ -5,9 +5,17 @@ namespace App\Http\Controllers\Forum;
 use Illuminate\Http\Request;
 use App\ForumTopic;
 use App\ForumComment;
+use App\ForumCategory;
 
 class ForumTopicsController extends ForumController
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('PostOwnerOnly', ['except' => ['create', 'store', 'show', 'addcomment']]); #ยกเว้นพวกนี้ที่จะยังใช้ได้ถ้าไม่ใช่เจ้าของ
+    }
+
     public function index()
     {
 
@@ -15,7 +23,11 @@ class ForumTopicsController extends ForumController
 
     public function create()
     {
-        return view('forum.newpost');
+        $category = ForumCategory::all();
+
+        return view('forum.newpost', [
+            'categories' => $category,
+        ]);
     }
 
     public function store(Request $request)
@@ -25,7 +37,7 @@ class ForumTopicsController extends ForumController
         $topic->topic_title = $request->topic;
         $topic->topic_content = $request->content;
 
-        $topic->topic_category_id = 1;
+        $topic->topic_category_id = $request->category;
 
         $topic->topic_author_id = $this->getLoggedinUser()->id;
         $topic->topic_views = 0;
@@ -57,7 +69,12 @@ class ForumTopicsController extends ForumController
 
     public function edit($id)
     {
+        $category = ForumCategory::all();
 
+        return view('forum.editpost', [
+            'categories' => $category,
+            'topic' => $this->getTopic($id)
+        ]);
     }
 
     public function update(Request $request, $id)
@@ -67,7 +84,7 @@ class ForumTopicsController extends ForumController
 
     public function destroy($id)
     {
-        //
+        return "Delete";
     }
 
     public function addcomment(Request $request)

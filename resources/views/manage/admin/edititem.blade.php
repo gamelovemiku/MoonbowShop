@@ -30,12 +30,6 @@
 
                     <div class="control">
                         <input id="item_name" type="text" class="input @error('itemname') is-danger @enderror" name="item_name" value="{{ $item->item_name }}">
-
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
                     </div>
                 </div>
 
@@ -49,23 +43,23 @@
 
                 <img class="image" src="/storage/itemshop/cover/{{ $item->item_image_path}}" width="64px">
                 <div class="field">
-                        <div class="file is-black is-small has-name">
-                            <label class="file-label">
-                            <input class="file-input" type="file" name="cover">
-                            <span class="file-cta">
-                                <span class="file-icon">
-                                    <i class="fas fa-upload"></i>
-                                </span>
-                                <span class="file-label">
-                                    <p id="upload-header">Upload</p>
-                                </span>
+                    <div class="file is-black is-small has-name">
+                        <label class="file-label">
+                        <input class="file-input" type="file" name="cover">
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
                             </span>
-                            <span class="file-name">
-                                <p id="upload-filename">No Select file</p>
+                            <span class="file-label">
+                                <p id="upload-header">Upload</p>
                             </span>
-                            </label>
-                        </div>
+                        </span>
+                        <span class="file-name">
+                            <p id="upload-filename">No Select file</p>
+                        </span>
+                        </label>
                     </div>
+                </div>
             </div>
 
             <div class="column is-6">
@@ -75,7 +69,7 @@
                         <div class="select">
                             <select id="category" name="category" width="100%">
                                 @foreach ($categorys as $category)
-                                    <option value="{{ $category->category_id }}">{{ ucwords($category->category_name) }}</option>
+                                    <option value="{{ $category->category_id }}" @if($item->category_id == $category->category_id) selected @endif>{{ ucwords($category->category_name) }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -111,6 +105,13 @@
             </div>
 
         </div>
+
+        @error('password')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+
         <div class="buttons is-right">
             <button type="submit" class="button is-black">
                 Edit item

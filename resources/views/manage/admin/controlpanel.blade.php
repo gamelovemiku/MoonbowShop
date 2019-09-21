@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css" integrity="sha256-a2tobsqlbgLsWs7ZVUGgP5IvWZsx8bTNQpzsqCSm5mk=" crossorigin="anonymous" />
     <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-extensions@6.2.7/dist/css/bulma-extensions.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bulma-extensions@6.2.7/dist/js/bulma-extensions.min.js"></script>
+
     <script src="/js/bulma-toast.min.js"></script>
     <script src="/js/bulma.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -55,12 +58,6 @@
                                     </span>
                                     Itemshop
                                 </a>
-                                <a class="menu-block" href="{{ route("item.index") }}">
-                                    <span class="menu-icon icon">
-                                        <i class="fas fa-gifts"></i>
-                                    </span>
-                                    Redeem Code
-                                </a>
                             </ul>
                             <p class="menu-label">
                                 Administration
@@ -84,11 +81,11 @@
                                     </span>
                                     Notice
                                 </a>
-                                <a class="menu-block" href="{{ route("notice.index") }}">
+                                <a class="menu-block" href="{{ route("forumcontrol.index") }}">
                                     <span class="menu-icon icon">
                                         <i class="fas fa-comments"></i>
                                     </span>
-                                    Forum
+                                    Forum Category
                                 </a>
                                 <a class="menu-block" href="{{ route("commandsender") }}">
                                     <span class="menu-icon icon">
@@ -116,12 +113,6 @@
                                         <i class="far fa-credit-card"></i>
                                     </span>
                                     Payment Plans
-                                </a>
-                                <a class="menu-block" href="#">
-                                    <span class="menu-icon icon">
-                                        <i class="fas fa-history"></i>
-                                    </span>
-                                    Logs
                                 </a>
                             </ul><hr/>
                         <a class="button is-danger is-fullwidth" href="{{ route('logout') }}">Sign Out</a>
