@@ -25,7 +25,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($topics as $topic)
+                            @forelse ($topics as $topic)
                                 <tr>
                                     <th class="has-text-weight-medium">{{ $topic->topic_title }} @if( $topic->role_id == "1") <span class="tag is-danger" style="font-size: 8px;">Administrator</span> @elseif( $topic->role_id == "2") <span class="tag is-primary" style="font-size: 8px;">Player</span>   @endif</th>
                                     <th class="has-text-weight-medium is-lowercase">{{ $topic->topic_views }}</th>
@@ -34,15 +34,21 @@
                                         <div class="buttons">
                                             <a href="{{ route('topic.show', [$topic->topic_id])}}" style="margin-right: 8px;" class="button is-black is-small">Go to topic</a>
 
-                                            <form action="{{ route('topicmanager.destroy', [$topic->id])}}" method="post">
-                                                @method('delete')
+                                            <form method="POST" action="{{route('topicmanager.destroy', [$topic->topic_id]) }}">
                                                 @csrf
-                                                <button type="submit" class="button is-danger is-small">Delete</button>
+                                                @method('delete')
+                                                <button type="submit" class="button is-danger is-small">Move to Bin</button>
                                             </form>
                                         </div>
                                     </th>
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td class="has-text-centered" colspan="4">
+                                    ไม่มีเรื่องใดๆ ให้ดูเลย ลอง <a href="{{ route('topic.create') }}">เขียนเรื่องใหม่ </a>ดูสิ
+                                    </td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

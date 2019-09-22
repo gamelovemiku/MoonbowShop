@@ -6,161 +6,146 @@
         <div class="columns">
             <div class="column is-half is-offset-one-quarter">
                 <div class="box">
-                    <div class="tabs-wrapper">
-                        <div class="tabs">
-                            <ul>
-                                <li class="is-active">
-                                    <a>
-                                        <span class="icon is-small"><i class="fas fa-sign-in-alt"></i></span>
-                                        <span>Login</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <span class="icon is-small"><i class="fas fa-user-plus"></i></span>
-                                        <span>Register</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <span class="icon is-small"><i class="fas fa-hourglass-half"></i></span>
-                                        <span>Forgot Password</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="tabs-content">
-                            <ul>
-                                <li class="is-active">
-                                    <div class="field">
-                                        <h4 class="title is-size-4 has-text-weight-bold">Sign in</h4>
-                                        <p class="subtitle is-size-7">Tell me where you are!</p>
+                    <div id="app">
+                        <template>
+                            <section>
+                                <b-tabs type="is-boxed" v-model="activeTab" expanded>
+                                    <b-tab-item label="เข้าสู่ระบบ" icon="login-variant">
+                                        <h4 class="title is-size-4 has-text-weight-bold">เข้าสู่ระบบ</h4>
+                                        <p class="subtitle is-size-7">มีบัญชีแล้วใช่ไหม เข้าใช้งานเลย</p>
                                         <form method="POST" action="{{ route('login') }}">
                                             @csrf
 
-                                            <div class="field">
-                                                <label for="email" class="label">{{ __('E-Mail Address') }}</label>
+                                            <b-field label="อีเมล์"
+                                                @error('email')
+                                                    type="is-danger"
+                                                    message="{{ $message }}"
+                                                @enderror>
+                                                <b-input v-model="email" type="email"
+                                                    name="email">
+                                                </b-input>
+                                            </b-field>
 
-                                                <div class="control">
-                                                    <input id="email" type="email" class="input @error('email') is-danger @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                            <b-field label="รหัสผ่าน">
+                                                <b-input type="password"
+                                                    name="password"
+                                                    @error('password') message="{{ $message }}" @enderror
+                                                    password-reveal>
+                                                </b-input>
+                                            </b-field>
 
-                                                    @error('email')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <p class="help is-danger">{{ $message }}</p>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
-                                            <div class="field">
-                                                <label for="password" class="label">{{ __('Password') }}</label>
-
-                                                <div class="control">
-                                                    <input id="password" type="password" class="input @error('password') is-danger @enderror" name="password" required autocomplete="current-password">
-
-                                                    @error('password')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <p class="help is-danger">{{ $message }}</p>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
+                                            <hr>
 
                                             <div class="field">
-                                                <div class="control">
-                                                    <input class="checkbox" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                                    <label class="form-check-label" for="remember">
-                                                        {{ __('Remember Me') }}
-                                                    </label>
-                                                </div>
+                                                <b-checkbox v-model="isRemember" name="remember"
+                                                    true-value="จำฉันไว้เสมอเมื่อเข้าใช้ครั้งหน้า"
+                                                    false-value="ไม่จำฉันเมื่อเข้าสู่ระบบครั้งต่อไป">
+                                                    @{{ isRemember }}
+                                                </b-checkbox>
                                             </div>
-
                                             <div class="buttons">
                                                 <button type="submit" class="button is-black">
-                                                    {{ __('Login') }}
+                                                    เข้าสู่ระบบ
                                                 </button>
 
-                                                @if (Route::has('password.request'))
-                                                    <a class="button is-text is-small" href="{{ route('password.request') }}">
-                                                        {{ __('Forgot Your Password?') }}
-                                                    </a>
-                                                @endif
+                                                <a class="button" @click="activeTab = 1" outlined>สมัครสมาชิก</a>
+                                                <a class="button is-text" @click="activeTab = 2" outlined>ลืมรหัสผ่านหรือเปล่า?</a>
                                             </div>
                                         </form>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="field">
-                                        <h4 class="title is-size-4 has-text-weight-bold">Register</h4>
-                                        <p class="subtitle is-size-7">A few step to get access to store</p>
-                                        <form method="POST" action="{{ route('register') }}">
-                                            @csrf
+                                    </b-tab-item>
+                                    <b-tab-item label="สมัครสมาชิกใหม่" icon="account-plus">
+                                        <div class="field">
+                                            <h4 class="title is-size-4 has-text-weight-bold">สมัครสมาชิก</h4>
+                                            <p class="subtitle is-size-7">กรอกข้อมูลเพียงไม่กี่ตัวก็เข้าใช้งานได้แล้ว</p>
+                                            <form method="POST" action="{{ route('register') }}">
+                                                @csrf
 
-                                            <div class="field">
-                                                <label for="name" class="label">Username</label>
+                                                <b-field label="ชื่อผู้ใช้งาน">
+                                                    <b-input type="text"
+                                                        name="name"
+                                                        @error('name') message="{{ $message }}" @enderror>
+                                                    </b-input>
+                                                </b-field>
 
-                                                <div class="control">
-                                                    <input id="name" type="text" class="input @error('name') is-danger @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                                <b-field label="อีเมล์">
+                                                    <b-input type="email"
+                                                        name="email"
+                                                        @error('email') message="{{ $message }}" @enderror>
+                                                    </b-input>
+                                                </b-field>
 
-                                                    @error('name')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
+                                                <b-field label="รหัสผ่าน">
+                                                    <b-input type="password"
+                                                        name="password"
+                                                        @error('password') message="{{ $message }}" @enderror
+                                                        password-reveal>
+                                                    </b-input>
+                                                </b-field>
+
+                                                <b-field label="ยืนยันรหัสผ่าน">
+                                                    <b-input type="password"
+                                                        name="password_confirmation"
+                                                        @error('password') message="{{ $message }}" @enderror
+                                                        >
+                                                    </b-input>
+                                                </b-field>
+
+                                                <div class="field">
+                                                    <div class="control">
+                                                        <button type="submit" class="button is-black">
+                                                            สมัครสมาชิก
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </form>
+                                        </div>
+                                    </b-tab-item>
+                                    <b-tab-item label="ลืมรหัสผ่าน" icon="account-alert">
+                                        <div class="field">
+                                            <h4 class="title is-size-4 has-text-weight-bold">ลืมรหัสผ่าน</h4>
+                                            <p class="subtitle is-size-7">กรอกข้อมูลเพียงไม่กี่ตัวก็เข้าใช้งานได้แล้ว</p>
+                                            <form method="POST" action="{{ route('register') }}">
+                                                @csrf
 
-                                            <div class="field">
-                                                <label for="email" class="label">{{ __('E-Mail Address') }}</label>
+                                                <b-field label="อีเมล์">
+                                                    <b-input v-model="resetemail" type="email"
+                                                        name="email"
+                                                        @error('email') message="{{ $message }}" @enderror>
+                                                    </b-input>
+                                                </b-field>
 
-                                                <div class="control">
-                                                    <input id="email" type="email" class="input @error('email') is-danger @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                                    @error('email')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
+                                                <div class="field">
+                                                    <div class="control">
+                                                        <button type="submit" class="button is-black">
+                                                            @{{ 'ส่งรหัสผ่านใหม่ไปยัง ' + resetemail }}
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="field">
-                                                <label for="password" class="label">{{ __('Password') }}</label>
-
-                                                <div class="control">
-                                                    <input id="password" type="password" class="input @error('password') is-danger @enderror" name="password" required autocomplete="new-password">
-
-                                                    @error('password')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
-                                            <div class="field">
-                                                <label for="password-confirm" class="label">{{ __('Confirm Password') }}</label>
-
-                                                <div class="control">
-                                                    <input id="password-confirm" type="password" class="input" name="password_confirmation" required autocomplete="new-password">
-                                                </div>
-                                            </div>
-
-                                            <div class="field">
-                                                <div class="control">
-                                                    <button type="submit" class="button is-black">
-                                                        {{ __('Register') }}
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                                            </form>
+                                        </div>
+                                    </b-tab-item>
+                                </b-tabs>
+                            </section>
+                        </template>
                     </div>
+
+                    <script src="https://unpkg.com/vue"></script>
+                    <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
+
+                    <script>
+
+                        new Vue({
+                            el: '#app',
+
+                            data: {
+                                isRemember: "จำฉันไว้เข้าใช้ครั้งหน้าแล้ว",
+                                email: null,
+                                resetemail: null,
+                                activeTab: 0,
+                            },
+                        })
+
+                    </script>
                 </div>
             </div>
         </div>

@@ -98,3 +98,20 @@ textarea {
 .has-text-pink {
     color: rgb(255, 54, 131);
 }
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0A0A0A;
+
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(255, 54, 131);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(0, 162, 255);;
+}

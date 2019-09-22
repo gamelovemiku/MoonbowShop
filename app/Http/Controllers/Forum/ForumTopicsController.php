@@ -84,7 +84,10 @@ class ForumTopicsController extends ForumController
 
     public function destroy($id)
     {
-        return "Delete";
+        $topic = ForumTopic::find($id);
+        $topic->delete();
+
+        return redirect()->route('forum.main');
     }
 
     public function addcomment(Request $request)

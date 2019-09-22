@@ -27,6 +27,7 @@ class ForumTopics extends Migration
             $table->integer('topic_views');
             $table->boolean('topic_is_published');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
