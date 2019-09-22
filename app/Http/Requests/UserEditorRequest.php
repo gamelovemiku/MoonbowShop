@@ -13,7 +13,7 @@ class UserEditorRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,20 @@ class UserEditorRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'      =>    'required',
+            'email'     =>    'required',
+            'points'    =>    'required|numeric',
+            'password'  =>    'nullable',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required'          => 'You must enter an name.', 
+            'email.required'         => 'Things need to be Email.',            
+            'points.numeric'         => 'This price mus be number.', 
+            'points.required'        => 'Plase enter this Points',              
         ];
     }
 }

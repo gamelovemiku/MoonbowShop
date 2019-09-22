@@ -44,7 +44,7 @@
                 <div class="field-body">
                     <div class="field">
                         <p class="control">
-                            <input class="input" type="text" value="{{ $user->name }}">
+                            <input class="input" type="text" name="name" value="{{ $user->name }}">
                         </p>
                     </div>
                 </div>
