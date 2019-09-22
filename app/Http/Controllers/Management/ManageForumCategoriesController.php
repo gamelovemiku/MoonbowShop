@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Management;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ForumRequest;
 use App\ForumCategory;
 
 class ManageForumCategoriesController extends ManageController
@@ -21,7 +22,7 @@ class ManageForumCategoriesController extends ManageController
         return view('manage.admin.forum.addcategory');
     }
 
-    public function store(Request $request)
+    public function store(ForumRequest $request)
     {
         $category = new ForumCategory;
 
@@ -46,7 +47,7 @@ class ManageForumCategoriesController extends ManageController
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(ForumRequest $request, $id)
     {
         $category = ForumCategory::find($id);
 

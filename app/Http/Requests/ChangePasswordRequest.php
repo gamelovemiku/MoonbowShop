@@ -31,9 +31,9 @@ class ChangePasswordRequest extends FormRequest
     public function messages()
     {
         return [
-            'password.required' => 'Password can\'t be empty.',
+            'password.required'  => 'Password can\'t be empty.',
             'password.confirmed' => 'Password doesn\'t match.',
-            'password.min' => 'Password must be more than 6 character.',
+            'password.min'       => 'Password must be more than 6 character.',
         ];
     }
 }

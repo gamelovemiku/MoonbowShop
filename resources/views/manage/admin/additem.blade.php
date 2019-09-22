@@ -27,23 +27,21 @@
                 <div class="column is-6">
                     <div class="field">
                         <label for="item_name" class="label">Item name</label>
-
                         <div class="control">
                             <input id="item_name" type="text" class="input @error('itemname') is-danger @enderror" name="item_name" maxlength="30">
-
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                            @error('item_name')
+                                <p class="help is-danger">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
 
                     <div class="field">
                         <label for="item_desc" class="label">Item Description</label>
-
                         <div class="control">
                             <textarea rows="6" id="item_desc" type="text" class="textarea @error('itemdesc') is-danger @enderror" name="item_desc"></textarea>
+                            @error('item_desc')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
@@ -64,6 +62,9 @@
                             </span>
                             </label>
                         </div>
+                        @error('cover')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
 
@@ -80,22 +81,27 @@
                             </div>
                             <div class="icon is-small is-left">
                                 <i class="fas fa-tags"></i>
-                            </div>
+                            </div>                        
                         </div>
-
                     </div>
 
                     <div class="field">
                         <label for="item_price" class="label">Price <small class="has-text-grey-light">(Points)</small></label>
                         <div class="control">
                             <input id="item_price" class="input" name="item_price">
-                        </div>
+                            @error('item_price')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
+                        </div>                        
                     </div>
 
                     <div class="field">
                         <label for="item_price" class="label">Discount Price <small class="has-text-grey-light">(Optional)</small></label>
                         <div class="control">
                             <input id="item_price" class="input" name="item_discount_price">
+                            @error('item_discount_price')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
@@ -104,12 +110,15 @@
 
                         <div class="control">
                             <textarea id="command" type="text" class="input @error('itemdesc') is-danger @enderror" name="item_command"></textarea>
+                            @error('item_command')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
                     <p class="content is-small">** Uses <b>%player</b> instead of player's name.</p>
                 </div>
-
             </div>
+
             <div class="buttons is-right">
                 <button type="submit" class="button is-black">
                     Add new item

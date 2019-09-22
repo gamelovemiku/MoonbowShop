@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Management;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PaymentplanRequest;
 use App\Http\Controllers\Controller;
 use App\PaymentPlan;
 
@@ -25,7 +26,7 @@ class ManagePaymentPlanController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(PaymentplanRequest $request)
     {
         $plan = new PaymentPlan;
 
@@ -58,7 +59,7 @@ class ManagePaymentPlanController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(PaymentplanRequest $request, $id)
     {
 
         $item = PaymentPlan::find($id);

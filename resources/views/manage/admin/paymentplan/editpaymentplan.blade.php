@@ -25,6 +25,9 @@
 
                         <div class="control">
                             <input type="text" class="input @error('provider') is-danger @enderror" name="provider" value="{{ $plan->plan_provider }}">
+                            @error('provider')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
@@ -33,20 +36,31 @@
 
                         <div class="control">
                             <input type="text" class="input @error('provider') is-danger @enderror" name="title" maxlength="30" value="{{ $plan->plan_title }}">
+                            @error('title')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
                     <div class="field">
                         <label class="label">Pricing</label>
+
                         <div class="control">
-                        <input class="input" name="price" value="{{ $plan->plan_price }}">
+                            <input class="input" name="price" value="{{ $plan->plan_price }}">
+                            @error('price')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
                     <div class="field">
                         <label class="label">Amount of Points</label>
+
                         <div class="control">
                             <input class="input" name="points_amount" value="{{ $plan->plan_points_amount }}">
+                            @error('points_amount')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
                 </div>

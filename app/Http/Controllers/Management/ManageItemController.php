@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Management;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ItemshopRequest;
 use App\Itemshop;
 use Storage;
 
@@ -30,7 +31,7 @@ class ManageItemController extends ManageController
         return basename($save);
     }
 
-    public function store(Request $request)
+    public function store(ItemshopRequest $request)
     {
         $item = new Itemshop;
 
@@ -74,7 +75,7 @@ class ManageItemController extends ManageController
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(ItemshopRequest $request, $id)
     {
 
         $item = Itemshop::where('item_id', $id);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Management;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\SettingsRequest;
 use App\GeneralSettings;
 
 class ManageGeneralSettingsController extends ManageController
@@ -16,7 +17,7 @@ class ManageGeneralSettingsController extends ManageController
         ]);
     }
 
-    public function store(Request $request)
+    public function store(SettingsRequest $request)
     {
         GeneralSettings::find(1)->update([
 

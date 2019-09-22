@@ -29,9 +29,12 @@
                 </div>
                 <div class="field-body">
                     <div class="field">
-                        <p class="control">
+                        <div class="control">
                             <input class="input" type="text" name="category_name">
-                        </p>
+                            @error('category_name')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
                 </div>
             </div>
@@ -42,9 +45,12 @@
                 </div>
                 <div class="field-body">
                     <div class="field">
-                        <p class="control">
+                        <div class="control">
                             <textarea class="textarea" rows="12" name="description"></textarea>
-                        </p>
+                            @error('description')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
                 </div>
             </div>

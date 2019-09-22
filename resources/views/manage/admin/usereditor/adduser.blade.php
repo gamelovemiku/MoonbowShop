@@ -31,6 +31,9 @@
                     <div class="field">
                         <p class="control">
                             <input class="input" type="text" name="name">
+                            @error('name')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
                         </p>
                     </div>
                 </div>
@@ -44,6 +47,9 @@
                     <div class="field">
                         <p class="control">
                             <input class="input" type="email" name="email">
+                            @error('email')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror   
                         </p>
                     </div>
                 </div>
@@ -57,6 +63,9 @@
                     <div class="field">
                         <p class="control">
                             <input class="input" type="number" name="points">
+                            @error('points')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror 
                         </p>
                     </div>
                 </div>
@@ -87,6 +96,9 @@
                     <div class="field">
                         <p class="control">
                             <input class="input" name="password" type="text">
+                            @error('password')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror 
                         </p>
                     </div>
                 </div>

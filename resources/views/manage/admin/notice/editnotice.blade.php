@@ -29,9 +29,12 @@
                 </div>
                 <div class="field-body">
                     <div class="field">
-                        <p class="control">
-                        <input class="input" type="text" name="title" value="{{ $notice->notice_title }}">
-                        </p>
+                        <div class="control">
+                            <input class="input" type="text" name="title" value="{{ $notice->notice_title }}">
+                            @error('title')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
                 </div>
             </div>
@@ -42,9 +45,12 @@
                 </div>
                 <div class="field-body">
                     <div class="field">
-                        <p class="control">
+                        <div class="control">
                             <textarea class="textarea" name="content" rows="8">{{ $notice->notice_content }}</textarea>
-                        </p>
+                            @error('content')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
                 </div>
             </div>
@@ -55,9 +61,12 @@
                 </div>
                 <div class="field-body">
                     <div class="field">
-                        <p class="control">
+                        <div class="control">
                             <input class="input" type="text" name="tag" value="{{ $notice->notice_tag }}">
-                        </p>
+                            @error('tag')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
                 </div>
             </div>
@@ -68,12 +77,15 @@
                 </div>
                 <div class="field-body">
                     <div class="field">
-                        <p class="control">
+                        <div class="control">
                         <label class="checkbox">
                             <input id="text-instore" class="is-checkradio is-block is-danger" type="checkbox" name="seeinstore" @if($notice->notice_show_on_store == 1) checked @endif>
                             <label for="text-instore">Show in Store page</label>
                         </label>
-                        </p>
+                            @error('seeinstore')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
                 </div>
             </div>

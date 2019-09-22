@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Management;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserEditorRequest;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 
@@ -23,7 +24,7 @@ class ManageUserController extends ManageController
         ]);
     }
 
-    public function store(Request $request)
+    public function store(UserEditorRequest $request)
     {
         User::create([
             'name' => $request->name,
@@ -46,7 +47,7 @@ class ManageUserController extends ManageController
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(UserEditorRequest $request, $id)
     {
         $user = User::find($id);
 

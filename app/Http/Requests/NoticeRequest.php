@@ -34,9 +34,9 @@ class NoticeRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required'   => 'Can\'t see Title .',
+            'title.required'   => 'You must enter a title.',
             'content.required' => 'You should have content.',
-            'tag.required'     => 'Tell something',                
+            'tag.required'     => 'Can you tell me something',                
         ];
     }
 }

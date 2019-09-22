@@ -25,39 +25,51 @@
                     <div class="box">
                         <div class="field">
                             <label class="label">Hostname</label>
-                            <p class="control has-icons-left">
+                            <div class="control has-icons-left">
                                 <input class="input" type="text" name="hostname" value="{{ $settings->hostname }}">
                                 <span class="icon is-left">
                                     <i class="fas fa-server"></i>
                                 </span>
-                            </p>
+                                @error('hostname')
+                                    <p class="help is-danger">{{ $message }}</p>
+                                @enderror
+                            </div>           
                         </div>
                         <div class="field">
                             <label class="label">Port</label>
-                            <p class="control has-icons-left">
+                            <div class="control has-icons-left">
                                 <input class="input" type="text" name="hostname_port" value="{{ $settings->hostname_port }}">
                                 <span class="icon is-left">
                                     <i class="fas fa-network-wired"></i>
                                 </span>
-                            </p>
+                                    @error('hostname_port')
+                                        <p class="help is-danger">{{ $message }}</p>
+                                    @enderror
+                            </div>
                         </div>
                         <div class="field">
                             <label class="label">RCON Port</label>
-                            <p class="control has-icons-left">
+                            <div class="control has-icons-left">
                                 <input class="input" type="text" name="rcon_port" value="{{ $settings->rcon_port }}">
                                 <span class="icon is-left">
                                     <i class="fas fa-file-import"></i>
                                 </span>
-                            </p>
+                                    @error('rcon_port')
+                                        <p class="help is-danger">{{ $message }}</p>
+                                    @enderror
+                            </div>
                         </div>
                         <div class="field">
                             <label class="label">RCON Password</label>
-                            <p class="control has-icons-left">
+                            <div class="control has-icons-left">
                                 <input class="input" type="text" name="rcon_password" value="{{$settings->rcon_password }}">
                                 <span class="icon is-left">
                                     <i class="fas fa-key"></i>
                                 </span>
-                            </p>
+                                    @error('rcon_password')
+                                        <p class="help is-danger">{{ $message }}</p>
+                                    @enderror
+                            </div>
                         </div>
                     </div>
                 </article>
@@ -69,18 +81,24 @@
                     <div class="box">
                         <div class="field">
                             <label class="label">Website Name</label>
-                            <p class="control has-icons-left">
+                            <div class="control has-icons-left">
                                 <input class="input" type="text" name="website_name" value="{{ $settings->website_name }}">
                                 <span class="icon is-left">
                                     <i class="fas fa-server"></i>
                                 </span>
-                            </p>
+                                    @error('website_name')
+                                        <p class="help is-danger">{{ $message }}</p>
+                                    @enderror
+                            </div>
                         </div>
                         <div class="field">
                             <label class="label">Website Description</label>
-                            <p class="control has-icons-left">
+                            <div class="control has-icons-left">
                                 <textarea class="textarea" rows="7"type="text" name="website_desc">{{ $settings->website_desc }}</textarea>
-                            </p>
+                                    @error('website_desc')
+                                        <p class="help is-danger">{{ $message }}</p>
+                                    @enderror
+                            </div>
                         </div>
                     </div>
                 </article>

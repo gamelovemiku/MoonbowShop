@@ -26,9 +26,11 @@ class ItemshopRequest extends FormRequest
         return [
             'item_name'           => 'required',
             'item_desc'           => 'required',
-            'cover'               => 'required',
+            'cover'               => 'nullable|required',
             'item_price'          => 'required|numeric',
+            'item_command'        => 'required',
             'item_discount_price' => 'nullable|numeric',
+            
         ];
     }
 
@@ -36,11 +38,13 @@ class ItemshopRequest extends FormRequest
     {
         return [
             'item_name.required'          => 'You must enter an item name.', 
-            'item_desc.required'          => 'Things need to be priced.',  
-            'cover.required'              => 'You should put the product image.', 
-            'item_price.numeric'          => 'This price mus be number.', 
-            'item_price.required'         => 'Plase enter this price',
-            'item_discount_price.numeric' => 'item discount price can be empty.',    
+            'item_desc.required'          => 'You must to give a detail for this item.',  
+            'cover.required'              => 'The product need a cover.', 
+            'item_price.numeric'          => 'Price must be number.', 
+            'item_price.required'         => 'You must enter a price.',
+            'item_command.required'       => 'You must set an some command.',
+            'item_discount_price.numeric' => 'Discount price must be number.',
+                
         ];
     }
 }

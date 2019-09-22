@@ -37,7 +37,7 @@ class UserEditorRequest extends FormRequest
             'name.required'          => 'You must enter an name.', 
             'email.required'         => 'Things need to be Email.',            
             'points.numeric'         => 'This price mus be number.', 
-            'points.required'        => 'Plase enter this Points',              
+            'points.required'        => 'You must enter this Points',              
         ];
     }
 }

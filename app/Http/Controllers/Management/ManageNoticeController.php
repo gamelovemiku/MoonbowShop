@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Management;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\NoticeRequest;
 use App\Notice;
 
 class ManageNoticeController extends ManageController
@@ -24,7 +25,7 @@ class ManageNoticeController extends ManageController
 
     }
 
-    public function store(Request $request)
+    public function store(NoticeRequest $request)
     {
 
         if($request->seeinstore == 'on') {
@@ -56,7 +57,7 @@ class ManageNoticeController extends ManageController
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(NoticeRequest $request, $id)
     {
 
         if($request->seeinstore == 'on') {

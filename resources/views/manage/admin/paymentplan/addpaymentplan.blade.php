@@ -25,11 +25,8 @@
 
                         <div class="control">
                             <input type="text" class="input @error('provider') is-danger @enderror" name="provider" maxlength="30">
-
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                            @error('provider')
+                                <p class="help is-danger">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
@@ -39,6 +36,9 @@
 
                         <div class="control">
                             <input type="text" class="input @error('provider') is-danger @enderror" name="title" maxlength="30">
+                            @error('title')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
@@ -46,6 +46,9 @@
                         <label class="label">Pricing</label>
                         <div class="control">
                             <input class="input" name="price">
+                            @error('price')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
@@ -53,6 +56,9 @@
                         <label class="label">Amount of Points</label>
                         <div class="control">
                             <input class="input" name="points_amount">
+                            @error('points_amount')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
                 </div>
