@@ -46,13 +46,16 @@
             </div>
 
             <p class="subtitle">หมวดหมู่</p>
-            <h1 class="title">{!! $topics[0]->category->forum_category_name ?? 'ไม่มีกระทู้ใดที่อยู่ในหมวดนี้ <small class="is-size-6">(หรืออาจไม่มีหมวดนี้อยู่)</small>' !!}</h1>
+            <h1 class="title">{!! $topics[0]->category->forum_category_name ?? 'ไม่มีกระทู้ที่อยู่ในหมวดนี้ <small class="is-size-6">(หรือไม่มีหมวดนี้)</small>' !!}</h1>
+            <p class="subtitle is-6">
+                {!! $topics[0]->category->forum_category_description ?? '' !!}
+            </p>
 
             <div class="columns is-multiline">
                 <div class="column is-9">
                     @forelse ($topics as $topic)
                         <h4 class="title is-4"><a href="{{ route('topic.show', $topic->topic_id) }}">{{ $topic->topic_title }}</a></h4>
-                        <p class="subtitle is-6">{{ Str::limit($topic->topic_content, 360)}}</p>
+                        <p class="subtitle is-6">{!! Str::limit($topic->topic_content, 360)!!}</p>
                         <hr>
                     @empty
                         <p class="subtitle is-6">ไม่มีโพสต์ใดๆ ในหมวดหมู่นี้</p>

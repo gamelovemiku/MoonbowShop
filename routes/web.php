@@ -116,5 +116,6 @@ Route::prefix('forum')->group(function () {
     Route::post('topic/addcomment', 'Forum\ForumTopicsController@addcomment')->name('topic.addcomment');
 
     Route::resource('category', 'Forum\ForumCategoryController');
+    Route::resource('comment', 'Forum\ForumCommentsController');
 
 });

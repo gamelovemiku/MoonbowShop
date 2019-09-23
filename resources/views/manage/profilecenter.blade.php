@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css" integrity="sha256-a2tobsqlbgLsWs7ZVUGgP5IvWZsx8bTNQpzsqCSm5mk=" crossorigin="anonymous" />
     <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
+
     <script src="/js/bulma-toast.min.js"></script>
     <script src="/js/bulma.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -82,12 +84,6 @@
                                         <i class="fas fa-book"></i>
                                     </span>
                                     All Posts
-                                </a>
-                                <a class="menu-block" href="{{ route("profile.changepassword") }}">
-                                    <span class="menu-icon icon">
-                                        <i class="fas fa-comments"></i>
-                                    </span>
-                                    Comments
                                 </a>
                             </ul><hr/>
                         <a class="button is-danger is-fullwidth" href="{{ route('logout') }}">Sign Out</a>
