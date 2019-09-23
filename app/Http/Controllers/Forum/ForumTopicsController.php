@@ -13,7 +13,7 @@ class ForumTopicsController extends ForumController
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['show']]);
         $this->middleware('PostOwnerOnly', ['except' => ['create', 'store', 'show', 'addcomment']]); #ยกเว้นพวกนี้ที่จะยังใช้ได้ถ้าไม่ใช่เจ้าของ
     }
 
@@ -109,6 +109,7 @@ class ForumTopicsController extends ForumController
         return redirect()->route('forum.main');
     }
 
+<<<<<<< HEAD
     public function addcomment(ForumPostRequest $request)
     {
         $comment = new ForumComment;
@@ -122,4 +123,6 @@ class ForumTopicsController extends ForumController
         return redirect()->back();
     }
 
+=======
+>>>>>>> 412ab35361dfca12fe476763f6f6c6caa4f88047
 }
