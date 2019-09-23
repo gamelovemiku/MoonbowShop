@@ -1,8 +1,8 @@
 <div class="box" style="width: 100%">
     <div class="columns">
         <div class="column">
-            <div class="title-category">Server Status
-                <p class="text-category">{{$server['players'] . '/' . $server['max_players']}} Players</p>
+            <div class="title-category">สถานะเซิร์ฟเวอร์
+                <p class="text-category has-text-weight-medium">ผู้เล่น {{$server['players'] . '/' . $server['max_players']}} คน</p>
                 <p class="text-stats">{{ $settings->hostname }}</p>
             </div>
 
@@ -12,6 +12,7 @@
                 <p class="text-stats has-text-danger">Server is unavailable</p>
                 <progress class="progress is-danger"></progress>
             @endif
+            
         </div>
     </div>
 </div>

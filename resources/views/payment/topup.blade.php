@@ -19,28 +19,28 @@
         <div class="hero-body">
             <div class="container is-uppercase">
                 <h1 class="title is-1 force-bold">
-                    <i class="fas fa-gamepad"></i> Topup
+                    <i class="fas fa-gamepad"></i> เติมเงิน
                 </h1>
                 <p class="subtitle">
-                    Get more points like a boss to extended your game.
+                    รับพ้อยท์เพิ่มทันทีเพื่อไปใช้ในเว็บไซต์
                 </p>
                 <div class="columns">
                     <div class="column is-8">
                         <div class="">
-                            <div class="title-category">Safer. Better. Payment.
-                                <p class="text-category">Payment Gateways provided by omise.co</p>
+                            <div class="title-category">ปลอดภัย. รวดเร็ว. ดีกว่า.
+                                <p class="text-category">ระบบรับชำระเงินโดย omise.co</p>
                             </div>
                             <div class="columns is-multiline">
                                 @forelse ($plans as $plan)
                                     <div class="column is-4">
                                         <div class="box" style="width: 100%; background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);">
                                             <h4 class="title is-5 has-text-weight-bold has-text-dark">{{ $plan->plan_title }}</h4>
-                                            <div class="subtitle is-6 has-text-dark has-text-weight-bold">{{ $plan->plan_price }} THB</div>
+                                            <div class="subtitle is-6 has-text-dark has-text-weight-bold">{{ $plan->plan_price }} บาท</div>
                                             <div class="content">
-                                                <div class="title has-text-dark">{{ number_format($plan->plan_points_amount) }} Points</div>
-                                                <div class="subtitle has-text-dark is-7">Instantly receive by system</div>
+                                                <div class="title has-text-dark">{{ number_format($plan->plan_points_amount) }} พ้อยท์</div>
+                                                <div class="subtitle has-text-dark is-7">รับทันทีเมื่อเติมเงินสำเร็จ</div>
                                             </div>
-                                            <a href="{{ route('topup.show', [$plan->plan_id]) }}" class="button is-dark is-fullwidth is-outlined"><i class="fas fa-credit-card" style="margin-right: 8px;"></i>Purchase ({{ $plan->plan_price }} THB)</a>
+                                            <a href="{{ route('topup.show', [$plan->plan_id]) }}" class="button is-dark is-fullwidth is-outlined"><i class="fas fa-credit-card" style="margin-right: 8px;"></i>ซื้อ ({{ $plan->plan_price }} บาท)</a>
                                         </div>
                                     </div>
                                 @empty

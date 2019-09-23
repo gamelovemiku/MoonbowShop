@@ -21,7 +21,7 @@
                                                     type="is-danger"
                                                     message="{{ $message }}"
                                                 @enderror>
-                                                <b-input v-model="email" type="email"
+                                                <b-input v-model="email" type="email" v-model="email"
                                                     name="email">
                                                 </b-input>
                                             </b-field>
@@ -70,6 +70,7 @@
                                                 <b-field label="อีเมล์">
                                                     <b-input type="email"
                                                         name="email"
+                                                        v-model="email"
                                                         @error('email') message="{{ $message }}" @enderror>
                                                     </b-input>
                                                 </b-field>
@@ -108,7 +109,7 @@
                                                 @csrf
 
                                                 <b-field label="อีเมล์">
-                                                    <b-input v-model="resetemail" type="email"
+                                                    <b-input v-model="email" type="email"
                                                         name="email"
                                                         @error('email') message="{{ $message }}" @enderror>
                                                     </b-input>
@@ -117,7 +118,7 @@
                                                 <div class="field">
                                                     <div class="control">
                                                         <button type="submit" class="button is-black">
-                                                            @{{ 'ส่งรหัสผ่านใหม่ไปยัง ' + resetemail }}
+                                                            @{{ 'ส่งรหัสผ่านใหม่ไปยัง ' + email }}
                                                         </button>
                                                     </div>
                                                 </div>

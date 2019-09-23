@@ -21,6 +21,8 @@ class ManageTopicsController extends ManageController
 
         return view('manage.topic.topic', [
             'topics' => $this->getTopicsPostedByUser($user->id),
+            'deletedtopics' => ForumTopic::onlyTrashed()->get(),
+            'deletedtopics' => ForumTopic::onlyTrashed()->get(),
         ]);
     }
 

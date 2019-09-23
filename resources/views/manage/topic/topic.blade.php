@@ -20,6 +20,10 @@
                             <section>
                                 <b-tabs type="is-boxed" v-model="activeTab" expanded>
                                     <b-tab-item label="โพสต์ทั้งหมด" icon="file-document-box-outline">
+                                        <template slot="header">
+                                            <b-icon icon="file-document-box-outline"></b-icon>
+                                            <span> โพสต์ทั้งหมด <b-tag type="is-warning" rounded><b>{{ count($topics) }}</b></b-tag> </span>
+                                        </template>
                                         <table class="table is-fullwidth is-narrow">
                                             <thead>
                                                 <tr>
@@ -58,6 +62,10 @@
                                         </table>
                                     </b-tab-item>
                                     <b-tab-item label="โพสต์ที่ถูกลบ" icon="delete-variant">
+                                        <template slot="header">
+                                            <b-icon icon="delete-variant"></b-icon>
+                                            <span> โพสต์ที่ถูกลบ <b-tag type="is-warning" rounded><b>{{ count($deletedtopics) }}</b></b-tag> </span>
+                                        </template>
                                         <table class="table is-fullwidth is-narrow">
                                             <thead>
                                                 <tr>
@@ -68,19 +76,23 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @forelse ($topics as $topic)
+                                                @forelse ($deletedtopics as $topic)
                                                     <tr>
                                                         <th class="has-text-weight-medium">{{ $topic->topic_title }} @if( $topic->role_id == "1") <span class="tag is-danger" style="font-size: 8px;">Administrator</span> @elseif( $topic->role_id == "2") <span class="tag is-primary" style="font-size: 8px;">Player</span>   @endif</th>
                                                         <th class="has-text-weight-medium is-lowercase">{{ $topic->topic_views }}</th>
-                                                        <th class="has-text-weight-medium">{{count($topic->comment)}}</th>
+                                                        <th class="has-text-weight-medium">{{ count($topic->comment) }}</th>
                                                         <th>
                                                             <div class="buttons">
-                                                                <a href="{{ route('topic.show', [$topic->topic_id])}}" style="margin-right: 8px;" class="button is-black is-small">Go to topic</a>
-
-                                                                <form method="POST" action="{{route('topicmanager.destroy', [$topic->topic_id]) }}">
+                                                                <form action="{{ route('topicmanager.restore', [$topic->topic_id])}}" method="post">
+                                                                    @method('post')
                                                                     @csrf
-                                                                    @method('delete')
-                                                                    <button type="submit" class="button is-danger is-small">Move to Bin</button>
+                                                                    <button type="submit" style="margin-right: 8px;" class="button is-info is-small">Restore</button>
+                                                                </form>
+
+                                                                <form action="{{ route('topicmanager.forcedelete', [$topic->topic_id])}}" method="post">
+                                                                    @method('post')
+                                                                    @csrf
+                                                                    <button type="submit" class="button is-danger is-small">Delete Forever</button>
                                                                 </form>
                                                             </div>
                                                         </th>
@@ -88,7 +100,7 @@
                                                 @empty
                                                     <tr>
                                                         <td class="has-text-centered" colspan="4">
-                                                        ไม่มีเรื่องใดๆ ให้ดูเลย ลอง <a href="{{ route('topic.create') }}">เขียนเรื่องใหม่ </a>ดูสิ
+                                                            ไม่มีโพสต์ใดของคุณ ที่ถูกลบเลย
                                                         </td>
                                                     </tr>
                                                 @endforelse
@@ -96,6 +108,10 @@
                                         </table>
                                     </b-tab-item>
                                     <b-tab-item label="ฉบับร่าง" icon="playlist-edit">
+                                        <template slot="header">
+                                            <b-icon icon="playlist-edit"></b-icon>
+                                            <span> ฉบับร่าง <b-tag type="is-warning" rounded><b>{{ count($deletedtopics) }}</b></b-tag> </span>
+                                        </template>
                                         <table class="table is-fullwidth is-narrow">
                                             <thead>
                                                 <tr>
@@ -126,7 +142,7 @@
                                                 @empty
                                                     <tr>
                                                         <td class="has-text-centered" colspan="4">
-                                                        ไม่มีเรื่องใดๆ ให้ดูเลย ลอง <a href="{{ route('topic.create') }}">เขียนเรื่องใหม่ </a>ดูสิ
+                                                            ไม่มีเรื่องใดๆ ให้ดูเลย ลอง <a href="{{ route('topic.create') }}">เขียนเรื่องใหม่ </a>ดูสิ
                                                         </td>
                                                     </tr>
                                                 @endforelse

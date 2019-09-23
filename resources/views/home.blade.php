@@ -21,7 +21,7 @@
                     Home
                 </h1>
                 <h2 class="subtitle">
-                    Overview about your gameplay.
+                    ข้อมูลต่างๆ และช่องทางการติดต่อ
                 </h2>
             </div>
         </div>
@@ -31,14 +31,14 @@
             <div class="columns">
                 <div class="column is-8">
                     <div class="box" style="width: 100%">
-                        <div class="title-category has-text-info">Notice
-                            <p class="text-category">News, Information to let you stay updated!</p>
+                        <div class="title-category has-text-primary">ประกาศ
+                            <p class="text-category has-text-weight-light">ข่าวสารหรือข้อมูลของเซิร์ฟเวอร์ที่ควรทราบ</p>
                         </div>
                         <table class="table is-fullwidth is-hoverable">
                             <thead>
                                 <tr>
-                                    <th width="20%">Notice Type</th>
-                                    <th width="80%">Title</th>
+                                    <th width="20%">แท็ก</th>
+                                    <th width="80%">หัวเรื่อง</th>
                                 </tr>
                             </thead>
                             @forelse ($notices as $notice)
@@ -52,7 +52,9 @@
                                     <th width="75%">{{ $notice->notice_title }}</th>
                                 </tr>
                             @empty
-
+                                <td class="has-text-centered has-text-pink" colspan="4">
+                                    ไม่มีประกาศใดๆ จากเซิร์ฟเวอร์
+                                </td>
                             @endforelse
                             <tbody>
 
@@ -60,28 +62,19 @@
                         </table>
                     </div>
                     <div class="box" style="width: 100%">
-                        <div class="title-category has-text-info">Pinned Information
-                            <p class="text-category">About server information, how to play, getting started and etc.</p>
+                        <div class="title-category has-text-ยพรทฟพั">รายละเอียดแบบปักหมุด
+                            <p class="text-category has-text-weight-light">รายละเอียดต่างๆ รวมถึงข้อมูลเกี่ยวกับเซิร์ฟเวอร์</p>
                         </div>
-                    <p class="has-text-weight-light">{{ $settings->website_desc }}</p>
+                    <p class="has-text-weight-medium">{{ $settings->website_desc }}</p>
                     </div>
                 </div>
                 <div class="column is-4">
+                    @include('components.accounts')
                     <div class="box">
                         <div class="columns">
                             <div class="column">
-                                <div class="title-category">Accounts
-                                    <p class="text-category">Your personal status.</p>
-                                </div>
-                                <span class="tag is-black is-large">{{ $balance }} Points</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div class="columns">
-                            <div class="column">
-                                <div class="title-category">Social Media
-                                    <p class="text-category">Take a closer by follow us on social.</p>
+                                <div class="title-category">ช่องทางการติดตาม
+                                    <p class="text-category has-text-weight-light">ใกล้ชิดข่าวต่างๆ มากยิ่งขึ้นผ่านทางสื่อต่างๆ</p>
                                 </div>
                                 <span class="icon is-large">
                                     <i class="fab fa-facebook fa-2x"></i>

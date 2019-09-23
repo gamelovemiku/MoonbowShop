@@ -108,21 +108,4 @@ class ForumTopicsController extends ForumController
 
         return redirect()->route('forum.main');
     }
-
-<<<<<<< HEAD
-    public function addcomment(ForumPostRequest $request)
-    {
-        $comment = new ForumComment;
-
-        $comment->topic_id = $request->topic_id;
-        $comment->comment_author_id = $this->getLoggedinUser()->id;
-        $comment->comment_content = $request->content;
-
-        $comment->save();
-
-        return redirect()->back();
-    }
-
-=======
->>>>>>> 412ab35361dfca12fe476763f6f6c6caa4f88047
 }

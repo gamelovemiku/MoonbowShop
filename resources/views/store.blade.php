@@ -24,7 +24,7 @@
                     Store
                 </h1>
                 <h2 class="subtitle">
-                    Buy your item, to make your gameplay better.
+                    ร้านค้าไอเท็ม ซื้อผ่านทางเว็บไซต์
                 </h2>
             </div>
         </div>
@@ -39,13 +39,13 @@
                             <div class="tabs is-toggle is-fullwidth ">
                                 <ul>
                                     <li class="is-active" id="lastest">
-                                        <a>Lastest Items</a>
+                                        <a>ไอเท็มใหม่ล่าสุด</a>
                                     </li>
                                     <li id="bestseller">
-                                        <a>Best Seller</a>
+                                        <a>ขายดี</a>
                                     </li>
                                     <li id="onsale">
-                                        <a>Discount Now</a>
+                                        <a>กำลังลดราคา</a>
                                     </li>
                                 </ul>
                             </div>
@@ -75,20 +75,20 @@
                                                                 </div>
 
                                                                 <p class="is-size-6 has-text-weight-medium has-text-centered">
-                                                                    @if($item->item_discount_price == null) {{ $item->item_price }} Points @else <small class="has-text-dark"><del>{{ $item->item_price }}</small> > </small> <a class="has-text-danger">{{ $item->item_discount_price }} Points</a>   @endif
+                                                                    @if($item->item_discount_price == null) {{ $item->item_price }} พ้อยท์ @else <small class="has-text-dark"><del>{{ $item->item_price }}</small> > </small> <a class="has-text-danger">{{ $item->item_discount_price }} พ้อยท์</a>   @endif
                                                                 </p>
                                                             </div>
                                                         </div>
                                                         <div class="card-footer">
                                                             <div class="card-footer-item">
-                                                                <a href="/store/checkout/{{ $item->item_id }}" class="button @if($key == 0) is-primary @else is-black @endif  is-outlined">@if($key == 0) Get it now! @else Buy @endif</a>
+                                                                <a href="/store/checkout/{{ $item->item_id }}" class="button @if($key == 0) is-primary @else is-black @endif  is-outlined">@if($key == 0) ซื้อตอนนี้เลย! @else ซื้อ @endif</a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             @empty
                                                 <div class="column is-12">
-                                                    <p class="is-size-6 has-text-centered has-text-danger" style="margin: 25%">There are no items available for sale.</p>
+                                                    <p class="is-size-6 has-text-centered has-text-danger" style="margin: 25%">ไม่มีไอเท็มใดวางขายเลย</p>
                                                 </div>
                                             @endforelse
                                         </div>
@@ -116,20 +116,20 @@
                                                                 </div>
 
                                                                 <p class="is-size-6 has-text-weight-medium has-text-centered">
-                                                                    @if($item->item_discount_price == null) {{ $item->item_price }} Points @else <small class="has-text-dark"><del>{{ $item->item_price }}</small> > </small> <a class="has-text-danger">{{ $item->item_discount_price }} Points</a>   @endif
+                                                                    @if($item->item_discount_price == null) {{ $item->item_price }} พ้อยท์ @else <small class="has-text-dark"><del>{{ $item->item_price }}</small> > </small> <a class="has-text-danger">{{ $item->item_discount_price }} พ้อยท์</a>   @endif
                                                                 </p>
                                                             </div>
                                                         </div>
                                                         <div class="card-footer">
                                                             <div class="card-footer-item">
-                                                                <a href="/store/checkout/{{ $item->item_id }}" class="button @if($key == 0) is-primary @else is-black @endif  is-outlined">@if($key == 0) Get it now! @else Buy @endif</a>
+                                                                <a href="/store/checkout/{{ $item->item_id }}" class="button @if($key == 0) is-primary @else is-black @endif  is-outlined">@if($key == 0) ซื้อตอนนี้เลย @else ซื้อ @endif</a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             @empty
                                                 <div class="column is-12">
-                                                    <p class="is-size-6 has-text-centered has-text-danger" style="margin: 25%">There are no items available for sale.</p>
+                                                    <p class="is-size-6 has-text-centered has-text-danger" style="margin: 25%">ไม่มีไอเท็มใดวางขายเลย</p>
                                                 </div>
                                             @endforelse
                                         </div>
@@ -156,20 +156,20 @@
                                                                 </div>
 
                                                                 <p class="is-size-6 has-text-weight-medium has-text-centered">
-                                                                        @if($item->item_discount_price == null) {{ $item->item_price }} Points @else <small class="has-text-dark"><del>{{ $item->item_price }}</small> > </small> <a class="has-text-danger">{{ $item->item_discount_price }} Points</a>   @endif
+                                                                        @if($item->item_discount_price == null) {{ $item->item_price }} พ้อยท์ @else <small class="has-text-dark"><del>{{ $item->item_price }}</small> > </small> <a class="has-text-danger">{{ $item->item_discount_price }} พ้อยท์</a>   @endif
                                                                 </p>
                                                             </div>
                                                         </div>
                                                         <div class="card-footer">
                                                             <div class="card-footer-item">
-                                                                <a href="/store/checkout/{{ $item->item_id }}" class="button @if($key == 0) is-primary @else is-black @endif  is-outlined">@if($key == 0) Get it now! @else Buy @endif</a>
+                                                                <a href="/store/checkout/{{ $item->item_id }}" class="button @if($key == 0) is-primary @else is-black @endif  is-outlined">@if($key == 0) ซื้อตอนนี้เลย @else ซื้อ @endif</a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             @empty
                                                 <div class="column is-12">
-                                                    <p class="is-size-6 has-text-centered has-text-danger" style="margin: 25%">There are no items available for sale.</p>
+                                                    <p class="is-size-6 has-text-centered has-text-danger" style="margin: 25%">ไม่มีไอเท็มใดกำลังลดราคาเลย</p>
                                                 </div>
                                             @endforelse
                                         </div>
@@ -181,33 +181,12 @@
                     <div class="box" id="allitems">
                         <div class="level">
                             <div class="level-left">
-                                <div class="title-category">All Items
-                                    <p class="text-category">See all things sort by category</p>
+                                <div class="title-category">ไอเท็มในร้านทั้งหมด
+                                    <p class="text-category has-text-weight-light">รายการสินค้าทั้งหมดที่วางขายในร้านค้า</p>
                                 </div>
                             </div>
                             <div class="level-right">
-                                <div class="dropdown is-right">
-                                    <div class="dropdown-trigger">
-                                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                                        <span>Category</span>
-                                        <span class="icon is-small">
-                                            <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                        </span>
-                                        </button>
-                                    </div>
-                                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
 
-                                        <div class="dropdown-content">
-                                        @foreach($categorys as $key => $category)
-                                            @if ($key != 0)
-                                                <a href="#" class="dropdown-item">
-                                                    {{ $category->category_name }}
-                                                </a>
-                                            @endif
-                                        @endforeach
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="columns is-multiline">
@@ -231,46 +210,37 @@
                                             </div>
 
                                             <p class="is-size-6 has-text-weight-medium has-text-centered">
-                                                @if($item->item_discount_price == null) {{ $item->item_price }} Points @else <small class="has-text-dark"><del>{{ $item->item_price }}</small> > </small> <a class="has-text-danger">{{ $item->item_discount_price }} Points</a>   @endif
+                                                @if($item->item_discount_price == null) {{ $item->item_price }} พ้อยท์ @else <small class="has-text-dark"><del>{{ $item->item_price }}</small> > </small> <a class="has-text-danger">{{ $item->item_discount_price }} พ้อยท์</a>   @endif
                                             </p>
                                         </div>
                                     </div>
                                     <div class="card-footer">
                                         <div class="card-footer-item">
-                                            <a href="/store/checkout/{{ $item->item_id }}" class="button @if($key == 0) is-primary @else is-black @endif  is-outlined">@if($key == 0) Get it now! @else Buy @endif</a>
+                                            <a href="/store/checkout/{{ $item->item_id }}" class="button @if($key == 0) is-primary @else is-black @endif  is-outlined">@if($key == 0) ซื้อตอนนี้เลย! @else ซื้อ @endif</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             @empty
                                 <div class="column is-12">
-                                    <p class="is-size-6 has-text-centered has-text-danger" style="margin: 25%">There are no items available for sale.</p>
+                                    <p class="is-size-6 has-text-centered has-text-danger" style="margin: 25%">ไม่มีไอเท็มใดวางขายเลย</p>
                                 </div>
                             @endforelse
                         </div>
                     </div>
                 </div>
                 <div class="column is-4">
-                    <div class="box" style="width: 100%">
-                        <div class="columns">
-                            <div class="column">
-                                <div class="title-category">Accounts
-                                    <p class="text-category">Your personal status.</p>
-                                </div>
-                                <span class="tag is-black is-large">{{ $balance }} Points</span>
-                            </div>
-                        </div>
-                    </div>
+                    @include('components.accounts')
 
                     <div class="box" style="width: 100%">
-                        <div class="title-category">Notice
-                            <p class="text-category">Store message from admin.</p>
+                        <div class="title-category">ประกาศของร้านค้า
+                            <p class="text-category has-text-weight-light">ข้อมูลเกี่ยวกับการซื้อบนร้านค้า</p>
                         </div>
                         <table class="table is-fullwidth">
                             <thead>
                                 <tr>
-                                    <th width="15%">TYPE</th>
-                                    <th width="85%">Message</th>
+                                    <th width="15%">แท็ก</th>
+                                    <th width="85%">ข้อความ</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -285,13 +255,15 @@
                                         <th width="85%">{{ $notice->notice_title }}</th>
                                     </tr>
                                 @empty
-
+                                    <td class="has-text-centered has-text-pink" colspan="2">
+                                        ไม่มีประกาศใดๆ ที่เกี่ยวกับร้านค้า
+                                    </td>
                                 @endforelse
                             </tbody>
                         </table>
                     </div>
 
-                    <div class="box" style="width: 100%">
+                    <!--div--- class="box" style="width: 100%">
                         <div class="title-category">Redeem
                             <p class="text-category">Have any redeem code? REDEEM IT and GET PRIZE!</p>
                         </div>
@@ -304,7 +276,8 @@
                                 <button class="button" type="submit">Redeem</button>
                             </div>
                         </form>
-                    </div>
+                    </!--div--->
+
                     @include('components.serverstatus')
                 </div>
             </div>

@@ -48,11 +48,13 @@
                 </div>
             </div>
             <div class="column is-6">
-                <div class="notification">
+                <div class="notification content">
                     <button class="delete"></button>
-                    Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit lorem ipsum dolor. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Sit amet,
-                    consectetur adipiscing elit
+                    รหัสผ่านที่ดีควรจะมีมากกว่า 8 ตัวขึ้นไป
+                    <ul>
+                        <li>มีอัครพิเศษอย่างน้อย 1 ตัว</li>
+                        <li>มีตัวอักษรตัวพิมพ์ใหม่ 1 ตัว</li>
+                    </ul>
                 </div>
             </div>
         </div>

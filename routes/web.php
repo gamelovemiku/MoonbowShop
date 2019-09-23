@@ -113,7 +113,8 @@ Route::get('/forum', 'Forum\ForumController@index')->name('forum.main');
 Route::prefix('forum')->group(function () {
 
     Route::resource('topic', 'Forum\ForumTopicsController');
-    Route::post('topic/addcomment', 'Forum\ForumTopicsController@addcomment')->name('topic.addcomment');
+    Route::post('topic/restore/{id}/rollback', 'Management\ManageTopicsController@restore')->name('topicmanager.restore');
+    Route::post('topic/forcedelete/{id}/forcedelete', 'Management\ManageTopicsController@forcedelete')->name('topicmanager.forcedelete');
 
     Route::resource('category', 'Forum\ForumCategoryController');
     Route::resource('comment', 'Forum\ForumCommentsController');
