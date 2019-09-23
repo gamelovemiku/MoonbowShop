@@ -46,7 +46,7 @@
             </div>
 
             <p class="subtitle">หมวดหมู่</p>
-            <h1 class="title">{{ $topics[0]->category->forum_category_name ?? 'ไม่พบหมวดหมู่นี้'}} ({{ count($topics) }})</h1>
+            <h1 class="title">{!! $topics[0]->category->forum_category_name ?? 'ไม่มีกระทู้ใดที่อยู่ในหมวดนี้ <small class="is-size-6">(หรืออาจไม่มีหมวดนี้อยู่)</small>' !!}</h1>
 
             <div class="columns is-multiline">
                 <div class="column is-9">
@@ -69,7 +69,7 @@
                                         <div class="level">
                                             <div class="level-left">
                                                 <div class="level-item">
-                                                <a class="has-text-pink" href="{{ route('category.show', [$category->forum_category_name])  }}"><i class="fas fa-tags fa-xs"></i> {{ $category->forum_category_name }}</a>
+                                                <a class="has-text-pink" href="{{ route('category.show', [$category->forum_category_id])  }}"><i class="fas fa-tags fa-xs"></i> {{ $category->forum_category_name }}</a>
                                                 </div>
                                             </div>
                                             <div class="level-right">
