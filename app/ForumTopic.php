@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ForumTopic extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'forum_topics'; // ชื่อตาราง
     protected $primaryKey = 'topic_id'; // ชื่อ Primary Key
 

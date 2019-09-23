@@ -104,8 +104,8 @@ Route::get('/paypal', function () {
     return view('paypal');
 });
 
-Route::post('/testpost', function (Request $request) {
-    return $request;
+Route::get('/test', function () {
+    return view('test');
 });
 
 Route::get('/forum', 'Forum\ForumController@index')->name('forum.main');
@@ -114,5 +114,7 @@ Route::prefix('forum')->group(function () {
 
     Route::resource('topic', 'Forum\ForumTopicsController');
     Route::post('topic/addcomment', 'Forum\ForumTopicsController@addcomment')->name('topic.addcomment');
+
+    Route::resource('category', 'Forum\ForumCategoryController');
 
 });

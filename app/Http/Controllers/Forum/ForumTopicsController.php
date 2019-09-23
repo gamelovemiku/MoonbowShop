@@ -79,12 +79,33 @@ class ForumTopicsController extends ForumController
 
     public function update(Request $request, $id)
     {
-        //
+        $topic = ForumTopic::find($id);
+
+        $topic->topic_title = $request->topic;
+        $topic->topic_content = $request->content;
+
+        $topic->topic_category_id = $request->category;
+
+        $topic->topic_author_id = $this->getLoggedinUser()->id;
+        $topic->topic_views = 0;
+
+        if(empty($request->is_published)){
+            $topic->topic_is_published = 1;
+        }else{
+            $topic->topic_is_published = 0;
+        }
+
+        $topic->save();
+
+        return redirect()->route('topic.show', [$topic->topic_id]);
     }
 
     public function destroy($id)
     {
-        return "Delete";
+        $topic = ForumTopic::find($id);
+        $topic->delete();
+
+        return redirect()->route('forum.main');
     }
 
     public function addcomment(Request $request)

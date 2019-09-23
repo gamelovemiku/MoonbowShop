@@ -57,6 +57,22 @@ class ManageTopicsController extends ManageController
         return redirect()->route('topicmanager.index');
     }
 
+    public function forcedelete($id)
+    {
+        $topic = ForumTopic::onlyTrashed()->find($id);
+        $topic->forceDelete();
+
+        return redirect()->route('topicmanager.index');
+    }
+
+    public function restore($id)
+    {
+        $topic = ForumTopic::onlyTrashed()->find($id);
+        $topic->restore();
+
+        return redirect()->route('topicmanager.index');
+    }
+
     public function getCommentOnTopic($id) {
 
         $topic = ForumTopic::find($id);

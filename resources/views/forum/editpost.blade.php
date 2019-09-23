@@ -50,8 +50,9 @@
                         <h4 class="title is-4 has-text-weight-bold is-uppercase">แก้ไขเรื่อง</h4>
                         <h4 class="subtitle is-6 is-uppercase">โพสต์เรื่องใหม่ไปยังเว็บบอร์ดพูดคุยในนาม {{ Auth::user()->name }}</h4>
 
-                        <form action="{{ route('topic.store') }}" method="post">
+                        <form action="{{ route('topic.update', [$topic->topic_id]) }}" method="post">
                             @csrf
+                            @method('put')
 
                             <div class="field">
                                 <div class="control">
@@ -61,7 +62,7 @@
                                             @forelse ($categories as $category)
                                                 <option value="{{ $category->forum_category_id }}" @if($topic->topic_category_id == $category->forum_category_id) selected @endif>{{$category->forum_category_name}}</option>
                                             @empty
-
+                                            <option selected disabled>ไม่มีหัวข้อที่โพสต์</option>
                                             @endforelse
                                         </select>
                                     </div>

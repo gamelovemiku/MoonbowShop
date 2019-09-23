@@ -134,12 +134,12 @@
                                         <div class="level">
                                             <div class="level-left">
                                                 <div class="level-item">
-                                                    <a class="has-text-pink" href=""><i class="fas fa-tags fa-xs"></i> {{ $category->forum_category_name }}</a>
+                                                <a class="has-text-pink" href="{{ route('category.show', [$category->forum_category_id])  }}"><i class="fas fa-tags fa-xs"></i> {{ $category->forum_category_name }}</a>
                                                 </div>
                                             </div>
                                             <div class="level-right">
                                                 <div class="level-item">
-                                                    
+
                                                 </div>
                                             </div>
                                         </div>
