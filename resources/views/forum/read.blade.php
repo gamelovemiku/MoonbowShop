@@ -113,7 +113,7 @@
                             </div>
 
                             <div class="field">
-                                <input type="hidden" value="{{ $topic->topic_id }}" name="topic_id">
+                                <input type="hidden" value="{{ $topic->topic_id }}" name="topic_id">                                   
                             </div>
 
                             <div class="buttons is-right">

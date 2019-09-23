@@ -26,7 +26,7 @@ class ItemshopRequest extends FormRequest
         return [
             'item_name'           => 'required',
             'item_desc'           => 'required',
-            'cover'               => 'nullable|required',
+            'cover'               => 'nullable|required|image ',
             'item_price'          => 'required|numeric',
             'item_command'        => 'required',
             'item_discount_price' => 'nullable|numeric',

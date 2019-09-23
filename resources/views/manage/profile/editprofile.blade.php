@@ -23,9 +23,12 @@
                 </div>
                 <div class="field-body">
                     <div class="field">
-                        <p class="control">
+                        <div class="control">
                             <input class="input is-white" type="email" name="email" value="{{ $user->email }}" readonly>
-                        </p>
+                            @error('email')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
                 </div>
             </div>
@@ -36,9 +39,12 @@
                 </div>
                 <div class="field-body">
                     <div class="field">
-                        <p class="control">
+                        <div class="control">
                             <input class="input" type="text" name="name" value="{{ $user->name }}">
-                        </p>
+                            @error('name')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
                 </div>
             </div>
@@ -65,6 +71,9 @@
                             </span>
                             </label>
                         </div>
+                            @error('avatar')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
                     </div>
                 </div>
             </div>

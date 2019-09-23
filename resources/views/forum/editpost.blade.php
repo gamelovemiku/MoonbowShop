@@ -66,15 +66,24 @@
                                             @endforelse
                                         </select>
                                     </div>
+                                        @error('category')
+                                            <p class="help is-danger">{{ $message }}</p>
+                                        @enderror
                                 </div>
                             </div>
 
                             <div class="field">
                                 <input class="input" type="text" name="topic" placeholder="ชื่อเรื่อง..." value="{{ $topic->topic_title }}">
+                                    @error('topic')
+                                        <p class="help is-danger">{{ $message }}</p>
+                                    @enderror
                             </div>
 
                             <div class="field has-text-weight-medium content">
-                            <textarea class="textarea" id="summernote" name="content">{{ $topic->topic_content }}</textarea>
+                                <textarea class="textarea" id="summernote" name="content">{{ $topic->topic_content }}</textarea>
+                                    @error('content')
+                                        <p class="help is-danger">{{ $message }}</p>
+                                    @enderror
                             </div>
 
                             <div class="field">

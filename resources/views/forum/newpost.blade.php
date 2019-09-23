@@ -64,16 +64,25 @@
 
                                             @endforelse
                                         </select>
+                                            @error('category')
+                                                <p class="help is-danger">{{ $message }}</p>
+                                            @enderror
                                     </div>
                                 </div>
                             </div>
 
                             <div class="field">
                                 <input class="input" type="text" name="topic" placeholder="ชื่อเรื่อง...">
+                                    @error('topic')
+                                        <p class="help is-danger">{{ $message }}</p>
+                                    @enderror
                             </div>
 
                             <div class="field has-text-weight-medium content">
                                 <textarea class="textarea" id="summernote" name="content"></textarea>
+                                    @error('content')
+                                        <p class="help is-danger">{{ $message }}</p>
+                                    @enderror
                             </div>
 
                             <div class="field">
@@ -81,6 +90,9 @@
                                     <input class="checkbox" type="checkbox" name="is_published">
                                     บันทึกเป็นแบบร่าง
                                 </label>
+                                    @error('is_published')
+                                        <p class="help is-danger">{{ $message }}</p>
+                                    @enderror
                             </div>
 
                             <div class="field">

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ForumRequest extends FormRequest
+class ProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,16 +24,16 @@ class ForumRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_name' =>'required',
-            'description'   =>'required',     
+            'email' =>'required',
+            'name'  =>'required',
+            'avatar'=>'nullable|image',
         ];
     }
-
     public function messages()
     {
         return [
-            'category_name.required' => 'ํYou must enter a Title',
-            'description.required'   => 'Tell us your story', 
+            'email.required'=>'Userจำเป็นต้องมีEmail',
+            'name.required' =>'Userจำเป็นต้องมีชื่อ',             
         ];
     }
 }

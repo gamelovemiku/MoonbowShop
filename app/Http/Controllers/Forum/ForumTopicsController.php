@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Forum;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ForumPostRequest;
 use App\ForumTopic;
 use App\ForumComment;
 use App\ForumCategory;
@@ -30,7 +31,7 @@ class ForumTopicsController extends ForumController
         ]);
     }
 
-    public function store(Request $request)
+    public function store(ForumPostRequest $request)
     {
         $topic = new ForumTopic;
 
@@ -77,7 +78,7 @@ class ForumTopicsController extends ForumController
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(ForumPostRequest $request, $id)
     {
         $topic = ForumTopic::find($id);
 
@@ -108,7 +109,7 @@ class ForumTopicsController extends ForumController
         return redirect()->route('forum.main');
     }
 
-    public function addcomment(Request $request)
+    public function addcomment(ForumPostRequest $request)
     {
         $comment = new ForumComment;
 

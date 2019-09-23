@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Management;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ChangePasswordRequest;
+use App\Http\Requests\ProfileRequest;
 use App\User;
 use Auth;
 use Storage;
@@ -47,7 +48,7 @@ class ManageProfileController extends ManageController
         ]);
     }
 
-    public function updateprofile(Request $request)
+    public function updateprofile(ProfileRequest $request)
     {
         $user = User::where("email", $request->email)->get()->first();
         $oldfilename = $user->profile_image_path;
