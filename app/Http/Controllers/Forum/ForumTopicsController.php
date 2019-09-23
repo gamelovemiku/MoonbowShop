@@ -12,7 +12,7 @@ class ForumTopicsController extends ForumController
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['show']]);
         $this->middleware('PostOwnerOnly', ['except' => ['create', 'store', 'show', 'addcomment']]); #ยกเว้นพวกนี้ที่จะยังใช้ได้ถ้าไม่ใช่เจ้าของ
     }
 
@@ -106,19 +106,6 @@ class ForumTopicsController extends ForumController
         $topic->delete();
 
         return redirect()->route('forum.main');
-    }
-
-    public function addcomment(Request $request)
-    {
-        $comment = new ForumComment;
-
-        $comment->topic_id = $request->topic_id;
-        $comment->comment_author_id = $this->getLoggedinUser()->id;
-        $comment->comment_content = $request->content;
-
-        $comment->save();
-
-        return redirect()->back();
     }
 
 }

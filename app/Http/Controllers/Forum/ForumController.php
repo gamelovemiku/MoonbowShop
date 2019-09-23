@@ -15,7 +15,7 @@ class ForumController extends Controller
 
         return view('forum.forum', [
             'topics' => $this->getAllTopics(),
-            'mostviews' => $this->getTopicTopFiveMostView(),
+            'mostviews' => $this->getTopicTopMostView(),
             'categories' => $category,
             'lastest' => $this->getLastestTopic()
         ]);
@@ -46,15 +46,15 @@ class ForumController extends Controller
         return $topic;
     }
 
-    public function getTopicTopFiveMostView()
+    public function getTopicTopMostView()
     {
-        $topic = ForumTopic::orderBy('topic_views', 'desc')->take(3)->get();
+        $topic = ForumTopic::orderBy('topic_views', 'desc')->take(15)->get();
         return $topic;
     }
 
     public function getLastestTopic()
     {
-        $topic = ForumTopic::orderBy('created_at', 'desc')->take(5)->get();
+        $topic = ForumTopic::orderBy('created_at', 'desc')->take(15)->get();
         return $topic;
     }
 }

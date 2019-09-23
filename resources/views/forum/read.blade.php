@@ -27,7 +27,7 @@
                     Forums
                 </h1>
                 <h6 class="subtitle is-6">
-                    Moonbow Community
+                    พื้นที่พูดคุยแลกเปลี่ยนความคิดเห็นของเซิร์ฟเวอร์
                 </h2>
             </div>
         </div>
@@ -54,15 +54,17 @@
                             </div>
                             <div class="level-right">
                                 <h6 class="subtitle is-6">
-                                    @if(Auth::user()->id == $topic->topic_author_id )
-                                        <form id="delete-post" method="POST" action="{{route('topic.destroy', [$topic->topic_id]) }}">
-                                            @csrf
-                                            @method('delete')
-                                        </form>
+                                    @auth
+                                        @if(Auth::user()->id == $topic->topic_author_id )
+                                            <form id="delete-post" method="POST" action="{{route('topic.destroy', [$topic->topic_id]) }}">
+                                                @csrf
+                                                @method('delete')
+                                            </form>
 
-                                        <small style="margin-right: 8px;"><a href="{{ route('topic.edit', [$topic->topic_id]) }}" class="has-text-pink"><i class="far fa-edit"></i> แก้ไขเรื่อง</a></small>
-                                        <small><a onclick="document.getElementById('delete-post').submit()" class="has-text-pink"><i class="far fa-trash-alt"></i> ย้ายไปถังขยะ</a></small>
-                                    @endif
+                                            <small style="margin-right: 8px;"><a href="{{ route('topic.edit', [$topic->topic_id]) }}" class="has-text-pink"><i class="far fa-edit"></i> แก้ไขเรื่อง</a></small>
+                                            <small><a onclick="document.getElementById('delete-post').submit()" class="has-text-pink"><i class="far fa-trash-alt"></i> ย้ายไปถังขยะ</a></small>
+                                        @endif
+                                    @endauth
                                 </h6>
                             </div>
                         </div>
@@ -82,15 +84,31 @@
                         <div class="card-content">
                             <div class="level">
                                 <div class="level-left">
-                                <p class="subtitle is-7 has-text-weight-bold">ความคิดเห็นที่ {{ $key+1 }} @if($topic->user->name == $comment->user->name) <small>(เจ้าของโพสต์)</small> @endif</p>
+                                    <p class="subtitle is-7 has-text-weight-bold">
+                                        ความคิดเห็นที่ {{ $key+1 }}
+                                        @auth
+                                            @if(Auth::user()->id == $comment->user->id)
+                                            <small><a onclick="document.getElementById('delete{{ $comment->comment_id }}').submit();" class="has-text-danger">
+                                                <i class="far fa-trash-alt"></i> ลบ</a>@endif
+                                            </small>
+                                        @endauth
+                                    </p>
                                 </div>
                                 <div class="level-right">
-                                    <p class="subtitle is-7 has-text-weight-bold">โดย {{$comment->user->name}} ({{ $comment->created_at }})</p>
+                                    <p class="subtitle is-7 has-text-weight-bold">
+                                        @if($topic->user->name == $comment->user->name)
+                                            <small class="has-text-warning"><i class="fas fa-crown"></i></small>
+                                        @endif {{$comment->user->name}} ({{ $comment->created_at }})
+                                    </p>
                                 </div>
                             </div>
                             <h4 class="content">{!! $comment->comment_content !!}</h4>
                         </div>
                     </div>
+                    <form id="delete{{ $comment->comment_id }}" action="{{ route('comment.destroy', [$comment->comment_id]) }}" method="POST">
+                        @csrf
+                        @method('delete')
+                    </form>
                 @empty
                     <p class="content has-text-medium has-text-centered">-- ดูเหมือนไม่มีใครมาให้คำตอบไว้เลย --</p>
                 @endforelse
@@ -105,7 +123,7 @@
                                 </div>
                             </div>
                         </div>
-                    <form method="post" action="{{ route('topic.addcomment') }}" id="formwitheditor">
+                    <form method="post" action="{{ route('comment.store') }}" id="formwitheditor">
                             @csrf
 
                             <div class="field">
@@ -119,7 +137,6 @@
                             <div class="buttons is-right">
                                 <button type="submit" class="button is-black">แสดงความคิดเห็น</button>
                             </div>
-
                         </form>
                     </div>
                 </div>
@@ -127,6 +144,7 @@
             <p style="margin-top: 3rem; margin-bottom: 6rem" class="content has-text-medium has-text-centered"><a href="{{ route('login') }}">เข้าสู่ระบบ</a> เพื่อแสดงความคิดเห็น</p>
             @endauth
         </div>
+
     </section>
     @include('components.footer')
 </body>
