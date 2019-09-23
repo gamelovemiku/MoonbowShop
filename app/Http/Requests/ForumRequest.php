@@ -32,7 +32,7 @@ class ForumRequest extends FormRequest
     public function messages()
     {
         return [
-            'category_name.required' =>'ํ You must be a Title',
+            'category_name.required' =>'ํYou must enter a Title',
             'description.required'   =>'Tell us your story', 
         ];
     }
