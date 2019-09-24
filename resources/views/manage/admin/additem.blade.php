@@ -78,7 +78,10 @@
                                         <option value="{{ $category->category_id }}">{{ ucwords($category->category_name) }}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                                @error('category')
+                                    <p class="help is-danger">{{ $message }}</p>
+                                @enderror
+                           </div>
                             <div class="icon is-small is-left">
                                 <i class="fas fa-tags"></i>
                             </div>

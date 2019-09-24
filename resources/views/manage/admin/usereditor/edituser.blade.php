@@ -46,12 +46,12 @@
                 </div>
                 <div class="field-body">
                     <div class="field">
-                        <p class="control">
+                        <div class="control">
                             <input class="input" type="text" name="name" value="{{ $user->name }}">
                             @error('name')
                                 <p class="help is-danger">{{ $message }}</p>
                             @enderror
-                        </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -62,12 +62,12 @@
                 </div>
                 <div class="field-body">
                     <div class="field">
-                        <p class="control">
+                        <div class="control">
                             <input class="input" type="number" name="points" value="{{ $user->points_balance }}">
                             @error('points')
                                 <p class="help is-danger">{{ $message }}</p>
                             @enderror
-                        </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -95,12 +95,12 @@
                 </div>
                 <div class="field-body">
                     <div class="field">
-                        <p class="control">
+                        <div class="control">
                             <input class="input" name="password" type="text">
                             @error('password')
                                 <p class="help is-danger">{{ $message }}</p>
                             @enderror
-                        </p>
+                        </div>
                     </div>
                 </div>
             </div>

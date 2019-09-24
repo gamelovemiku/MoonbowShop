@@ -34,7 +34,7 @@ class ForumPostRequest extends FormRequest
     public function messages()
     {
         return [
-            'category.required'     =>'จำเป็นต้องระบุหมวดหมู่ของPost',
+            'category.required'     =>'จำเป็นต้องระบุหมวดหมู่ของเรื่อง',
             'topic.required'        =>'หัวข้อไม่สามารถเว้นว่างได้',
             'content.required'      =>'เนื้อหาไม่สามารถปล่อยว่างได้',
             
