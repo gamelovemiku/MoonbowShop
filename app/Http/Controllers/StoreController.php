@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ItemshopCategory;
 
 class StoreController extends Controller
 {
@@ -13,11 +14,14 @@ class StoreController extends Controller
 
     public function index()
     {
+
+        $categorys = ItemshopCategory::orderBy('category_id','desc')->get();
+
         return view('store',
             [
+                'categorys' => $categorys,
                 'server'    => $this->getStatus(),
                 'items'     => $this->getAllItem(),
-                'categorys' => $this->getAllCategory(),
                 'lastest'   => $this->getLastestAddItem(),
                 'bestseller'=> $this->getBestSellerItem(),
                 'balance'   => $this->getBalance(),

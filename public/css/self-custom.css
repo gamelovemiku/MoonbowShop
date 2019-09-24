@@ -76,11 +76,12 @@ textarea {
 }
 .input, select {
     font-family: 'Segoe UI', Helvetica,'Pridi', serif;
+    font-weight: 600;
 }
 .text-price{
     color: darkgoldenrod;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 400;
 }
 .tabs-content li {
     display: none;

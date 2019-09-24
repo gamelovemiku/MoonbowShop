@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css"/>
     <link href="https://fonts.googleapis.com/css?family=Poppins|Pridi&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css" integrity="sha256-a2tobsqlbgLsWs7ZVUGgP5IvWZsx8bTNQpzsqCSm5mk=" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
+
     <script src="js/bulma-toast.min.js"></script>
     <script src="/js/bulma.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -179,53 +182,52 @@
                         </div>
                     </div>
                     <div class="box" id="allitems">
-                        <div class="level">
-                            <div class="level-left">
-                                <div class="title-category">ไอเท็มในร้านทั้งหมด
-                                    <p class="text-category has-text-weight-light">รายการสินค้าทั้งหมดที่วางขายในร้านค้า</p>
-                                </div>
-                            </div>
-                            <div class="level-right">
-
-                            </div>
+                        <div class="title-category">ไอเท็มในร้านทั้งหมด
+                            <p class="text-category has-text-weight-light">รายการสินค้าทั้งหมดที่วางขายในร้านค้า</p>
                         </div>
-                        <div class="columns is-multiline">
-                            @forelse ($items as $item)
-                            <div class="column is-3">
-                                <div class="card box-fullheight">
-                                    <div class="card-content">
-                                        <div class="field">
-                                            <div class="tags are-normal force-bold">
+                        <div id="app">
+                            <template>
+                                <section>
+                                    <b-tabs>
+                                        @foreach ($categorys as $category)
+                                            <b-tab-item label="@if($category->category_id == 1) อื่นๆ @else {{$category->category_name}} @endif" icon="{{$category->category_icon}}">
+                                                <div class="columns">
+                                                    @forelse ($category->items as $item)
+                                                    <div class="column is-3">
+                                                        <div class="card box-fullheight">
+                                                            <div class="card-content">
+                                                                <div class="title-product @if($key == 0) has-text-info @endif">{{ $item->item_name }}
+                                                                    <p class="subtitle-product">{{ $item->item_desc }}</p>
 
-                                            </div>
-                                        </div>
+                                                                    <div class="field" style="margin-top: 0.75rem;">
+                                                                        <figure class="image container is-96x96">
+                                                                            <img loading="lazy" src="/storage/itemshop/cover/{{ $item->item_image_path}}" alt="product">
+                                                                        </figure>
+                                                                    </div>
 
-                                        <div class="title-product @if($key == 0) has-text-info @endif">{{ $item->item_name }}
-                                            <p class="subtitle-product">{{ $item->item_desc }}</p>
-
-                                            <div class="field" style="margin-top: 0.75rem;">
-                                                <figure class="image container is-96x96">
-                                                    <img loading="lazy" src="/storage/itemshop/cover/{{ $item->item_image_path}}" alt="product">
-                                                </figure>
-                                            </div>
-
-                                            <p class="is-size-6 has-text-weight-medium has-text-centered">
-                                                @if($item->item_discount_price == null) {{ $item->item_price }} พ้อยท์ @else <small class="has-text-dark"><del>{{ $item->item_price }}</small> > </small> <a class="has-text-danger">{{ $item->item_discount_price }} พ้อยท์</a>   @endif
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="card-footer-item">
-                                            <a href="/store/checkout/{{ $item->item_id }}" class="button @if($key == 0) is-primary @else is-black @endif  is-outlined">@if($key == 0) ซื้อตอนนี้เลย! @else ซื้อ @endif</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @empty
-                                <div class="column is-12">
-                                    <p class="is-size-6 has-text-centered has-text-danger" style="margin: 25%">ไม่มีไอเท็มใดวางขายเลย</p>
-                                </div>
-                            @endforelse
+                                                                    <p class="is-size-6 has-text-weight-medium has-text-centered">
+                                                                        @if($item->item_discount_price == null) {{ $item->item_price }} พ้อยท์ @else <small class="has-text-dark"><del>{{ $item->item_price }}</small> > </small> <a class="has-text-danger">{{ $item->item_discount_price }} พ้อยท์</a> @endif
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-footer">
+                                                                <div class="card-footer-item">
+                                                                    <a href="/store/checkout/{{ $item->item_id }}" class="button @if($key == 0) is-primary @else is-black @endif is-outlined">@if($key == 0) ซื้อตอนนี้เลย! @else ซื้อ @endif</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    @empty
+                                                        <div class="column is-12">
+                                                            <p class="is-size-6 has-text-centered has-text-danger" style="margin: 25%">ไม่มีไอเท็มใดวางขายเลย</p>
+                                                        </div>
+                                                    @endforelse
+                                                </div>
+                                            </b-tab-item>
+                                        @endforeach
+                                    </b-tabs>
+                                </section>
+                            </template>
                         </div>
                     </div>
                 </div>
@@ -262,6 +264,24 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <script src="https://unpkg.com/vue"></script>
+                    <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
+
+                    <script>
+
+                        new Vue({
+                            el: '#app',
+
+                            data: {
+                                isRemember: "จำฉันไว้เข้าใช้ครั้งหน้าแล้ว",
+                                email: null,
+                                resetemail: null,
+                                activeTab: 0,
+                            },
+                        })
+
+                    </script>
 
                     <!--div--- class="box" style="width: 100%">
                         <div class="title-category">Redeem

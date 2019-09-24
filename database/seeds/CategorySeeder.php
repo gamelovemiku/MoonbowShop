@@ -14,12 +14,15 @@ class CategorySeeder extends Seeder
         DB::table('itemshop_category')->insert([
             [
                 'category_name' => 'Default',
+                'category_icon' => 'creation',
             ],
             [
-                'category_name' => 'ores',
+                'category_name' => 'Ores',
+                'category_icon' => 'diamond',
             ],
             [
-                'category_name' => 'rank',
+                'category_name' => 'Rank',
+                'category_icon' => 'trophy-outline',
             ]
         ]);
     }

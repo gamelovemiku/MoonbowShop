@@ -22,7 +22,10 @@
                 @csrf
                 <div class="field has-addons">
                     <div class="control">
-                        <input class="input" type="text" name="category_name" placeholder="New category">
+                        <input class="input is-uppercase" type="text" name="category_name" placeholder="Category Name">
+                    </div>
+                    <div class="control">
+                        <input class="input is-uppercase" type="text" name="category_icon" placeholder="MDI Icon">
                     </div>
                     <div class="control">
                         <button type="submit" class="button is-black">
@@ -32,11 +35,12 @@
                 </div>
             </form>
 
+            <small class="is-size-7">Shortcut: <a href="https://materialdesignicons.com/cdn/2.0.46/" target="_blank">Material Design Icons (MDI)</a> put by without prefix.</small>
 
             <table class="table is-hoverable" style="width: 100%; margin-top: 1em;">
                 <thead>
                     <tr>
-                        <th>REFERENCE ID</th>
+                        <th>#</th>
                         <th>Category Name</th>
                         <th>Action</th>
                     </tr>
@@ -60,7 +64,7 @@
                     @else
                         <tr>
                             <th>{{ $category->category_id }}</th>
-                            <th>{{ $category->category_name }}</th>
+                            <th><span class="mdi mdi-{{ $category->category_icon }}"></span> {{ $category->category_name }}</th>
                             <th>
                                 <div class="buttons">
                                     <form action="{{ route('category.destroy', [$category->category_id])}}" method="post">

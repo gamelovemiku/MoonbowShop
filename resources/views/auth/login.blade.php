@@ -101,7 +101,7 @@
                                             </form>
                                         </div>
                                     </b-tab-item>
-                                    <b-tab-item label="ลืมรหัสผ่าน" icon="account-alert">
+                                    {{-- <b-tab-item label="ลืมรหัสผ่าน" icon="account-alert">
                                         <div class="field">
                                             <h4 class="title is-size-4 has-text-weight-bold">ลืมรหัสผ่าน</h4>
                                             <p class="subtitle is-size-7">กรอกข้อมูลเพียงไม่กี่ตัวก็เข้าใช้งานได้แล้ว</p>
@@ -124,7 +124,7 @@
                                                 </div>
                                             </form>
                                         </div>
-                                    </b-tab-item>
+                                    </b-tab-item> --}}
                                 </b-tabs>
                             </section>
                         </template>
@@ -139,7 +139,7 @@
                             el: '#app',
 
                             data: {
-                                isRemember: "จำฉันไว้เข้าใช้ครั้งหน้าแล้ว",
+                                isRemember: "ไม่จำฉันเมื่อเข้าสู่ระบบครั้งต่อไป",
                                 email: null,
                                 resetemail: null,
                                 activeTab: 0,

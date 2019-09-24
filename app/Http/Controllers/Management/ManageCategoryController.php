@@ -23,6 +23,8 @@ class ManageCategoryController extends ManageController
         $category = new ItemshopCategory;
 
         $category->category_name = $request->category_name;
+        $category->category_icon = $request->category_icon;
+        
         $category->save();
 
         session()->flash('manageCategoryAdded');

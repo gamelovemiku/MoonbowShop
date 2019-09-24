@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
     <script src="/js/bulma.js"></script>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <!--link rel="stylesheet" href="/css/bulma/bulma.min.css"/>
     <link rel="stylesheet" href="/css/self-custom.css"/>
     <script src="/js/bulma.js"></script>
@@ -33,11 +35,9 @@
 <body>
     <div id="app">
         @include('components.navbar')
-
-        <main class="view is-uppercase">
-            @yield('content')
-        </main>
-
+            <main class="view is-uppercase">
+                @yield('content')
+            </main>
         @include('components.footer')
     </div>
 </body>
