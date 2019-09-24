@@ -23,9 +23,15 @@
                 <div class="field has-addons">
                     <div class="control">
                         <input class="input is-uppercase" type="text" name="category_name" placeholder="Category Name">
+                            @error('category_name')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
                     </div>
                     <div class="control">
                         <input class="input is-uppercase" type="text" name="category_icon" placeholder="MDI Icon">
+                            @error('category_icon')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
                     </div>
                     <div class="control">
                         <button type="submit" class="button is-black">
