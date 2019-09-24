@@ -8,11 +8,25 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins|Pridi:400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css" integrity="sha256-a2tobsqlbgLsWs7ZVUGgP5IvWZsx8bTNQpzsqCSm5mk=" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/self-custom.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
     <script src="/js/bulma.js"></script>
 
     <title>Manage Profile</title>
 </head>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        $('input[type="file"]').change(function(e){
+
+            var fileName = e.target.files[0].name;
+            $("#upload-header").text("Selected");
+            $("#upload-filename").text(fileName);
+        });
+    });
+
+</script>
 
 <body>
     @include('components.navbar')

@@ -75,7 +75,7 @@
                 <div class="field">
                     <label for="category" class="label">Item Category</label>
                     <div class="control has-icons-left">
-                        <div class="select">
+                        <div class="select is-fullwidth">
                             <select id="category" name="category" width="100%">
                                 @foreach ($categorys as $category)
                                     <option value="{{ $category->category_id }}" @if($item->category_id == $category->category_id) selected @endif>{{ ucwords($category->category_name) }}</option>
@@ -95,7 +95,7 @@
                         <input id="item_price" class="input" name="item_price" value="{{ $item->item_price }}">
                             @error('item_price')
                                 <p class="help is-danger">{{ $message }}</p>
-                            @enderror  
+                            @enderror
                     </div>
                 </div>
 

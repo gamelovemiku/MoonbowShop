@@ -72,8 +72,8 @@
                     <div class="field">
                         <label for="category" class="label">Item Category</label>
                         <div class="control has-icons-left">
-                            <div class="select">
-                                <select id="category" name="category" width="100%">
+                            <div class="select is-fullwidth">
+                                <select id="category" name="category" width="100%" >
                                     @foreach ($categorys as $category)
                                         <option value="{{ $category->category_id }}">{{ ucwords($category->category_name) }}</option>
                                     @endforeach
@@ -81,7 +81,7 @@
                             </div>
                             <div class="icon is-small is-left">
                                 <i class="fas fa-tags"></i>
-                            </div>                        
+                            </div>
                         </div>
                     </div>
 
@@ -92,7 +92,7 @@
                             @error('item_price')
                                 <p class="help is-danger">{{ $message }}</p>
                             @enderror
-                        </div>                        
+                        </div>
                     </div>
 
                     <div class="field">

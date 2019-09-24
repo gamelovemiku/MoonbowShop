@@ -14,14 +14,14 @@
 
 <body>
     @include('components.navbar')
-    <section class="hero is-info space-for-navbar" style="background-image: url('https://i.imgur.com/EORC8LJ.png'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <section class="hero is-info space-for-navbar" style="background-image: url('/storage/backend/background/home_bg.png'); background-position: center; background-repeat: no-repeat; background-size: cover;">
         <div class="hero-body">
             <div class="container is-uppercase">
                 <h1 class="title is-1 force-bold">
                     Home
                 </h1>
                 <h2 class="subtitle">
-                    ข้อมูลต่างๆ และช่องทางการติดต่อ
+                    หน้าหลัก
                 </h2>
             </div>
         </div>
@@ -32,7 +32,7 @@
                 <div class="column is-8">
                     <div class="box" style="width: 100%">
                         <div class="title-category has-text-primary">ประกาศ
-                            <p class="text-category has-text-weight-light">ข่าวสารหรือข้อมูลของเซิร์ฟเวอร์ที่ควรทราบ</p>
+                            <p class="text-category has-text-weight-light">ข่าวสารหรือข้อมูลของเซิร์ฟเวอร์ที่ได้ประกาศไว้</p>
                         </div>
                         <table class="table is-fullwidth is-hoverable">
                             <thead>
@@ -74,24 +74,12 @@
                         <div class="columns">
                             <div class="column">
                                 <div class="title-category">ช่องทางการติดตาม
-                                    <p class="text-category has-text-weight-light">ใกล้ชิดข่าวต่างๆ มากยิ่งขึ้นผ่านทางสื่อต่างๆ</p>
+                                    <p class="text-category has-text-weight-light" style="margin-bottom: 1rem">ใกล้ชิดข่าวต่างๆ มากยิ่งขึ้นผ่านทางสื่อต่างๆ</p>
+                                    <iframe style="height: 400px; margin: 0px" src="https://discordapp.com/widget?id=606226758932496473&theme=dark" width="100%"></iframe>
                                 </div>
-                                <span class="icon is-large">
-                                    <i class="fab fa-facebook fa-2x"></i>
-                                </span>
-                                <span class="icon is-large">
-                                    <i class="fab fa-twitter fa-2x"></i>
-                                </span>
-                                <span class="icon is-large">
-                                    <i class="fab fa-instagram fa-2x"></i>
-                                </span>
-                                <span class="icon is-large">
-                                    <i class="fab fa-discord fa-2x"></i>
-                                </span>
                             </div>
                         </div>
                     </div>
-                    <iframe style="height: 340px; margin: 0px" src="https://discordapp.com/widget?id=606226758932496473&theme=dark" width="100%"></iframe>
                 </div>
             </div>
         </div>

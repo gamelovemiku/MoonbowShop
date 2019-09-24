@@ -215,7 +215,7 @@
                                                     <div class="level">
                                                         <div class="level-left">
                                                             <div class="level-item">
-                                                            <a class="has-text-dark" href="{{ route('category.show', [$category->forum_category_id])  }}"><i class="fas fa-tags fa-xs"></i> {{ $category->forum_category_name }}</a>
+                                                            <a class="has-text-dark" href="{{ route('forumcategory.show', [$category->forum_category_id])  }}"><i class="fas fa-tags fa-xs"></i> {{ $category->forum_category_name }}</a>
                                                             </div>
                                                         </div>
                                                         <div class="level-right">

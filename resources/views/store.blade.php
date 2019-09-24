@@ -17,7 +17,7 @@
 
 <body>
     @include('components.navbar')
-    <section class="hero is-info space-for-navbar" style="background-image: url('https://i.imgur.com/EORC8LJ.png'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <section class="hero is-info space-for-navbar" style="background-image: url('/storage/backend/background/store_bg.png'); background-position: center; background-repeat: no-repeat; background-size: cover;">
         <div class="hero-body">
             <div class="container is-uppercase">
                 <h1 class="title is-1 force-bold">

@@ -14,14 +14,14 @@
 
 <body>
     @include('components.navbar')
-    <section class="hero is-info space-for-navbar" style="background-image: url('https://i.imgur.com/EORC8LJ.png'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <section class="hero is-info space-for-navbar" style="background-image: url('/storage/backend/background/statistics_bg.png'); background-position: center; background-repeat: no-repeat; background-size: cover;">
         <div class="hero-body">
             <div class="container is-uppercase">
                 <h1 class="title is-1 force-bold">
                     Statistics
                 </h1>
                 <h2 class="subtitle">
-                    View your statistics, Analytics yourself!
+                    ภาพรวมสถิติในภายในเกมที่คุณทำไปแล้ว
                 </h2>
             </div>
         </div>
@@ -29,19 +29,10 @@
     <section class="section" style="margin-bottom: 4em;">
         <div class="container is-uppercase">
             <div class="columns">
-                <div class="column is-6">
-                    <div class="box" style="width: 100%">
-                        <div class="title-category">General
-                            <p class="text-category">Breaking, Placing, Player Kills, Mob Kills and etc.</p>
-                        </div>
-                        <div class="columns is-multiline">
-                    </div>
-                </div>
-            </div>
-            <div class="column is-6">
-                    <div class="box" style="width: 100%">
-                        <div class="title-category">Economy
-                            <p class="text-category">Breaking, Placing, Player Kills, Mob Kills and etc.</p>
+                <div class="column is-12">
+                    <div class="box has-text-centered" style="width: 100%;">
+                        <div class="title-category" style="margin: 260px">Statistics
+                            <p class="text-category has-text-weight-light">ระบบสถิติกำลังอยู่ในช่วงพัฒนา..</p>
                         </div>
                         <div class="columns is-multiline">
                     </div>

@@ -88,7 +88,7 @@
 
                             <div class="field">
                                 <div class="buttons">
-                                    <button type="submit" class="button is-info has-text-weight-light">แก้ไข</button>
+                                    <button type="submit" class="button is-black has-text-weight-medium">แก้ไข</button>
                                 </div>
                             </div>
 

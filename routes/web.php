@@ -116,7 +116,7 @@ Route::prefix('forum')->group(function () {
     Route::post('topic/restore/{id}/rollback', 'Management\ManageTopicsController@restore')->name('topicmanager.restore');
     Route::post('topic/forcedelete/{id}/forcedelete', 'Management\ManageTopicsController@forcedelete')->name('topicmanager.forcedelete');
 
-    Route::resource('category', 'Forum\ForumCategoryController');
+    Route::resource('forumcategory', 'Forum\ForumCategoryController');
     Route::resource('comment', 'Forum\ForumCommentsController');
 
 });

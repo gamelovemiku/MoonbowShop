@@ -57,17 +57,17 @@
                                 <div class="control">
                                     <div class="select is-fullwidth">
                                         <select name="category">
-                                            <option>หมวดหมู่ของโพสต์</option>
+                                            <option value="">หมวดหมู่ของโพสต์</option>
                                             @forelse ($categories as $category)
                                                 <option value="{{ $category->forum_category_id }}">{{$category->forum_category_name}}</option>
                                             @empty
 
                                             @endforelse
                                         </select>
-                                            @error('category')
-                                                <p class="help is-danger">{{ $message }}</p>
-                                            @enderror
                                     </div>
+                                    @error('category')
+                                        <p class="help is-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -85,19 +85,14 @@
                                     @enderror
                             </div>
 
-                            <div class="field">
-                                <label class="checkbox">
-                                    <input class="checkbox" type="checkbox" name="is_published">
-                                    บันทึกเป็นแบบร่าง
-                                </label>
-                                    @error('is_published')
-                                        <p class="help is-danger">{{ $message }}</p>
-                                    @enderror
-                            </div>
+                            <input class="hidden" type="hidden" name="is_published" value="1">
+                            @error('is_published')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
 
                             <div class="field">
                                 <div class="buttons">
-                                    <button type="submit" class="button is-info has-text-weight-light">ตั้งเรื่องใหม่</button>
+                                    <button type="submit" class="button is-black has-text-weight-medium">ตั้งเรื่องใหม่</button>
                                 </div>
                             </div>
 
