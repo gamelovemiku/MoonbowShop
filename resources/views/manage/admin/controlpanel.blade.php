@@ -35,7 +35,7 @@
         <section class="section is-uppercase" style="margin-bottom: 4em; margin-top: 4em">
             <div class="container">
                 <h1 class="title is-size-2 has-text-weight-bold">Control Panel</h1>
-                <p class="subtitle has-text-justified">Manage & Control anything on system<b class="force-bold"></b></p>
+                <p class="subtitle has-text-justified">ควบคุมส่วนต่างๆ ของเว็บไซต์และระบบ<b class="force-bold"></b></p>
                 <div class="columns">
                     <div class="column is-3">
                         <div class="box">
@@ -50,6 +50,12 @@
                                             <i class="fas fa-shopping-cart"></i>
                                         </span>
                                         Itemshop
+                                    </a>
+                                    <a class="menu-block" href="{{ route('category.index')}}">
+                                        <span class="menu-icon icon">
+                                            <i class="fas fa-layer-group"></i>
+                                        </span>
+                                        Category
                                     </a>
                                 </ul>
                                 <p class="menu-label">

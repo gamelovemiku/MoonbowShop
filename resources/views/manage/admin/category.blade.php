@@ -37,7 +37,7 @@
 
             <small class="is-size-7">Shortcut: <a href="https://materialdesignicons.com/cdn/2.0.46/" target="_blank">Material Design Icons (MDI)</a> put by without prefix.</small>
 
-            <table class="table is-hoverable" style="width: 100%; margin-top: 1em;">
+            <table class="table is-hoverable is-narrow" style="width: 100%; margin-top: 1em;">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -49,15 +49,11 @@
                     @foreach ($categorys as $category)
                     @if ($category->category_id == 1)
                         <tr>
-                            <th>#{{ $category->category_id }}</th>
-                            <th>{{ $category->category_name }}</th>
+                            <th>{{ $category->category_id }}</th>
+                            <th><span class="mdi mdi-{{ $category->category_icon }}"></span> {{ $category->category_name }}</th>
                             <th>
                                 <div class="buttons">
-                                    <form action="{{ route('category.destroy', [$category->category_id])}}" method="post">
-                                        @method('delete')
-                                        @csrf
-                                        <button type="submit" class="button is-warning" value="Delete" disabled>Reserved</button>
-                                    </form>
+                                    <button type="submit" class="button is-warning is-small" disabled>Reserved</button>
                                 </div>
                             </th>
                         </tr>
@@ -70,7 +66,7 @@
                                     <form action="{{ route('category.destroy', [$category->category_id])}}" method="post">
                                         @method('delete')
                                         @csrf
-                                        <button type="submit" class="button is-danger" value="Delete">Delete</button>
+                                        <button type="submit" class="button is-danger is-small" value="Delete">Delete</button>
                                     </form>
                                 </div>
                             </th>

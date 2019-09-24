@@ -9,8 +9,8 @@
     </ul>
 </nav>
 
-<h4 class="title is-size-4 has-text-weight-bold">Edit Profile</h4>
-<p class="subtitle is-size-7">Edit your profile by yourself<b class="force-bold"></b></p>
+<h4 class="title is-size-4 has-text-weight-bold">แก้ไขโปรไฟล์</h4>
+<p class="subtitle is-size-7">แก้ไขโปรไฟล์ของคุณเอง<b class="force-bold"></b></p>
 
 <form method="post" action="{{ route('profile.updateprofile') }}" enctype="multipart/form-data">
     @csrf
@@ -19,7 +19,7 @@
 
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label class="label">Email</label>
+                    <label class="label">อีเมล</label>
                 </div>
                 <div class="field-body">
                     <div class="field">
@@ -35,7 +35,7 @@
 
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label class="label">Name</label>
+                    <label class="label">ชื่อผู้ใช้</label>
                 </div>
                 <div class="field-body">
                     <div class="field">
@@ -51,7 +51,7 @@
 
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label class="label">Image</label>
+                    <label class="label">ภาพประจำตัว</label>
                 </div>
                 <div class="field-body">
                     <div class="field">
@@ -80,7 +80,7 @@
 
             <div class="buttons is-right">
                 <button type="submit" class="button is-primary is-outlined">
-                    Save Settings
+                    บันทึกการเปลี่ยนแปลง
                 </button>
             </div>
         </div>

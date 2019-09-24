@@ -18,10 +18,10 @@
     </div>
     <div class="column is-6 has-text-right">
         <a href="{{ route('item.create')}}" class="button is-small is-light">
-            <i class="fas fa-plus fa-xs" style="margin-right: 4px;"></i>New item
+            <i class="fas fa-plus fa-xs" style="margin-right: 8px;"></i>New item
         </a>
-        <a href="{{ route('category.index')}}" class="button is-small is-light">
-            <i class="fas fa-layer-group" style="margin-right: 4px;"></i>Manage Category
+        <a href="{{ route('category.index')}}" class="button is-small is-black">
+            <i class="fas fa-layer-group" style="margin-right: 8px;"></i>Category
         </a>
     </div>
 </div>

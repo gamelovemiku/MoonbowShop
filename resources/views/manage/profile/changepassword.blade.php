@@ -10,22 +10,22 @@
     </ul>
 </nav>
 
-<h4 class="title is-size-4 has-text-weight-bold">Change Password</h4>
-<p class="subtitle is-size-7">Reset your password<b class="force-bold"></b></p>
+<h4 class="title is-size-4 has-text-weight-bold">เปลี่ยนรหัสผ่าน</h4>
+<p class="subtitle is-size-7">ตั้งค่ารหัสผ่านใหม่ด้วยตัวเอง<b class="force-bold"></b></p>
 <form method="POST" action="{{ route('profile.store') }}">
     @csrf
     <div class="field">
         <div class="columns">
             <div class="column is-6" style="height: 100%">
                 <div class="field">
-                    <label for="password" class="label">New Password</label>
+                    <label for="password" class="label">รหัสผ่านใหม่</label>
 
                     <div class="control">
                         <input id="password" type="password" class="input @error('password') is-danger @enderror" name="password">
                     </div>
                 </div>
                 <div class="field">
-                    <label for="password" class="label">Confirm New Password</label>
+                    <label for="password" class="label">ยืนยันรหัสผ่านใหม่</label>
 
                     <div class="control">
                         <input id="password" type="password" class="input @error('password') is-danger @enderror" name="password_confirmation">
@@ -43,7 +43,7 @@
                 </div>
                 <div class="buttons">
                     <button type="submit" class="button is-black">
-                        Change Password
+                        เปลี่ยนรหัสผ่าน
                     </button>
                 </div>
             </div>
@@ -52,8 +52,8 @@
                     <button class="delete"></button>
                     รหัสผ่านที่ดีควรจะมีมากกว่า 8 ตัวขึ้นไป
                     <ul>
-                        <li>มีอัครพิเศษอย่างน้อย 1 ตัว</li>
-                        <li>มีตัวอักษรตัวพิมพ์ใหม่ 1 ตัว</li>
+                        <li>มีอัครพิเศษอย่างน้อย 1 ตัวหรือมากกว่า</li>
+                        <li>มีตัวอักษรตัวพิมพ์ใหญ่ 1 ตัว</li>
                     </ul>
                 </div>
             </div>

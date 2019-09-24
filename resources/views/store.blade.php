@@ -219,7 +219,7 @@
                                                     </div>
                                                     @empty
                                                         <div class="column is-12">
-                                                            <p class="is-size-6 has-text-centered has-text-danger" style="margin: 25%">ไม่มีไอเท็มใดวางขายเลย</p>
+                                                            <p class="is-size-6 has-text-centered has-text-danger" style="margin: 25%">ไม่มีไอเท็มในหมวดนี้เลย</p>
                                                         </div>
                                                     @endforelse
                                                 </div>

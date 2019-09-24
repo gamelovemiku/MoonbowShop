@@ -50,12 +50,10 @@
         <div class="column is-8">
             <div class="notification is-black" style="height: 240px; background-image: url('/storage/backend/background/dashboard_dungeons_gate.png');background-position: center; background-repeat: no-repeat; background-size: cover;">
                 <h6 class="subtitle is-6 has-text-weight-bold">All Times Income</h6>
-                <p class="title is-1"><small class="is-size-6 has-text-weight-medium">฿</small> {{ number_format($all_payment_amount, 2) }}</p>
+                <p class="title is-1"><small class="is-size-5 has-text-weight-medium">฿</small> {{ number_format($all_payment_amount, 2) }}</p>
                 <div class="subtitle is-7 has-text-weight-medium">
                     POWERED BY <b>OMISE.CO</b>
                 </div>
-
-
             </div>
         </div>
         <div class="column is-4">

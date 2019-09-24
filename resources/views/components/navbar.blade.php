@@ -67,12 +67,6 @@
                             <a class="navbar-link"><i class="fas fa-user" style="margin-right: 8px;"></i>{{ Auth::user()->name }}</a>
                         <div class="navbar-dropdown is-boxed">
 
-                            <a class="navbar-item has-text-pink">
-                                คุณอยู่ในสถานะ {{ Auth::user()->role->role_name }}
-                            </a>
-
-                            <hr class="navbar-divider">
-
                             <a href="{{ route('profile.index') }}" class="navbar-item">
                                 โปรไฟล์
                             </a>

@@ -39,52 +39,52 @@
     <section class="section is-uppercase" style="margin-bottom: 3em; margin-top: 4em;">
         <div class="container">
             <h1 class="title is-size-2 has-text-weight-bold">Profile</h1>
-            <p class="subtitle has-text-justified">Your profile and everythings association to you!<b class="force-bold"></b></p>
+            <p class="subtitle has-text-justified">จัดการข้อมูลส่วนตัว และการกระทำที่เกี่ยวกับคุณ<b class="force-bold"></b></p>
             <div class="columns">
                 <div class="column is-3">
                     <div class="box">
                         @include('components.alert')
                         <aside class="menu">
                             <p class="menu-label">
-                                User Profile
+                                โปรไฟล์ของผู้ใช้
                             </p>
                             <ul class="menu-list">
                                 <a class="menu-block" href="{{ route("profile.index") }}">
                                     <span class="menu-icon icon">
                                         <i class="fas fa-id-card"></i>
                                     </span>
-                                    Profile
+                                    โปรไฟล์
                                 </a>
                                 <a class="menu-block" href="{{ route("profile.changepassword") }}">
                                     <span class="menu-icon icon">
                                         <i class="fas fa-key"></i>
                                     </span>
-                                    Change Password
+                                    เปลี่ยนรหัสผ่าน
                                 </a>
                             </ul>
                             <p class="menu-label">
-                                History
+                                ประวัติ
                             </p>
                             <ul class="menu-list">
                                 <a class="menu-block" href="{{ route("history.index") }}">
                                     <span class="menu-icon icon">
                                         <i class="fas fa-receipt"></i>
                                     </span>
-                                    Purchase history
+                                    ประวัติการจ่ายเงิน
                                 </a>
                             </ul>
                             <p class="menu-label">
-                                Forums
+                                เว็บบอร์ด
                             </p>
                             <ul class="menu-list">
                                 <a class="menu-block" href="{{ route("topicmanager.index") }}">
                                     <span class="menu-icon icon">
                                         <i class="fas fa-book"></i>
                                     </span>
-                                    All Posts
+                                    เรื่องที่โพสต์
                                 </a>
                             </ul><hr/>
-                        <a class="button is-danger is-fullwidth" href="{{ route('logout') }}">Sign Out</a>
+                        <a class="button is-danger is-fullwidth" href="{{ route('logout') }}">ออกจากระบบ</a>
                         </aside>
                     </div>
                 </div>

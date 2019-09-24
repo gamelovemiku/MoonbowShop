@@ -11,14 +11,11 @@
 
 <div class="columns">
     <div class="column is-4">
-        <h4 class="title is-size-4 has-text-weight-bold">History</h4>
-        <p class="subtitle is-size-7">All of your payment history.</p>
+        <h4 class="title is-size-4 has-text-weight-bold">ประวัติการจ่ายเงิน</h4>
+        <p class="subtitle is-size-7">ประวัติการทำรายการทั้งหมดที่คุณซื้อ</p>
     </div>
     <div class="column is-8 has-text-right">
-        <div class="notification is-danger">
-            <button class="delete"></button>
-            แจ้งให้ทราบ: เซิร์ฟเวอร์จะ<strong>ไม่เก็บหมายเลขบัตรเครดิตใดๆ</strong> เข้าสู่ระบบทั้งสิ้น เพื่อความปลอดภัย
-        </div>
+
     </div>
 </div>
 
@@ -29,15 +26,15 @@
                     <table class="table is-fullwidth is-narrow">
                         <thead>
                             <tr>
-                                <th>#REF</th>
-                                <th>Provider</th>
-                                <th>Payer Name</th>
-                                <th>Paid Amount (Baht)</th>
-                                <th>Result</th>
+                                <th>#</th>
+                                <th>ผู้ให้บริการ</th>
+                                <th>ชื่อผู้ชำระ</th>
+                                <th>จำนวนเงินที่จ่าย (บาท)</th>
+                                <th>สถานะ</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($history as $info)
+                            @forelse ($history as $info)
                                 <tr>
                                     <th class="has-text-weight-medium">{{ $info->payment_id }}</th>
                                     <th class="has-text-weight-medium is-lowercase">{{ $info->payment_provider }}</th>
@@ -51,7 +48,13 @@
                                         @endif
                                     </th>
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td class="has-text-centered has-text-danger" colspan="5">
+                                        คุณไม่มีประวัติการจ่ายเงินใดๆ เลย
+                                    </td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
