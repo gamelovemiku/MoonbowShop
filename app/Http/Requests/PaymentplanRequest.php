@@ -39,7 +39,7 @@ class PaymentplanRequest extends FormRequest
             'price.required'         =>' You must enter the price ',
             'price.numeric'          =>' The price must be number ',
             'points_amount.required' =>' You must enter the PointsAmount ',           
-            'points_amount.numeric'  =>' The Point must be number  ',
+            'points_amount.numeric'  =>' The Point must be number',
         ];
     }
 }
