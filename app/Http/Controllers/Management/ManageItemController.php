@@ -125,6 +125,6 @@ class ManageItemController extends ManageController
             session()->flash('somethingError');
         }
 
-        return redirect('manage/itemshop/item');
+        return redirect()->route('item.index');
     }
 }

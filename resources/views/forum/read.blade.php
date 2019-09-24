@@ -33,7 +33,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" style="margin-bottom: 4em;">
         <div class="container">
             @include('components.alert')
             <div class="columns is-multiline">
@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="level-right">
                                     <p class="subtitle is-7 has-text-weight-bold">
-                                        @if($topic->user->name == $comment->user->name)
+                                        @if($topic->user->id == $comment->user->id)
                                             <small class="has-text-warning"><i class="fas fa-crown"></i></small>
                                         @endif {{$comment->user->name}} ({{ $comment->created_at }})
                                     </p>
@@ -131,7 +131,7 @@
                             </div>
 
                             <div class="field">
-                                <input type="hidden" value="{{ $topic->topic_id }}" name="topic_id">                                   
+                                <input type="hidden" value="{{ $topic->topic_id }}" name="topic_id">
                             </div>
 
                             <div class="buttons is-right">

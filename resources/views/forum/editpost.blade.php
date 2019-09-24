@@ -37,7 +37,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" style="margin-bottom: 4em;">
         <div class="container">
             <div class="columns is-multiline">
                 <div class="column is-half is-offset-one-quarter">

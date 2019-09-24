@@ -42,7 +42,7 @@
                     <th class="has-text-weight-medium is-lowercase">{{ $user->email }}</th>
                     <th class="has-text-weight-medium">{{$user->points_balance}}</th>
                     <th>
-                        @if (Auth::user()->name != $user->name)
+                        @if (Auth::user()->id != $user->id)
                             <div class="buttons">
                                 <form action="{{ route('usereditor.edit', [$user->id])}}" method="post">
                                     @method('get')

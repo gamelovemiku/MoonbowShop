@@ -29,7 +29,7 @@
             </div>
         </div>
     </section>
-    <section class="section">
+    <section class="section"  style="margin-bottom: 4em;">
         @include('components.alert')
         <div class="container is-uppercase">
             <div class="columns">
@@ -252,7 +252,7 @@
                                                 @if($key == 0) <span class="tag is-light">Lastest</span> @endif
                                             </div>
                                         </th>
-                                        <th width="85%">{{ $notice->notice_title }}</th>
+                                        <th width="85%">{{ Str::limit($notice->notice_title, 120) }}</th>
                                     </tr>
                                 @empty
                                     <td class="has-text-centered has-text-pink" colspan="2">

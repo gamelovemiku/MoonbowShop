@@ -30,7 +30,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" style="margin-bottom: 4em;">
         <div class="container">
             @include('components.alert')
             <div class="level">
