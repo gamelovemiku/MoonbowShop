@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Management;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
 use App\ItemshopCategory;
 
 class ManageCategoryController extends ManageController
@@ -18,7 +19,7 @@ class ManageCategoryController extends ManageController
         //
     }
 
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         $category = new ItemshopCategory;
 
