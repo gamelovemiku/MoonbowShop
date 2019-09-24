@@ -8,6 +8,11 @@ use App\PaymentPlan;
 class TopupController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index() {
 
         $plan = PaymentPlan::orderBy('plan_price', 'asc')->get();

@@ -8,12 +8,15 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins|Pridi:400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css" integrity="sha256-a2tobsqlbgLsWs7ZVUGgP5IvWZsx8bTNQpzsqCSm5mk=" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/self-custom.css"/>
+
+    <script src="/js/bulma.js"></script>
+
     <title>Manage Profile</title>
 </head>
 
 <body>
     @include('components.navbar')
-        <section class="section is-uppercase" style="margin-bottom: 3em; margin-top: 4em;">
+        <section class="section is-uppercase" style="margin-bottom: 4em; margin-top: 4em">
             <div class="container">
                 <h1 class="title is-size-2 has-text-weight-bold">Control Panel</h1>
                 <p class="subtitle has-text-justified">Manage & Control anything on system<b class="force-bold"></b></p>

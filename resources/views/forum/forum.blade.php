@@ -41,10 +41,19 @@
                         เรื่องทั้งหมดที่ถูกโพสต์ใน Forum มีจำนวนทั้งหมด {{ count($topics) }} เรื่อง
                     </div>
                     <div class="level-right">
+                        @auth
                         <div class="buttons">
                             <a class="button is-info is-outlined" href="{{ route('topic.create')}}">เพิ่มเรื่องใหม่</a>
-                        <a class="button is-black" href=" {{ route('topicmanager.index') }}">โพสต์ทั้งหมดของฉัน</a>
+                            <a class="button is-black" href=" {{ route('topicmanager.index') }}">โพสต์ทั้งหมดของฉัน</a>
                         </div>
+                        @endauth
+
+                        @guest
+                        <div class="buttons">
+                            <a class="button is-info is-outlined" href="{{ route('topic.create')}}">เพิ่มเรื่องใหม่</a>
+                            <a class="button is-black" href=" {{ route('topicmanager.index') }}">โพสต์ทั้งหมดของฉัน</a>
+                        </div>
+                        @endguest
                     </div>
                 </div>
                 <div class="columns is-multiline">

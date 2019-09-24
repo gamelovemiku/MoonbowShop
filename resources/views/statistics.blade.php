@@ -26,7 +26,7 @@
             </div>
         </div>
     </section>
-    <section class="section">
+    <section class="section" style="margin-bottom: 4em;">
         <div class="container is-uppercase">
             <div class="columns">
                 <div class="column is-6">

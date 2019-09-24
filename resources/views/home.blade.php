@@ -26,7 +26,7 @@
             </div>
         </div>
     </section>
-    <section class="section">
+    <section class="section" style="margin-bottom: 4em;">
         <div class="container is-uppercase">
             <div class="columns">
                 <div class="column is-8">
@@ -49,7 +49,7 @@
                                             <div class="tag is-info">{{ $notice->notice_tag }}</div>
                                         </div>
                                     </th>
-                                    <th width="75%">{{ $notice->notice_title }}</th>
+                                    <th width="75%"><a href="#" class="has-text-black">{!! Str::limit($notice->notice_title, 120)!!}</a></th>
                                 </tr>
                             @empty
                                 <td class="has-text-centered has-text-pink" colspan="4">
