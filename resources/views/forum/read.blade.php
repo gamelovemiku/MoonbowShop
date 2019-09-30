@@ -115,7 +115,7 @@
             </div>
             @auth
                 <div class="column is-three-fifths is-offset-one-fifth">
-                    <div class="box">
+                    <div class="box is-alone">
                         <div class="level">
                             <div class="level-left">
                                 <div class="level-item">

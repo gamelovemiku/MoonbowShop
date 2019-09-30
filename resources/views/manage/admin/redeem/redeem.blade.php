@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-<h4 class="title is-size-4">หมวดหมู่ไอเท็ม</h4>
+<h4 class="title is-size-4">โค๊ดแลกรางวัล</h4>
 <p class="subtitle is-size-7">ทำให้ไอเท็มของคุณมีการจัดเก็บที่ง่ายต่อการค้นหา<b class="force-bold"></b></p>
 <div class="field">
     <div class="columns">

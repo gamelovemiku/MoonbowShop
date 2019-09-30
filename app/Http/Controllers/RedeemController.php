@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Redeem;
-use DB;
+use App\RedeemClaimed;
 use Auth;
 
 class RedeemController extends Controller
@@ -17,17 +17,31 @@ class RedeemController extends Controller
 
     public function redeem(Request $request) {
 
-        $code = $request->input('redeemcode');
+        $redeem = Redeem::where('redeem_code', $request->redeemcode)->get()->first();
 
-        if($this->redeemCheck($code)) {
+        if($redeem) {
 
-            $this->sendCommand($this->getRewardInfo($code)->redeem_reward_command);
+            $claim = RedeemClaimed::where([['redeem_code_id', $redeem->redeem_id], ['claimer_id', Auth::user()->id]])->get()->first();
 
-            return "Found!";
+            if(!$claim) {
 
-        } else {
+                //ยังไม่แลกโค๊ด
 
-            return "Invalid code: " . $code;
+                $this->sendCommand('say CLAIMS');
+                $this->setAsClaimed($redeem->redeem_id);
+
+            }else {
+
+                session()->flash('RedeemClaimedError');
+                return redirect()->back();
+
+            }
+
+        }else {
+
+            session()->flash('RedeemNotFoundError');
+            return redirect()->back();
+
         }
 
     }
@@ -35,10 +49,11 @@ class RedeemController extends Controller
     public function redeemCheck($code) {
 
         $result = Redeem::where('redeem_code', $code)->get()->first();
-        
+
         if(!empty($result->redeem_code)) {
             return true;
         }
+
         return false;
     }
 
@@ -46,5 +61,15 @@ class RedeemController extends Controller
     {
         $redeem = Redeem::where('redeem_code', $code)->get();
         return $redeem->first();
+    }
+
+    public function setAsClaimed($redeemid) {
+
+        $claim = new RedeemClaimed;
+
+        $claim->redeem_code_id = $redeemid;
+        $claim->claimer_id = Auth::user()->id;
+        $claim->save();
+
     }
 }

@@ -68,11 +68,15 @@
                         <div class="navbar-dropdown is-boxed">
 
                             <a href="{{ route('profile.index') }}" class="navbar-item">
-                                โปรไฟล์
+                                <i class="fas fa-inbox" style="margin-right: 8px;"></i> กระเป๋าเก็บของ
+                            </a>
+
+                            <a href="{{ route('profile.index') }}" class="navbar-item">
+                                <i class="fas fa-user-cog" style="margin-right: 8px;"></i> โปรไฟล์
                             </a>
 
                             <a class="navbar-item" href="{{ route('logout') }}">
-                                ออกจากระบบ
+                                <i class="fas fa-door-open" style="margin-right: 8px;"></i> ออกจากระบบ
                             </a>
                         </div>
                     </div>

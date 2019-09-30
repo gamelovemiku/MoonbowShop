@@ -39,6 +39,7 @@ class ManageNoticeController extends ManageController
         $notice->notice_tag = $request->tag;
         $notice->notice_title = $request->title;
         $notice->notice_content = $request->content;
+        $notice->notice_views = 0;
         $notice->notice_show_on_store = $isonstore;
         $notice->save();
 

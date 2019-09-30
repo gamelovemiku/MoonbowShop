@@ -13,7 +13,8 @@ class ManageUserController extends ManageController
     public function index()
     {
         return view('manage.admin.usereditor.user', [
-            'users' => $this->getAllUsers(),
+            'users' => $this->getAllUsers()->where('role_id', 2),
+            'adminuser' => $this->getAllUsers()->where('role_id', 1),
         ]);
     }
 
@@ -52,6 +53,7 @@ class ManageUserController extends ManageController
         $user = User::find($id);
 
         $user->update([
+            'name' => $request->name,
             'email' => $request->email,
             'points_balance' => $request->points,
             'role_id' => $request->role,

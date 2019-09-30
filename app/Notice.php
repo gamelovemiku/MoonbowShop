@@ -9,6 +9,6 @@ class Notice extends Model
     protected $table = 'notices'; // ชื่อตาราง
     protected $primaryKey = 'notice_id'; // ชื่อ Primary Key
 
-    protected $fillable = ['notice_id', 'notice_title', 'notice_content', 'notice_tag', 'notice_show_on_store'];
+    protected $fillable = ['notice_id', 'notice_title', 'notice_content', 'notice_tag', 'notice_views', 'notice_show_on_store'];
 
 }

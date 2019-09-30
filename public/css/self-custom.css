@@ -1,6 +1,7 @@
 html, body, .button {
     font-family: 'Segoe UI', Helvetica, 'Poppins','Pridi', serif;
     font-weight: 600;
+    -webkit-font-smoothing: antialiased;
 }
 textarea {
     font-family: 'Segoe UI', Helvetica, 'Poppins','Pridi', serif;
@@ -74,7 +75,7 @@ textarea {
     font-size: 14px;
     text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
 }
-.input, select {
+.input, select, textarea {
     font-family: 'Segoe UI', Helvetica,'Pridi', serif;
     font-weight: 600;
 }
@@ -98,6 +99,113 @@ textarea {
 
 .has-text-pink {
     color: rgb(255, 54, 131);
+}
+
+.has-text-pink {
+    color: rgb(255, 54, 131);
+}
+
+.tab.is-pink {
+    color: #0A0A0A;
+    background-color: rgb(255, 54, 131);
+}
+
+.table {
+    color: #0A0A0A;
+}
+
+.table__wrapper {
+    overflow-x: auto;
+  }
+
+.table td, .table th {
+    border: 0.5px rgb(243, 243, 243);
+}
+
+thead tr th {
+    size: 0.1rem;
+}
+
+tbody th {
+    font-weight: 500;
+}
+
+html {
+    background-color: rgb(252, 252, 252)
+}
+
+.button.is-shadow {
+    -webkit-box-shadow: 0px 0px 16px 4px rgb(243, 243, 243);
+}
+
+.button.is-shadow:hover {
+    -webkit-box-shadow: 0px 0px 16px 4px rgb(243, 243, 243);
+    border: 1px solid rgb(230, 230, 230);
+}
+
+.box {
+    -webkit-box-shadow: 0px 0px 16px 8px rgb(243, 243, 243);
+}
+
+.box.is-alone {
+    padding: 2.5rem;
+}
+
+.box.is-bordered {
+    border: 1px solid rgb(243, 243, 243);
+    -webkit-box-shadow: 0px 0px 0px 0px;
+}
+
+p.box-title {
+    font-size: 1rem;
+    padding: 0rem 0rem 1rem 0rem;
+}
+
+.breadcrumb  {
+
+}
+
+.input, .select select, .taginput .taginput-container.is-focusable, .textarea {
+    color: #0A0A0A;
+    border-color: #fff;
+    box-shadow: 0px 0px 0px 0px;
+    background-color: #fafafa;
+    -webkit-border-radius: 8px 8px 8px 8px;
+}
+
+:hover.input, :hover.select select, .taginput .taginput-container.is-focusable, :hover.textarea {
+    color: #0A0A0A;
+    border-color: rgb(226, 226, 226);
+    box-shadow: 0px 0px 0px 0px;
+    background-color: #fafafa;
+    -webkit-border-radius: 8px 8px 8px 8px;
+}
+
+.card {
+    -webkit-box-shadow: 0px 0px 16px 8px rgb(243, 243, 243);
+    -webkit-border-radius: 8px 8px 8px 8px;
+
+}
+
+.card-header {
+    -webkit-box-shadow: 0px 0px 16px 4px rgb(243, 243, 243);
+    -webkit-border-radius: 8px 8px 8px 8px;
+}
+
+.card-body {
+
+}
+
+.card-footer {
+    border-top: 0.5px solid rgb(243, 243, 243);
+}
+
+.action-options {
+    text-align: right;
+}
+
+.action-options a {
+    margin-right: 8px;
 }
 
 ::-webkit-scrollbar {

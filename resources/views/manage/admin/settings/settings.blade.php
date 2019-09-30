@@ -1,6 +1,6 @@
 @extends('manage.admin.controlpanel')
 
-@section('content')
+@section('breadcrumb')
 <nav class="breadcrumb  is-small" aria-label="breadcrumbs">
     <ul>
         <li><a href="/manage">{{ Auth::user()->name }}</a></li>
@@ -8,11 +8,14 @@
         <li class="is-active"><a href="{{ route('settings.index') }}">Settings</a></li>
     </ul>
 </nav>
+@endsection
+
+@section('content')
 
 <div class="columns">
     <div class="column is-6">
-        <h4 class="title is-size-4 has-text-weight-bold">Settings</h4>
-        <p class="subtitle is-size-7">Edit your system settings from here<b class="force-bold"></b></p>
+        <h4 class="title is-size-4">การตั้งค่าทั่วไป</h4>
+        <p class="subtitle is-size-7">แก้ไขการตั้งค่าต่างๆ ที่เกี่ยวข้องกับระบบ<b class="force-bold"></b></p>
     </div>
 </div>
 
@@ -24,7 +27,7 @@
                 <article class="tile is-child">
                     <div class="box">
                         <div class="field">
-                            <label class="label">Hostname</label>
+                            <label class="label">โฮสต์</label>
                             <div class="control has-icons-left">
                                 <input class="input" type="text" name="hostname" value="{{ $settings->hostname }}">
                                 <span class="icon is-left">
@@ -33,10 +36,10 @@
                                 @error('hostname')
                                     <p class="help is-danger">{{ $message }}</p>
                                 @enderror
-                            </div>           
+                            </div>
                         </div>
                         <div class="field">
-                            <label class="label">Port</label>
+                            <label class="label">พอร์ท</label>
                             <div class="control has-icons-left">
                                 <input class="input" type="text" name="hostname_port" value="{{ $settings->hostname_port }}">
                                 <span class="icon is-left">
@@ -48,7 +51,7 @@
                             </div>
                         </div>
                         <div class="field">
-                            <label class="label">RCON Port</label>
+                            <label class="label">พอร์ท RCON</label>
                             <div class="control has-icons-left">
                                 <input class="input" type="text" name="rcon_port" value="{{ $settings->rcon_port }}">
                                 <span class="icon is-left">
@@ -60,7 +63,7 @@
                             </div>
                         </div>
                         <div class="field">
-                            <label class="label">RCON Password</label>
+                            <label class="label">รหัสผ่านของ RCON</label>
                             <div class="control has-icons-left">
                                 <input class="input" type="text" name="rcon_password" value="{{$settings->rcon_password }}">
                                 <span class="icon is-left">
@@ -80,7 +83,7 @@
                 <article class="tile is-child">
                     <div class="box">
                         <div class="field">
-                            <label class="label">Website Name</label>
+                            <label class="label">ชื่อของเว็บไซต์</label>
                             <div class="control has-icons-left">
                                 <input class="input" type="text" name="website_name" value="{{ $settings->website_name }}">
                                 <span class="icon is-left">
@@ -92,7 +95,7 @@
                             </div>
                         </div>
                         <div class="field">
-                            <label class="label">Website Description</label>
+                            <label class="label">รายละเอียดต่างๆ เกี่ยวกับเซิร์ฟเวอร์</label>
                             <div class="control has-icons-left">
                                 <textarea class="textarea" rows="7"type="text" name="website_desc">{{ $settings->website_desc }}</textarea>
                                     @error('website_desc')
@@ -107,7 +110,7 @@
     </div>
     <div class="field">
         <p class="control has-icons-left">
-            <button id="submit_button" class="button is-fullwidth is-link is-outlined clickaction" type="submit">Save Settings</button>
+            <button id="submit_button" class="button is-fullwidth is-link is-outlined clickaction" type="submit">บันทึกการเปลี่ยนแปลง</button>
         </p>
     </div>
 </form>

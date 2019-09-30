@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#167DF0">
 
-    <title>Manage Profile</title>
+    <title>{{ Auth::user()->name }} - Profile</title>
     <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css">
     <link rel="stylesheet" href="/css/self-custom.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" integrity="sha256-PF6MatZtiJ8/c9O9HQ8uSUXr++R9KBYu4gbNG5511WE=" crossorigin="anonymous" />
@@ -65,6 +65,14 @@
                             <p class="menu-label">
                                 ประวัติ
                             </p>
+                            <ul class="menu-list">
+                                <a class="menu-block" href="{{ route("history.index") }}">
+                                    <span class="menu-icon icon">
+                                        <i class="fas fa-shopping-basket"></i>
+                                    </span>
+                                    ประวัติการสั่งซื้อ
+                                </a>
+                            </ul>
                             <ul class="menu-list">
                                 <a class="menu-block" href="{{ route("history.index") }}">
                                     <span class="menu-icon icon">

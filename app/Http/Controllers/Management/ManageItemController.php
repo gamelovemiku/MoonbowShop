@@ -13,6 +13,7 @@ class ManageItemController extends ManageController
     {
         return view('manage.admin.item', [
             'items' => $this->getAllItem(),
+            'categorys' => $this->getAllCategory(),
         ]);
     }
 
