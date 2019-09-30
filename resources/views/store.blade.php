@@ -16,6 +16,7 @@
     <script src="js/bulma-toast.min.js"></script>
     <script src="/js/bulma.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 
 <body>
@@ -191,7 +192,7 @@
                                     <b-tabs>
                                         @foreach ($categorys as $category)
                                             <b-tab-item label="@if($category->category_id == 1) อื่นๆ @else {{$category->category_name}} @endif" icon="{{$category->category_icon}}">
-                                                <div class="columns">
+                                                <div class="columns is-multiline">
                                                     @forelse ($category->items as $item)
                                                     <div class="column is-3">
                                                         <div class="card box-fullheight">
@@ -265,6 +266,21 @@
                         </table>
                     </div>
 
+                    <div class="box" style="width: 100%">
+                        <div class="title-category">Redeem
+                            <p class="text-category">Have any redeem code? REDEEM IT and GET PRIZE!</p>
+                        </div>
+                        <form action="{{ action('RedeemController@redeem') }}" method="post">
+                            @csrf
+                            <div class="field">
+                                <input class="input" type="text" name="redeemcode">
+                            </div>
+                            <div class="buttons">
+                                <button class="button" type="submit">Redeem</button>
+                            </div>
+                        </form>
+                    </div>
+
                     <script src="https://unpkg.com/vue"></script>
                     <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
 
@@ -282,21 +298,6 @@
                         })
 
                     </script>
-
-                    <!--div--- class="box" style="width: 100%">
-                        <div class="title-category">Redeem
-                            <p class="text-category">Have any redeem code? REDEEM IT and GET PRIZE!</p>
-                        </div>
-                        <form action="{{ action('RedeemController@redeem') }}" method="post">
-                            @csrf
-                            <div class="field">
-                                <input class="input" type="text" name="redeemcode">
-                            </div>
-                            <div class="buttons">
-                                <button class="button" type="submit">Redeem</button>
-                            </div>
-                        </form>
-                    </!--div--->
 
                     @include('components.serverstatus')
                 </div>

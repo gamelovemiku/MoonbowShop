@@ -45,7 +45,7 @@ class Controller extends BaseController
 
     public function sendCommand($cmd)
     {
-        $rcon = new Rcon($this->getSettings()->hostname, $this->getSettings()->rcon_port, $this->getSettings()->rcon_password, 1);
+        $rcon = new Rcon($this->getSettings()->hostname, $this->getSettings()->rcon_port, $this->getSettings()->rcon_password, 10);
         $player = Auth::user()->name;
 
         $multiple = explode(';', $cmd);

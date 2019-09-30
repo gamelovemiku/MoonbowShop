@@ -33,12 +33,10 @@
 
 </head>
 <body>
-    <div id="app">
-        @include('components.navbar')
-            <main class="view is-uppercase">
-                @yield('content')
-            </main>
-        @include('components.footer')
-    </div>
+    @include('components.navbar')
+        <main class="view is-uppercase">
+            @yield('content')
+        </main>
+    @include('components.footer')
 </body>
 </html>

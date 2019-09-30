@@ -30,9 +30,9 @@
 
                     <div class="control">
                         <input id="item_name" type="text" class="input @error('itemname') is-danger @enderror" name="item_name" value="{{ $item->item_name }}">
-                            @error('item_name')
-                                <p class="help is-danger">{{ $message }}</p>
-                            @enderror
+                        @error('item_name')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
 
@@ -41,9 +41,9 @@
 
                     <div class="control">
                         <textarea rows="4" id="item_desc" type="text" class="textarea @error('itemdesc') is-danger @enderror" name="item_desc">{{ $item->item_desc }}</textarea>
-                            @error('item_desc')
-                                <p class="help is-danger">{{ $message }}</p>
-                            @enderror
+                        @error('item_desc')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
 
@@ -65,9 +65,9 @@
                         </span>
                         </label>
                     </div>
-                            @error('cover')
-                                <p class="help is-danger">{{ $message }}</p>
-                            @enderror
+                    @error('cover')
+                        <p class="help is-danger">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
 
@@ -93,9 +93,9 @@
                     <label for="item_price" class="label">Price <small class="has-text-grey-light">(Points)</small></label>
                     <div class="control">
                         <input id="item_price" class="input" name="item_price" value="{{ $item->item_price }}">
-                            @error('item_price')
-                                <p class="help is-danger">{{ $message }}</p>
-                            @enderror
+                        @error('item_price')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
 
@@ -103,9 +103,9 @@
                     <label for="item_price" class="label">Discount Price <small class="has-text-grey-light">(Optional)</small></label>
                     <div class="control">
                         <input id="item_price" class="input" name="item_discount_price" value="{{ $item->item_discount_price }}">
-                            @error('item_discount_price')
-                                <p class="help is-danger">{{ $message }}</p>
-                            @enderror
+                        @error('item_discount_price')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
 
@@ -114,9 +114,9 @@
 
                     <div class="control">
                         <textarea id="command" type="text" class="input @error('itemdesc') is-danger @enderror" name="item_command">{{ $item->item_command }}</textarea>
-                            @error('item_command')
-                                <p class="help is-danger">{{ $message }}</p>
-                            @enderror
+                        @error('item_command')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
                 <p class="content is-small">- Uses <b>%player</b> to make the system replace to player's name.</p>

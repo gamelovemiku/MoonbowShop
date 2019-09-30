@@ -1,73 +1,134 @@
 @extends('manage.admin.controlpanel')
 
-@section('content')
-
+@section('breadcrumb')
 <nav class="breadcrumb is-small" aria-label="breadcrumbs">
     <ul>
         <li><a href="/manage">{{ Auth::user()->name }}</a></li>
         <li><a href="/manage/profile">Admin</a></li>
-        <li class="is-active"><a href="/manage/user">User</a></li>
+        <li class="is-active"><a href="/manage/user">ตัวจัดการผู้ใช้</a></li>
     </ul>
 </nav>
+@endsection
+
+@section('content')
 
 <div class="columns">
     <div class="column is-6">
-        <h4 class="title is-size-4 has-text-weight-bold">User Editor</h4>
-        <p class="subtitle is-size-7">Edit and control member profile<b class="force-bold"></b></p>
+        <h4 class="title is-size-4 has-text-weight-bold">ตัวจัดการผู้ใช้</h4>
+        <p class="subtitle is-size-7">สำหรับแก้ไขและควบคุมบัญชีผู้เล่น<b class="force-bold"></b></p>
     </div>
     <div class="column is-6 has-text-right">
 
-        <a href="{{ route('usereditor.create')}}" class="button is-small is-light">
-            <i class="fas fa-plus fa-xs" style="margin-right: 4px;"></i>New User
+        <a href="{{ route('usereditor.create')}}" class="button is-small is-white is-shadow">
+            <i class="fas fa-plus fa-xs" style="margin-right: 4px;"></i>เพิ่มสมาชิก
         </a>
 
     </div>
 </div>
 <div class="field">
-    <table class="table is-fullwidth is-narrow">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Points</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($users as $user)
+    <div class="box is-bordered">
+        <p class="box-title">
+            <span class="tag is-danger">ผู้ดูแลระบบ</span>
+        </p>
+        <table class="table is-fullwidth is-narrow">
+            <thead>
                 <tr>
+                    <th>#</th>
+                    <th>ชื่อผู้ใช้</th>
+                    <th>อีเมล</th>
+                    <th>พ้อยท์</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($adminuser as $user)
+                <tr class="has-text-weight-medium is-size-7">
                     <th>{{ $user->id }}</th>
-                    <th class="has-text-weight-medium">{{ $user->name }} @if( $user->role_id == "1") <span class="tag is-danger" style="font-size: 8px;">Administrator</span> @elseif( $user->role_id == "2") <span class="tag is-primary" style="font-size: 8px;">Player</span>   @endif</th>
+                    <th class="has-text-weight-medium">{{ $user->name }}</th>
                     <th class="has-text-weight-medium is-lowercase">{{ $user->email }}</th>
-                    <th class="has-text-weight-medium">{{$user->points_balance}}</th>
+                    <th class="has-text-weight-medium">{{ number_format($user->points_balance)}}</th>
                     <th>
                         @if (Auth::user()->id != $user->id)
-                            <div class="buttons">
-                                <form action="{{ route('usereditor.edit', [$user->id])}}" method="post">
-                                    @method('get')
-                                    @csrf
-                                    <button type="submit" style="margin-right: 8px;" class="button is-link is-small">Edit</button>
-                                </form>
-
-                                <form action="{{ route('usereditor.destroy', [$user->id])}}" method="post">
-                                    @method('delete')
-                                    @csrf
-                                    <button type="submit" class="button is-danger is-small">Move to Bin</button>
-                                </form>
-                            </div>
-                        @else
-                            <form action="{{ route('usereditor.edit', [$user->id])}}" method="post">
+                            <form id="edit_{{$user->id}}" action="{{ route('usereditor.edit', [$user->id])}}" method="post">
                                 @method('get')
                                 @csrf
-                                <button type="submit" style="margin-right: 8px;" class="button is-link is-small">Edit</button>
                             </form>
-                        @endif
 
+                            <form id="delete_{{$user->id}}" action="{{ route('usereditor.destroy', [$user->id])}}" method="post">
+                                @method('delete')
+                                @csrf
+                            </form>
+                        <div class="action-options">
+                            <a onclick="document.getElementById('edit_{{$user->id}}').submit();" class="has-text-black"><i class="far fa-edit"></i> แก้ไข</a>
+                            <a onclick="document.getElementById('delete_{{$user->id}}').submit();" class="has-text-pink"><i class="far fa-trash-alt"></i> ลบ</a>
+                        </div>
+                        @else
+                            <form id="edit_{{$user->id}}" action="{{ route('usereditor.edit', [$user->id])}}" method="post">
+                                @method('get')
+                                @csrf
+                            </form>
+                            <div class="action-options">
+                                <a onclick="document.getElementById('edit_{{$user->id}}').submit();" class="has-text-black"><i class="far fa-edit"></i> แก้ไข</a>
+                            </div>
+                        @endif
                     </th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+                @endforeach
+            </tbody>
+        </table>
+
+        <hr>
+
+        <p class="box-title">
+            <span class="tag is-primary">ผู้เล่นทั่วไป</span>
+        </p>
+        <table class="table is-fullwidth is-narrow">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>ชื่อผู้ใช้</th>
+                    <th>อีเมล</th>
+                    <th>พ้อยท์</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                <tr class="has-text-weight-medium is-size-7">
+                    <th>{{ $user->id }}</th>
+                    <th class="has-text-weight-medium">{{ $user->name }}</th>
+                    <th class="has-text-weight-medium is-lowercase">{{ $user->email }}</th>
+                    <th class="has-text-weight-medium">{{ number_format($user->points_balance)}}</th>
+                    <th>
+                        @if (Auth::user()->id != $user->id)
+                            <form id="edit_{{$user->id}}" action="{{ route('usereditor.edit', [$user->id])}}" method="post">
+                                @method('get')
+                                @csrf
+                            </form>
+
+                            <form id="delete_{{$user->id}}" action="{{ route('usereditor.destroy', [$user->id])}}" method="post">
+                                @method('delete')
+                                @csrf
+                            </form>
+                        <div class="action-options">
+                            <a onclick="document.getElementById('edit_{{$user->id}}').submit();" class="has-text-black"><i class="far fa-edit"></i> แก้ไข</a>
+                            <a onclick="document.getElementById('delete_{{$user->id}}').submit();" class="has-text-pink"><i class="far fa-trash-alt"></i> ลบ</a>
+                        </div>
+                        @else
+                            <form id="edit_{{$user->id}}" action="{{ route('usereditor.edit', [$user->id])}}" method="post">
+                                @method('get')
+                                @csrf
+                            </form>
+                            <div class="action-options">
+                                <a onclick="document.getElementById('edit_{{$user->id}}').submit();" class="has-text-black"><i class="far fa-edit"></i> แก้ไข</a>
+                            </div>
+                        @endif
+                    </th>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+
+    </div>
 </div>
 @endsection

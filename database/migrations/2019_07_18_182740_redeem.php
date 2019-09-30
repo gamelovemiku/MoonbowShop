@@ -11,10 +11,10 @@ class Redeem extends Migration
     {
         Schema::create('redeem', function (Blueprint $table) {
             $table->bigIncrements('redeem_id');
-            $table->string('redeem_code');
+            $table->string('redeem_code')->unique();
             $table->string('redeem_desc');
             $table->string('redeem_reward_command');
-            $table->boolean('claimed_amount');
+            $table->boolean('redeem_limit');
             $table->timestamps();
         });
     }

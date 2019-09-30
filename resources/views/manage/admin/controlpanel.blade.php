@@ -11,11 +11,13 @@
 
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
     <script src="/js/bulma.js"></script>
 
-    <title>Manage Profile</title>
+    <title>Control Panel - MoonbowShop</title>
 </head>
 
 <script type="text/javascript">
@@ -34,98 +36,137 @@
     @include('components.navbar')
         <section class="section is-uppercase" style="margin-bottom: 4em; margin-top: 4em">
             <div class="container">
-                <h1 class="title is-size-2 has-text-weight-bold">Control Panel</h1>
-                <p class="subtitle has-text-justified">ควบคุมส่วนต่างๆ ของเว็บไซต์และระบบ<b class="force-bold"></b></p>
                 <div class="columns">
                     <div class="column is-3">
-                        <div class="box">
+                        <div class="subtitle"> @yield('breadcrumb')</div>
+                        <h1 class="title is-size-2 has-text-weight-bold">แผงควบคุม</h1>
+                        <p class="subtitle has-text-justified">ควบคุมส่วนต่างๆ ของเว็บไซต์และระบบ<b class="force-bold"></b></p>
+                        <div id="toolbar">
                             @include('components.alert')
                             <aside class="menu">
                                 <p class="menu-label">
-                                    Store
+                                    ร้านค้าและไอเท็ม
                                 </p>
                                 <ul class="menu-list">
                                     <a class="menu-block" href="{{ route("item.index") }}">
                                         <span class="menu-icon icon">
                                             <i class="fas fa-shopping-cart"></i>
                                         </span>
-                                        Itemshop
+                                        ร้านค้า <b-tag rounded> 3 </b-tag> </span>
+                                    </a>
+                                    <a class="menu-block" href="{{ route('category.index')}}">
+                                        <span class="menu-icon icon">
+                                            <i class="fas fa-gifts"></i>
+                                        </span>
+                                        โค๊ดแลกรางวัล
+                                    </a>
+                                    <a class="menu-block" href="{{ route('category.index')}}">
+                                        <span class="menu-icon icon">
+                                            <i class="fas fa-question-circle"></i>
+                                        </span>
+                                        สุ่มรางวัล
                                     </a>
                                     <a class="menu-block" href="{{ route('category.index')}}">
                                         <span class="menu-icon icon">
                                             <i class="fas fa-layer-group"></i>
                                         </span>
-                                        Category
+                                        หมวดหมู่ร้านค้า
                                     </a>
                                 </ul>
                                 <p class="menu-label">
-                                    Administration
+                                    การควบคุมระบบ
                                 </p>
                                 <ul class="menu-list">
                                     <a class="menu-block" href="{{ route("dashboard.index") }}">
                                         <span class="menu-icon icon">
                                             <i class="fas fa-file-invoice"></i>
                                         </span>
-                                        Dashboard
+                                        ภาพรวม
                                     </a>
                                     <a class="menu-block" href="{{ route("usereditor.index") }}">
                                         <span class="menu-icon icon">
                                             <i class="fas fa-user-edit"></i>
                                         </span>
-                                        User Editor
+                                        ตัวจัดการผู้ใช้
                                     </a>
                                     <a class="menu-block" href="{{ route("notice.index") }}">
                                         <span class="menu-icon icon">
                                             <i class="fas fa-bullhorn"></i>
                                         </span>
-                                        Notice
+                                        ประกาศ
                                     </a>
                                     <a class="menu-block" href="{{ route("forumcontrol.index") }}">
                                         <span class="menu-icon icon">
                                             <i class="fas fa-comments"></i>
                                         </span>
-                                        Forum Category
+                                        หมวดหมู่โพสต์
                                     </a>
                                     <a class="menu-block" href="{{ route("commandsender") }}">
                                         <span class="menu-icon icon">
                                             <i class="fas fa-terminal"></i>
                                         </span>
-                                        Command Sender
+                                        ตัวส่งคำสั่ง
                                     </a>
                                     <a class="menu-block" href="{{ route("recyclebin.index") }}">
                                         <span class="menu-icon icon">
                                             <i class="fas fa-recycle"></i>
                                         </span>
-                                        Recycle Bin
+                                        ถังขยะ
                                     </a>
                                     <p class="menu-label">
-                                        Systems
+                                        ระบบ
                                     </p>
                                     <a class="menu-block" href="{{ route("settings.index") }}">
                                         <span class="menu-icon icon">
                                             <i class="fas fa-info-circle"></i>
                                         </span>
-                                        General Settings
+                                        การตั้งค่าทั่วไป
                                     </a>
                                     <a class="menu-block" href="{{ route('paymentplan.index') }}">
                                         <span class="menu-icon icon">
                                             <i class="far fa-credit-card"></i>
                                         </span>
-                                        Payment Plans
+                                        ตั้งค่าการเติมเงิน
                                     </a>
                                 </ul><hr/>
-                            <a class="button is-danger is-fullwidth" href="{{ route('logout') }}">Sign Out</a>
+                            <a class="button is-danger is-fullwidth" href="{{ route('logout') }}">ออกจากระบบ</a>
                             </aside>
                         </div>
                     </div>
-                    <div class="column is-9">
-                        <div class="box" style="height: auto">
+
+                    <div class="column @hasSection('quickbar') is-6 @else is-9 @endif">
+                        <div class="box is-alone" style="height: 100%">
                             @yield('content')
                         </div>
                     </div>
+
+                    @hasSection('quickbar')
+                        <div class="column is-3">
+                            <div class="box is-alone" style="height: 100%">
+                                @yield('quickbar')
+                            </div>
+                        </div>
+                    @endif
+
                 </div>
             </div>
         </section>
+
+        <script src="https://unpkg.com/vue"></script>
+        <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
+
+        <script>
+
+            new Vue({
+                el: '#toolbar',
+
+                data: {
+                    activeTab: 0,
+                },
+            })
+
+        </script>
+
     @include('components.footer')
 </body>
 </html>

@@ -105,7 +105,7 @@ Route::get('/paypal', function () {
 });
 
 Route::get('/test', function () {
-    return view('test');
+    return view('a');
 });
 
 Route::get('/forum', 'Forum\ForumController@index')->name('forum.main');

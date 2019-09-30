@@ -1,3 +1,29 @@
+@if (session()->has('RedeemNotFoundError'))
+<script>
+    swal("ไม่พบโค๊ดนี้ในระบบหรือโค๊ดไม่ถูกต้อง", "โปรดลองตรวจสอบดูอีกครั้ง", "warning");
+    bulmaToast.toast({
+        message: "ไม่พบโค๊ดนี้ในระบบหรือโค๊ดไม่ถูกต้อง",
+        type: "is-danger has-text-left",
+        dismissible: true,
+        duration: 5000,
+        animate: { in: "fadeInUp", out: "fadeOutRight" }
+    });
+</script>
+@endif
+
+@if (session()->has('RedeemClaimedError'))
+<script>
+    swal("โค๊ดนี้ถูกใช้ไปแล้ว", "โปรดลองตรวจสอบดูอีกครั้ง", "warning");
+    bulmaToast.toast({
+        message: "ไม่พบโค๊ดนี้ในระบบหรือโค๊ดไม่ถูกต้อง",
+        type: "is-danger has-text-left",
+        dismissible: true,
+        duration: 5000,
+        animate: { in: "fadeInUp", out: "fadeOutRight" }
+    });
+</script>
+@endif
+
 @if (session()->has('moneyNotEnough'))
 <script>
     swal("ผิดพลาด: มีคุณมีเงินไม่เพียงพอ", "คุณไม่สามารถซื้อสินค้านี้ได้ เนื่องจากมี Points ไม่เพียงพอ!", "warning");
