@@ -56,19 +56,106 @@
                     </a>
                 </div>
                 <div class="navbar-end">
-                        @if(Auth::user()->role->role_id == 1)
+                    @if(Auth::user()->role->role_id == 1)
 
-                        <a class="navbar-item" href="{{ route('admin.controlpanel') }}">
-                            <i class="fas fa-cogs" style="margin-right: 8px;"></i> แผงควบคุม
-                        </a>
+                    <div class="navbar-item has-dropdown is-hoverable" href="{{ route('admin.controlpanel') }}">
+                        <a class="navbar-link"><i class="fas fa-cogs" style="margin-right: 8px;"></i> แผงควบคุม</a>
 
-                        @endif
-                        <div class="navbar-item has-dropdown is-hoverable">
-                            <a class="navbar-link"><i class="fas fa-user" style="margin-right: 8px;"></i>{{ Auth::user()->name }}</a>
                         <div class="navbar-dropdown is-boxed">
 
+<<<<<<< Updated upstream
                             <a href="{{ route('profile.index') }}" class="navbar-item">
                                 โปรไฟล์
+=======
+                            <p class="navbar-title">
+                                ร้านค้าและไอเท็ม
+                            </p>
+
+                            <a href="{{ route('item.index') }}" class="navbar-item">
+                                <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i> ร้านค้า
+                            </a>
+
+                            <a href="{{ route('redeem.index') }}" class="navbar-item">
+                                <i class="fas fa-gifts" style="margin-right: 8px;"></i> โค๊ดแลกรางวัล
+                            </a>
+
+                            <a href="{{ route('category.index') }}" class="navbar-item">
+                                <i class="fas fa-question-circle" style="margin-right: 8px;"></i> สุ่มรางวัล
+                            </a>
+
+                            <hr class="navbar-divider">
+
+                            <p class="navbar-title">
+                                การควบคุมระบบ
+                            </p>
+
+                            <a href="{{ route('dashboard.index') }}" class="navbar-item">
+                                <i class="fas fa-file-invoice" style="margin-right: 8px;"></i> ภาพรวม
+                            </a>
+
+                            <a href="{{ route('usereditor.index') }}" class="navbar-item">
+                                <i class="fas fa-user-edit" style="margin-right: 8px;"></i> ตัวจัดการผู้ใช้
+                            </a>
+
+                            <a href="{{ route('notice.index') }}" class="navbar-item">
+                                <i class="fas fa-bullhorn" style="margin-right: 8px;"></i> ประกาศ
+                            </a>
+
+                            <a href="{{ route('commandsender') }}" class="navbar-item">
+                                <i class="fas fa-terminal" style="margin-right: 8px;"></i> ตัวส่งคำสั่ง
+                            </a>
+
+                            <a href="{{ route('recyclebin.index') }}" class="navbar-item">
+                                <i class="fas fa-recycle" style="margin-right: 8px;"></i> ถังขยะ
+                            </a>
+
+                            <hr class="navbar-divider">
+
+                            <p class="navbar-title">
+                                ระบบ
+                            </p>
+
+                            <a href="{{ route('settings.index') }}" class="navbar-item">
+                                <i class="fas fa-info-circle" style="margin-right: 8px;"></i> การตั้งค่าทั่วไป
+                            </a>
+
+                            <a href="{{ route('paymentplan.index') }}" class="navbar-item">
+                                <i class="fas fa-credit-card" style="margin-right: 8px;"></i> ตั้งค่าการเติมเงิน
+                            </a>
+
+                        </div>
+                    </div>
+
+                    @endif
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link"><i class="fas fa-user" style="margin-right: 8px;"></i>{{ Auth::user()->name }}</a>
+                        <div class="navbar-dropdown is-boxed">
+
+                            <p class="navbar-title">
+                                ทั่วไป
+                            </p>
+
+                            <a href="{{ route('pocket.index') }}" class="navbar-item">
+                                <i class="fas fa-inbox" style="margin-right: 8px;"></i> กระเป๋าเก็บของ
+                            </a>
+
+                            <a href="{{ route('history.index') }}" class="navbar-item">
+                                <i class="fas fa-flag-checkered" style="margin-right: 8px;"></i> ประวัติกิจกรรมบัญชี
+                            </a>
+
+                            <a href="{{ route('history.index') }}" class="navbar-item">
+                                <i class="fas fa-receipt" style="margin-right: 8px;"></i> ประวัติการจ่ายเงิน
+                            </a>
+
+                            <hr class="navbar-divider">
+
+                            <p class="navbar-title">
+                                บัญชี
+                            </p>
+
+                            <a href="{{ route('profile.index') }}" class="navbar-item">
+                                <i class="fas fa-user-cog" style="margin-right: 8px;"></i> โปรไฟล์
+>>>>>>> Stashed changes
                             </a>
 
                             <a class="navbar-item" href="{{ route('logout') }}">

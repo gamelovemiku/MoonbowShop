@@ -18,7 +18,18 @@ use App\Logs;
 use App\Notice;
 use App\PaymentTransaction;
 
+use \MinecraftPing;
+use xPaw\MinecraftPingException;
+
+use xPaw\MinecraftQuery;
+use xPaw\MinecraftQueryException;
+
+use xPaw\SourceQuery\SourceQuery;
+
+use App\ExternalClasses\WebSenderAPI;
+use App\ItemshopPocket;
 use Auth;
+use Exception;
 
 class Controller extends BaseController
 {
@@ -36,28 +47,155 @@ class Controller extends BaseController
         return $settings;
     }
 
-    public function getStatus()
+    public function getServerInfo()
     {
-        $response = MinecraftServerStatus::query($this->getSettings()->hostname, $this->getSettings()->hostname_port);
 
-        return $response;
+        $query = new MinecraftQuery();
+
+        try {
+
+            $query->Connect($this->getSettings()->hostname, $this->getSettings()->hostname_port);
+
+            //dd($query->GetInfo());
+
+            return $query;
+
+        }catch(MinecraftQueryException $e) {
+
+            return null;
+
+        }
+    }
+
+    public function sendCommandbata($cmd)
+    {
+<<<<<<< Updated upstream
+        $rcon = new Rcon($this->getSettings()->hostname, $this->getSettings()->rcon_port, $this->getSettings()->rcon_password, 1);
+=======
+>>>>>>> Stashed changes
+        $player = Auth::user()->name;
+        $multiple = explode(';', $cmd);
+
+        $rcon = new SourceQuery();
+
+        $rcon->Connect(
+            $this->getSettings()->hostname,
+            $this->getSettings()->rcon_port,
+            10, SourceQuery::SOURCE
+        );
+
+        $rcon->SetRconPassword(
+            $this->getSettings()->rcon_password
+        );
+
+        try
+        {
+
+            $rcon->Connect(
+                $this->getSettings()->hostname,
+                $this->getSettings()->rcon_port,
+                10, SourceQuery::SOURCE
+            );
+
+            $rcon->SetRconPassword(
+                $this->getSettings()->rcon_password
+            );
+
+            foreach ($multiple as $command) {
+                $rcon->Rcon(str_replace('%player', $player , $command));
+            }
+
+            return true;
+        }
+        catch( Exception $e )
+        {
+            $wsr = new WebSenderAPI(
+                $this->getSettings()->hostname,
+                $this->getSettings()->websender_password,
+                $this->getSettings()->websender_port
+            );
+
+            if($wsr->connect()) {
+
+                foreach ($multiple as $command) {
+                    $wsr->sendCommand(str_replace('%player', $player , $command));
+                }
+
+                $wsr->disconnect();
+                return true;
+
+            }else {
+                return false;
+            }
+        }
+        finally
+        {
+            $rcon->Disconnect( );
+        }
     }
 
     public function sendCommand($cmd)
     {
-        $rcon = new Rcon($this->getSettings()->hostname, $this->getSettings()->rcon_port, $this->getSettings()->rcon_password, 1);
+        $rcon = new Rcon($this->getSettings()->hostname, $this->getSettings()->rcon_port, $this->getSettings()->rcon_password, 3);
         $player = Auth::user()->name;
 
         $multiple = explode(';', $cmd);
 
-        if ($rcon->connect())
-        {
-            foreach ($multiple as $command) {
-                $rcon->sendCommand(str_replace('%player', $player , $command));
+        try {
+            if ($rcon->connect())
+            {
+                foreach ($multiple as $command) {
+                    $rcon->sendCommand(str_replace('%player', $player , $command));
+                }
+
+                return true;
+            }else {
+
+                return false;
             }
-            return true;
+
+        }catch (Exception $e) {
+
+            $wsr = new WebSenderAPI(
+                $this->getSettings()->hostname,
+                $this->getSettings()->websender_password,
+                $this->getSettings()->websender_port,
+            );
+
+            if($wsr->connect()) {
+
+                foreach ($multiple as $command) {
+                    $wsr->sendCommand(str_replace('%player', $player , $command));
+                }
+
+                $wsr->disconnect();
+                return true;
+
+            }else {
+                return false;
+            }
         }
-        return false;
+    }
+
+    public function AddPoint($amount)
+    {
+        $user = Auth::user();
+
+        $user->update([
+            'points_balance' => $user->points_balance+$amount,
+        ]);
+    }
+
+    public function sendToPocket($itemid)
+    {
+        $pocket = new ItemshopPocket;
+
+        $pocket->item_id = $itemid;
+        $pocket->owner_id = $this->getLoggedinUser()->id;
+        $pocket->is_claimed = 0;
+        $pocket->save();
+
+        return true;
     }
 
     public function getAllItem()

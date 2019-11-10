@@ -20,7 +20,7 @@ class StoreController extends Controller
         return view('store',
             [
                 'categorys' => $categorys,
-                'server'    => $this->getStatus(),
+                'server'    => $this->getServerInfo(),
                 'items'     => $this->getAllItem(),
                 'lastest'   => $this->getLastestAddItem(),
                 'bestseller'=> $this->getBestSellerItem(),

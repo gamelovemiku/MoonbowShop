@@ -19,8 +19,9 @@ class Logs extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->string('action_detail');
             $table->string('type');
+
+            $table->string('action_detail');
 
             $table->timestamps();
         });

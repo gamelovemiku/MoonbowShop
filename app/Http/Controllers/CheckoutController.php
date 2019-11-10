@@ -29,7 +29,6 @@ class CheckoutController extends Controller
         $result = $this->getItem($request->input('id'));
 
         if($result != null){ //ถ้าไม่มี item รหัสนี้ใน store
-            if($this->sendCommand($result->item_command) != false){ //ถ้าเซิร์ฟยังเชื่อมต่อได้
 
                 $item = $this->getItem($request->input('id'));
 
@@ -43,9 +42,8 @@ class CheckoutController extends Controller
 
                 }
 
+                $this->sendToPocket($item->item_id);
                 $this->addAndGetSold($item->item_id); //+1 การขาย แล้วเอาค่าหลังจาก + แล้วมา
-
-                $this->addLog(Auth::user()->id, "itemshop:buy", "Itemshop SOLD: " . $result->item_name . "| @REF [" . $result->item_id . "]");
 
                 session()->flash('buyComplete', 'Successfully! Your item is deliveried.');
 
@@ -53,7 +51,6 @@ class CheckoutController extends Controller
                 session()->flash('somethingError');
                 return redirect('store');
             }
-        }
 
         return redirect('store');
     }

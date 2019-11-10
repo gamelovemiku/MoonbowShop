@@ -1,3 +1,45 @@
+<<<<<<< Updated upstream
+=======
+@if (session()->has('RedeemNotFoundError'))
+<script>
+    swal("ไม่พบโค๊ดนี้ในระบบ", "โปรดลองตรวจสอบดูอีกครั้ง", "warning");
+    bulmaToast.toast({
+        message: "ไม่พบโค๊ดนี้ในระบบหรือโค๊ดไม่ถูกต้อง",
+        type: "is-danger has-text-left",
+        dismissible: true,
+        duration: 5000,
+        animate: { in: "fadeInUp", out: "fadeOutRight" }
+    });
+</script>
+@endif
+
+@if (session()->has('RedeemClaimedError'))
+<script>
+    swal("คุณได้ใช้โค๊ดนี้ไปแล้ว", "สามารถแลกได้ครั้งเดียวเท่านั้นต่อบัญชี", "warning");
+    bulmaToast.toast({
+        message: "ไม่พบโค๊ดนี้ในระบบหรือโค๊ดไม่ถูกต้อง",
+        type: "is-danger has-text-left",
+        dismissible: true,
+        duration: 5000,
+        animate: { in: "fadeInUp", out: "fadeOutRight" }
+    });
+</script>
+@endif
+
+@if (session()->has('RedeemClaimedCompleted'))
+<script>
+    swal("ได้รับ {{session()->get('RedeemClaimedCompleted')}} แล้ว!", "คุณสามารถรับไอเท็มของคุณได้ที่กระเป๋าเก็บของ", "success");
+    bulmaToast.toast({
+        message: "แลกสำเร็จแล้ว! <br>คุณสามารถรับไอเท็มที่ซื้อแล้วของคุณได้ที่ <a href='{{ route('pocket.index') }}'> กระเป๋าเก็บของ</a>",
+        type: "is-danger has-text-left",
+        dismissible: true,
+        duration: 5000,
+        animate: { in: "fadeInUp", out: "fadeOutRight" }
+    });
+</script>
+@endif
+
+>>>>>>> Stashed changes
 @if (session()->has('moneyNotEnough'))
 <script>
     swal("ผิดพลาด: มีคุณมีเงินไม่เพียงพอ", "คุณไม่สามารถซื้อสินค้านี้ได้ เนื่องจากมี Points ไม่เพียงพอ!", "warning");
@@ -13,12 +55,38 @@
 
 @if (session()->has('buyComplete'))
 <script>
-    swal("สั่งซื้อสำเร็จ!", "ระบบทำการจัดส่งสินค้าให้คุณแล้ว!", "success");
+    swal("เพิ่มไอเท็มไปยังกระเป๋าเก็บของแล้ว!", "คุณสามารถรับไอเท็มที่ซื้อแล้วของคุณได้ที่กระเป๋าเก็บของ", "success");
     bulmaToast.toast({
-        message: "สั่งซื้อสำเร็จ! ระบบทำการจัดส่งสินค้าให้คุณแล้ว",
-        type: "is-success has-text-left",
+        message: "สั่งซื้อสำเร็จแล้ว! <br>คุณสามารถรับไอเท็มที่ซื้อแล้วของคุณได้ที่ <a href='{{ route('pocket.index') }}'> กระเป๋าเก็บของ</a>",
+        type: "is-warning has-text-left",
+        dismissible: true,
+        duration: 15000,
+        animate: { in: "fadeInUp", out: "fadeOutRight" }
+        });
+</script>
+@endif
+
+@if (session()->has('pocketGetItem'))
+<script>
+    swal("รับไอเท็มแล้ว!", "ไอเท็มถูกส่งไปหาคุณในเกมแล้ว", "success");
+    bulmaToast.toast({
+        message: "รับไอเท็มแล้ว! โดยจะถูกส่งไปยัง {{ Auth::user()->name }}",
+        type: "is-danger has-text-left",
         dismissible: true,
         duration: 5000,
+        animate: { in: "fadeInUp", out: "fadeOutRight" }
+    });
+</script>
+@endif
+
+@if (session()->has('serverError'))
+<script>
+    swal("ผิดพลาด!", "ไม่สามารถเชื่อมต่อไปยังเซิร์ฟเวอร์ได้", "error");
+    bulmaToast.toast({
+        message: "เซิร์ฟเวอร์ไม่สามารถเชื่อมต่อได้! แต่ไม่ต้องห่วงระบบไอเท็มของคุณยังปลอดภัยอยู่บนระบบ</a>",
+        type: "is-warning has-text-left",
+        dismissible: true,
+        duration: 15000,
         animate: { in: "fadeInUp", out: "fadeOutRight" }
         });
 </script>

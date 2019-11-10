@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css" integrity="sha256-a2tobsqlbgLsWs7ZVUGgP5IvWZsx8bTNQpzsqCSm5mk=" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/self-custom.css"/>
 
-    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.4.95/css/materialdesignicons.min.css" integrity="sha256-Oc9/ZPm5B07aJEXLaFs7vkuVzAO1pKJo8EKmiuqG9Qo=" crossorigin="anonymous" />
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
@@ -49,6 +49,7 @@
                                         <span class="menu-icon icon">
                                             <i class="fas fa-shopping-cart"></i>
                                         </span>
+<<<<<<< Updated upstream
                                         Itemshop
                                     </a>
                                     <a class="menu-block" href="{{ route('category.index')}}">
@@ -57,6 +58,22 @@
                                         </span>
                                         Category
                                     </a>
+=======
+                                        ร้านค้า <b-tag rounded> 3 </b-tag> </span>
+                                    </a>
+                                    <a class="menu-block" href="{{ route('redeem.index')}}">
+                                        <span class="menu-icon icon">
+                                            <i class="fas fa-gifts"></i>
+                                        </span>
+                                        โค๊ดแลกรางวัล
+                                    </a>
+                                    <a class="menu-block" href="{{ route('category.index')}}">
+                                        <span class="menu-icon icon">
+                                            <i class="fas fa-question-circle"></i>
+                                        </span>
+                                        สุ่มรางวัล
+                                    </a>
+>>>>>>> Stashed changes
                                 </ul>
                                 <p class="menu-label">
                                     Administration

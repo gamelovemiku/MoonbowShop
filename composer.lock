@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "23e47be64c00789ad9d0b9aec310a4a9",
+    "content-hash": "61358e49ad9b881107490afa1945b21d",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -505,6 +505,63 @@
             ],
             "description": "Highlight PHP code in terminal",
             "time": "2018-09-29T18:48:56+00:00"
+        },
+        {
+            "name": "laracasts/utilities",
+            "version": "3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laracasts/PHP-Vars-To-Js-Transformer.git",
+                "reference": "490c6cf4d23c26c94e01867265c84921863a5f19"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laracasts/PHP-Vars-To-Js-Transformer/zipball/490c6cf4d23c26c94e01867265c84921863a5f19",
+                "reference": "490c6cf4d23c26c94e01867265c84921863a5f19",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.0|^6.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laracasts\\Utilities\\JavaScript\\JavaScriptServiceProvider"
+                    ],
+                    "aliases": {
+                        "JavaScript": "Laracasts\\Utilities\\JavaScript\\JavaScriptFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Laracasts\\Utilities\\JavaScript\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeffrey Way",
+                    "email": "jeffrey@laracasts.com"
+                }
+            ],
+            "description": "Transform your PHP to JavaScript",
+            "keywords": [
+                "javascript",
+                "laravel"
+            ],
+            "time": "2019-09-04T12:55:27+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3066,6 +3123,81 @@
                 "environment"
             ],
             "time": "2019-08-27T17:00:38+00:00"
+        },
+        {
+            "name": "xpaw/php-minecraft-query",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xPaw/PHP-Minecraft-Query.git",
+                "reference": "881072933d4537f334ce96ebcf687868c100fbb9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xPaw/PHP-Minecraft-Query/zipball/881072933d4537f334ce96ebcf687868c100fbb9",
+                "reference": "881072933d4537f334ce96ebcf687868c100fbb9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "xPaw\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHP library to query Minecraft servers",
+            "keywords": [
+                "minecraft"
+            ],
+            "time": "2019-07-08T10:15:30+00:00"
+        },
+        {
+            "name": "xpaw/php-source-query-class",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xPaw/PHP-Source-Query.git",
+                "reference": "e798d8f7c2cdbfdd6496a8cd4574be32504c3338"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xPaw/PHP-Source-Query/zipball/e798d8f7c2cdbfdd6496a8cd4574be32504c3338",
+                "reference": "e798d8f7c2cdbfdd6496a8cd4574be32504c3338",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "xPaw\\SourceQuery\\": "SourceQuery/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "description": "PHP library to query and send RCON commands to servers based on \"Source Engine Query\" protocol",
+            "homepage": "https://github.com/xPaw/PHP-Source-Query",
+            "keywords": [
+                "ark",
+                "counter-strike",
+                "csgo",
+                "gmod",
+                "minecraft",
+                "rcon",
+                "rust",
+                "starbound",
+                "team fortress"
+            ],
+            "time": "2015-10-11T10:10:35+00:00"
         }
     ],
     "packages-dev": [

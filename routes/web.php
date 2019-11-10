@@ -64,6 +64,9 @@ Route::prefix('/player')->group(function () {
     Route::get('editprofile', 'Management\ManageProfileController@editprofile')->name('profile.editprofile');
     Route::post('updateprofile', 'Management\ManageProfileController@updateprofile')->name('profile.updateprofile');
 
+    Route::resource('pocket', 'Pocket\ItemshopPocketController');
+
+    Route::resource('paymenthistory', 'Management\ManagePaymentHistoryController');
     Route::resource('history', 'Management\ManageHistoryController');
 
 });
@@ -73,6 +76,9 @@ Route::get('admin/controlpanel', 'Management\ManageDashboardController@index')->
 Route::prefix('admin/controlpanel')->group(function () {
 
     Route::resource('notice', 'Management\ManageNoticeController');
+
+    Route::resource('redeem', 'Management\ManageRedeemController');
+    Route::post('redeem/internalupdate', 'Management\ManageRedeemController@internalUpdate')->name('redeem.internalUpdate');
 
     Route::resource('forumcontrol', 'Management\ManageForumCategoriesController');
 
@@ -120,3 +126,4 @@ Route::prefix('forum')->group(function () {
     Route::resource('comment', 'Forum\ForumCommentsController');
 
 });
+

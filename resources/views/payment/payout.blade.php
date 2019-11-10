@@ -17,32 +17,32 @@
     @include('components.navbar')
     <section class="section" style="margin-bottom: 3em; margin-top: 6em;">
         <div class="container is-uppercase">
-            <h1 class="title is-size-1 force-bold has-text-centered">Confirmation</h1>
-            <p class="subtitle has-text-centered">Reviews your order information.</b></p>
+            <h1 class="title is-size-1 force-bold has-text-centered">ยืนยันการเติมเงิน</h1>
+            <p class="subtitle has-text-centered">ตรวจสอบการเติมเงินที่กำลังดำเนินการ</b></p>
             <div class="columns">
                 <div class="column is-half is-offset-one-quarter">
                     <p class="content">
                         <div class="box">
                             <div class="columns">
                                 <div class="column is-12">
-                                    <div class="title-category">Information</small></div>
+                                    <div class="title-category">รายละเอียด</small></div>
                                     <table class="table table is-narrow is-fullwidth">
                                         <tbody>
                                             <tr>
-                                                <th>Purchaser</th>
+                                                <th>ผู้เติมเงิน</th>
                                                 <th>{{ Auth::user()->name }}</th>
                                             </tr>
                                             <tr>
-                                                <th>Provider</th>
+                                                <th>ผู้ให้บริการ</th>
                                                 <th>{{ $plan->plan_provider }}</th>
                                             </tr>
                                              <tr>
-                                                <th>TOPUP PLAN PRICE</th>
-                                                <th>{{ $plan->plan_price }} Baht</th>
+                                                <th>ราคาที่เลือกจ่าย</th>
+                                                <th>{{ $plan->plan_price }} บาท</th>
                                             </tr>
                                             <tr>
-                                                <th>Point Recieve</th>
-                                                <th>{{ $plan->plan_points_amount }} Points</th>
+                                                <th>พ้อยท์ที่จะได้รับ</th>
+                                                <th>{{ $plan->plan_points_amount }} พ้อยท์</th>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -52,11 +52,11 @@
                                 @csrf
                                 <input type="hidden" value="{{ $plan->plan_id }}" name="plan_id">
                                 <div class="buttons is-right">
-                                    <button type="submit" class="button is-info is-fullwidth clickaction" id="checkout-button-1"><i class="fas fa-credit-card" style="margin-right: 8px;"></i>Purchase now ({{ $plan->plan_price }} THB)</button>
-                                    <a id="backstore" href="/store" class="button is-primary is-fullwidth">Back to topup page</a>
+                                    <button type="submit" class="button is-info is-fullwidth clickaction" id="checkout-button-1"><i class="fas fa-credit-card" style="margin-right: 8px;"></i>ซื้อตอนนี้โดยใช้บัตรธนาคาร ({{ $plan->plan_price }} บาท)</button>
+                                    <a id="backstore" href="/store" class="button is-primary is-fullwidth">กลับไปหน้าเลือกรายการเติมเงิน</a>
                                 </div>
                                 <div id="reloadmsg" style="display: none;">
-                                    Reload this page, If you Press the exit button from omise popup box.
+                                    ** รีโหลดหน้านี้ใหม่ ถ้าคุณได้กดออกมาจากหน้าต่างของ Omise
                                 </div>
                             </form>
                         </div>
@@ -91,7 +91,7 @@
         // Configuring your own custom button
         OmiseCard.configureButton('#checkout-button-1', {
             frameLabel: 'Minecraft by MoonbowMC',
-            submitLabel: 'Purchase',
+            submitLabel: 'ซื้อ',
         });
         // Then, attach all of the config and initiate it by 'OmiseCard.attach();' method
         OmiseCard.attach();

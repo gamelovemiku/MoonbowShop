@@ -10,6 +10,6 @@ class GeneralSettings extends Model
     protected $primaryKey = 'setting_id'; // ชื่อ Primary Key
 
     protected $fillable = [
-        'hostname', 'hostname_port', 'rcon_port', 'rcon_password', 'website_name', 'website_desc', 'website_footer',
+        'hostname', 'hostname_port', 'rcon_port', 'rcon_password', 'websender_port', 'websender_password', 'website_name', 'website_desc', 'website_footer',
     ];
 }

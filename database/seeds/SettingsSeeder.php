@@ -14,10 +14,12 @@ class SettingsSeeder extends Seeder
     {
         DB::table('general_settings')->insert([
             [
-                'hostname' => '10.10.1.76',
+                'hostname' => '127.0.0.1',
                 'hostname_port' => 25565,
                 'rcon_port' => 25575,
                 'rcon_password' => '123456789',
+                'websender_port' => 9876,
+                'websender_password' => '123456789',
                 'website_name' => 'MoonbowShop',
                 'website_desc' => 'A free minecraft shop',
             ],

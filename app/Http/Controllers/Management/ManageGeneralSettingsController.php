@@ -25,9 +25,11 @@ class ManageGeneralSettingsController extends ManageController
             'hostname_port' => $request->hostname_port,
             'rcon_port'     => $request->rcon_port,
             'rcon_password' => $request->rcon_password,
+            'websender_port'     => $request->websender_port,
+            'websender_password' => $request->websender_password,
             'website_name'  => $request->website_name,
             'website_desc'  => $request->website_desc,
-            
+
         ]);
 
         session()->flash('successfullyUpdateData');

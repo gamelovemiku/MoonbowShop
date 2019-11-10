@@ -10,10 +10,13 @@ class ItemshopHistory extends Migration
     {
         Schema::create('itemshop_history', function (Blueprint $table) {
             $table->bigIncrements('history_id');
+
             $table->unsignedBigInteger('item_id');
             $table->foreign('item_id')->references('item_id')->on('itemshop')->onDelete('cascade');
+
             $table->unsignedBigInteger('buyer_id');
             $table->foreign('buyer_id')->references('id')->on('users')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }

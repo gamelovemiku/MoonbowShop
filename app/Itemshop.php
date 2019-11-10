@@ -17,6 +17,16 @@ class Itemshop extends Model
     public function category()
 	{
 		return $this->belongsTo('App\ItemshopCategory', 'category_id');
+    }
+
+    public function pocket()
+	{
+        return $this->hasMany('App\ItemshopPocket', 'item_id');
 	}
+
+    public function history()
+	{
+		return $this->belongsTo('App\ItemshopHistory', 'item_id');
+    }
 
 }

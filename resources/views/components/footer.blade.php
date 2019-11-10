@@ -18,7 +18,7 @@
                 </div>
                 <div class="level-right">
                     <p class="subtitle is-size-7 has-text-right">
-                        <i class="fas fa-code"></i> Developed by <strong class="is-lowercase">gamelovemiku and friends </strong>for ITEC1209<br/>
+                        Developed by <strong class="is-lowercase">GameLovemiku</strong><br/>
                         Using <strong>Bulma.io</strong>, <strong>Laravel</strong> and <strong>Vue.js</strong>
                     </p>
                 </div>

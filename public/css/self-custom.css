@@ -116,3 +116,9 @@ textarea {
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(0, 162, 255);;
 }
+
+p.navbar-title {
+    padding: .375rem 1rem 0.085rem;
+    color: #969696;
+    font-size: 0.75rem;
+}

@@ -39,5 +39,14 @@ class User extends Authenticatable
         return $this->belongsTo('App\ForumComment', 'comment_id');
     }
 
+    public function pocket()
+    {
+        return $this->belongsTo('App\ItemshopPocket', 'id');
+    }
+
+    public function history()
+    {
+        return $this->hasMany('App\ItemshopHistory', 'buyer_id', 'id');
+    }
 
 }

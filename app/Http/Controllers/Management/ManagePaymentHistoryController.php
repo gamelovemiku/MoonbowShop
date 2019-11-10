@@ -3,23 +3,21 @@
 namespace App\Http\Controllers\Management;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Logs;
-use JavaScript;
+use App\PaymentTransaction;
 
-class ManageHistoryController extends Controller
+class ManagePaymentHistoryController extends ManageController
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
+        $history = PaymentTransaction::where('payment_payer_id', $this->getLoggedinUser()->id)->get();
 
-        $history = Logs::orderBy('created_at', 'desc')->where('user_id', $this->getLoggedinUser()->id)->get();
-
-        JavaScript::put([
-            'data' => $history,
-        ]);
-
-        return view('manage.history.history', [
+        return view('manage.paymenthistory.payment_history', [
             'history' => $history,
         ]);
     }

@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
         'balanceEnough' => \App\Http\Middleware\balanceEnough::class,
         'adminonly'     => \App\Http\Middleware\AdminOnly::class,
         'PostOwnerOnly' => \App\Http\Middleware\PostOwnerOnly::class,
+        'PocketOwnerOnly' => \App\Http\Middleware\PocketOwnerOnly::class,
     ];
 
     /**

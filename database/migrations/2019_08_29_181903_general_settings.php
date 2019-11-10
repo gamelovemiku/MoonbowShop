@@ -19,6 +19,8 @@ class GeneralSettings extends Migration
             $table->integer('hostname_port');
             $table->integer('rcon_port');
             $table->string('rcon_password')->nullable();
+            $table->integer('websender_port');
+            $table->string('websender_password');
             $table->string('website_name');
             $table->string('website_desc')->nullable();
             $table->timestamps();

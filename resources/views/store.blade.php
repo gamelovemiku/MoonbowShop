@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins|Pridi&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css" integrity="sha256-a2tobsqlbgLsWs7ZVUGgP5IvWZsx8bTNQpzsqCSm5mk=" crossorigin="anonymous" />
 
-    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.4.95/css/materialdesignicons.min.css" integrity="sha256-Oc9/ZPm5B07aJEXLaFs7vkuVzAO1pKJo8EKmiuqG9Qo=" crossorigin="anonymous" />
 
     <script src="js/bulma-toast.min.js"></script>
     <script src="/js/bulma.js"></script>
@@ -265,6 +265,24 @@
                         </table>
                     </div>
 
+<<<<<<< Updated upstream
+=======
+                    <div class="box" style="width: 100%">
+                        <div class="title-category">แลกไอเท็ม
+                            <p class="text-category has-text-weight-light">มีรหัสแลกสินค้าอยู่ไหม แลกเลย</p>
+                        </div>
+                        <form action="{{ action('RedeemController@redeem') }}" method="post">
+                            @csrf
+                            <div class="field">
+                                <input class="input" type="text" name="redeemcode" required>
+                            </div>
+                            <div class="buttons">
+                                <button class="button" type="submit">Redeem</button>
+                            </div>
+                        </form>
+                    </div>
+
+>>>>>>> Stashed changes
                     <script src="https://unpkg.com/vue"></script>
                     <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
 

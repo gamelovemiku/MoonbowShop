@@ -13,8 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins|Pridi:400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css" integrity="sha256-a2tobsqlbgLsWs7ZVUGgP5IvWZsx8bTNQpzsqCSm5mk=" crossorigin="anonymous" />
 
-    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.4.95/css/materialdesignicons.min.css" integrity="sha256-Oc9/ZPm5B07aJEXLaFs7vkuVzAO1pKJo8EKmiuqG9Qo=" crossorigin="anonymous" />
     <script src="/js/bulma-toast.min.js"></script>
     <script src="/js/bulma.js"></script>
 
@@ -46,6 +45,17 @@
                         @include('components.alert')
                         <aside class="menu">
                             <p class="menu-label">
+                                กระเป๋า
+                                </p>
+                                <ul class="menu-list">
+                                    <a class="menu-block" href="{{ route("pocket.index") }}">
+                                        <span class="menu-icon icon">
+                                            <i class="fas fa-inbox"></i>
+                                        </span>
+                                        กระเป๋าเก็บของ
+                                    </a>
+                                </ul>
+                            <p class="menu-label">
                                 โปรไฟล์ของผู้ใช้
                             </p>
                             <ul class="menu-list">
@@ -68,6 +78,17 @@
                             <ul class="menu-list">
                                 <a class="menu-block" href="{{ route("history.index") }}">
                                     <span class="menu-icon icon">
+<<<<<<< Updated upstream
+=======
+                                        <i class="fas fa-flag-checkered"></i>
+                                    </span>
+                                    ประวัติกิจกรรมบัญชี
+                                </a>
+                            </ul>
+                            <ul class="menu-list">
+                                <a class="menu-block" href="{{ route("paymenthistory.index") }}">
+                                    <span class="menu-icon icon">
+>>>>>>> Stashed changes
                                         <i class="fas fa-receipt"></i>
                                     </span>
                                     ประวัติการจ่ายเงิน
