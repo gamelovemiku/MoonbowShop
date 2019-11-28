@@ -20,13 +20,18 @@
 </div>
 <div id="history">
     <div class="columns">
-        <div class="column is-8">
+        <div class="column is-9">
             <template>
 
                 <section>
                     <b-table
                         class="has-text-weight-medium is-size-7"
                         :data="data"
+
+                        :paginated="true"
+                        :per-page="10"
+                        :pagination-simple="true"
+
                         :columns="columns"
                         :selected.sync="selected"
                         searchable>
@@ -35,15 +40,15 @@
 
             </template>
         </div>
-        <div class="column is-4">
+        <div class="column is-3">
             <div class="box">
                 <div class="title is-6">
                     <div class="block">
                         <b-icon icon="clipboard-list"></b-icon>
-                        รายละเอียดเชิงลึก #@{{ selected.log_id }}
+                        รายละเอียดเชิงลึก
                     </div>
                 </div>
-                <div class="subtitle is-size-6">
+                <div class="subtitle is-size-7">
                     @{{ selected.action_detail }}
                 </div>
                 <p class="subtitle is-size-7">
@@ -72,7 +77,9 @@
                     {
                         field: 'log_id',
                         label: 'เลขอ้างอิง',
-                        centered: true
+                        centered: true,
+                        width: '80',
+                        sortable: true,
                     },
                     {
                         field: 'action_detail',
@@ -81,6 +88,7 @@
                     {
                         field: 'created_at',
                         label: 'เวลากำกับ',
+                        sortable: true,
                     },
                 ],
             }

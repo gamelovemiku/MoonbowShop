@@ -80,9 +80,14 @@ class ManageRedeemController extends Controller
         $redeem->redeem_desc = $request->desc;
         $redeem->redeem_reward_command = $request->cmd;
         $redeem->redeem_limit = $request->limit;
-        $redeem->redeem_count = 0;
         $redeem->save();
 
+        return redirect()->route('redeem.index');
+    }
+
+    public function internalDelete(Request $request)
+    {
+        Redeem::findOrFail($request->id)->delete();
         return redirect()->route('redeem.index');
     }
 

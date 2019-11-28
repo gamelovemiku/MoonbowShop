@@ -1,4 +1,4 @@
-html, body, .button {
+html, body, .button, title {
     font-family: 'Segoe UI', Helvetica, 'Poppins','Pridi', serif;
     font-weight: 600;
 }
@@ -121,4 +121,89 @@ p.navbar-title {
     padding: .375rem 1rem 0.085rem;
     color: #969696;
     font-size: 0.75rem;
+}
+
+.card{
+    border: 0px solid rgb(255, 255, 255);
+    border-radius: 0.5rem;
+    -webkit-box-shadow: 0px 0px 24px 0px rgba(212, 212, 212, 0.75);
+}
+
+.box {
+    padding: 1.35rem;
+    border: 0px solid rgb(255, 255, 255);
+    border-radius: 0.5rem;
+    -webkit-box-shadow: 0px 0px 24px 0px rgba(212, 212, 212, 0.75);
+}
+
+input.input.is-small, input.input {
+    background-color: #f9f9f9;
+    border-radius: 0.35rem;
+    border: 0px solid rgb(248, 248, 248);
+    -webkit-box-shadow: inset 0px 0px 0px 0px rgba(255, 255, 255, 0.75);
+    font-weight: 600;
+}
+
+a.button.is-shadow {
+    -webkit-box-shadow: 0px 0px 24px 0px rgba(212, 212, 212, 0.75);
+}
+
+.table td, .table th
+ {
+     border: 0px solid rgb(255, 255, 255);
+ }
+
+ div.card-footer {
+    border-top-color: #f3f3f3;
+ }
+
+ textarea.textarea {
+    background-color: #f9f9f9;
+    border-radius: 0.35rem;
+    border: 0px solid rgb(248, 248, 248);
+    -webkit-box-shadow: inset 0px 0px 0px 0px rgba(255, 255, 255, 0.75);
+    font-weight: 600;
+ }
+
+ .upload-draggable.is-primary,.upload.control {
+     width: 100%;
+ }
+
+ section.section.is-upload-area {
+    width: 100%;
+    padding: 0.5rem;
+}
+
+button.is-option-text, a.is-option-text {
+    text-decoration: none;
+    border-color: 0px;
+}
+
+hover:button.is-raw-text, hover:a.is-raw-text {
+    text-decoration: none;
+}
+
+span.tag.is-small {
+    font-size: 8px;
+}
+
+@font-face {
+    font-family: '2005_iannnnnAMD';
+    src: url('/storage/font/2005_iannnnnAMD.ttf');
+}
+
+.title.has-thaifont-pixel {
+    font-family: '2005_iannnnnAMD','Pridi', serif;
+    font-weight: 400;
+    font-size: 6rem !important;
+    margin-bottom: 0px !important;
+    margin-top: -2.8rem !important;
+}
+
+.box.is-shadowless {
+    box-shadow: 0px 0px;
+}
+
+.box.is-modal {
+    padding-inline: 2rem;;
 }

@@ -1,6 +1,6 @@
 @extends('manage.admin.controlpanel')
 
-@section('content')
+@section('breadcrumb')
 
 <nav class="breadcrumb is-small" aria-label="breadcrumbs">
     <ul>
@@ -9,6 +9,10 @@
         <li class="is-active"><a href="{{ route('notice.index') }}">Notice</a></li>
     </ul>
 </nav>
+
+@endsection
+
+@section('content')
 
 <div class="columns">
     <div class="column is-6">

@@ -4,7 +4,14 @@
             <a class="navbar-item">
                 <div>
                     <small style="font-size: 9px;">MOONBOWMC</small><br/>
-                    <div style="margin-top: -12px;">Control Panel</div>
+                    <div style="margin-top: -12px;">
+                        @hasSection ('header-text')
+                            @yield('header-text')
+                        @else
+                            Control Panel
+                        @endif
+
+                    </div>
                 </div>
             </a>
 
@@ -43,6 +50,10 @@
                         <i class="fas fa-shopping-bag" style="margin-right: 8px;"></i> STORE
                     </a>
 
+                    <a class="navbar-item" href="{{ route('arcade.index') }}">
+                        <i class="fas fa-dice" style="margin-right: 8px;"></i> ARCADE <p style="margin-left: 0.5rem; font-size: 8px;" class="tag is-small is-warning">New</p>
+                    </a>
+
                     <a class="navbar-item" href="/statistics">
                         <i class="fas fa-diagnoses" style="margin-right: 8px;"></i> STATISTICS
                     </a>
@@ -63,10 +74,6 @@
 
                         <div class="navbar-dropdown is-boxed">
 
-<<<<<<< Updated upstream
-                            <a href="{{ route('profile.index') }}" class="navbar-item">
-                                โปรไฟล์
-=======
                             <p class="navbar-title">
                                 ร้านค้าและไอเท็ม
                             </p>
@@ -81,6 +88,10 @@
 
                             <a href="{{ route('category.index') }}" class="navbar-item">
                                 <i class="fas fa-question-circle" style="margin-right: 8px;"></i> สุ่มรางวัล
+                            </a>
+
+                            <a href="{{ route('category.index') }}" class="navbar-item">
+                                <i class="fas fa-dice" style="margin-right: 8px;"></i> ลานบันเทิง
                             </a>
 
                             <hr class="navbar-divider">
@@ -123,6 +134,10 @@
                                 <i class="fas fa-credit-card" style="margin-right: 8px;"></i> ตั้งค่าการเติมเงิน
                             </a>
 
+                            <a href="{{ route('paymentplan.index') }}" class="navbar-item">
+                                <i class="fas fa-plug" style="margin-right: 8px;"></i> ส่วนเสริม
+                            </a>
+
                         </div>
                     </div>
 
@@ -155,7 +170,6 @@
 
                             <a href="{{ route('profile.index') }}" class="navbar-item">
                                 <i class="fas fa-user-cog" style="margin-right: 8px;"></i> โปรไฟล์
->>>>>>> Stashed changes
                             </a>
 
                             <a class="navbar-item" href="{{ route('logout') }}">

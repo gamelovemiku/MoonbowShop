@@ -4,12 +4,12 @@
 <section class="section" style="margin-bottom: 3em; margin-top: 4em;">
     <div class="container">
         <div class="columns">
-            <div class="column is-half is-offset-one-quarter">
+            <div class="column is-two-fifths is-offset-4">
                 <div class="box">
                     <div id="app">
                         <template>
                             <section>
-                                <b-tabs type="is-boxed" v-model="activeTab" expanded>
+                                <b-tabs type="is-toggle" size="is-small" v-model="activeTab" expanded>
                                     <b-tab-item label="เข้าสู่ระบบ" icon="login-variant">
                                         <h4 class="title is-size-4 has-text-weight-bold">เข้าสู่ระบบ</h4>
                                         <p class="subtitle is-size-7">มีบัญชีแล้วใช่ไหม เข้าใช้งานเลย</p>
@@ -21,7 +21,7 @@
                                                     type="is-danger"
                                                     message="{{ $message }}"
                                                 @enderror>
-                                                <b-input v-model="email" type="email" v-model="email"
+                                                <b-input v-model="email" type="text" v-model="email"
                                                     name="email">
                                                 </b-input>
                                             </b-field>
@@ -101,11 +101,11 @@
                                             </form>
                                         </div>
                                     </b-tab-item>
-                                    {{-- <b-tab-item label="ลืมรหัสผ่าน" icon="account-alert">
+                                    <b-tab-item label="ลืมรหัสผ่าน" icon="account-alert">
                                         <div class="field">
                                             <h4 class="title is-size-4 has-text-weight-bold">ลืมรหัสผ่าน</h4>
                                             <p class="subtitle is-size-7">กรอกข้อมูลเพียงไม่กี่ตัวก็เข้าใช้งานได้แล้ว</p>
-                                            <form method="POST" action="{{ route('register') }}">
+                                            <form method="POST" action="{{ route('password.email') }}">
                                                 @csrf
 
                                                 <b-field label="อีเมล์">
@@ -124,7 +124,7 @@
                                                 </div>
                                             </form>
                                         </div>
-                                    </b-tab-item> --}}
+                                    </b-tab-item>
                                 </b-tabs>
                             </section>
                         </template>

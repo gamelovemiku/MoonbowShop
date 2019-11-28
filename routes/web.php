@@ -71,6 +71,13 @@ Route::prefix('/player')->group(function () {
 
 });
 
+Route::prefix('/arcade')->group(function () {
+
+    Route::get('/', 'Arcade\ArcadeController@index')->name('arcade.index');
+    Route::resource('central', 'Arcade\ArcadeCentralController');
+
+});
+
 Route::get('admin/controlpanel', 'Management\ManageDashboardController@index')->name('admin.controlpanel');
 
 Route::prefix('admin/controlpanel')->group(function () {
@@ -78,16 +85,22 @@ Route::prefix('admin/controlpanel')->group(function () {
     Route::resource('notice', 'Management\ManageNoticeController');
 
     Route::resource('redeem', 'Management\ManageRedeemController');
+
     Route::post('redeem/internalupdate', 'Management\ManageRedeemController@internalUpdate')->name('redeem.internalUpdate');
+    Route::post('redeem/internaldelete', 'Management\ManageRedeemController@internalDelete')->name('redeem.internalDelete');
 
     Route::resource('forumcontrol', 'Management\ManageForumCategoriesController');
 
     Route::resource('itemshop/item', 'Management\ManageItemController');
     Route::resource('itemshop/category', 'Management\ManageCategoryController');
+    Route::post('itemshop/internalupdate', 'Management\ManageItemController@internalUpdate')->name('itemshop.internalUpdate');
+    Route::post('itemshop/internaldelete', 'Management\ManageItemController@internalDelete')->name('itemshop.internalDelete');
 
     Route::resource('dashboard', 'Management\ManageDashboardController');
 
     Route::resource('paymentplan', 'Management\ManagePaymentPlanController');
+
+    Route::resource('server', 'Management\ManageGameServerController');
 
     Route::resource('settings', 'Management\ManageGeneralSettingsController');
 
@@ -96,6 +109,8 @@ Route::prefix('admin/controlpanel')->group(function () {
 
     Route::resource('usereditor', 'Management\ManageUserController');
     Route::post('usereditor/{id}/ban', 'Management\ManageUserController@ban')->name('usereditor.ban');
+    Route::post('usereditor/internalupdate', 'Management\ManageUserController@internalUpdate')->name('usereditor.internalUpdate');
+    Route::post('usereditor/internaldelete', 'Management\ManageUserController@internalDelete')->name('usereditor.internalDelete');
 
     Route::get('recyclebin', 'Management\ManageRecycleBinController@index')->name('recyclebin.index');
     Route::post('recyclebin/user/{id}/rollback', 'Management\ManageRecycleBinController@rollbackUser')->name('recyclebin.rollbackUser');

@@ -6,23 +6,27 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ItemshopRequest;
 use App\Itemshop;
 use Storage;
+use JavaScript;
 
 class ManageItemController extends ManageController
 {
     public function index()
     {
+
+        JavaScript::put([
+            'data' =>  $this->getAllItem(),
+        ]);
+
         return view('manage.admin.item', [
-            'items' => $this->getAllItem(),
+            'categorys' => $this->getAllCategory(),
         ]);
     }
 
     public function create()
     {
 
-        $category = $this->getAllCategory();
-
         return view('manage.admin.additem', [
-            'categorys' => $category,
+            'categorys' => $this->getAllCategory(),
         ]);
     }
 
@@ -33,6 +37,7 @@ class ManageItemController extends ManageController
 
     public function store(ItemshopRequest $request)
     {
+
         $item = new Itemshop;
 
         $item->item_name        = $request->item_name;
@@ -127,4 +132,49 @@ class ManageItemController extends ManageController
 
         return redirect()->route('item.index');
     }
+
+    public function internalUpdate(Request $request)
+    {
+        $item = Itemshop::where('item_id', $request->id);
+        $oldfilename = $item->get()->first()->item_image_path;
+
+        $item->update([
+
+            'item_name' => $request->item_name,
+            'item_desc' => $request->item_desc,
+            'item_price' => $request->item_price,
+            'category_id' => $request->category,
+            'item_command' => $request->item_command,
+
+        ]);
+
+        if(empty($request->item_discount_price)){
+            $item->update([
+                'item_discount_price' => null,
+            ]);
+        }else{
+            $item->update([
+                'item_discount_price' => $request->item_discount_price,
+            ]);
+        }
+
+        if($request->file('cover') != null){
+
+            Storage::disk('local')->delete('public/itemshop/cover/' . $oldfilename);
+
+            $item->update([
+                'item_image_path' => $this->saveAndGetFile('public/itemshop/cover', $request->file('cover')),
+            ]);
+        }
+
+        session()->flash('manageItemEdited');
+        return redirect()->route('item.index');
+    }
+
+    public function internalDelete(Request $request)
+    {
+        Itemshop::find($request->id)->delete();
+        return redirect()->route('item.index');
+    }
+
 }

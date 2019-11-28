@@ -34,6 +34,14 @@
                             <th>พ้อยท์</th>
                             <th class="has-text-grey has-text-weight-light">{{$user->points_balance}}</th>
                         </tr>
+                        <tr>
+                            <th>ที่อยู่ไคลเอนท์</th>
+                            <th class="has-text-grey has-text-weight-light">{{$user->ip}}</th>
+                        </tr>
+                        <tr>
+                            <th>สถานะ</th>
+                            <th class="has-text-grey has-text-weight-light">@if($user->isLogged == 1) <p class="has-text-success">กำลังเล่นอยู่</p> @else ไม่ได้เล่นอยู่ @endif</th>
+                        </tr>
                     </tbody>
                 </table>
 

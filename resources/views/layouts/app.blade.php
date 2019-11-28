@@ -34,11 +34,11 @@
 </head>
 <body>
     <div id="app">
-        @include('components.navbar')
-            <main class="view is-uppercase">
-                @yield('content')
-            </main>
-        @include('components.footer')
+    @include('components.navbar')
+        <main class="view is-uppercase">
+            @yield('content')
+        </main>
     </div>
+    @include('components.footer')
 </body>
 </html>

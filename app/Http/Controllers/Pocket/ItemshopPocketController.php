@@ -50,6 +50,7 @@ class ItemshopPocketController extends Controller
                 'is_claimed' => 1,
             ]);
 
+            $this->addLogAsUser('POCKET:CLAIMED', 'รับไอเท็ม ' . $item->item_name . ' จากกระเป๋าเก็บของและรับของแล้วเรียบร้อย!');
             session()->flash('pocketGetItem');
 
         }else{ //ถ้าไม่ได้

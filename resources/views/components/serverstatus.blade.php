@@ -7,7 +7,7 @@
             </div>
 
             @if ($server != null)
-                <progress class="progress is-success" value={{$server->GetInfo()['Players'] . '/' . $server->GetInfo()['MaxPlayers']}}></progress>
+                <progress class="progress is-primary" value="{{ $server->GetInfo()['Players'] }}" max="{{ $server->GetInfo()['MaxPlayers'] }}"></progress>
                 <p class="text-category has-text-dark">
                     @if(!empty($server->GetPlayers()))
                         กำลังเล่นอยู่บนเซิร์ฟเวอร์ตอนนี้..

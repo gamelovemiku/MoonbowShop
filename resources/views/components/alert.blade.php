@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 @if (session()->has('RedeemNotFoundError'))
 <script>
     swal("ไม่พบโค๊ดนี้ในระบบ", "โปรดลองตรวจสอบดูอีกครั้ง", "warning");
@@ -39,7 +37,6 @@
 </script>
 @endif
 
->>>>>>> Stashed changes
 @if (session()->has('moneyNotEnough'))
 <script>
     swal("ผิดพลาด: มีคุณมีเงินไม่เพียงพอ", "คุณไม่สามารถซื้อสินค้านี้ได้ เนื่องจากมี Points ไม่เพียงพอ!", "warning");

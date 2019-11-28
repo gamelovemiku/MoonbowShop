@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use App\Logs;
 
 class CheckoutController extends Controller
 {
@@ -35,10 +36,12 @@ class CheckoutController extends Controller
                 if($item->item_discount_price != null) {
 
                     $this->takeMoney($item->item_discount_price);
+                    $this->addLogAsUser('ITEMSHOP:BUY', 'ซื้อไอเท็ม ' . $item->item_name . ' ในราคาพิเศษ ' . $item->item_discount_price . ' พ้อยท์สำเร็จ!');
 
                 }else {
 
                     $this->takeMoney($item->item_price);
+                    $this->addLogAsUser('ITEMSHOP:BUY', 'ซื้อไอเท็ม ' . $item->item_name . ' ในราคา ' . $item->item_price . ' พ้อยท์เรียบร้อย!');
 
                 }
 

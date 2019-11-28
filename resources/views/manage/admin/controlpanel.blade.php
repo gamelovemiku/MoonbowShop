@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" integrity="sha256-PF6MatZtiJ8/c9O9HQ8uSUXr++R9KBYu4gbNG5511WE=" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css?family=Poppins|Pridi:400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css" integrity="sha256-a2tobsqlbgLsWs7ZVUGgP5IvWZsx8bTNQpzsqCSm5mk=" crossorigin="anonymous" />
+
     <link rel="stylesheet" href="/css/self-custom.css"/>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.4.95/css/materialdesignicons.min.css" integrity="sha256-Oc9/ZPm5B07aJEXLaFs7vkuVzAO1pKJo8EKmiuqG9Qo=" crossorigin="anonymous" />
@@ -15,7 +16,7 @@
 
     <script src="/js/bulma.js"></script>
 
-    <title>Manage Profile</title>
+    <title>แผงควบคุม - Control Panel</title>
 </head>
 
 <script type="text/javascript">
@@ -34,32 +35,27 @@
     @include('components.navbar')
         <section class="section is-uppercase" style="margin-bottom: 4em; margin-top: 4em">
             <div class="container">
-                <h1 class="title is-size-2 has-text-weight-bold">Control Panel</h1>
-                <p class="subtitle has-text-justified">ควบคุมส่วนต่างๆ ของเว็บไซต์และระบบ<b class="force-bold"></b></p>
                 <div class="columns">
                     <div class="column is-3">
-                        <div class="box">
+                        @hasSection ('breadcrumb')
+                            <div class="subtitle">
+                                @yield('breadcrumb')
+                            </div>
+                        @endif
+                        <h1 class="title is-size-2 has-text-weight-bold has-thaifont-pixel">แผงควบคุม</h1>
+                        <p class="subtitle has-text-justified">ควบคุมส่วนต่างๆ ของเว็บไซต์และระบบ<b class="force-bold"></b></p>
+                        <div class="sidemenu">
                             @include('components.alert')
                             <aside class="menu">
                                 <p class="menu-label">
-                                    Store
+                                    ร้านค้าและไอเท็ม
                                 </p>
                                 <ul class="menu-list">
                                     <a class="menu-block" href="{{ route("item.index") }}">
                                         <span class="menu-icon icon">
                                             <i class="fas fa-shopping-cart"></i>
                                         </span>
-<<<<<<< Updated upstream
-                                        Itemshop
-                                    </a>
-                                    <a class="menu-block" href="{{ route('category.index')}}">
-                                        <span class="menu-icon icon">
-                                            <i class="fas fa-layer-group"></i>
-                                        </span>
-                                        Category
-                                    </a>
-=======
-                                        ร้านค้า <b-tag rounded> 3 </b-tag> </span>
+                                        ร้านค้า</span>
                                     </a>
                                     <a class="menu-block" href="{{ route('redeem.index')}}">
                                         <span class="menu-icon icon">
@@ -73,73 +69,97 @@
                                         </span>
                                         สุ่มรางวัล
                                     </a>
->>>>>>> Stashed changes
                                 </ul>
                                 <p class="menu-label">
-                                    Administration
+                                    การควบคุมระบบ
                                 </p>
                                 <ul class="menu-list">
                                     <a class="menu-block" href="{{ route("dashboard.index") }}">
                                         <span class="menu-icon icon">
                                             <i class="fas fa-file-invoice"></i>
                                         </span>
-                                        Dashboard
+                                        ภาพรวม
                                     </a>
                                     <a class="menu-block" href="{{ route("usereditor.index") }}">
                                         <span class="menu-icon icon">
                                             <i class="fas fa-user-edit"></i>
                                         </span>
-                                        User Editor
+                                        ตัวจัดการผู้ใช้
                                     </a>
                                     <a class="menu-block" href="{{ route("notice.index") }}">
                                         <span class="menu-icon icon">
                                             <i class="fas fa-bullhorn"></i>
                                         </span>
-                                        Notice
+                                        ประกาศ
                                     </a>
                                     <a class="menu-block" href="{{ route("forumcontrol.index") }}">
                                         <span class="menu-icon icon">
                                             <i class="fas fa-comments"></i>
                                         </span>
-                                        Forum Category
+                                        หมวดหมู่บอร์ด
                                     </a>
                                     <a class="menu-block" href="{{ route("commandsender") }}">
                                         <span class="menu-icon icon">
                                             <i class="fas fa-terminal"></i>
                                         </span>
-                                        Command Sender
+                                        ตัวส่งคำสั่ง
                                     </a>
                                     <a class="menu-block" href="{{ route("recyclebin.index") }}">
                                         <span class="menu-icon icon">
                                             <i class="fas fa-recycle"></i>
                                         </span>
-                                        Recycle Bin
+                                        ถังขยะ
                                     </a>
                                     <p class="menu-label">
-                                        Systems
+                                        ระบบ
                                     </p>
                                     <a class="menu-block" href="{{ route("settings.index") }}">
                                         <span class="menu-icon icon">
                                             <i class="fas fa-info-circle"></i>
                                         </span>
-                                        General Settings
+                                        ตั้งค่าทั่วไป
+                                    </a>
+                                    <a class="menu-block" href="{{ route("server.index") }}">
+                                        <span class="menu-icon icon">
+                                            <i class="fas fa-server"></i>
+                                        </span>
+                                        ตั้งค่าเซิร์ฟเวอร์เกม
                                     </a>
                                     <a class="menu-block" href="{{ route('paymentplan.index') }}">
                                         <span class="menu-icon icon">
                                             <i class="far fa-credit-card"></i>
                                         </span>
-                                        Payment Plans
+                                        ตั้งค่าการเติมเงิน
+                                    </a>
+                                    <a class="menu-block" href="{{ route("settings.index") }}">
+                                        <span class="menu-icon icon">
+                                            <i class="fas fa-plug"></i>
+                                        </span>
+                                        ส่วนเสริม
                                     </a>
                                 </ul><hr/>
                             <a class="button is-danger is-fullwidth" href="{{ route('logout') }}">Sign Out</a>
                             </aside>
                         </div>
                     </div>
-                    <div class="column is-9">
-                        <div class="box" style="height: auto">
-                            @yield('content')
+                    @hasSection ('quickbar')
+                        <div class="column is-6">
+                            <div class="box" style="height: 100%">
+                                @yield('content')
+                            </div>
                         </div>
-                    </div>
+                        <div class="column is-3">
+                            <div class="box" style="height: 100%">
+                                @yield('quickbar')
+                            </div>
+                        </div>
+                    @else
+                        <div class="column is-9">
+                            <div class="box" style="height: 100%">
+                                @yield('content')
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </section>

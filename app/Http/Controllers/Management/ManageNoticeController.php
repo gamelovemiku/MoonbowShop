@@ -5,12 +5,17 @@ namespace App\Http\Controllers\Management;
 use Illuminate\Http\Request;
 use App\Http\Requests\NoticeRequest;
 use App\Notice;
+use JavaScript;
 
 class ManageNoticeController extends ManageController
 {
 
     public function index()
     {
+
+        JavaScript::put([
+            'data' =>  $this->getAllNotices(),
+        ]);
 
         return view('manage.admin.notice.notice', [
             'notices' => $this->getAllNotices(),
@@ -40,6 +45,7 @@ class ManageNoticeController extends ManageController
         $notice->notice_title = $request->title;
         $notice->notice_content = $request->content;
         $notice->notice_show_on_store = $isonstore;
+        $notice->notice_views = 0;
         $notice->save();
 
         return redirect()->route('notice.index');

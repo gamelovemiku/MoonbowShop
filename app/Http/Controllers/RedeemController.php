@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Redeem;
-use DB;
+use App\RedeemClaimed;
 use Auth;
 
 class RedeemController extends Controller
@@ -17,28 +17,30 @@ class RedeemController extends Controller
 
     public function redeem(Request $request) {
 
-        $code = $request->input('redeemcode');
+        $redeem = Redeem::where('redeem_code', $request->redeemcode)->get()->first();
 
-        if($this->redeemCheck($code)) {
+        if($redeem) {
 
-            $this->sendCommand($this->getRewardInfo($code)->redeem_reward_command);
+            $claim = RedeemClaimed::where([['redeem_code_id', $redeem->redeem_id], ['claimer_id', Auth::user()->id]])->get()->first();
 
-<<<<<<< Updated upstream
-            return "Found!";
-
-        } else {
-=======
             if(!$claim) {
-                
+
                 //ยังไม่แลกโค๊ด
 
-                if($redeem->redeem_limit == 0) {
+                $this->setAsClaimed($redeem->redeem_id);
+                $redeem->update([
+                    'redeem_count' => $redeem->redeem_count+1,
+                ]);
+
+                if($redeem->redeem_limit == 0) { //ไม่จำกัดการแลก
 
                     $this->explodeAndSendCommands($redeem->redeem_reward_command);
+                    $this->addLogAsUser('REDEEM:OK', 'แลกของรางวัลด้วยโค๊ด ' . $request->redeemcode . ' และรับของแล้วเรียบร้อย!');
 
-                }else if($redeem->redeem_limit > 0 && $redeem->redeem_count < $redeem->redeem_limit) {
+                }else if($redeem->redeem_limit > 0 && $redeem->redeem_count < $redeem->redeem_limit) { //จำกัดการแลก
 
                     $this->explodeAndSendCommands($redeem->redeem_reward_command);
+                    $this->addLogAsUser('REDEEM:OK', 'แลกของรางวัลด้วยโค๊ด ' . $request->redeemcode . ' (ลำดับที่ ' . $redeem->redeem_count . ' จาก ' . $redeem->redeem_limit . ' ครั้ง) และรับของแล้วเรียบร้อย!');
 
                 }else {
 
@@ -46,11 +48,6 @@ class RedeemController extends Controller
                     return redirect()->back();
 
                 }
-
-                $this->setAsClaimed($redeem->redeem_id);
-                $redeem->update([
-                    'redeem_count' => $redeem->redeem_count+1,
-                ]);
 
                 session()->flash('RedeemClaimedCompleted', $redeem->redeem_desc);
                 return redirect()->back();
@@ -66,9 +63,7 @@ class RedeemController extends Controller
 
             session()->flash('RedeemNotFoundError');
             return redirect()->back();
->>>>>>> Stashed changes
 
-            return "Invalid code: " . $code;
         }
 
     }
@@ -76,10 +71,11 @@ class RedeemController extends Controller
     public function redeemCheck($code) {
 
         $result = Redeem::where('redeem_code', $code)->get()->first();
-        
+
         if(!empty($result->redeem_code)) {
             return true;
         }
+
         return false;
     }
 
@@ -88,8 +84,6 @@ class RedeemController extends Controller
         $redeem = Redeem::where('redeem_code', $code)->get();
         return $redeem->first();
     }
-<<<<<<< Updated upstream
-=======
 
     public function setAsClaimed($redeemid) {
 
@@ -118,5 +112,4 @@ class RedeemController extends Controller
 
         }
     }
->>>>>>> Stashed changes
 }

@@ -8,8 +8,6 @@ class Redeem extends Model
 {
     protected $table = 'redeem'; // ชื่อตาราง
     protected $primaryKey = 'redeem_id'; // ชื่อ Primary Key
-<<<<<<< Updated upstream
-=======
 
     protected $fillable = [
         'redeem_code', 'redeem_desc', 'redeem_reward_command', 'redeem_limit', 'redeem_count',
@@ -25,5 +23,4 @@ class Redeem extends Model
         return $this->hasOne('App\User', 'id', 'topic_author_id');
     }
 
->>>>>>> Stashed changes
 }

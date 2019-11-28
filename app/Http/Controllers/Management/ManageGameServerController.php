@@ -3,24 +3,19 @@
 namespace App\Http\Controllers\Management;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Logs;
+use App\GameServer;
 use JavaScript;
 
-class ManageHistoryController extends Controller
+class ManageGameServerController extends ManageController
 {
-
     public function index()
     {
-
-        $history = Logs::orderBy('created_at', 'desc')->where('user_id', $this->getLoggedinUser()->id)->get()->take(40);
-
         JavaScript::put([
-            'data' => $history,
+            'data' =>  GameServer::all(),
         ]);
 
-        return view('manage.history.history', [
-            'history' => $history,
+        return view('manage.admin.server.server', [
+            'categorys' => $this->getAllCategory(),
         ]);
     }
 

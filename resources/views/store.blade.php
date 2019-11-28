@@ -234,39 +234,34 @@
                 <div class="column is-4">
                     @include('components.accounts')
 
-                    <div class="box" style="width: 100%">
-                        <div class="title-category">ประกาศของร้านค้า
-                            <p class="text-category has-text-weight-light">ข้อมูลเกี่ยวกับการซื้อบนร้านค้า</p>
+                    @if(count($notices) > 0)
+                        <div class="box" style="width: 100%">
+                            <div class="title-category">ประกาศของร้านค้า
+                                <p class="text-category has-text-weight-light">ข้อมูลเกี่ยวกับการซื้อบนร้านค้า</p>
+                            </div>
+                            <table class="table is-fullwidth">
+                                <tbody>
+                                    @forelse ($notices as $key => $notice)
+                                        <tr>
+                                            <th width="15%">
+                                                <div class="tags">
+                                                    <span class="tag is-danger is-small">{{ $notice->notice_tag }}</span>
+                                                    @if($key == 0) <span class="tag is-light is-small">Lastest</span> @endif
+                                                </div>
+                                            </th>
+                                            <th width="85%">{{ Str::limit($notice->notice_title, 120) }}</th>
+                                        </tr>
+                                    @empty
+                                        <td class="has-text-centered has-text-pink" colspan="2">
+                                            ไม่มีประกาศใดๆ ที่เกี่ยวกับร้านค้า
+                                        </td>
+                                    @endforelse
+                                </tbody>
+                            </table>
                         </div>
-                        <table class="table is-fullwidth">
-                            <thead>
-                                <tr>
-                                    <th width="15%">แท็ก</th>
-                                    <th width="85%">ข้อความ</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($notices as $key => $notice)
-                                    <tr>
-                                        <th width="15%">
-                                            <div class="tags">
-                                                <span class="tag is-danger">{{ $notice->notice_tag }}</span>
-                                                @if($key == 0) <span class="tag is-light">Lastest</span> @endif
-                                            </div>
-                                        </th>
-                                        <th width="85%">{{ Str::limit($notice->notice_title, 120) }}</th>
-                                    </tr>
-                                @empty
-                                    <td class="has-text-centered has-text-pink" colspan="2">
-                                        ไม่มีประกาศใดๆ ที่เกี่ยวกับร้านค้า
-                                    </td>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div>
+                    @endif
 
-<<<<<<< Updated upstream
-=======
+
                     <div class="box" style="width: 100%">
                         <div class="title-category">แลกไอเท็ม
                             <p class="text-category has-text-weight-light">มีรหัสแลกสินค้าอยู่ไหม แลกเลย</p>
@@ -282,7 +277,31 @@
                         </form>
                     </div>
 
->>>>>>> Stashed changes
+                    <div class="box" style="width: 100%">
+                        <div class="title-category">ประกาศของร้านค้า
+                            <p class="text-category has-text-weight-light">ข้อมูลเกี่ยวกับการซื้อบนร้านค้า</p>
+                        </div>
+                        <table class="table is-fullwidth">
+                            <tbody>
+                                @forelse ($notices as $key => $notice)
+                                    <tr>
+                                        <th width="15%">
+                                            <div class="tags">
+                                                <span class="tag is-danger is-small">{{ $notice->notice_tag }}</span>
+                                                @if($key == 0) <span class="tag is-light is-small">Lastest</span> @endif
+                                            </div>
+                                        </th>
+                                        <th width="85%">{{ Str::limit($notice->notice_title, 120) }}</th>
+                                    </tr>
+                                @empty
+                                    <td class="has-text-centered has-text-pink" colspan="2">
+                                        ไม่มีประกาศใดๆ ที่เกี่ยวกับร้านค้า
+                                    </td>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+
                     <script src="https://unpkg.com/vue"></script>
                     <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
 
@@ -301,22 +320,8 @@
 
                     </script>
 
-                    <!--div--- class="box" style="width: 100%">
-                        <div class="title-category">Redeem
-                            <p class="text-category">Have any redeem code? REDEEM IT and GET PRIZE!</p>
-                        </div>
-                        <form action="{{ action('RedeemController@redeem') }}" method="post">
-                            @csrf
-                            <div class="field">
-                                <input class="input" type="text" name="redeemcode">
-                            </div>
-                            <div class="buttons">
-                                <button class="button" type="submit">Redeem</button>
-                            </div>
-                        </form>
-                    </!--div--->
-
                     @include('components.serverstatus')
+
                 </div>
             </div>
         </div>

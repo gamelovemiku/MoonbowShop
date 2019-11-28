@@ -69,10 +69,8 @@ class Controller extends BaseController
 
     public function sendCommandbata($cmd)
     {
-<<<<<<< Updated upstream
         $rcon = new Rcon($this->getSettings()->hostname, $this->getSettings()->rcon_port, $this->getSettings()->rcon_password, 1);
-=======
->>>>>>> Stashed changes
+
         $player = Auth::user()->name;
         $multiple = explode(';', $cmd);
 
@@ -147,6 +145,8 @@ class Controller extends BaseController
                 foreach ($multiple as $command) {
                     $rcon->sendCommand(str_replace('%player', $player , $command));
                 }
+
+
 
                 return true;
             }else {
@@ -277,6 +277,17 @@ class Controller extends BaseController
         $log->user_id       = $buyer;
         $log->action_detail = $msg;
         $log->type          = $type;
+
+        $log->save();
+    }
+
+    public function addLogAsUser($type, $msg) {
+
+        $log = new Logs;
+
+        $log->user_id       = $this->getLoggedinUser()->id;
+        $log->type          = $type;
+        $log->action_detail = $msg;
 
         $log->save();
     }

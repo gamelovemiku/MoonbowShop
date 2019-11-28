@@ -35,12 +35,15 @@
                             class="has-text-weight-medium is-size-7"
                             type="is-small"
 
+                            :paginated="true"
+                            :per-page="5"
+                            :pagination-simple="true"
                             :data="data"
                             :selected.sync="selected"
                             :mobile-cards="false">
 
                             <template slot-scope="props">
-                                <b-table-column field="redeem_id" label="เลขอ้างอิง" width="80" sortable centered>
+                                <b-table-column field="redeem_id" label="เลขอ้างอิง" width="90" sortable centered>
                                     @{{ props.row.redeem_id }}
                                 </b-table-column>
 
@@ -52,17 +55,20 @@
                                     @{{ props.row.redeem_desc }}
                                 </b-table-column>
 
-                                <b-table-column field="redeem_count" label="แลกไปแล้ว" centered>
+
+                                <b-table-column field="redeem_limit" label="การจำกัด" sortable centered>
+                                    @{{ props.row.redeem_limit || "ไม่จำกัด" }}
+                                </b-table-column>
+
+                                <b-table-column field="redeem_count" label="แลกไปแล้ว" sortable centered>
                                     @{{ props.row.redeem_count }}
                                 </b-table-column>
 
-                                <b-table-column field="redeem_limit" label="การจำกัด" centered>
-                                    @{{ props.row.redeem_limit || "ไม่จำกัด" }}
-                                </b-table-column>
                             </template>
 
                         </b-table>
-                        <div class="has-text-weight-medium is-size-7" style="margin-top: 3rem" v-if="selected != null">
+
+                        <div class="has-text-weight-medium is-size-7" style="margin-top: -1.75rem" v-if="selected != null">
 
                             <b-tabs size="is-small" class="block">
                                 <b-tab-item label="แก้ไข" icon="pencil-box-outline">
@@ -76,7 +82,11 @@
                                         </div>
                                         <div class="level-right has-text-right">
                                             <div>
-                                                <a class="button is-small is-outlined is-danger">ลบโค๊ด @{{ selected.redeem_code || "" }}</a>
+                                                <form method="POST" action="{{ route('redeem.internalDelete') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="id" v-bind:value="selected.redeem_id">
+                                                    <button type="submit" class="button is-small is-outlined is-danger">ลบโค๊ด @{{ selected.redeem_code || "" }}</buttontype="hidden">
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -182,6 +192,7 @@
             commands: '',
             isAmount: 'unlimited',
             number: 1,
+            isEmpty: false,
         },
         data() {
             return {

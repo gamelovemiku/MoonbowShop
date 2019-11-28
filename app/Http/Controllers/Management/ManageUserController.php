@@ -6,14 +6,20 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserEditorRequest;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use JavaScript;
 
 class ManageUserController extends ManageController
 {
 
     public function index()
     {
+        JavaScript::put([
+            'data' =>  $this->getAllUsers(),
+        ]);
+
         return view('manage.admin.usereditor.user', [
             'users' => $this->getAllUsers(),
+            'rolelist' => $this->getAllRoles(),
         ]);
     }
 
@@ -73,4 +79,27 @@ class ManageUserController extends ManageController
 
         return redirect()->route('usereditor.index');
     }
+
+    public function internalUpdate(Request $request)
+    {
+        $user = User::find($request->id);
+
+        $user->update([
+            'email' => $request->email,
+            'points_balance' => $request->points_balance,
+            'role_id' => $request->role,
+        ]);
+
+        if($request->password != null) {
+
+            $user->update([
+                'password' => Hash::make($request->password),
+            ]);
+        }
+
+        return redirect()->route('usereditor.index');
+
+    }
+
+
 }

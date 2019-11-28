@@ -41,7 +41,7 @@
             <p class="subtitle has-text-justified">จัดการข้อมูลส่วนตัว และการกระทำที่เกี่ยวกับคุณ<b class="force-bold"></b></p>
             <div class="columns">
                 <div class="column is-3">
-                    <div class="box">
+                    <div class="sidebar">
                         @include('components.alert')
                         <aside class="menu">
                             <p class="menu-label">
@@ -78,8 +78,6 @@
                             <ul class="menu-list">
                                 <a class="menu-block" href="{{ route("history.index") }}">
                                     <span class="menu-icon icon">
-<<<<<<< Updated upstream
-=======
                                         <i class="fas fa-flag-checkered"></i>
                                     </span>
                                     ประวัติกิจกรรมบัญชี
@@ -88,7 +86,6 @@
                             <ul class="menu-list">
                                 <a class="menu-block" href="{{ route("paymenthistory.index") }}">
                                     <span class="menu-icon icon">
->>>>>>> Stashed changes
                                         <i class="fas fa-receipt"></i>
                                     </span>
                                     ประวัติการจ่ายเงิน

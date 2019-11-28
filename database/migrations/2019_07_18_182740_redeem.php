@@ -14,12 +14,8 @@ class Redeem extends Migration
             $table->string('redeem_code');
             $table->string('redeem_desc');
             $table->string('redeem_reward_command');
-<<<<<<< Updated upstream
-            $table->boolean('claimed_amount');
-=======
             $table->integer('redeem_limit')->nullable();
             $table->integer('redeem_count');
->>>>>>> Stashed changes
             $table->timestamps();
         });
     }

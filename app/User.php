@@ -13,7 +13,9 @@ class User extends Authenticatable
     use SoftDeletes;
 
     protected $fillable = [
-        'name', 'email', 'password', 'points_balance', 'role_id', 'profile_image_path'
+        'name', 'email', 'email_verified_at', 'password', 'points_balance', 'role_id', 'profile_image_path',
+        'realname', 'ip', 'lastlogin', 'x', 'y', 'z', 'world', 'regdate', 'regip', 'yaw', 'pitch', 'isLogged',
+        'hasSession', 'totp'
     ];
 
     protected $hidden = [
