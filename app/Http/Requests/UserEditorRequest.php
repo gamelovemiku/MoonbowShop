@@ -26,7 +26,7 @@ class UserEditorRequest extends FormRequest
         return [
             'name'      =>    'required',
             'email'     =>    'required',
-            'points'    =>    'required|digits:6',
+            'points'    =>    'required|numeric',
             'password'  =>    'nullable',
         ];
     }
@@ -34,11 +34,10 @@ class UserEditorRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'          => 'You must enter an name.', 
-            'email.required'         => 'Things need to be Email.',            
-            'points.numeric'         => 'This price mus be number.', 
-            'points.required'        => 'You must enter this Points', 
-            'points.digits'          => 'The point are max 0-999,999',             
+            'name.required'          => 'You must enter an name.',
+            'email.required'         => 'Things need to be Email.',
+            'points.numeric'         => 'This price mus be number.',
+            'points.required'        => 'You must enter this Points',
         ];
     }
 }

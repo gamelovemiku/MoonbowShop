@@ -19,10 +19,14 @@
             <h4 class="title is-size-4">ร้านค้า</h4>
             <p class="subtitle is-size-7">จัดการหน้าร้านค้าเพื่อให้ผู้เล่นซื้อสินค้า<b class="force-bold"></b></p>
         </div>
-        <div class="column is-6 has-text-right">
-            <a class="button is-small is-white is-shadow" @click="selected = null">
+        <div class="buttons column is-6 has-text-right">
+            <a class="button is-small is-white is-shadow" @click="isAddItemModalActive = true">
                 <b-icon icon="gift" size="is-small"></b-icon>
                 <span>เพิ่มไอเท็มใหม่</span>
+            </a>
+            <a class="button is-small is-white is-shadow" @click="isAddCategoryModalActive = true">
+                <b-icon icon="gift" size="is-small"></b-icon>
+                <span>เพิ่มหมวดหมู่ใหม่</span>
             </a>
         </div>
     </div>
@@ -195,8 +199,114 @@
 
                                 </b-tab-item>
                             </b-tabs>
-
                         </div>
+
+                        <b-modal :active.sync="isAddItemModalActive" :width="720" scroll="keep">
+                            <div class="box is-shadowless is-modal">
+                                <div class="topic has-text-centered" style="padding: 1.75rem;">
+                                    <h4 class="title">เพิ่มไอเท็มใหม่</h4>
+                                    <p class="subtitle is-6">โหมดละเอียด</p>
+                                </div>
+
+                                <b-steps size="is-small">
+                                    <b-step-item label="รายละเอียด" icon="account">
+                                        <div style="padding: 3rem 3rem;">
+                                            <b-field label="ชื่อผู้ใช้">
+                                                <b-input placeholder=""></b-input>
+                                            </b-field>
+                                            <b-field label="อีเมล">
+                                                <b-input placeholder=""></b-input>
+                                            </b-field>
+
+                                            <b-field label="ภาพโปรไฟล์">
+                                                <b-upload v-model="file">
+                                                    <a class="button is-primary">
+                                                        <b-icon icon="upload"></b-icon>
+                                                        <span>Click to upload</span>
+                                                    </a>
+                                                </b-upload>
+                                                <span class="file-name" v-if="file">
+                                                    @{{ file.name }}
+                                                </span>
+                                            </b-field>
+
+                                            <div class="buttons is-right">
+                                                <b-button type="is-primary is-outlined">ต่อไป</b-button>
+                                            </div>
+                                        </div>
+                                    </b-step-item>
+                                    <b-step-item label="ราคา" icon="cash-usd">
+                                        <div style="padding: 3rem 3rem;">
+                                            <b-field label="พ้อยท์เริ่มต้น">
+                                                <b-input placeholder=""></b-input>
+                                            </b-field>
+                                            <b-field label="เงินในเกมเริ่มต้น">
+                                                <b-input placeholder=""></b-input>
+                                            </b-field>
+
+                                            <div class="buttons is-right">
+                                                <b-button type="is-primary is-outlined">ต่อไป</b-button>
+                                            </div>
+                                        </div>
+                                    </b-step-item>
+                                    <b-step-item label="ตรวจสอบ" icon="check"></b-step-item>
+                                </b-steps>
+                            </div>
+                        </b-modal>
+
+                        <b-modal :active.sync="isAddCategoryModalActive" :width="720" scroll="keep">
+                            <div class="box is-shadowless is-modal">
+                                <div class="topic has-text-centered" style="padding: 1.75rem;">
+                                    <h4 class="title">เพิ่มหมวดใหม่</h4>
+                                    <p class="subtitle is-6">โหมดละเอียด</p>
+                                </div>
+
+                                <b-steps size="is-small">
+                                    <b-step-item label="ทั่วไป" icon="account">
+                                        <div style="padding: 3rem 3rem;">
+                                            <b-field label="ชื่อผู้ใช้">
+                                                <b-input placeholder=""></b-input>
+                                            </b-field>
+                                            <b-field label="อีเมล">
+                                                <b-input placeholder=""></b-input>
+                                            </b-field>
+
+                                            <b-field label="ภาพโปรไฟล์">
+                                                <b-upload v-model="file">
+                                                    <a class="button is-primary">
+                                                        <b-icon icon="upload"></b-icon>
+                                                        <span>Click to upload</span>
+                                                    </a>
+                                                </b-upload>
+                                                <span class="file-name" v-if="file">
+                                                    @{{ file.name }}
+                                                </span>
+                                            </b-field>
+
+                                            <div class="buttons is-right">
+                                                <b-button type="is-primary is-outlined">ต่อไป</b-button>
+                                            </div>
+                                        </div>
+                                    </b-step-item>
+                                    <b-step-item label="การเชื่อมต่อ" icon="cash-usd">
+                                        <div style="padding: 3rem 3rem;">
+                                            <b-field label="พ้อยท์เริ่มต้น">
+                                                <b-input placeholder=""></b-input>
+                                            </b-field>
+                                            <b-field label="เงินในเกมเริ่มต้น">
+                                                <b-input placeholder=""></b-input>
+                                            </b-field>
+
+                                            <div class="buttons is-right">
+                                                <b-button type="is-primary is-outlined">ต่อไป</b-button>
+                                            </div>
+                                        </div>
+                                    </b-step-item>
+                                    <b-step-item label="การส่งคำสั่ง" icon="settings"></b-step-item>
+                                    <b-step-item label="ตรวจสอบ" icon="check"></b-step-item>
+                                </b-steps>
+                            </div>
+                        </b-modal>
 
                     </section>
                 </template>
@@ -258,6 +368,8 @@
                 discountprice: 0,
                 commands: null,
                 isDiscont: false,
+                isAddItemModalActive: false,
+                isAddCategoryModalActive: false,
             }
         }
     })

@@ -91,4 +91,34 @@ class ManageNoticeController extends ManageController
 
         return redirect()->route('notice.index');
     }
+
+    public function internalUpdate(Request $request)
+    {
+        if($request->seeinstore == 'on') {
+            $isonstore = true;
+        }else {
+            $isonstore = false;
+        }
+
+        $notice = Notice::find($request->id);
+
+        $notice->update([
+            'notice_tag' => $request->tag,
+            'notice_title' => $request->title,
+            'notice_content' => $request->content,
+            'notice_show_on_store' => $isonstore,
+        ]);
+
+        return redirect()->route('notice.index');
+    }
+
+    public function internalDelete(Request $request)
+    {
+        $notice = Notice::find($request->id);
+        $notice->delete();
+
+        return redirect()->route('notice.index');
+    }
+
+
 }

@@ -83,6 +83,8 @@ Route::get('admin/controlpanel', 'Management\ManageDashboardController@index')->
 Route::prefix('admin/controlpanel')->group(function () {
 
     Route::resource('notice', 'Management\ManageNoticeController');
+    Route::post('notice/internalupdate', 'Management\ManageNoticeController@internalUpdate')->name('notice.internalUpdate');
+    Route::post('notice/internaldelete', 'Management\ManageNoticeController@internalDelete')->name('notice.internalDelete');
 
     Route::resource('redeem', 'Management\ManageRedeemController');
 
@@ -101,6 +103,8 @@ Route::prefix('admin/controlpanel')->group(function () {
     Route::resource('paymentplan', 'Management\ManagePaymentPlanController');
 
     Route::resource('server', 'Management\ManageGameServerController');
+    Route::post('server/internalupdate', 'Management\ManageGameServerController@internalUpdate')->name('server.internalUpdate');
+    Route::post('server/internaldelete', 'Management\ManageGameServerController@internalDelete')->name('server.internalDelete');
 
     Route::resource('settings', 'Management\ManageGeneralSettingsController');
 

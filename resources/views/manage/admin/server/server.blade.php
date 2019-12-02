@@ -4,16 +4,17 @@
 
 <nav class="breadcrumb is-small" aria-label="breadcrumbs">
     <ul>
-        <li><a href="{{ route('profile.index') }}">{{ Auth::user()->name }}</a></li>
-        <li><a href="{{ route('admin.controlpanel') }}">Admin</a></li>
-        <li class="is-active"><a aria-current="page">Itemshop</a></li>
+        <li><a href="/manage">{{ Auth::user()->name }}</a></li>
+        <li><a href="/manage/profile">Admin</a></li>
+        <li class="is-active"><a href="/manage/user">User</a></li>
     </ul>
 </nav>
+
 @endsection
 
 @section('content')
 
-<div id="itemshop">
+<div id="server">
     <div class="columns">
         <div class="column is-6">
             <h4 class="title is-size-4">เซิร์ฟเวอร์เกม</h4>
@@ -21,7 +22,7 @@
         </div>
         <div class="column is-6 has-text-right">
             <a class="button is-small is-white is-shadow" @click="isCardModalActive = true">
-                <b-icon icon="gift" size="is-small"></b-icon>
+                <b-icon icon="account-plus" size="is-small"></b-icon>
                 <span>เพิ่มเซิร์ฟเวอร์ใหม่</span>
             </a>
         </div>
@@ -38,11 +39,13 @@
 
                             :data="data"
                             :paginated="true"
-                            :per-page="5"
+                            :per-page="15"
 
                             :pagination-simple="true"
                             :selected.sync="selected"
-                            :mobile-cards="false">
+                            :mobile-cards="false"
+
+                            >
 
                             <template slot-scope="props">
                                 <b-table-column field="server_id" label="เลขอ้างอิง" width="80" sortable centered>
@@ -73,41 +76,54 @@
                                     @{{ props.row.websender_port }}
                                 </b-table-column>
 
-                                <b-table-column field="status" label="สถานะเซิร์ฟเวอร์" centered>
-                                    ออนไลน์
-                                </b-table-column>
-
                             </template>
 
                         </b-table>
                         <div class="has-text-weight-medium is-size-7" style="margin-top: -1.75rem" v-if="selected != null">
+
                             <b-tabs size="is-small" class="block">
                                 <b-tab-item label="แก้ไข" icon="pencil-box-outline">
 
                                     <div class="level">
                                         <div class="level-left">
                                             <div>
-                                                <h6 class="title is-size-6">แก้ไขเซิร์ฟเวอร์ @{{ selected.server_name }}</h6>
+                                                <h6 class="title is-size-6">แก้ไขเซิร์ฟเวอร์ @{{ selected.server_name }} | @{{ serverstatus }}</h6>
                                                 <p class="subtitle is-size-7">ผลของการแก้ไขจะเปลี่ยนแปลงเมื่อกดปุ่มบันทึก<b class="force-bold"></b></p>
                                             </div>
                                         </div>
-                                        <div class="level-right has-text-right">
-                                            <form method="POST" action="{{ route('redeem.internalDelete') }}">
+                                        <div class="level-right has-text-right bottons">
+
+                                            <form method="POST" action="{{ route('server.internalDelete') }}">
                                                 @csrf
-                                                <input type="hidden" name="id" v-bind:value="selected.redeem_id">
-                                                <button type="submit" class="button is-small is-outlined is-danger">ลบเซิร์ฟเวอร์ @{{ selected.server_name || "" }}</buttontype="hidden">
+                                                <input type="hidden" name="id" v-bind:value="selected.id" />
+
+                                                <div class="buttons">
+                                                    <b-button class="button is-small is-info" v-on:click="getServer(selected)">
+                                                        <b-icon icon="arrange-send-to-back" size="is-small"></b-icon>
+                                                        <span>ทดสอบการเชื่อมต่อไปที่ @{{ selected.hostname }}</span>
+                                                    </b-button>
+                                                    <b-button type="submit" class="button is-small is-outlined is-danger">
+                                                        <b-icon icon="delete" size="is-small"></b-icon>
+                                                        <span>ลบเซิร์ฟเวอร์ @{{ selected.server_name || "" }}</span>
+                                                    </b-button>
+                                                </div>
+
+
                                             </form>
+
                                         </div>
                                     </div>
 
                                     <section>
-                                        <form method="POST" action="{{ route('itemshop.internalUpdate') }}" enctype="multipart/form-data">
+
+                                        <form method="POST" action="{{ route('server.internalUpdate') }}" enctype="multipart/form-data">
 
                                             @csrf
+
                                             <div class="columns">
                                                 <div class="column is-5">
 
-                                                <input type="hidden" name="id" v-bind:value="selected.redeem_id">
+                                                <input type="hidden" name="id" v-bind:value="selected.server_id">
 
                                                     <b-field type="is-small" label="เซิร์ฟเวอร์" horizontal>
                                                         <b-input type="text" placeholder="เซิร์ฟเวอร์" name="server_name" v-bind:value="selected.server_name"></b-input>
@@ -126,6 +142,7 @@
                                                     </b-field>
 
                                                 </div>
+
                                                 <div class="column is-7">
                                                     <b-field type="is-small" label="พอร์ทส่งคำสั่งหลัก" horizontal>
                                                         <b-input type="input" size="is-small" name="rcon_port" v-bind:value="selected.rcon_port" min="0" step="15"></b-input>
@@ -138,113 +155,256 @@
                                                 </div>
                                             </div>
 
+                                            <b-tabs size="is-small" class="block">
 
+                                                <b-tab-item label="คำสั่งของรางวัล" icon="code-braces">
+                                                    <b-input size="is-small" type="textarea" name="item_command" placeholder="คำสั่งของรางวัลที่จะได้รับเมื่อแลก" rows="4" v-model="commands"></b-input>
+                                                </b-tab-item>
 
+                                                <b-tab-item label="วิธีการใช้" icon="comment-question-outline">
+                                                    <b-message title="รูปแบบวิธีการใช้คำสั่ง" size="is-small">
+                                                        <p>
+                                                            <table class="table is-fullwidth">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th width="40%"><b>cmd: <คำสั่ง></b></th>
+                                                                        <th>ใช้ส่งคำสั่งไปเซิร์ฟเวอร์</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th width="40%"><b>%player</b></th>
+                                                                        <th>ใช้แทนชื่อคนแลกในคำสั่ง</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th width="40%"><b>points: <พ้อย></b></th>
+                                                                        <th>ให้ Point บนเว็บ</th>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <b class="force-bold has-text-primary">EXAMPLE: </b>ให้เพชรและให้ 25 Point <br>
+                                                            <b>cmd:give %player diamond 64;point:25</b>
+                                                        </p>
+                                                    </b-message>
+                                                </b-tab-item>
+                                            </b-tabs>
 
-                                                <b-tabs size="is-small" class="block">
+                                            <div class="content">
+                                                <li v-if="file === null" class="is-size-7 has-text-danger">ต้องอัพโหลดภาพก่อน</li>
+                                            </div>
 
-                                                    <b-tab-item label="คำสั่งของรางวัล" icon="code-braces">
-                                                        <b-input size="is-small" type="textarea" name="item_command" placeholder="คำสั่งของรางวัลที่จะได้รับเมื่อแลก" rows="4" v-model="commands"></b-input>
-                                                    </b-tab-item>
+                                            <div class="buttons">
+                                                <b-button type="is-primary" native-type="submit" size="is-small">สร้างเซิร์ฟเวอร์ @{{ selected.server_name || null }}</b-button>
+                                            </div>
 
-                                                    <b-tab-item label="วิธีการใช้" icon="comment-question-outline">
-                                                        <b-message title="รูปแบบวิธีการใช้คำสั่ง" size="is-small">
-                                                            <p>
-                                                                <table class="table is-fullwidth">
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <th width="40%"><b>cmd: <คำสั่ง></b></th>
-                                                                            <th>ใช้ส่งคำสั่งไปเซิร์ฟเวอร์</th>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="40%"><b>%player</b></th>
-                                                                            <th>ใช้แทนชื่อคนแลกในคำสั่ง</th>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="40%"><b>points: <พ้อย></b></th>
-                                                                            <th>ให้ Point บนเว็บ</th>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                                <b class="force-bold has-text-primary">EXAMPLE: </b>ให้เพชรและให้ 25 Point <br>
-                                                                <b>cmd:give %player diamond 64;point:25</b>
-                                                            </p>
-                                                        </b-message>
-                                                    </b-tab-item>
-                                                </b-tabs>
+                                        </form>
 
-                                                <div class="content">
-                                                    <li v-if="file === null" class="is-size-7 has-text-danger">ต้องอัพโหลดภาพก่อน</li>
-                                                </div>
-
-                                                <div class="buttons">
-                                                    <b-button v-if="file === null" type="is-primary" size="is-small" disabled>สร้างเซิร์ฟเวอร์ @{{ name || null }}</b-button>
-                                                    <b-button v-if="file != null" type="is-primary" native-type="submit" size="is-small">สร้างเซิร์ฟเวอร์ @{{ name || null }}</b-button>
-                                                </div>
-
-                                            </form>
-
-                                            <b-modal :active.sync="isCardModalActive" :width="720" scroll="keep">
-                                                <div class="box is-shadowless is-modal">
-                                                    <div class="topic has-text-centered" style="padding: 1.75rem;">
-                                                        <h4 class="title">เพิ่มผู้ใช้ใหม่</h4>
-                                                        <p class="subtitle is-6">โหมดละเอียด</p>
-                                                    </div>
-
-                                                    <b-steps size="is-small">
-                                                        <b-step-item label="รายละเอียดผู้ใช้" icon="account">
-                                                            <div style="padding: 3rem 3rem;">
-                                                                <b-field label="ชื่อผู้ใช้">
-                                                                    <b-input placeholder=""></b-input>
-                                                                </b-field>
-                                                                <b-field label="อีเมล">
-                                                                    <b-input placeholder=""></b-input>
-                                                                </b-field>
-
-                                                                <b-field label="ภาพโปรไฟล์">
-                                                                    <b-upload v-model="file">
-                                                                        <a class="button is-primary">
-                                                                            <b-icon icon="upload"></b-icon>
-                                                                            <span>Click to upload</span>
-                                                                        </a>
-                                                                    </b-upload>
-                                                                    <span class="file-name" v-if="file">
-                                                                        @{{ file.name }}
-                                                                    </span>
-                                                                </b-field>
-
-                                                                <div class="buttons is-right">
-                                                                    <b-button type="is-primary is-outlined">ต่อไป</b-button>
-                                                                </div>
-                                                            </div>
-                                                        </b-step-item>
-                                                        <b-step-item label="พ้อยท์และเงิน" icon="cash-usd">
-                                                            <div style="padding: 3rem 3rem;">
-                                                                <b-field label="พ้อยท์เริ่มต้น">
-                                                                    <b-input placeholder=""></b-input>
-                                                                </b-field>
-                                                                <b-field label="เงินในเกมเริ่มต้น">
-                                                                    <b-input placeholder=""></b-input>
-                                                                </b-field>
-
-                                                                <div class="buttons is-right">
-                                                                    <b-button type="is-primary is-outlined">ต่อไป</b-button>
-                                                                </div>
-                                                            </div>
-                                                        </b-step-item>
-                                                        <b-step-item label="ตั้งค่าพิเศษ" icon="settings"></b-step-item>
-                                                        <b-step-item label="ตรวจสอบ" icon="check"></b-step-item>
-                                                    </b-steps>
-                                                </div>
-                                            </b-modal>
-
-                                        </section>
-
+                                    </section>
                                 </b-tab-item>
                             </b-tabs>
                         </div>
-                    </section>
 
+                        <b-modal :active.sync="isCardModalActive" :width="720" scroll="keep">
+                            <div class="box is-shadowless is-modal">
+
+                                <form method="POST" action="{{ route('server.store') }}">
+
+                                    @csrf
+
+                                    <div class="topic has-text-centered" style="padding: 1.75rem;">
+                                        <h4 class="title">เพิ่มเซิร์ฟเวอร์ใหม่</h4>
+                                        <p class="subtitle is-6">โหมดละเอียด</p>
+                                    </div>
+
+                                    <b-steps size="is-small" v-model="activePage" :has-navigation="false">
+                                        <b-step-item label="ทั่วไป" icon="account">
+                                            <div style="padding: 3rem 3rem;">
+
+                                                <b-field label="ชื่อของเซิร์ฟเวอร์">
+                                                    <b-input v-model="newserver.name"  name="server_name"></b-input>
+                                                </b-field>
+
+                                                <b-field label="ที่อยู่ของเซิร์ฟเวอร์">
+                                                    <b-input v-model="newserver.hostname"  name="hostname"></b-input>
+                                                </b-field>
+
+                                                <b-field label="พอร์ทของเซิร์ฟเวอร์">
+                                                    <b-input v-model="newserver.port"  name="hostname_port"></b-input>
+                                                </b-field>
+
+                                                <b-field label="พอร์ท Query ของเซิร์ฟเวอร์">
+                                                    <b-input v-model="newserver.query_port"  name="hostname_query_port"></b-input>
+                                                </b-field>
+
+                                            </div>
+
+                                            <div class="level" style="margin-top: 3rem">
+                                                <div class="level-left">
+                                                    <div class="buttons is-left">
+                                                        <b-button type="is-primary is-outlined"
+                                                            icon-left="arrow-left-bold" @click="activePage--">กลับ
+                                                        </b-button>
+                                                    </div>
+                                                </div>
+                                                <div class="level-right">
+                                                    <div class="buttons is-right">
+                                                        <b-button type="is-primary is-outlined"
+                                                            icon-right="arrow-right-bold" @click="activePage++">
+                                                            ต่อไป</b-button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </b-step-item>
+                                        <b-step-item label="การเชื่อมต่อ RCON" icon="settings">
+                                            <div style="padding: 3rem 3rem;">
+
+                                                <b-field label="พอร์ท Rcon">
+                                                    <b-input v-model="newserver.rcon.port" name="rcon_port"></b-input>
+                                                </b-field>
+
+                                                <b-field label="รหัสผ่าน Rcon">
+                                                    <b-input v-model="newserver.rcon.password" name="rcon_password"></b-input>
+                                                </b-field>
+
+                                            </div>
+
+                                            <div class="level" style="margin-top: 3rem">
+                                                <div class="level-left">
+                                                    <div class="buttons is-left">
+                                                        <b-button type="is-primary is-outlined"
+                                                            icon-left="arrow-left-bold" @click="activePage--">กลับ
+                                                        </b-button>
+                                                    </div>
+                                                </div>
+                                                <div class="level-right">
+                                                    <div class="buttons is-right">
+                                                        <b-button type="is-primary is-outlined"
+                                                            icon-right="arrow-right-bold" @click="activePage++">
+                                                            ต่อไป</b-button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </b-step-item>
+                                        <b-step-item label="การเชื่อมต่อ WebSender" icon="settings">
+                                            <div style="padding: 3rem 3rem;">
+
+                                                <b-field label="พอร์ท WebSender">
+                                                    <b-input v-model="newserver.websender.port" name="websender_port"></b-input>
+                                                </b-field>
+
+                                                <b-field label="รหัสผ่าน WebSender">
+                                                    <b-input v-model="newserver.websender.password" name="websender_password"></b-input>
+                                                </b-field>
+
+                                            </div>
+
+                                            <div class="level" style="margin-top: 3rem">
+                                                <div class="level-left">
+                                                    <div class="buttons is-left">
+                                                        <b-button type="is-primary is-outlined"
+                                                            icon-left="arrow-left-bold" @click="activePage--">กลับ
+                                                        </b-button>
+                                                    </div>
+                                                </div>
+                                                <div class="level-right">
+                                                    <div class="buttons is-right">
+                                                        <b-button type="is-primary is-outlined"
+                                                            icon-right="arrow-right-bold" @click="activePage++">
+                                                            ต่อไป</b-button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </b-step-item>
+                                        <b-step-item label="ตรวจสอบ" icon="check">
+
+                                            <div class="box overview">
+
+                                                <h4 class="title is-4">ตรวจสอบข้อมูล</h4>
+                                                <p class="subtitle is-6">ข้อมูลดังต่อไปนี้จะถูกเพิ่มเข้าสู่ระบบ</p>
+
+                                                <table class="table is-bordered is-fullwidth">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>ชื่อเซิร์ฟเวอร์</td>
+                                                            <td>
+                                                                @{{ newserver.name || "ยังไม่ระบุ"}}
+                                                                <a class="is-size-7 is-text has-text-danger"
+                                                                    v-if="newserver.name == null"
+                                                                    @click="activePage = 0">กลับไปแก้ไข</a>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>พอร์ท</td>
+                                                            <td>
+                                                                @{{ newserver.port || "ยังไม่ระบุ"}}
+                                                                <a class="is-size-7 is-text has-text-danger"
+                                                                    v-if="newserver.port == null"
+                                                                    @click="activePage = 0">กลับไปแก้ไข</a>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>พอร์ท Rcon</td>
+                                                            <td>
+                                                                @{{ newserver.rcon.port || "ยังไม่ระบุ"}}
+                                                                <a class="is-size-7 is-text has-text-danger"
+                                                                    v-if="newserver.rcon.port == null"
+                                                                    @click="activePage = 1">กลับไปแก้ไข</a>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>รหัสผ่าน Rcon</td>
+                                                            <td>
+                                                                @{{ newserver.rcon.password || "ยังไม่ระบุ"}}
+                                                                <a class="is-size-7 is-text has-text-danger"
+                                                                    v-if="newserver.rcon.password == null"
+                                                                    @click="activePage = 1">กลับไปแก้ไข</a>
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>พอร์ท WebSender</td>
+                                                            <td>
+                                                                @{{ newserver.websender.port }}
+                                                                <a class="is-size-7 is-text has-text-danger"
+                                                                    v-if="newserver.websender.port == null"
+                                                                    @click="activePage = 2">กลับไปแก้ไข</a>
+                                                            </td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td>รหัสผ่าน WebSender</td>
+                                                            <td>
+                                                                @{{ newserver.websender.password }}
+                                                                <a class="is-size-7 is-text has-text-danger"
+                                                                    v-if="newserver.websender.password == null"
+                                                                    @click="activePage = 2">กลับไปแก้ไข</a>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+
+                                            <div class="buttons">
+                                                <b-button native-type="submit"
+                                                    type="is-primary is-outlined is-fullwidth"
+                                                    icon-left="account-check">สร้างเซิร์ฟเวอร์ @{{ newserver.name }}</b-button>
+                                                <b-button type="is-primary is-outlined is-fullwidth"
+                                                    icon-left="arrow-left-bold" @click="activePage--">กลับ</b-button>
+                                            </div>
+                                        </b-step-item>
+                                    </b-steps>
+                                </form>
+                            </div>
+                        </b-modal>
+
+                    </section>
                 </template>
             </div>
         </div>
@@ -253,22 +413,13 @@
 
 <script src="https://unpkg.com/vue"></script>
 <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <script>
 
     new Vue({
-        el: '#itemshop',
+        el: '#server',
         methods: {
-            isAlreadyDiscont: function(value) {
-                if(value > 0) {
-                    return true
-                }else {
-                    return false
-                }
-            },
-            setNullImage: function() {
-                this.file = null
-            },
             cardModal() {
                 this.$buefy.modal.open({
                     parent: this,
@@ -277,45 +428,75 @@
                     customClass: 'custom-class custom-class-2'
                 })
             },
+            getServer: function(server) {
+
+                this.serverstatus = "กำลังทดสอบเชื่อมต่อ.."
+                this.actionMessage('กำลังทดสอบเชื่อมต่อ..');
+
+                axios.get('/api/connectserver/' + server.server_id).then(response => {
+                    if(response.data == true) {
+                        console.log(response.data)
+
+                        this.serverstatus = response.data
+                        this.showServerResult('is-success', 'เชื่อมต่อไปยังเซิร์ฟเวอร์สำเร็จ!' + '<br>' + server.server_name + '<br>' + server.hostname + ' สามารถเชื่อมต่อได้');
+
+                        return response.data
+                    } else {
+
+                        this.showServerResult('is-warning', 'ไม่สามารถเชื่อมต่อไปยังเซิร์ฟเวอร์ได้' + '<br>' + server.server_name + '<br>' + server.hostname);
+                        this.serverstatus = "เชื่อมต่อไม่ได้"
+                        return false
+
+                    }
+                })
+
+            },
+            showServerResult: function(style, msg) {
+                this.$buefy.notification.open({
+                    duration: 4000,
+                    message: msg,
+                    position: 'is-top-right',
+                    type: style,
+                    hasIcon: true
+                })
+            },
+            actionMessage(msg) {
+                this.$buefy.toast.open(msg)
+            },
+        },
+        computed: {
+            updateStatus: function() {
+                this.getServer(selected.data)
+            },
+            displayServer: function () {
+                return this.selected.data.server_id + ' ## '
+            },
         },
         data() {
             return {
                 data,
-                selected: data[-1],
-                columns: [
-                    {
-                        field: 'server_id',
-                        label: 'เลขอ้างอิง',
+                selected: null,
+                isCardModalActive: false,
+                newserver: {
+                    name: '',
+                    hostname: null,
+                    port: null,
+                    query_port: null,
+                    rcon: {
+                        port: null,
+                        password: null,
                     },
-                    {
-                        field: 'server_name',
-                        label: 'ชื่อเซิร์ฟเวอร์',
-                    },
-                    {
-                        field: 'hostname',
-                        label: 'รายละเอียดโดยย่อ',
-                    },
-                    {
-                        field: 'hostname_port',
-                        label: 'ราคา',
-                    },
-                    {
-                        field: 'hostname_query_port',
-                        label: 'ขายไปแล้ว',
-                        centered: true
+                    websender: {
+                        port: null,
+                        password: null,
                     }
-                ],
-                file: null,
-                name: null,
-                desc: null,
-                price: 0,
-                discountprice: 0,
-                commands: null,
-                isDiscont: false,
+                },
+                activePage: 0,
+                serverstatus: false,
+                loadingButton: false,
             }
         }
     })
 
 </script>
-
 @endsection

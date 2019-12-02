@@ -17,6 +17,7 @@ use App\GeneralSettings;
 use App\Logs;
 use App\Notice;
 use App\PaymentTransaction;
+use App\GameServer;
 
 use \MinecraftPing;
 use xPaw\MinecraftPingException;
@@ -63,6 +64,25 @@ class Controller extends BaseController
         }catch(MinecraftQueryException $e) {
 
             return null;
+
+        }
+    }
+
+    public function testServerConnection($serverId)
+    {
+
+        $server = GameServer::findOrFail($serverId);
+        $query = new MinecraftQuery();
+
+        try {
+
+            $query->Connect($server->hostname,  $server->hostname_port);
+
+            return response()->json(true);
+
+        }catch(MinecraftQueryException $e) {
+
+            return response()->json(false);
 
         }
     }

@@ -18,6 +18,7 @@ class Notices extends Migration
             $table->string('notice_tag');
             $table->longText('notice_title');
             $table->longText('notice_content');
+            $table->integer('notice_views')->default(0);
             $table->boolean('notice_show_on_store');
             $table->timestamps();
         });
