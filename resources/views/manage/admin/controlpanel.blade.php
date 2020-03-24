@@ -42,7 +42,7 @@
                                 @yield('breadcrumb')
                             </div>
                         @endif
-                        <h1 class="title is-size-2 has-text-weight-bold has-thaifont-pixel">แผงควบคุม</h1>
+                        <h1 class="title is-size-1 has-text-weight-bold">แผงควบคุม</h1>
                         <p class="subtitle has-text-justified">ควบคุมส่วนต่างๆ ของเว็บไซต์และระบบ<b class="force-bold"></b></p>
                         <div class="sidemenu">
                             @include('components.alert')

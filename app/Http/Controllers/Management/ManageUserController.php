@@ -58,6 +58,7 @@ class ManageUserController extends ManageController
         $user = User::find($id);
 
         $user->update([
+            'name' => $request->name,
             'email' => $request->email,
             'points_balance' => $request->points,
             'role_id' => $request->role,
@@ -85,6 +86,7 @@ class ManageUserController extends ManageController
         $user = User::find($request->id);
 
         $user->update([
+            'name' => $request->name,
             'email' => $request->email,
             'points_balance' => $request->points_balance,
             'role_id' => $request->role,
@@ -96,6 +98,14 @@ class ManageUserController extends ManageController
                 'password' => Hash::make($request->password),
             ]);
         }
+
+        return redirect()->route('usereditor.index');
+
+    }
+
+    public function internalDelete(Request $request)
+    {
+        User::find($request->id)->delete();
 
         return redirect()->route('usereditor.index');
 

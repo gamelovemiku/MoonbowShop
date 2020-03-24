@@ -39,7 +39,7 @@
 
                             :data="data"
                             :paginated="true"
-                            :per-page="15"
+                            :per-page="10"
 
                             :pagination-simple="true"
                             :selected.sync="selected"
@@ -95,17 +95,17 @@
 
                                             <form method="POST" action="{{ route('server.internalDelete') }}">
                                                 @csrf
-                                                <input type="hidden" name="id" v-bind:value="selected.id" />
+                                                <input type="hidden" name="id" v-bind:value="selected.server_id" />
 
                                                 <div class="buttons">
                                                     <b-button class="button is-small is-info" v-on:click="getServer(selected)">
                                                         <b-icon icon="arrange-send-to-back" size="is-small"></b-icon>
                                                         <span>ทดสอบการเชื่อมต่อไปที่ @{{ selected.hostname }}</span>
                                                     </b-button>
-                                                    <b-button type="submit" class="button is-small is-outlined is-danger">
+                                                    <button type="submit" class="button is-small is-outlined is-danger">
                                                         <b-icon icon="delete" size="is-small"></b-icon>
                                                         <span>ลบเซิร์ฟเวอร์ @{{ selected.server_name || "" }}</span>
-                                                    </b-button>
+                                                    </button>
                                                 </div>
 
 
