@@ -3,7 +3,7 @@
         <div class="navbar-brand">
             <a class="navbar-item">
                 <div>
-                    <small style="font-size: 9px;">MOONBOWMC</small><br/>
+                    <small style="font-size: 9px;">SHELTERMC's</small><br/>
                     <div style="margin-top: -12px;">
                         @hasSection ('header-text')
                             @yield('header-text')
@@ -50,12 +50,12 @@
                         <i class="fas fa-shopping-bag" style="margin-right: 8px;"></i> STORE
                     </a>
 
-                    <a class="navbar-item" href="{{ route('arcade.index') }}">
+                    <!--a-- class="navbar-item" href="{{ route('arcade.index') }}">
                         <i class="fas fa-dice" style="margin-right: 8px;"></i> ARCADE <p style="margin-left: 0.5rem; font-size: 8px;" class="tag is-small is-warning">New</p>
-                    </a>
+                    </!--a-->
 
-                    <a class="navbar-item" href="/statistics">
-                        <i class="fas fa-diagnoses" style="margin-right: 8px;"></i> STATISTICS
+                    <a class="navbar-item" href="/boosters">
+                        <i class="fas fa-diagnoses" style="margin-right: 8px;"></i> BOOSTERS
                     </a>
 
                     <a class="navbar-item" href="/topup">

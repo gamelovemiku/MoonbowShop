@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Management;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\ItemshopRequest;
 use App\Itemshop;
-use Storage;
+use Illuminate\Http\Request;
 use JavaScript;
+use Storage;
 
 class ManageItemController extends ManageController
 {
@@ -14,7 +14,7 @@ class ManageItemController extends ManageController
     {
 
         JavaScript::put([
-            'data' =>  $this->getAllItem(),
+            'data' => $this->getAllItem(),
         ]);
 
         return view('manage.admin.item', [
@@ -30,7 +30,8 @@ class ManageItemController extends ManageController
         ]);
     }
 
-    public function getBasename($path, $file) {
+    public function getBasename($path, $file)
+    {
         $save = Storage::disk('local')->put($path, $file);
         return basename($save);
     }
@@ -40,15 +41,15 @@ class ManageItemController extends ManageController
 
         $item = new Itemshop;
 
-        $item->item_name        = $request->item_name;
-        $item->item_desc        = $request->item_desc;
-        $item->item_price       = $request->item_price;
-        $item->item_image_path  = $this->saveAndGetFile('public/itemshop/cover', $request->file('cover'));
-        $item->category_id      = $request->category;
-        $item->item_command     = $request->item_command;
-        $item->item_sold        = 0;
+        $item->item_name = $request->item_name;
+        $item->item_desc = $request->item_desc;
+        $item->item_price = $request->item_price;
+        $item->item_image_path = $this->saveAndGetFile('public/itemshop/cover', $request->file('cover'));
+        $item->category_id = $request->category;
+        $item->item_command = $request->item_command;
+        $item->item_sold = 0;
 
-        if(!empty($request->item_discount_price)){
+        if (!empty($request->item_discount_price)) {
             $item->item_discount_price = $request->item_discount_price;
         }
 
@@ -96,17 +97,17 @@ class ManageItemController extends ManageController
 
         ]);
 
-        if(empty($request->item_discount_price)){
+        if (empty($request->item_discount_price)) {
             $item->update([
                 'item_discount_price' => null,
             ]);
-        }else{
+        } else {
             $item->update([
                 'item_discount_price' => $request->item_discount_price,
             ]);
         }
 
-        if($request->file('cover') != null){
+        if ($request->file('cover') != null) {
 
             Storage::disk('local')->delete('public/itemshop/cover/' . $oldfilename);
 
@@ -122,11 +123,11 @@ class ManageItemController extends ManageController
     public function destroy($id)
     {
 
-        if($id != null) {
+        if ($id != null) {
             Itemshop::find($id)->delete();
 
             session()->flash('manageItemRemoved');
-        }else {
+        } else {
             session()->flash('somethingError');
         }
 
@@ -148,17 +149,17 @@ class ManageItemController extends ManageController
 
         ]);
 
-        if(empty($request->item_discount_price)){
+        if (empty($request->item_discount_price)) {
             $item->update([
                 'item_discount_price' => null,
             ]);
-        }else{
+        } else {
             $item->update([
                 'item_discount_price' => $request->item_discount_price,
             ]);
         }
 
-        if($request->file('cover') != null){
+        if ($request->file('cover') != null) {
 
             Storage::disk('local')->delete('public/itemshop/cover/' . $oldfilename);
 

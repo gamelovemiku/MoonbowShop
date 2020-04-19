@@ -32,6 +32,8 @@ Auth::routes();
 
 Route::get('/store', 'StoreController@index')->name('store');
 
+Route::resource('/boosters', 'BoostersController');
+
 Route::get('/store/checkout', 'CheckoutController@index');
 Route::post('/store/checkout', 'CheckoutController@verifiedbuy')->name('verifiedbuy');
 
