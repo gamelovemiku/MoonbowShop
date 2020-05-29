@@ -1,5 +1,4 @@
 <h1>MoonbowShop - A simple and free minecraft itemshop!</h1>
-<h6>ITEC1209 Mini Project  @2019/2562 | Mahanakorn University</h6>
 <p>
     This project are exclusive made for <b>Moonbow Minecraft Server</b> only! 
     When the presentation of this subject is over, This project will gonna be change to opensource.
